@@ -33,15 +33,34 @@ def http_failure(exc, key, series):
     return f"ALFRED request failed for {series}: HTTP {exc.code}" + (f" — {detail}" if detail else "")
 
 
-def observations_request(key, series, params):
+def fred_request(key, series, endpoint, params):
     query = {"api_key": key, "file_type": "json", "series_id": series, **params}
     try:
-        with urlopen("https://api.stlouisfed.org/fred/series/observations?" + urlencode(query), timeout=90) as response:
+        with urlopen("https://api.stlouisfed.org/fred/series/" + endpoint + "?" + urlencode(query), timeout=90) as response:
             return json.load(response)
     except HTTPError as exc:
         raise MacroUnavailable(http_failure(exc, key, series)) from None
     except (URLError, TimeoutError) as exc:
         raise MacroUnavailable(f"ALFRED request failed for {series}: {type(exc).__name__}") from None
+
+
+def observations_request(key, series, params):
+    return fred_request(key, series, "observations", params)
+
+
+def first_vintage(key, series, end):
+    payload = fred_request(key, series, "vintagedates", {
+        "realtime_start": "1776-07-04", "realtime_end": end, "sort_order": "asc", "limit": 1})
+    dates = payload.get("vintage_dates", [])
+    if not dates:
+        raise MacroUnavailable(f"ALFRED has no archived vintages for {series}")
+    try:
+        first = date.fromisoformat(dates[0]).isoformat()
+    except (ValueError, TypeError):
+        raise MacroUnavailable(f"ALFRED returned an invalid first vintage for {series}") from None
+    if first > end:
+        raise MacroUnavailable(f"ALFRED returned a future first vintage for {series}")
+    return first
 
 
 def realtime_windows(start, end):
@@ -70,10 +89,15 @@ def download_vintages(spec, observation_start="2008-01-01"):
         valid_end = False
     if not valid_end:
         raise MacroUnavailable("FRED omitted a valid current-date boundary")
-    windows = list(realtime_windows(observation_start, server_end))
     result = {"retrievedAt": retrieved, "provider": spec["provider"], "series": {},
-              "realtimeEnd": server_end, "realtimeWindows": windows}
+              "realtimeEnd": server_end, "realtimeWindows": {}, "firstVintageDates": {}}
     for series in spec["series"]:
+        earliest = first_vintage(key, series, server_end)
+        # A range wholly before a series existed in ALFRED returns HTTP 400,
+        # rather than an empty list. Query its documented coverage boundary first.
+        windows = list(realtime_windows(max(observation_start, earliest), server_end))
+        result["firstVintageDates"][series] = earliest
+        result["realtimeWindows"][series] = windows
         rows = []
         for start, end in windows:
             offset = 0

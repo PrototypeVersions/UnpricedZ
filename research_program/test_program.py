@@ -194,6 +194,7 @@ def test_api_date_comes_from_server_and_stays_fixed_across_pages(monkeypatch):
     monkeypatch.setenv("FRED_API_KEY", "a" * 32)
     monkeypatch.setattr(macro_module, "datetime", TomorrowUTC)
     monkeypatch.setattr(macro_module, "urlopen", respond)
+    monkeypatch.setattr(macro_module, "first_vintage", lambda key, series, end: "2026-11-01")
     result = download_vintages({"keyEnvironment": "FRED_API_KEY", "provider": "test",
                                "series": {"DGS10": 10, "T10Y2Y": 10}}, "2026-11-01")
     assert len(calls) == 5  # Date probe, then two pages of each historical series.
@@ -226,6 +227,7 @@ def test_vintage_windows_are_bounded_contiguous_and_do_not_use_probe_data(monkey
 
     monkeypatch.setenv("FRED_API_KEY", "a" * 32)
     monkeypatch.setattr(macro_module, "observations_request", respond)
+    monkeypatch.setattr(macro_module, "first_vintage", lambda key, series, end: "2008-01-01")
     result = download_vintages({"keyEnvironment": "FRED_API_KEY", "provider": "test", "series": {"TEST": 10}})
     assert len(calls) == 3
     assert result["series"]["TEST"] == [{"date": "2011-12-01", "realtime_start": "2011-12-15", "value": "1"}]
@@ -242,5 +244,38 @@ def test_incomplete_vintage_page_blocks_instead_of_silently_truncating(monkeypat
 
     monkeypatch.setenv("FRED_API_KEY", "a" * 32)
     monkeypatch.setattr(macro_module, "observations_request", respond)
+    monkeypatch.setattr(macro_module, "first_vintage", lambda key, series, end: "2008-01-01")
     with pytest.raises(MacroUnavailable, match="incomplete page"):
         download_vintages({"keyEnvironment": "FRED_API_KEY", "provider": "test", "series": {"TEST": 10}})
+
+
+def test_late_vintage_coverage_is_discovered_and_never_backfilled(monkeypatch):
+    from io import BytesIO
+    from urllib.parse import parse_qs, urlparse
+    import research_program.macro as macro_module
+    calls = []
+
+    def respond(url, timeout):
+        parsed = urlparse(url)
+        query = parse_qs(parsed.query)
+        calls.append((parsed.path, query))
+        if parsed.path.endswith("vintagedates"):
+            assert query["sort_order"] == ["asc"] and query["limit"] == ["1"]
+            payload = {"vintage_dates": ["2014-01-27"]}
+        elif "realtime_start" not in query:
+            payload = {"realtime_end": "2014-02-01", "observations": [{"value": "999"}]}
+        else:
+            assert query["realtime_start"] == ["2014-01-27"]
+            assert query["realtime_end"] == ["2014-02-01"]
+            payload = {"realtime_start": "2014-01-27", "realtime_end": "2014-02-01", "count": 1,
+                       "observations": [{"date": "2014-01-01", "realtime_start": "2014-01-27", "value": "1"}]}
+        return BytesIO(json.dumps(payload).encode())
+
+    monkeypatch.setenv("FRED_API_KEY", "a" * 32)
+    monkeypatch.setattr(macro_module, "urlopen", respond)
+    result = download_vintages({"keyEnvironment": "FRED_API_KEY", "provider": "test", "series": {"TEST": 100}})
+    assert len(calls) == 3
+    assert result["firstVintageDates"]["TEST"] == "2014-01-27"
+    values = asof_series(result["series"]["TEST"], pd.DatetimeIndex(["2014-01-24", "2014-01-27", "2014-01-28"]), 100)
+    assert values.iloc[:2].value.isna().all()
+    assert values.iloc[2].value == 1

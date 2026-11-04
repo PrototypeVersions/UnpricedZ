@@ -45,3 +45,7 @@ Subsequent corrections and tested specifications must be appended here.
   A one-row current-date probe supplies only the server boundary; its revised value
   is discarded. Tests cover complete window coverage, pagination, absent early coverage,
   and rejection of prematurely empty pages. Earlier blocked attempts remain archived.
+- FRED returns HTTP 400 for a real-time window wholly before a series first appeared in
+  ALFRED. The adapter now discovers each first vintage with the vintage-date endpoint,
+  starts its bounded requests there, and archives that coverage boundary. A regression
+  test verifies that late archival coverage never fills earlier dates.
