@@ -42,6 +42,17 @@ It cannot change X, run its holdout, contact another agent, create UnpricedHub, 
 fine-tune/promote models or change the official research-2.0.0 policy. See
 [the program](RESEARCH_PROGRAM.md) and [cross-lab strategy](MULTI_LAB_STRATEGY.md).
 
+## Risk Lab mandate
+
+The owner assigned overall project leadership to Claude and made UnpricedZ the Risk Lab.
+The completed program-0.1.0 is retained as development evidence; the holiday-corrected macro
+results are in [the registered macro review](PROGRAM_MACRO_REVIEW_2026-11-04.md).
+Ongoing research prioritizes [risk-1.0.0](RISK_PROTOCOL.md), SPY/sector variance and drawdown,
+strong baselines, data integrity and prospective scoring. Stop adding direction complexity.
+The original research-2.0.0 models, code and daily ledger continue without replacement.
+Neither UnpricedX nor UnpricedHub may be modified. Once Hub's contract is published, add
+only a compatible export in Z with exact targets, timing and provenance; no conversions.
+
 ## Failure behavior
 
 The last successful records remain available. The public status file reports a cycle error if the engine fails; GitHub Actions contains installation/test/deployment failures too. Never infer successful timely publication from a green workflow alone. Inspect record timestamps and target entry deadlines.

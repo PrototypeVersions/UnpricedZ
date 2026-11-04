@@ -34,5 +34,6 @@ Future candidate research must state the economic hypothesis, information availa
 | ID | Status | Description |
 | --- | --- | --- |
 | research-2.0.0 | Initial frozen specification | Nine sector ETFs; five-session relative returns and daily variance; no adaptive ensemble |
+| risk-1.0.0 | Separately registered risk benchmark version | SPY plus nine sectors; EWMA, daily HAR, GARCH(1,1), and volatility-only drawdown; independent live namespace. See [risk protocol](RISK_PROTOCOL.md). |
 
 Do not revise this table to hide previous tested versions. Append new entries.
