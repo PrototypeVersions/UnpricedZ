@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from datetime import datetime, timezone
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
@@ -14,6 +15,22 @@ import pandas as pd
 
 class MacroUnavailable(RuntimeError):
     pass
+
+
+def http_failure(exc, key, series):
+    """Keep the API's diagnostic, never a credential-bearing request URL/body."""
+    detail = ""
+    try:
+        payload = json.loads(exc.read(8192).decode("utf-8"))
+        if isinstance(payload, dict) and isinstance(payload.get("error_message"), str):
+            detail = payload["error_message"]
+    except (ValueError, UnicodeError, OSError):
+        pass
+    if key:
+        detail = re.sub(re.escape(key), "[redacted]", detail, flags=re.IGNORECASE)
+    detail = re.sub(r"(?i)(api_key[= :]+)[^&\s\"'<>]+", r"\1[redacted]", detail)
+    detail = " ".join(detail.split())[:500]
+    return f"ALFRED request failed for {series}: HTTP {exc.code}" + (f" — {detail}" if detail else "")
 
 
 def download_vintages(spec, observation_start="2008-01-01"):
@@ -32,7 +49,9 @@ def download_vintages(spec, observation_start="2008-01-01"):
             try:
                 with urlopen("https://api.stlouisfed.org/fred/series/observations?" + urlencode(params), timeout=90) as response:
                     payload = json.load(response)
-            except (HTTPError, URLError, TimeoutError) as exc:
+            except HTTPError as exc:
+                raise MacroUnavailable(http_failure(exc, key, series)) from None
+            except (URLError, TimeoutError) as exc:
                 # Never log a request URL containing the API key.
                 raise MacroUnavailable(f"ALFRED request failed for {series}: {type(exc).__name__}") from None
             batch = payload.get("observations", [])

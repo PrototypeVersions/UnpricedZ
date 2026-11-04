@@ -29,3 +29,10 @@ Subsequent corrections and tested specifications must be appended here.
 - Added the two-lab strategy, a read-only Claude review brief, and links in the repository and public lab notes. UnpricedX was inspected read-only; original Unpriced was not modified.
 - Updated the existing weekly research-review task to prioritize the approved four-part program and reviewed shadow-launch preparation, without automatic promotion.
 - Confirmed the official algorithm SHA-256 remains `15e0549b70629e45c79ee2049a76a46b7b0f9aecf47eacecc279a43677a72f29`. No official model policy or frozen record was rewritten.
+
+## 2026-11-04 UTC — FRED connection diagnostics
+
+- The first credential-enabled request was rejected by FRED. Preserve that blocked attempt.
+- Retain the HTTP status and provider's JSON error explanation with credentials redacted;
+  omit arbitrary response bodies and credential-bearing request URLs. Added a regression test
+  for reflected secrets and unexpected HTML errors. No research specification was changed.

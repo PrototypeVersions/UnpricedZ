@@ -10,7 +10,7 @@ import pytest
 from unpriced.controls import synthetic_market
 from unpriced.io import config
 
-from research_program.macro import MacroUnavailable, asof_series, download_vintages
+from research_program.macro import MacroUnavailable, asof_series, download_vintages, http_failure
 from research_program.panel import columns, make_panel, resolved_history
 from research_program.pretrained import probability_above
 from research_program.reporting import paired
@@ -146,3 +146,19 @@ def test_pairing_rejects_inconsistent_outcomes_and_reports_intersection(sample):
 def test_quantile_probability_uses_right_continuous_atom():
     assert probability_above([0, 0, 1], [.1, .5, .9], 0) == pytest.approx(.5)
     assert probability_above([-1, 0, 1], [.1, .5, .9], 0) == pytest.approx(.5)
+
+
+def test_api_rejections_explain_failure_without_exposing_credentials():
+    from io import BytesIO
+    from urllib.error import HTTPError
+    key = "a" * 32
+    message = f"Bad Request. Invalid parameter in https://example.test/?api_key={key}&series_id=DGS10; key {key}"
+    exc = HTTPError(f"https://example.test/?api_key={key}", 400, "Bad Request", {},
+                    BytesIO(json.dumps({"error_message": message}).encode()))
+    result = http_failure(exc, key, "DGS10")
+    assert "HTTP 400" in result and "Invalid parameter" in result
+    assert key not in result
+    # Unexpected HTML is never copied into public logs or archived reports.
+    exc = HTTPError(f"https://example.test/?api_key={key}", 403, "Forbidden", {},
+                    BytesIO(f"<html>{key}</html>".encode()))
+    assert http_failure(exc, key, "DGS10") == "ALFRED request failed for DGS10: HTTP 403"
