@@ -26,6 +26,7 @@ availability convention, not proof of an exact historical feed timestamp. Series
 archival coverage remain missing before coverage begins. Stale inputs abstain.
 
 A free FRED API key must be configured as the repository Actions secret `FRED_API_KEY`.
+Follow the illustrated [FRED setup instructions](FRED_SETUP.md).
 Without it, the macro experiment explicitly reports **blocked**. No revised-data fallback,
 secret in the repository, paid data purchase or external model API is involved.
 
