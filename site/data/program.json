@@ -1,10 +1,10 @@
 {
   "program": "program-0.1.0",
-  "runId": "41757055250-1",
-  "generatedAt": "2026-11-04T01:54:09.149419+00:00",
+  "runId": "41757556265-1",
+  "generatedAt": "2026-11-04T01:58:41.625479+00:00",
   "evidence": "Exploratory development. 2025 confirmation and 2026 results have already been inspected; neither is a new untouched test.",
   "registrySha256": "dbf1ee861e0ac27a50a440c6ba67ed86e9e14d186a63b71e7e476854fa0661cf",
-  "codeCommit": "5688992d6761bcc4eae0eab2134c807aa14cbf03",
+  "codeCommit": "d54dc50adfcc8f1a7168fd65d1e368dcaa805e2b",
   "input": {
     "path": "archive/inputs/2026-11-03-research-8c99edf48ff7d750.csv.gz",
     "csvSha256": "8c99edf48ff7d75087e7a1e3feba91d3d6343925b5a024e885e20ab7b039f148"
@@ -68,7 +68,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/market-M-excess.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/market-M-excess.csv.gz",
         "csvSha256": "92b6266e3f9bdb91e30613a711d930af2b3e45eb8350b4f75d7ea53e9f530270",
         "rows": 13590
       }
@@ -92,7 +92,7 @@
       },
       "meanQuantileLoss": 0.1653141534620631,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/market-M-variance.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/market-M-variance.csv.gz",
         "csvSha256": "2631baef8e99a75e0a47adc9735150529f31e5fb6bbe53a171730fe8de563406",
         "rows": 13590
       }
@@ -178,7 +178,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/market-M-drawdown.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/market-M-drawdown.csv.gz",
         "csvSha256": "a1ac4c36960d09aecda38f905ec04418b6c68028b97ebcd80f157ab8fd5472a1",
         "rows": 13590
       }
@@ -234,7 +234,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/market-Q-excess.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/market-Q-excess.csv.gz",
         "csvSha256": "90f69229bc811af213212ad72389fd55c30f34785f716268b2921f6b3de7de8d",
         "rows": 13590
       }
@@ -258,7 +258,7 @@
       },
       "meanQuantileLoss": 0.16542537444393488,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/market-Q-variance.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/market-Q-variance.csv.gz",
         "csvSha256": "26fc5e11c2a99d44d3b132c93b5d73f550a5c4296b5c76fcf7304b221aca5b79",
         "rows": 13590
       }
@@ -344,7 +344,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/market-Q-drawdown.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/market-Q-drawdown.csv.gz",
         "csvSha256": "c98c0c2cff96b2692bae489c1d488f1a682904d3bc8dd35e4e4b979e21ec88dd",
         "rows": 13590
       }
@@ -429,7 +429,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/chronos-excess.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/chronos-excess.csv.gz",
         "csvSha256": "33bd15a263ce648e099efb11c74a2c821d79b2bf84e071bc79852bfde4493993",
         "rows": 648
       }
@@ -452,7 +452,7 @@
       },
       "meanQuantileLoss": 5.4907317802017613e-05,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/chronos-variance.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/chronos-variance.csv.gz",
         "csvSha256": "778024d6d64194df6c78979c58c46f630b9f828c68fa8c16acc9a66569e3bc87",
         "rows": 648
       }
@@ -531,7 +531,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757055250-1/chronos-drawdown.csv.gz",
+        "path": "archive/program/program-0.1.0/41757556265-1/chronos-drawdown.csv.gz",
         "csvSha256": "364088333dd0eb796ce07f068abb9f3f5be470a3632c4ccf7c00999fc505cb5f",
         "rows": 648
       }
@@ -651,9 +651,9 @@
   },
   "macro": {
     "status": "blocked",
-    "reason": "ALFRED request failed for DGS10: HTTP 400 \u2014 Bad Request. There are 5143 vintage dates in the specified real-time period: 1776-07-04 to 9999-12-31. This exceeds the maximum number of vintage dates allowed for this file type (2000)."
+    "reason": "ALFRED request failed for T10Y2Y: HTTP 400 \u2014 Bad Request. The series does not exist in ALFRED but may exist in FRED. Try setting realtime_start and realtime_end to today's date or removing the realtime_start and realtime_end variables."
   },
   "interpretation": "Exploratory only; all attempts retained. No live forecasts or automatic selection/promotion.",
-  "auditPath": "archive/program/program-0.1.0/41757055250-1/selection-audit.json",
-  "archivePath": "archive/program/program-0.1.0/41757055250-1/report.json"
+  "auditPath": "archive/program/program-0.1.0/41757556265-1/selection-audit.json",
+  "archivePath": "archive/program/program-0.1.0/41757556265-1/report.json"
 }

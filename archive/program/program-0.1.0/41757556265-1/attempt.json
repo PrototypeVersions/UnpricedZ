@@ -1,0 +1,105 @@
+{
+  "runId": "41757556265-1",
+  "startedAt": "2026-11-04T01:58:41.625479+00:00",
+  "codeCommit": "d54dc50adfcc8f1a7168fd65d1e368dcaa805e2b",
+  "registrySha256": "dbf1ee861e0ac27a50a440c6ba67ed86e9e14d186a63b71e7e476854fa0661cf",
+  "registry": {
+    "program": "program-0.1.0",
+    "registeredOn": "2026-11-04",
+    "status": "historical-development-only; no automatic live promotion",
+    "officialExperiment": "research-2.0.0",
+    "historyInput": "archive/inputs/2026-11-03-research-8c99edf48ff7d750.csv.gz",
+    "historyCsvSha256": "8c99edf48ff7d75087e7a1e3feba91d3d6343925b5a024e885e20ab7b039f148",
+    "outerStart": "2019-01-01",
+    "outerEnd": "2024-12-31",
+    "historicalEvidence": "Exploratory development. 2025 confirmation and 2026 results have already been inspected; neither is a new untouched test.",
+    "cadences": [
+      "M",
+      "Q"
+    ],
+    "featureSets": [
+      "market",
+      "macro"
+    ],
+    "tasks": [
+      "excess",
+      "variance",
+      "drawdown"
+    ],
+    "trainingYears": 5,
+    "calibrationSessions": 126,
+    "innerBlocks": 2,
+    "innerBlockSessions": 63,
+    "minimumFitDates": 504,
+    "classificationC": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "varianceAlpha": [
+      1000.0,
+      100.0,
+      10.0
+    ],
+    "calibrationC": 0.2,
+    "drawdownThreshold": 0.03,
+    "bootstrapBlockSessions": 20,
+    "bootstrapReplications": 1500,
+    "seed": 20261104,
+    "macro": {
+      "provider": "ALFRED via official FRED API",
+      "keyEnvironment": "FRED_API_KEY",
+      "vintageAvailability": "Use from the close of the first NYSE session strictly after the vintage date; date-only vintages are not exact release timestamps.",
+      "series": {
+        "DGS10": 10,
+        "T10Y2Y": 10,
+        "BAA10Y": 10,
+        "CPIAUCSL": 100,
+        "UNRATE": 100
+      },
+      "features": [
+        "rate10",
+        "slope",
+        "credit",
+        "inflation12",
+        "unemployment",
+        "unemployment3"
+      ],
+      "interactions": "Each macro feature multiplied by each fixed sector indicator",
+      "missingPolicy": "No latest-revised substitution. Missing or stale inputs abstain; comparisons use identical rows and report coverage."
+    },
+    "pretrained": {
+      "model": "amazon/chronos-2",
+      "revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+      "package": "chronos-forecasting==2.2.0",
+      "contextSessions": 512,
+      "minimumObservedContext": 252,
+      "quantiles": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9
+      ],
+      "historicalOrigins": "first exchange session of each month, 2019-2024",
+      "crossLearning": false,
+      "mode": "frozen zero-shot, no fine-tuning",
+      "probabilityMapping": "Linear interpolation of quantile CDF with tails clipped to 0.1/0.9; uncalibrated. At atoms, use the right-continuous CDF.",
+      "variancePoint": "Trapezoidal quantile integral with flat outer tails; an approximate mean, not the API's median point output",
+      "contamination": "Pretraining overlap with market history is unverified. Historical results are not clean out-of-sample evidence."
+    },
+    "comparisonOrder": [
+      "Market monthly versus market quarterly, separately for each task",
+      "Macro versus market at identical cadence on identical rows, separately for each task",
+      "Chronos versus market monthly and its baseline on identical monthly origins, separately for each task"
+    ],
+    "trialBudget": "12 tabular procedures, each with exactly 3 inner candidates; 3 frozen pretrained task mappings. Report every candidate and failed run. No adaptive expansion.",
+    "promotion": "none; reviewed future shadow launch required",
+    "fineTuning": "deferred until frozen-checkpoint comparison, compute review and a new registered protocol"
+  },
+  "includePretrained": true
+}
