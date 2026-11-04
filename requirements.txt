@@ -1,0 +1,8 @@
+numpy==2.2.6
+pandas==2.2.3
+scipy==1.15.3
+scikit-learn==1.6.1
+yfinance==0.2.66
+pandas-market-calendars==5.1.1
+pytest==8.4.2
+joblib==1.5.2

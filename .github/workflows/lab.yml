@@ -1,0 +1,109 @@
+name: Research and daily publication
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'unpriced/**'
+      - 'config.json'
+      - 'requirements.txt'
+      - 'tests/**'
+      - '.github/workflows/lab.yml'
+  schedule:
+    # Both DST offsets; the exchange calendar and entry-open deadline govern publication.
+    - cron: '17 21,22 * * 1-5'
+    - cron: '47 23 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Which operation to perform'
+        type: choice
+        default: daily
+        options: [daily, research, controls, bootstrap]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: unpricedz-data-writer
+  cancel-in-progress: false
+
+jobs:
+  laboratory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install pinned research environment
+        run: pip install -r requirements.txt
+      - name: Integrity tests
+        run: python -m pytest -q
+      - name: Select operation
+        id: operation
+        env:
+          REQUESTED_MODE: ${{ inputs.mode }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ -n "$REQUESTED_MODE" ]; then
+            MODE="$REQUESTED_MODE"
+          elif [ ! -s site/data/research.json ] || [ ! -s site/data/controls.json ]; then
+            MODE=bootstrap
+          elif [ "$EVENT" = push ]; then
+            MODE=research
+          else
+            MODE=daily
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+      - name: Run laboratory
+        id: lab
+        run: python -m unpriced "${{ steps.operation.outputs.mode }}"
+      - name: Validate JSON and frontend syntax
+        if: always()
+        run: |
+          python scripts/validate.py
+          node --check site/app.js
+      - name: Commit evidence and operational state
+        if: always()
+        run: |
+          git config user.name "unpricedz-lab"
+          git config user.email "actions@users.noreply.github.com"
+          git add archive records site/data
+          if ! git diff --cached --quiet; then
+            git commit -m "lab: preserve results and state $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Retain diagnostic artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-evidence-${{ github.run_id }}
+          path: |
+            site/data
+            records
+          retention-days: 90
+      - name: Configure GitHub Pages
+        if: always()
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Package public site
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Deploy public site
+        if: always()
+        uses: actions/deploy-pages@v4
