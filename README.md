@@ -4,6 +4,8 @@ A market research laboratory built to distinguish forecasting evidence from nois
 
 **Site:** https://prototypeversions.github.io/UnpricedZ/
 
+Read the [first evaluation and launch checks](docs/FIRST_REVIEW.md). The initial models have not demonstrated a forecasting edge over the simple baseline.
+
 This is a new, independent experiment. [The original UNPRICED V1](https://github.com/PrototypeVersions/Unpriced) is unchanged. Its forecasts and returns do not belong to this version.
 
 ## What works
@@ -43,6 +45,10 @@ python -m unpriced daily
 `.github/workflows/lab.yml` attempts updates at 21:17, 22:17 and 23:47 UTC on weekdays. These redundant attempts accommodate DST and delayed free data. The NYSE calendar, 45-minute close buffer, and **next opening deadline** determine whether an official forecast is eligible. Later same-session runs preserve the first forecast.
 
 The website is hosted from `site/` with GitHub Pages. Pages must use **GitHub Actions** as its source. The pipeline deploys the resulting site directly after committing records because pushes made by `GITHUB_TOKEN` do not launch another workflow.
+
+A separate ChatGPT research review is scheduled for Sunday mornings, around 08:00 America/Chicago. It investigates failures, reviews evidence and prepares tested fixes or challenger proposals without silently promoting models.
+
+![UNPRICED dashboard at launch](docs/site-preview.jpg)
 
 ## Repository map
 
