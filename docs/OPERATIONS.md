@@ -16,7 +16,7 @@ Quarterly live model artifacts are immutable. A changed config hash within a sto
 
 ## Weekly autonomous research review
 
-The user authorized scheduled work to improve this lab. The ChatGPT task **UNPRICED research review** is enabled for Sunday mornings around 08:00 America/Chicago, beginning 2026-11-08. It runs separately from GitHub's daily data jobs and prepares reviewed changes; it does not automatically merge a new research specification. The review should:
+The user authorized scheduled work to improve this lab. The ChatGPT task **UNPRICED Risk Lab review** is enabled for Sunday mornings around 08:00 America/Chicago, beginning 2026-11-08. It runs separately from GitHub's daily data jobs and prepares reviewed changes; it does not automatically merge a new research specification. The review should:
 
 1. Read this repository's protocol, changes and actual workflow results.
 2. Check that completed sessions have valid snapshots or explicit missed-window records, with no premature resolutions.

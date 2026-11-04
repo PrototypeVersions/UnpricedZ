@@ -8,6 +8,8 @@ and nine sectors. The original research-2.0.0 direction record continues unchang
 
 **Site:** https://prototypeversions.github.io/UnpricedZ/
 
+The [first Risk Lab evaluation](docs/RISK_FIRST_REVIEW_2026-11-04.md) is complete: 40 tests passed, all six controls ran, and the independent live record and validated Hub exports are published. GARCH improved historical variance loss; no live skill has yet been established.
+
 The primary risk study uses endpoint-matched EWMA, daily-data HAR and GARCH(1,1) variance
 benchmarks, plus event-frequency and volatility-only drawdown probabilities. It freezes
 monthly fits, updates observed variance states daily, and exports the two raw forecast tasks

@@ -32,7 +32,7 @@ realized variance was **53,469 times** the forecast. Its QLIKE was
 
 QLIKE is `r - log(r) - 1`, with `r = realized / predicted`: severe underprediction enters
 approximately linearly in this ratio; severe overprediction is penalized logarithmically.
-The CSVs verify the direction and concentration of the errors. These patterns are consistent
+Both directions of extrapolation occur: the quoted 99th/99.9th percentiles of predicted/realized variance reproduce (monthly about 850 / 42,117; quarterly about 957 / 29,605). Those upper overprediction quantiles are valid, but they do not identify the forecasts with the largest QLIKE. The CSVs verify the direction and concentration of the largest losses. These patterns are consistent
 with a log-linear model extrapolating badly during a new regime; the output decomposition
 alone does not establish which individual input or coefficient caused the failure.
 
