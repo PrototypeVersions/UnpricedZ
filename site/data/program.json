@@ -1,15 +1,15 @@
 {
   "program": "program-0.1.0",
-  "runId": "41757556265-1",
-  "generatedAt": "2026-11-04T01:58:41.625479+00:00",
+  "runId": "41757845804-1",
+  "generatedAt": "2026-11-04T02:02:24.014846+00:00",
   "evidence": "Exploratory development. 2025 confirmation and 2026 results have already been inspected; neither is a new untouched test.",
   "registrySha256": "dbf1ee861e0ac27a50a440c6ba67ed86e9e14d186a63b71e7e476854fa0661cf",
-  "codeCommit": "d54dc50adfcc8f1a7168fd65d1e368dcaa805e2b",
+  "codeCommit": "b45e55807488bc79907c2ffc1d328b43c381d053",
   "input": {
     "path": "archive/inputs/2026-11-03-research-8c99edf48ff7d750.csv.gz",
     "csvSha256": "8c99edf48ff7d75087e7a1e3feba91d3d6343925b5a024e885e20ab7b039f148"
   },
-  "status": "completed-with-blocked-macro",
+  "status": "completed",
   "tasks": {
     "market-M-excess": {
       "status": "completed",
@@ -68,7 +68,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/market-M-excess.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/market-M-excess.csv.gz",
         "csvSha256": "92b6266e3f9bdb91e30613a711d930af2b3e45eb8350b4f75d7ea53e9f530270",
         "rows": 13590
       }
@@ -92,7 +92,7 @@
       },
       "meanQuantileLoss": 0.1653141534620631,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/market-M-variance.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/market-M-variance.csv.gz",
         "csvSha256": "2631baef8e99a75e0a47adc9735150529f31e5fb6bbe53a171730fe8de563406",
         "rows": 13590
       }
@@ -178,7 +178,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/market-M-drawdown.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/market-M-drawdown.csv.gz",
         "csvSha256": "a1ac4c36960d09aecda38f905ec04418b6c68028b97ebcd80f157ab8fd5472a1",
         "rows": 13590
       }
@@ -234,7 +234,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/market-Q-excess.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/market-Q-excess.csv.gz",
         "csvSha256": "90f69229bc811af213212ad72389fd55c30f34785f716268b2921f6b3de7de8d",
         "rows": 13590
       }
@@ -258,7 +258,7 @@
       },
       "meanQuantileLoss": 0.16542537444393488,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/market-Q-variance.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/market-Q-variance.csv.gz",
         "csvSha256": "26fc5e11c2a99d44d3b132c93b5d73f550a5c4296b5c76fcf7304b221aca5b79",
         "rows": 13590
       }
@@ -344,34 +344,372 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/market-Q-drawdown.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/market-Q-drawdown.csv.gz",
         "csvSha256": "c98c0c2cff96b2692bae489c1d488f1a682904d3bc8dd35e4e4b979e21ec88dd",
         "rows": 13590
       }
     },
     "macro-M-excess": {
-      "status": "blocked-macro-data",
-      "expectedRows": 13590
+      "status": "completed",
+      "expectedRows": 13590,
+      "issuedRows": 13590,
+      "scoredRows": 13590,
+      "dates": 1510,
+      "metric": "Brier",
+      "modelLoss": 0.25224490901537905,
+      "baselineLoss": 0.2499707685272572,
+      "gain": {
+        "mean": -0.0022741404881218624,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -0.004254922112455879,
+        "high": -0.0004402597846169343,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      },
+      "logLoss": 0.69774024021676,
+      "calibration": [
+        {
+          "low": 0.30000000000000004,
+          "rows": 231,
+          "predicted": 0.3818663522649468,
+          "observed": 0.47619047619047616
+        },
+        {
+          "low": 0.4,
+          "rows": 8199,
+          "predicted": 0.4665795328537083,
+          "observed": 0.48335162824734723
+        },
+        {
+          "low": 0.5,
+          "rows": 4955,
+          "predicted": 0.5286348261523383,
+          "observed": 0.5007063572149344
+        },
+        {
+          "low": 0.6000000000000001,
+          "rows": 188,
+          "predicted": 0.630883673274976,
+          "observed": 0.3617021276595745
+        },
+        {
+          "low": 0.7000000000000001,
+          "rows": 17,
+          "predicted": 0.7251346274428823,
+          "observed": 0.5882352941176471
+        }
+      ],
+      "archive": {
+        "path": "archive/program/program-0.1.0/41757845804-1/macro-M-excess.csv.gz",
+        "csvSha256": "a234991c9217e3e6688e486b842d6c3a00b57e149a8ad0f557def8d70631ca3b",
+        "rows": 13590
+      }
     },
     "macro-M-variance": {
-      "status": "blocked-macro-data",
-      "expectedRows": 13590
+      "status": "completed",
+      "expectedRows": 13590,
+      "issuedRows": 13590,
+      "scoredRows": 13590,
+      "dates": 1510,
+      "metric": "QLIKE",
+      "modelLoss": 4.877602260280566,
+      "baselineLoss": 0.4136967792797753,
+      "gain": {
+        "mean": -4.46390548100079,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -12.490630670752564,
+        "high": -0.27394795018339574,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      },
+      "meanQuantileLoss": 0.08309569599629561,
+      "archive": {
+        "path": "archive/program/program-0.1.0/41757845804-1/macro-M-variance.csv.gz",
+        "csvSha256": "be795344171b9f47f21d3d6a1258b45f205e4b9b106e4d1ee4db21c490c6cf2e",
+        "rows": 13590
+      }
     },
     "macro-M-drawdown": {
-      "status": "blocked-macro-data",
-      "expectedRows": 13590
+      "status": "completed",
+      "expectedRows": 13590,
+      "issuedRows": 13590,
+      "scoredRows": 13590,
+      "dates": 1510,
+      "metric": "Brier",
+      "modelLoss": 0.15380550329503637,
+      "baselineLoss": 0.15978039413485992,
+      "gain": {
+        "mean": 0.00597489083982353,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -0.0039005667800485495,
+        "high": 0.01624275737420633,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      },
+      "logLoss": 0.4984740269841931,
+      "calibration": [
+        {
+          "low": 0.0,
+          "rows": 3703,
+          "predicted": 0.06274590151122426,
+          "observed": 0.0955981636510937
+        },
+        {
+          "low": 0.1,
+          "rows": 3944,
+          "predicted": 0.14805985502301106,
+          "observed": 0.15948275862068967
+        },
+        {
+          "low": 0.2,
+          "rows": 2429,
+          "predicted": 0.2462615192232417,
+          "observed": 0.19102511321531496
+        },
+        {
+          "low": 0.30000000000000004,
+          "rows": 1393,
+          "predicted": 0.34860372884758856,
+          "observed": 0.3330940416367552
+        },
+        {
+          "low": 0.4,
+          "rows": 1455,
+          "predicted": 0.44574640866146015,
+          "observed": 0.3230240549828179
+        },
+        {
+          "low": 0.5,
+          "rows": 419,
+          "predicted": 0.537564942588191,
+          "observed": 0.4295942720763723
+        },
+        {
+          "low": 0.6000000000000001,
+          "rows": 87,
+          "predicted": 0.6454071422470238,
+          "observed": 0.4367816091954023
+        },
+        {
+          "low": 0.7000000000000001,
+          "rows": 62,
+          "predicted": 0.7293075811248031,
+          "observed": 0.41935483870967744
+        },
+        {
+          "low": 0.8,
+          "rows": 31,
+          "predicted": 0.8643446995397542,
+          "observed": 0.7419354838709677
+        },
+        {
+          "low": 0.9,
+          "rows": 67,
+          "predicted": 0.9764682405612413,
+          "observed": 0.23880597014925373
+        }
+      ],
+      "archive": {
+        "path": "archive/program/program-0.1.0/41757845804-1/macro-M-drawdown.csv.gz",
+        "csvSha256": "ebbcfbb79dcdee6d7d92dbf82d963aec979932fb166898fa6072ac047642019a",
+        "rows": 13590
+      }
     },
     "macro-Q-excess": {
-      "status": "blocked-macro-data",
-      "expectedRows": 13590
+      "status": "completed",
+      "expectedRows": 13590,
+      "issuedRows": 13590,
+      "scoredRows": 13590,
+      "dates": 1510,
+      "metric": "Brier",
+      "modelLoss": 0.25360774426608357,
+      "baselineLoss": 0.24998159101592513,
+      "gain": {
+        "mean": -0.003626153250158482,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -0.007940966896206514,
+        "high": -0.0006034149677417392,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      },
+      "logLoss": 0.7023624285521242,
+      "calibration": [
+        {
+          "low": 0.0,
+          "rows": 36,
+          "predicted": 0.07431824800127552,
+          "observed": 0.3055555555555556
+        },
+        {
+          "low": 0.1,
+          "rows": 2,
+          "predicted": 0.19870956725600647,
+          "observed": 1.0
+        },
+        {
+          "low": 0.2,
+          "rows": 106,
+          "predicted": 0.24669805899842298,
+          "observed": 0.5283018867924528
+        },
+        {
+          "low": 0.30000000000000004,
+          "rows": 504,
+          "predicted": 0.3795433208967304,
+          "observed": 0.4623015873015873
+        },
+        {
+          "low": 0.4,
+          "rows": 7671,
+          "predicted": 0.46474779241209974,
+          "observed": 0.4865076261243645
+        },
+        {
+          "low": 0.5,
+          "rows": 4896,
+          "predicted": 0.5322779861596542,
+          "observed": 0.49203431372549017
+        },
+        {
+          "low": 0.6000000000000001,
+          "rows": 297,
+          "predicted": 0.6298342613512284,
+          "observed": 0.5353535353535354
+        },
+        {
+          "low": 0.7000000000000001,
+          "rows": 6,
+          "predicted": 0.7076879284794174,
+          "observed": 0.6666666666666666
+        },
+        {
+          "low": 0.8,
+          "rows": 36,
+          "predicted": 0.8677907395470096,
+          "observed": 0.3888888888888889
+        },
+        {
+          "low": 0.9,
+          "rows": 36,
+          "predicted": 0.9090461853730429,
+          "observed": 0.3333333333333333
+        }
+      ],
+      "archive": {
+        "path": "archive/program/program-0.1.0/41757845804-1/macro-Q-excess.csv.gz",
+        "csvSha256": "afad6a06cecef0a8c3cbad92625793bce8c6a252e151846f92b8d54338531fe1",
+        "rows": 13590
+      }
     },
     "macro-Q-variance": {
-      "status": "blocked-macro-data",
-      "expectedRows": 13590
+      "status": "completed",
+      "expectedRows": 13590,
+      "issuedRows": 13590,
+      "scoredRows": 13590,
+      "dates": 1510,
+      "metric": "QLIKE",
+      "modelLoss": 23.3837283180824,
+      "baselineLoss": 0.4136967792797753,
+      "gain": {
+        "mean": -22.970031538802623,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -62.44834959529552,
+        "high": -0.40406482741685507,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      },
+      "meanQuantileLoss": 0.08087790894710825,
+      "archive": {
+        "path": "archive/program/program-0.1.0/41757845804-1/macro-Q-variance.csv.gz",
+        "csvSha256": "1b267fee8535da04c380f3f0f39c28c5c67c9bb6d0564f964ecd939f2269fbe3",
+        "rows": 13590
+      }
     },
     "macro-Q-drawdown": {
-      "status": "blocked-macro-data",
-      "expectedRows": 13590
+      "status": "completed",
+      "expectedRows": 13590,
+      "issuedRows": 13590,
+      "scoredRows": 13590,
+      "dates": 1510,
+      "metric": "Brier",
+      "modelLoss": 0.15473110228290624,
+      "baselineLoss": 0.16018543769360288,
+      "gain": {
+        "mean": 0.0054543354106966705,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -0.007287974041282948,
+        "high": 0.019564857835287375,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      },
+      "logLoss": 0.5574589530531215,
+      "calibration": [
+        {
+          "low": 0.0,
+          "rows": 3776,
+          "predicted": 0.06036763476800404,
+          "observed": 0.10858050847457627
+        },
+        {
+          "low": 0.1,
+          "rows": 3534,
+          "predicted": 0.14849738888411282,
+          "observed": 0.14459535936615733
+        },
+        {
+          "low": 0.2,
+          "rows": 2264,
+          "predicted": 0.24501648266289744,
+          "observed": 0.1877208480565371
+        },
+        {
+          "low": 0.30000000000000004,
+          "rows": 1643,
+          "predicted": 0.3395741736445909,
+          "observed": 0.26232501521606816
+        },
+        {
+          "low": 0.4,
+          "rows": 1536,
+          "predicted": 0.45112811279485343,
+          "observed": 0.3059895833333333
+        },
+        {
+          "low": 0.5,
+          "rows": 482,
+          "predicted": 0.5397950587101255,
+          "observed": 0.4605809128630705
+        },
+        {
+          "low": 0.6000000000000001,
+          "rows": 77,
+          "predicted": 0.6354175706108945,
+          "observed": 0.45454545454545453
+        },
+        {
+          "low": 0.7000000000000001,
+          "rows": 37,
+          "predicted": 0.7466107212479284,
+          "observed": 0.5945945945945946
+        },
+        {
+          "low": 0.8,
+          "rows": 45,
+          "predicted": 0.8642129786376548,
+          "observed": 0.7333333333333333
+        },
+        {
+          "low": 0.9,
+          "rows": 196,
+          "predicted": 0.9788837788917835,
+          "observed": 0.5357142857142857
+        }
+      ],
+      "archive": {
+        "path": "archive/program/program-0.1.0/41757845804-1/macro-Q-drawdown.csv.gz",
+        "csvSha256": "09b5d87842fe44b2896c28bac397fab4b1b7276e9325657c082a5249fce3ea70",
+        "rows": 13590
+      }
     },
     "chronos-excess": {
       "status": "completed-exploratory-pretraining-overlap-unknown",
@@ -429,7 +767,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/chronos-excess.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/chronos-excess.csv.gz",
         "csvSha256": "33bd15a263ce648e099efb11c74a2c821d79b2bf84e071bc79852bfde4493993",
         "rows": 648
       }
@@ -452,7 +790,7 @@
       },
       "meanQuantileLoss": 5.4907317802017613e-05,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/chronos-variance.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/chronos-variance.csv.gz",
         "csvSha256": "778024d6d64194df6c78979c58c46f630b9f828c68fa8c16acc9a66569e3bc87",
         "rows": 648
       }
@@ -531,7 +869,7 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757556265-1/chronos-drawdown.csv.gz",
+        "path": "archive/program/program-0.1.0/41757845804-1/chronos-drawdown.csv.gz",
         "csvSha256": "364088333dd0eb796ce07f068abb9f3f5be470a3632c4ccf7c00999fc505cb5f",
         "rows": 648
       }
@@ -552,6 +890,34 @@
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
+    "macro-M-excess versus market-M-excess": {
+      "meaning": "positive means first model has lower loss",
+      "firstRows": 13590,
+      "secondRows": 13590,
+      "pairedRows": 13590,
+      "gain": {
+        "mean": -0.0012868042858217548,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -0.0027077346409056418,
+        "high": 8.848181426011529e-05,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      }
+    },
+    "macro-Q-excess versus market-Q-excess": {
+      "meaning": "positive means first model has lower loss",
+      "firstRows": 13590,
+      "secondRows": 13590,
+      "pairedRows": 13590,
+      "gain": {
+        "mean": -0.002950915424367814,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -0.007149805727227244,
+        "high": -0.00012778821631692787,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      }
+    },
     "market-M-variance versus market-Q-variance": {
       "meaning": "positive means first model has lower loss",
       "firstRows": 13590,
@@ -566,6 +932,34 @@
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
+    "macro-M-variance versus market-M-variance": {
+      "meaning": "positive means first model has lower loss",
+      "firstRows": 13590,
+      "secondRows": 13590,
+      "pairedRows": 13590,
+      "gain": {
+        "mean": -4.384801080960034,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -12.383113740091419,
+        "high": -0.20764079125792856,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      }
+    },
+    "macro-Q-variance versus market-Q-variance": {
+      "meaning": "positive means first model has lower loss",
+      "firstRows": 13590,
+      "secondRows": 13590,
+      "pairedRows": 13590,
+      "gain": {
+        "mean": -22.88261178305742,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -62.31262529701353,
+        "high": -0.31956051904725813,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      }
+    },
     "market-M-drawdown versus market-Q-drawdown": {
       "meaning": "positive means first model has lower loss",
       "firstRows": 13590,
@@ -577,6 +971,34 @@
         "calendarSessions": 1510,
         "low": 0.0007053940294747457,
         "high": 0.008681354186914009,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      }
+    },
+    "macro-M-drawdown versus market-M-drawdown": {
+      "meaning": "positive means first model has lower loss",
+      "firstRows": 13590,
+      "secondRows": 13590,
+      "pairedRows": 13590,
+      "gain": {
+        "mean": -0.009827285873515687,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -0.019903492397008678,
+        "high": -0.0024722359911877297,
+        "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+      }
+    },
+    "macro-Q-drawdown versus market-Q-drawdown": {
+      "meaning": "positive means first model has lower loss",
+      "firstRows": 13590,
+      "secondRows": 13590,
+      "pairedRows": 13590,
+      "gain": {
+        "mean": -0.006815820682018716,
+        "dates": 1510,
+        "calendarSessions": 1510,
+        "low": -0.013995604062695503,
+        "high": -0.0009603756733433832,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -650,10 +1072,13 @@
     "contamination": "Pretraining overlap with market history is unverified. Historical results are not clean out-of-sample evidence."
   },
   "macro": {
-    "status": "blocked",
-    "reason": "ALFRED request failed for T10Y2Y: HTTP 400 \u2014 Bad Request. The series does not exist in ALFRED but may exist in FRED. Try setting realtime_start and realtime_end to today's date or removing the realtime_start and realtime_end variables."
+    "status": "available",
+    "jsonSha256": "36101787353b6d26b371b084393b0482fa66cd03bb2e5e658a09dc1ba7cede81",
+    "inputPath": "archive/program/program-0.1.0/41757845804-1/macro-vintages.json.gz",
+    "availabilityRule": "Use from the close of the first NYSE session strictly after the vintage date; date-only vintages are not exact release timestamps.",
+    "completeDates": 3072
   },
   "interpretation": "Exploratory only; all attempts retained. No live forecasts or automatic selection/promotion.",
-  "auditPath": "archive/program/program-0.1.0/41757556265-1/selection-audit.json",
-  "archivePath": "archive/program/program-0.1.0/41757556265-1/report.json"
+  "auditPath": "archive/program/program-0.1.0/41757845804-1/selection-audit.json",
+  "archivePath": "archive/program/program-0.1.0/41757845804-1/report.json"
 }
