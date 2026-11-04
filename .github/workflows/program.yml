@@ -1,0 +1,80 @@
+name: Registered research program
+
+on:
+  push:
+    branches: [main]
+    paths: ['research_program/**', '.github/workflows/program.yml']
+  workflow_dispatch:
+    inputs:
+      pretrained:
+        description: 'Include pinned Chronos CPU historical screen'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: unpricedz-research-program
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            research_program/requirements-pretrained.txt
+      - name: Install research environment
+        run: pip install -r requirements.txt
+      - name: Integrity and leakage tests
+        run: python -m pytest -q
+      - name: Install pinned CPU pretrained environment
+        if: github.event_name == 'push' || inputs.pretrained
+        run: |
+          pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r research_program/requirements-pretrained.txt
+      - name: Execute registered development comparisons
+        env:
+          USE_PRETRAINED: ${{ github.event_name == 'push' || inputs.pretrained }}
+        run: |
+          if [ "$USE_PRETRAINED" = true ]; then
+            python -m research_program --pretrained
+          else
+            python -m research_program
+          fi
+      - name: Preserve every attempted result
+        if: always()
+        run: |
+          git config user.name "unpricedz-research"
+          git config user.email "actions@users.noreply.github.com"
+          if [ -d archive/program ]; then git add archive/program; fi
+          if [ -f site/data/program.json ]; then git add site/data/program.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "research: preserve program attempt $GITHUB_RUN_ID"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Retain diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: program-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            archive/program
+            site/data/program.json
+          retention-days: 90

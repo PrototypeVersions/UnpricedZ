@@ -1,0 +1,5 @@
+chronos-forecasting==2.2.0
+torch==2.8.0
+transformers==4.55.4
+accelerate==1.10.1
+einops==0.8.1
