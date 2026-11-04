@@ -1,12 +1,22 @@
-# UNPRICED · Research edition 02
+# UNPRICED · Risk Lab
 
-A market research laboratory built to distinguish forecasting evidence from noise.
+A laboratory for market and sector risk, with separate historical and prospective evidence.
 
 **New mandate:** UnpricedZ is the UNPRICED Risk Lab. The separately registered
 [risk-1.0.0 benchmark study](docs/RISK_PROTOCOL.md) covers variance and drawdown for SPY
 and nine sectors. The original research-2.0.0 direction record continues unchanged.
 
 **Site:** https://prototypeversions.github.io/UnpricedZ/
+
+The primary risk study uses endpoint-matched EWMA, daily-data HAR and GARCH(1,1) variance
+benchmarks, plus event-frequency and volatility-only drawdown probabilities. It freezes
+monthly fits, updates observed variance states daily, and exports the two raw forecast tasks
+under the pinned [Hub contract](vendor/unpricedhub/docs/CONTRACT.md). There is no automatic
+winner, trading policy, or claim of established skill. See [operations](docs/OPERATIONS.md).
+
+The registered macro result remains unchanged. The additive
+[variance-loss decomposition](docs/MACRO_VARIANCE_DECOMPOSITION.md) reports median QLIKE,
+worst-date concentration and the result excluding 2020 for every variance procedure.
 
 Read the [first evaluation and launch checks](docs/FIRST_REVIEW.md). The initial models have not demonstrated a forecasting edge over the simple baseline.
 
@@ -16,7 +26,7 @@ The [first upgrade-program results](docs/PROGRAM_REVIEW_2026-11-04.md) are avail
 
 This is a new, independent experiment. [The original UNPRICED V1](https://github.com/PrototypeVersions/Unpriced) is unchanged. Its forecasts and returns do not belong to this version.
 
-## What works
+## Continuing direction experiment: research-2.0.0
 
 - Five-session sector-relative forecasts against SPY, from **next session open through fifth session close**.
 - Constant-50%, historical-base-rate, momentum, raw logistic, calibrated logistic and boosted comparisons. No adaptive ensemble.

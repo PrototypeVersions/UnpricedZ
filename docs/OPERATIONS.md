@@ -1,6 +1,6 @@
 # Operations and scheduled review
 
-## Daily data pipeline
+## Continuing direction data pipeline
 
 GitHub Actions, not the user's local machine, runs the data pipeline. Scheduled UTC attempts are 21:17, 22:17 and 23:47 on weekdays. NYSE trading sessions, actual times and current data control eligibility. This accommodates US daylight saving changes and provider delays. Early-close publication happens later that same evening; no perfect 13:45 timing is claimed.
 
@@ -36,8 +36,8 @@ dispatch, not as an unbounded recurring search. Its CPU job has a 50-minute limi
 use the pinned price archive; optional ALFRED retrieval needs the repository secret
 `FRED_API_KEY`. Missing credentials are a blocked experiment, not a successful macro test.
 
-The Sunday review now prioritizes this four-part program, unresolved defects, and a carefully
-specified prospective shadow launch. It may inspect UnpricedX read-only for compatibility.
+The four-part program is complete. Sunday reviews now prioritize the Risk Lab mandate below,
+unresolved defects and the independent prospective record. They may inspect UnpricedX read-only for compatibility.
 It cannot change X, run its holdout, contact another agent, create UnpricedHub, automatically
 fine-tune/promote models or change the official research-2.0.0 policy. See
 [the program](RESEARCH_PROGRAM.md) and [cross-lab strategy](MULTI_LAB_STRATEGY.md).
@@ -50,8 +50,30 @@ results are in [the registered macro review](PROGRAM_MACRO_REVIEW_2026-11-04.md)
 Ongoing research prioritizes [risk-1.0.0](RISK_PROTOCOL.md), SPY/sector variance and drawdown,
 strong baselines, data integrity and prospective scoring. Stop adding direction complexity.
 The original research-2.0.0 models, code and daily ledger continue without replacement.
-Neither UnpricedX nor UnpricedHub may be modified. Once Hub's contract is published, add
-only a compatible export in Z with exact targets, timing and provenance; no conversions.
+UnpricedX may not be modified. The owner authorized this handoff's new notes under Hub's
+`notes/to-claude/`; every other Hub path remains read-only. Future autonomous reviews may
+read coordination notes as advice, but must not send messages or modify Hub without authorization.
+
+## Independent risk pipeline and exports
+
+`Risk Lab benchmarks and daily record` runs at 21:29, 22:29 and 23:59 UTC on weekdays, with
+the same NYSE timing gates and serialized publication group as the direction workflow.
+The first operation runs six fixed synthetic diagnostics, the registered 2019–24 development
+benchmark and the first eligible live publication. Subsequent daily runs resolve matured
+outcomes, update variance states and publish before the next entry open. Monthly fitted
+artifacts are immutable and code/dependency/registry mismatches fail closed.
+
+The environment is installed with `pip install -r risk_lab/requirements.txt -r hub_export/requirements.txt`.
+Run `python -m risk_lab bootstrap` once, or `daily`, `research`, `controls` separately; then
+`python -m hub_export`. The workflow tests integrity and validates exports using the exact
+pinned `hub/core.py validate()` plus JSON Schema before publication. The two latest paths
+and task identifiers are in [the risk protocol](RISK_PROTOCOL.md). Dated export copies are
+immutable; reissuing the same forecast ID must produce identical bytes. Hub receipt time is
+independent of the source's issue timestamp.
+
+Risk forecasts/resolutions live in `risk_records/risk-1.0.0/`; models, inputs and all research
+attempts live in `risk_archive/`. Neither root overlaps the continuing direction ledger.
+The website opens on Risk Lab, while every existing direction page remains available.
 
 ## Failure behavior
 

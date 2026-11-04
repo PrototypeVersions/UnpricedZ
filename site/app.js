@@ -1,9 +1,9 @@
 'use strict';
 const REPO='https://github.com/PrototypeVersions/UnpricedZ';
-const S={research:null,controls:null,live:null,market:null,status:null,route:'overview',period:'confirmation',portfolio:'live',forecastModel:'logistic',search:'',control:'0'};
+const S={research:null,controls:null,live:null,market:null,status:null,risk:null,risk_research:null,risk_controls:null,risk_status:null,route:'risk',riskEvidence:'historical',period:'confirmation',portfolio:'live',forecastModel:'logistic',search:'',control:'0'};
 const COLORS={logistic:'#d4ec9b',raw_logistic:'#b5c393',boosted:'#8ab8d5',momentum:'#d99b8d',base_rate:'#758a8e',coin_flip:'#ddc18a'};
 const NAMES={logistic:'Regularized logistic',raw_logistic:'Before calibration',boosted:'Boosted challenger',momentum:'Momentum baseline',base_rate:'Historical base rate',coin_flip:'Constant 50%'};
-const ROUTES={overview:'Overview',forecasts:'Forecasts',research:'Research',controls:'Signal & noise',portfolio:'Paper portfolio',method:'Lab notes'};
+const ROUTES={risk:'Risk Lab',overview:'Direction overview',forecasts:'Direction forecasts',research:'Direction research',controls:'Direction controls',portfolio:'Paper portfolio',method:'Lab notes'};
 const $=s=>document.querySelector(s);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,n=2)=>v==null||!Number.isFinite(Number(v))?'—':Number(v).toLocaleString('en-US',{minimumFractionDigits:n,maximumFractionDigits:n});
@@ -17,7 +17,7 @@ const badge=(text,type='')=>`<span class="badge ${type}">${esc(text)}</span>`;
 const empty=(title,description,link='')=>`<div class="empty"><span class="empty-icon">○</span><h3>${esc(title)}</h3><p>${esc(description)}</p>${link}</div>`;
 const panel=(title,subtitle,body,foot='',right='')=>`<section class="panel"><div class="panel-head"><div><h2>${title}</h2>${subtitle?`<p>${subtitle}</p>`:''}</div>${right}</div>${body}${foot?`<div class="panel-foot">${foot}</div>`:''}</section>`;
 const stat=(label,value,note='',color='')=>`<article class="stat"><div class="label">${label}</div><strong class="${color}">${value}</strong><small>${note}</small></article>`;
-const header=(eyebrow,title,description)=>`<div class="page-header"><div><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div><div class="date-badge">LATEST MARKET SESSION<strong>${date(S.market?.asOf)}</strong></div></div>`;
+const header=(eyebrow,title,description)=>`<div class="page-header"><div><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div><div class="date-badge">LATEST MARKET SESSION<strong>${date(S.route==='risk'?S.risk?.latest?.sessionDate:S.market?.asOf)}</strong></div></div>`;
 const links=(items)=>`<div class="link-list">${items.map(([text,url])=>`<a href="${esc(url)}" target="_blank" rel="noopener">${text} ↗</a>`).join('')}</div>`;
 function openDetail(html){$('#detail-content').innerHTML=html;$('#detail').showModal();}
 function metric(id,summary){return summary?.models?.find(m=>m.id===id);}
@@ -51,6 +51,36 @@ function sectors(){
   if(!rows.length)return empty('Market data pending','The first successful data cycle will populate measured sector conditions.');
   const max=Math.max(...rows.map(r=>Math.abs(r.relative20d)),.01);
   return `<div class="panel-body">${rows.map(r=>`<div class="sector-row"><span class="symbol" title="${esc(r.name)}">${esc(r.ticker)}</span><div class="bar-track"><i class="bar-fill" style="width:${Math.abs(r.relative20d)/max*50}%;left:${r.relative20d>=0?50:50-Math.abs(r.relative20d)/max*50}%;background:${r.relative20d>=0?'var(--lime)':'var(--coral)'}"></i></div><span class="value ${r.relative20d>=0?'lime':'coral'}">${spct(r.relative20d)}</span></div>`).join('')}</div>`;
+}
+const RISK_NAMES={ewma:'EWMA',har_daily:'HAR · daily data',garch11:'GARCH(1,1)',base_rate:'Event frequency',volatility_only:'Volatility-only logistic'};
+function riskScores(summary){
+  if(!summary?.groups||!Object.keys(summary.groups).length)return empty('Outcomes have not matured yet','The live scorecard begins after the first five-session holding window closes. Historical results remain separate.');
+  return Object.entries(summary.groups).map(([group,section])=>`<h3 class="risk-group">${group==='SPY'?'SPY / Market risk':'Nine sectors / Equal weight within date'}</h3><div class="table-scroll"><table class="data-table"><thead><tr><th>Benchmark</th><th>Metric ↓</th><th>Mean loss</th><th>Scored / expected</th><th>Dates</th></tr></thead><tbody>${section.models.map(m=>`<tr><td>${esc(RISK_NAMES[m.model])}</td><td>${esc(m.metric)}</td><td class="num">${num(m.loss,4)}</td><td class="num">${num(m.scoredRows,0)} / ${num(section.expectedRows,0)}</td><td class="num">${num(m.dates,0)}</td></tr>`).join('')}</tbody></table></div><div class="panel-body"><dl class="key-values">${section.comparisons.map(c=>`<div><dt>${esc(RISK_NAMES[c.candidate])} vs ${esc(RISK_NAMES[c.baseline])}<small>${num(c.pairedRows,0)} matched observations</small></dt><dd>${signed(c.gain?.mean,4)}<small>95% interval: ${intervalText(c.gain)}</small></dd></div>`).join('')}</dl></div>`).join('');
+}
+function riskDecomposition(summary){
+  const rows=Object.entries(summary?.groups||{}).flatMap(([group,s])=>s.models.filter(m=>m.task==='variance'&&m.decomposition).map(m=>({group,...m.decomposition,model:m.model})));
+  if(!rows.length)return '';
+  return `<details class="risk-details"><summary>Inspect variance loss concentration</summary><p class="small-note">Date-level medians and the worst ceil(1% × dates) date losses. Excluding 2020 is a diagnostic; the all-date mean above remains the primary result.</p><div class="table-scroll"><table class="data-table"><thead><tr><th>Group / model</th><th>Median QLIKE</th><th>Worst 1% share</th><th>Mean excluding 2020</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(r.group)} · ${esc(RISK_NAMES[r.model])}</td><td class="num">${num(r.medianDateQLIKE,4)}</td><td class="num">${pct(r.worstDateShare)}<small>${r.worstDateCount} dates</small></td><td class="num">${num(r.excluding2020MeanQLIKE,4)}</td></tr>`).join('')}</tbody></table></div></details>`;
+}
+function risk(){
+  const live=S.risk,snap=live?.latest,historical=S.risk_research,controls=S.risk_controls;
+  const summary=S.riskEvidence==='live'?live?.summary:historical?.summary;
+  const annual=v=>v==null?'—':pct(Math.sqrt(252*v));
+  const first=live?.history?.[0];
+  const macro=snap?.macroContext;
+  let body=header('UNPRICED Z / INDEPENDENT RISK RECORD','How uncertain are the next five sessions?','Market and sector risk, tested against fixed benchmarks. Direction research continues in its separate record.');
+  body+=`<section class="hero"><div><span class="badge lime">RISK LAB · 1.0.0</span><h2>Measure risk.<br><span>Earn confidence.</span></h2><p>Forecast realized variance and the probability of a drawdown greater than 3% for SPY and nine sectors. Every model keeps its own score.</p><a class="text-link" href="${REPO}/blob/main/docs/RISK_PROTOCOL.md" target="_blank" rel="noopener">Read the registered protocol ↗</a></div><div class="hero-right"><span class="eyebrow">PROSPECTIVE EVIDENCE</span><div class="big-stat lime">${num(live?.resolvedDates||0,0)}</div><p>resolved forecast dates.<br><strong>${live?.resolvedDates?'The record is accumulating. No automatic promotion.':'No live skill claim yet.'}</strong></p><p class="small-note">${first?`First issue: ${timestamp(first.issuedAt)}.`:'The first eligible publication starts this record.'} Correlated assets and overlapping outcomes do not create independent observations.</p></div></section>`;
+  body+=`<div class="stat-grid">${stat('Forecast universe','10 assets','SPY + nine legacy sector ETFs')}${stat('Holding window','5 sessions',snap?`${date(snap.entryDate)} open → ${date(snap.exitDate)} close`:'Next open through fifth close')}${stat('Issued forecast dates',num(live?.forecastDates||0,0),snap?timestamp(snap.issuedAt):'Awaiting first valid issue','lime')}${stat('Macro context',macro?.status==='available'?'Available':macro?.status==='incomplete'?'Partial':'Pending','Archived context · not a model input')}</div>`;
+  const forecastBody=snap?`<div class="table-scroll"><table class="data-table"><thead><tr><th>Asset</th><th>EWMA volatility</th><th>HAR volatility</th><th>GARCH volatility</th><th>P(drawdown) · frequency</th><th>P(drawdown) · volatility</th></tr></thead><tbody>${snap.forecasts.map(f=>`<tr><td><span class="ticker">${esc(f.ticker)}</span><small>${esc(f.name)}</small></td><td class="num">${annual(f.variance.ewma)}</td><td class="num">${annual(f.variance.har_daily)}</td><td class="num">${annual(f.variance.garch11)}</td><td class="num">${pct(f.drawdown.base_rate)}</td><td class="num">${pct(f.drawdown.volatility_only)}</td></tr>`).join('')}</tbody></table></div>`:empty('First risk forecasts pending','Publication requires current-session prices, a completed fit and a final timestamp before the next market open. Missed windows are never backfilled.');
+  body+=panel('The current risk forecast',snap?`Information through ${timestamp(snap.informationCutoff)} · issued ${timestamp(snap.issuedAt)}`:'Five-session variance and drawdown',forecastBody,'Volatility is displayed as √(252 × forecast variance). Scoring and exports retain raw variance. Drawdown uses the entry price and daily closes; — means that model abstained.',badge('LIVE SHADOW','lime'));
+  if(snap)body+=links([['Frozen forecast',`${REPO}/blob/main/risk_records/risk-1.0.0/forecasts/${snap.sessionDate}.json`],['Variance export','data/export/latest-risk-v1-variance-5s-open-close.json'],['Drawdown export','data/export/latest-risk-v1-drawdown-gt3pct-5s-open-close.json']]);
+  body+=`<div class="toolbar risk-toolbar"><div class="tabs" aria-label="Risk evidence period">${[['historical','2019–24 development'],['live','Live record']].map(([id,label])=>`<button data-risk-evidence="${id}" class="${S.riskEvidence===id?'selected':''}">${label}</button>`).join('')}</div>${badge(S.riskEvidence==='live'?'PROSPECTIVE':'ALREADY OBSERVED HISTORY',S.riskEvidence==='live'?'lime':'blue')}</div>`;
+  const evidence=summary?riskScores(summary)+(S.riskEvidence==='historical'?riskDecomposition(summary):''):empty('Benchmark evaluation pending','The registered historical run and synthetic diagnostics must finish before results appear.');
+  body+=panel('Do the benchmarks improve on a simpler forecast?','QLIKE for variance · Brier for drawdown · positive paired gain favors the candidate',evidence,'Comparisons match dates, assets and outcomes. Date-block intervals are descriptive, unadjusted for multiple comparisons or repeated inspection. No benchmark is automatically selected.');
+  body+=`<div class="grid-equal" style="margin-top:22px">${panel('Can the pipeline recover known structure?','Constant variance and persistent two-state variance',controls?.runs?.length?`<div class="panel-body"><dl class="key-values">${controls.runs.map(r=>`<div><dt>${esc(r.scenario)}<small>Seed ${r.seed}</small></dt><dd>Oracle QLIKE ${num(r.oracleQLIKE,4)}<small>${num(r.summary.forecastDates,0)} forecast dates</small></dd></div>`).join('')}</dl><p class="small-note">The oracle knows the synthetic latent state. The fitted models see only prices. All six runs and every benchmark score remain inspectable.</p>${links([['All control results','data/risk_controls.json']])}</div>`:empty('Synthetic diagnostics pending','Three fixed seeds in each of two worlds; no cherry-picked demonstration.'),'Synthetic performance is not evidence of market skill.')}${panel('The macro result stays in the record.','Registered program-0.1.0 · additive diagnosis',`<div class="panel-body"><p>The registered macro variance models lost badly to their price-only controls. Their original scores remain unchanged.</p><p>Roughly 80% of their loss came from the worst 1% of forecast dates. The worst errors severely underpredicted variance during 2020.</p><p class="small-note">The decomposition covers every variance model, including the matched EWMA baselines. It explains the failure; it does not erase it or show that macro data can never help.</p>${links([['Registered macro result',`${REPO}/blob/main/docs/PROGRAM_MACRO_REVIEW_2026-11-04.md`],['Full loss decomposition',`${REPO}/blob/main/docs/MACRO_VARIANCE_DECOMPOSITION.md`]])}</div>`,'Macro features are dated context in this benchmark version. A new predictive macro hypothesis needs a new registration.')}</div>`;
+  body+=`<div class="evidence-note"><strong>One project, different questions.</strong> UnpricedX ranks stocks; UnpricedZ studies risk; UnpricedHub independently records receipt and compares compatible tasks. The continuing research-2.0.0 direction experiment keeps its original models and ledger. <a href="#overview">Open its record ↗</a></div>`;
+  body+=links([['Risk research report','data/risk_research.json'],['Live risk record','data/risk.json'],['Operations and schedule',`${REPO}/blob/main/docs/OPERATIONS.md`],['Hub contract',`${REPO.replace('UnpricedZ','UnpricedHub')}/blob/main/docs/CONTRACT.md`]]);
+  return body;
 }
 function overview(){
   const historical=S.research?.periods?.confirmation,primary=metric('logistic',historical),live=S.live;
@@ -124,6 +154,7 @@ function method(){return `${header('OPEN METHODS / KNOWN LIMITS','The lab notebo
   <div class="evidence-note"><strong>Two independent experiments.</strong> The original UNPRICED V1 remains at its existing repository and address. Research edition 02 has its own methodology, predictions, and performance record. Neither inherits the other’s results.</div>`;}
 function showAudit(){const r=S.research,s=S.live?.latest;openDetail(`<span class="eyebrow">DATA / REPRODUCIBILITY</span><h2>Follow the evidence.</h2><dl class="key-values"><div><dt>Experiment</dt><dd>research-2.0.0</dd></div><div><dt>Pipeline status</dt><dd>${esc(S.status?.status||'awaiting first run')}</dd></div><div><dt>Last successful cycle</dt><dd>${timestamp(S.status?.lastSuccessfulAt)}</dd></div><div><dt>Latest live publication</dt><dd>${timestamp(s?.publishedAt)}</dd></div><div><dt>Live input hash</dt><dd><code>${esc(s?.inputVintage?.csvSha256||'Pending')}</code></dd></div><div><dt>Research input range</dt><dd>${r?`${r.inputVintage.start} → ${r.inputVintage.end}`:'Pending'}</dd></div><div><dt>Research source revision</dt><dd><code>${esc(r?.provenance?.codeCommit||'Pending')}</code></dd></div><div><dt>Research input hash</dt><dd><code>${esc(r?.inputVintage?.csvSha256||'Pending')}</code></dd></div></dl>${S.status?.error?`<div class="evidence-note error"><strong>Last cycle error</strong><br>${esc(S.status.error)}</div>`:''}${links([['Repository',REPO],['Workflow history',`${REPO}/actions`],...(r?[['Archived research input',`${REPO}/blob/main/${r.inputVintage.path}`],['Research report','data/research.json']]:[]),...(s?[['Latest forecast',`${REPO}/blob/main/records/forecasts/${s.sessionDate}.json`]]:[])])}<p>Files carry content hashes and source revisions. The research adapter can revise historical prices; archived vintages preserve exactly the data used by this experiment.</p>`);}
 function bind(){
+  document.querySelectorAll('[data-risk-evidence]').forEach(b=>b.addEventListener('click',()=>{S.riskEvidence=b.dataset.riskEvidence;render();}));
   document.querySelectorAll('[data-period]').forEach(b=>b.addEventListener('click',()=>{S.period=b.dataset.period;render();}));
   document.querySelectorAll('[data-portfolio]').forEach(b=>b.addEventListener('click',()=>{S.portfolio=b.dataset.portfolio;render();}));
   $('#model-select')?.addEventListener('change',e=>{S.forecastModel=e.target.value;render();});
@@ -131,26 +162,31 @@ function bind(){
   $('#search')?.addEventListener('input',e=>{const pos=e.target.selectionStart;S.search=e.target.value;render();$('#search').focus();try{$('#search').setSelectionRange(pos,pos);}catch{}});
   document.querySelectorAll('[data-ticker]').forEach(row=>{row.addEventListener('click',()=>forecastDetail(row.dataset.ticker));row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();forecastDetail(row.dataset.ticker);}});});
 }
+function showRiskAudit(){
+  const s=S.risk?.latest;
+  openDetail(`<span class="eyebrow">RISK-1.0.0 / PROVENANCE</span><h2>Inspect the risk record.</h2><dl class="key-values"><div><dt>Cycle</dt><dd>${esc(S.risk_status?.status||'Pending')}</dd></div><div><dt>Information cutoff</dt><dd>${timestamp(s?.informationCutoff)}</dd></div><div><dt>Issued</dt><dd>${timestamp(s?.issuedAt)}</dd></div><div><dt>Entry open</dt><dd>${timestamp(s?.entryOpen)}</dd></div><div><dt>Exit close</dt><dd>${timestamp(s?.exitClose)}</dd></div><div><dt>Algorithm SHA-256</dt><dd><code>${esc(s?.provenance?.algorithmSha256||'Pending')}</code></dd></div><div><dt>Model artifact SHA-256</dt><dd><code>${esc(s?.models?.modelSha256||'Pending')}</code></dd></div><div><dt>Price input SHA-256</dt><dd><code>${esc(s?.inputVintage?.csvSha256||'Pending')}</code></dd></div></dl>${links([['Protocol',`${REPO}/blob/main/docs/RISK_PROTOCOL.md`],['Workflow history',`${REPO}/actions/workflows/risk.yml`],...(s?[['Frozen forecast',`${REPO}/blob/main/risk_records/risk-1.0.0/forecasts/${s.sessionDate}.json`],['Model metadata',`${REPO}/blob/main/${s.models.path.replace('.joblib','.json')}`]]:[])])}<p>Hub exports retain raw variance and event probabilities. The Hub determines whether it received a forecast before entry; a lab issue timestamp alone is not that evidence.</p>`);
+}
 function render(){
-  S.route=location.hash.slice(1)||'overview';if(!ROUTES[S.route])S.route='overview';
+  S.route=location.hash.slice(1)||'risk';if(!ROUTES[S.route])S.route='risk';
   document.querySelectorAll('[data-route]').forEach(a=>{a.classList.toggle('active',a.dataset.route===S.route);if(a.dataset.route===S.route)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   $('#crumb').textContent=ROUTES[S.route].toUpperCase();
-  const views={overview,forecasts,research,controls,portfolio,method};
-  const error=S.status?.status==='error'?`<div class="evidence-note error"><strong>The last data cycle needs attention.</strong> ${esc(S.status.error)}. Previously published records remain visible. <a href="${REPO}/actions" target="_blank" rel="noopener">Inspect run ↗</a></div>`:'';
+  const views={risk,overview,forecasts,research,controls,portfolio,method};
+  const currentStatus=S.route==='risk'?S.risk_status:S.status;
+  const error=currentStatus?.status==='error'?`<div class="evidence-note error"><strong>The last data cycle needs attention.</strong> ${esc(currentStatus.error)}. Previously published records remain visible. <a href="${REPO}/actions" target="_blank" rel="noopener">Inspect run ↗</a></div>`:'';
   $('#main').innerHTML=`<div class="fade-in">${error}${views[S.route]()}</div>`;
-  const health=S.status?.status;$('#health').className=`health ${health==='healthy'?'good':health==='error'?'bad':''}`;$('#health').innerHTML=`<i></i> ${health==='healthy'?'DATA CYCLE HEALTHY':health==='error'?'CYCLE ERROR':'INITIALIZING'}`;
-  $('#updated').textContent=S.status?.lastSuccessfulAt?`Updated ${timestamp(S.status.lastSuccessfulAt)}`:'Awaiting first data cycle';
+  const health=currentStatus?.status;$('#health').className=`health ${health==='healthy'?'good':health==='error'?'bad':''}`;$('#health').innerHTML=`<i></i> ${health==='healthy'?'DATA CYCLE HEALTHY':health==='error'?'CYCLE ERROR':'INITIALIZING'}`;
+  $('#updated').textContent=currentStatus?.lastSuccessfulAt?`Updated ${timestamp(currentStatus.lastSuccessfulAt)}`:'Awaiting first data cycle';
   document.title=`${ROUTES[S.route]} · UNPRICED`;
   bind();
 }
 async function load(){
-  const keys=['research','controls','live','market','status'];
+  const keys=['research','controls','live','market','status','risk','risk_research','risk_controls','risk_status'];
   const results=await Promise.allSettled(keys.map(async key=>{const response=await fetch(`data/${key}.json?t=${Date.now()}`,{cache:'no-store'});if(!response.ok)return null;return response.json();}));
   results.forEach((r,i)=>{if(r.status==='fulfilled'&&r.value)S[keys[i]]=r.value;});render();
 }
 $('#close-dialog').addEventListener('click',()=>$('#detail').close());
 $('#detail').addEventListener('click',e=>{if(e.target===$('#detail')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
-$('#audit').addEventListener('click',showAudit);$('#refresh').addEventListener('click',load);
+$('#audit').addEventListener('click',()=>S.route==='risk'?showRiskAudit():showAudit());$('#refresh').addEventListener('click',load);
 window.addEventListener('hashchange',()=>{render();window.scrollTo({top:0,behavior:'instant'});});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)load();});
 setInterval(()=>{if(!document.hidden)load();},300000);

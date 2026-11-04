@@ -3,7 +3,8 @@
 The user authorized work in PrototypeVersions/UnpricedZ. Do not modify PrototypeVersions/Unpriced or its automation.
 
 Claude leads the overall UNPRICED project. UnpricedX is Stock Lab; UnpricedZ is Risk Lab;
-UnpricedHub is the read-only scorekeeper. Do not modify UnpricedX or UnpricedHub. Keep the
+UnpricedHub is the read-only scorekeeper. Do not modify UnpricedX. The owner authorized new
+handoff notes in Hub's `notes/to-claude/` only; do not change anything else in UnpricedHub. Keep the
 official research-2.0.0 direction record running unchanged and stop adding complexity to
 sector direction. Risk research must follow docs/RISK_PROTOCOL.md and risk_lab/registry.json
 in its independent record. Reviewer agreement is not evidence of forecasting skill.

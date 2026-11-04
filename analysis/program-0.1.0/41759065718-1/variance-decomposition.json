@@ -1,0 +1,1123 @@
+{
+  "sourceReport": "archive/program/program-0.1.0/41759065718-1/report.json",
+  "sourceReportSha256": "8d4bdb1783487769dc41590b947973d91cbb3e51580e833ce1b59a4a4c618005",
+  "operation": "Frozen forecast decomposition; no refitting, model changes, or report replacement",
+  "formula": "r - log(r) - 1, r = max(realized, 1e-10) / max(predicted, 1e-10)",
+  "dateRule": "Average losses across assets within forecast origin; worst 1% uses ceil(.01 * dates). Exclude 2020 by forecast-origin year.",
+  "models": {
+    "market-M-variance": {
+      "rows": 13590,
+      "dates": 1510,
+      "meanQLIKE": 0.4928011793205318,
+      "medianForecastQLIKE": 0.1820492059988249,
+      "medianDateQLIKE": 0.28703549120819605,
+      "worstDateCount": 16,
+      "worstDateFraction": 0.010596026490066225,
+      "worstDateShare": 0.16066860090005133,
+      "excluding2020MeanQLIKE": 0.33599757379826595,
+      "excluding2020Dates": 1257,
+      "worstDates": [
+        {
+          "date": "2020-02-20",
+          "meanQLIKE": 10.456029319605474
+        },
+        {
+          "date": "2020-04-03",
+          "meanQLIKE": 8.1080711423514
+        },
+        {
+          "date": "2020-02-21",
+          "meanQLIKE": 7.796587636863988
+        },
+        {
+          "date": "2020-04-01",
+          "meanQLIKE": 7.5710850671238905
+        },
+        {
+          "date": "2020-02-24",
+          "meanQLIKE": 7.560523556030832
+        },
+        {
+          "date": "2020-03-27",
+          "meanQLIKE": 7.459461362061045
+        },
+        {
+          "date": "2020-04-02",
+          "meanQLIKE": 7.413825983363539
+        },
+        {
+          "date": "2020-03-26",
+          "meanQLIKE": 7.26816282174339
+        },
+        {
+          "date": "2020-03-24",
+          "meanQLIKE": 7.2658829047783975
+        },
+        {
+          "date": "2020-03-25",
+          "meanQLIKE": 7.160833090578397
+        },
+        {
+          "date": "2020-03-23",
+          "meanQLIKE": 7.092329253889811
+        },
+        {
+          "date": "2020-04-07",
+          "meanQLIKE": 7.0262810664139606
+        },
+        {
+          "date": "2020-03-31",
+          "meanQLIKE": 7.017513983840581
+        },
+        {
+          "date": "2020-03-30",
+          "meanQLIKE": 6.861527230666952
+        },
+        {
+          "date": "2020-04-06",
+          "meanQLIKE": 6.75802701973897
+        },
+        {
+          "date": "2020-04-08",
+          "meanQLIKE": 6.742149325970354
+        }
+      ],
+      "medianPredictedOverRealized": 1.4222144142945137,
+      "worstForecasts": [
+        {
+          "date": "2020-02-26",
+          "ticker": "XLU",
+          "qlike": 16.556971243308226,
+          "realizedVariance": 0.0018781528643324978,
+          "predictedVariance": 9.125505538958381e-05,
+          "realizedOverPredicted": 20.581356904714312,
+          "predictedOverRealized": 0.048587661378679196
+        },
+        {
+          "date": "2020-02-26",
+          "ticker": "XLP",
+          "qlike": 16.150049481972953,
+          "realizedVariance": 0.001331989105351634,
+          "predictedVariance": 6.609244798809075e-05,
+          "realizedOverPredicted": 20.15342366485875,
+          "predictedOverRealized": 0.049619360790975
+        },
+        {
+          "date": "2020-02-24",
+          "ticker": "XLU",
+          "qlike": 16.091384530770448,
+          "realizedVariance": 0.0014286483726530074,
+          "predictedVariance": 7.110642811677296e-05,
+          "realizedOverPredicted": 20.09169087085687,
+          "predictedOverRealized": 0.04977181892891387
+        },
+        {
+          "date": "2020-02-20",
+          "ticker": "XLY",
+          "qlike": 15.772318091188545,
+          "realizedVariance": 0.0007685465589030079,
+          "predictedVariance": 3.890239749666478e-05,
+          "realizedOverPredicted": 19.75576335543067,
+          "predictedOverRealized": 0.05061814023628247
+        },
+        {
+          "date": "2020-02-24",
+          "ticker": "XLP",
+          "qlike": 14.980271523025332,
+          "realizedVariance": 0.0010449773822550287,
+          "predictedVariance": 5.522984915936085e-05,
+          "realizedOverPredicted": 18.920518490641516,
+          "predictedOverRealized": 0.05285267422743309
+        },
+        {
+          "date": "2020-02-21",
+          "ticker": "XLP",
+          "qlike": 14.18080795613933,
+          "realizedVariance": 0.0005163478855652037,
+          "predictedVariance": 2.8566399612506006e-05,
+          "realizedOverPredicted": 18.07535750284587,
+          "predictedOverRealized": 0.05532394033382495
+        },
+        {
+          "date": "2020-02-20",
+          "ticker": "XLB",
+          "qlike": 12.909006050781912,
+          "realizedVariance": 0.0010152304209545173,
+          "predictedVariance": 6.0697855369229214e-05,
+          "realizedOverPredicted": 16.72596856641476,
+          "predictedOverRealized": 0.059787270078216555
+        },
+        {
+          "date": "2020-02-20",
+          "ticker": "XLP",
+          "qlike": 12.738634749663253,
+          "realizedVariance": 0.0005308487369770293,
+          "predictedVariance": 3.2085726420191606e-05,
+          "realizedOverPredicted": 16.544700594435202,
+          "predictedOverRealized": 0.060442314703256055
+        },
+        {
+          "date": "2020-04-07",
+          "ticker": "XLE",
+          "qlike": 11.932381690955799,
+          "realizedVariance": 0.000866256942304833,
+          "predictedVariance": 358.18523873203003,
+          "realizedOverPredicted": 2.4184607533559136e-06,
+          "predictedOverRealized": 413486.13931914186
+        },
+        {
+          "date": "2020-02-25",
+          "ticker": "XLP",
+          "qlike": 11.823451219141644,
+          "realizedVariance": 0.0010201547416338066,
+          "predictedVariance": 6.552594511919487e-05,
+          "realizedOverPredicted": 15.568714648496801,
+          "predictedOverRealized": 0.06423137828507587
+        }
+      ],
+      "source": {
+        "path": "archive/program/program-0.1.0/41759065718-1/market-M-variance.csv.gz",
+        "csvSha256": "3e9e30c71612292c04b5c562873aab5810a3b5597550f87bcd97c2acd9f6bfbf",
+        "rows": 13590
+      }
+    },
+    "ewma-daily": {
+      "rows": 13590,
+      "dates": 1510,
+      "meanQLIKE": 0.4136967792797753,
+      "medianForecastQLIKE": 0.16865843131630398,
+      "medianDateQLIKE": 0.2749932671445111,
+      "worstDateCount": 16,
+      "worstDateFraction": 0.010596026490066225,
+      "worstDateShare": 0.15192944043646195,
+      "excluding2020MeanQLIKE": 0.3350370026553266,
+      "excluding2020Dates": 1257,
+      "worstDates": [
+        {
+          "date": "2020-02-20",
+          "meanQLIKE": 11.032353406819249
+        },
+        {
+          "date": "2020-02-24",
+          "meanQLIKE": 10.03995525792036
+        },
+        {
+          "date": "2020-02-21",
+          "meanQLIKE": 9.518395532869924
+        },
+        {
+          "date": "2020-03-05",
+          "meanQLIKE": 7.3081954864527985
+        },
+        {
+          "date": "2020-02-26",
+          "meanQLIKE": 6.603488759014978
+        },
+        {
+          "date": "2020-03-10",
+          "meanQLIKE": 5.920666254807282
+        },
+        {
+          "date": "2020-03-06",
+          "meanQLIKE": 5.879318931307138
+        },
+        {
+          "date": "2020-03-09",
+          "meanQLIKE": 5.692625661730906
+        },
+        {
+          "date": "2020-02-25",
+          "meanQLIKE": 5.096817292043907
+        },
+        {
+          "date": "2020-03-02",
+          "meanQLIKE": 4.641891421255098
+        },
+        {
+          "date": "2020-03-03",
+          "meanQLIKE": 4.3574929686327755
+        },
+        {
+          "date": "2020-02-19",
+          "meanQLIKE": 4.224169431789315
+        },
+        {
+          "date": "2020-03-04",
+          "meanQLIKE": 4.15529135883482
+        },
+        {
+          "date": "2020-02-18",
+          "meanQLIKE": 3.8419137986115652
+        },
+        {
+          "date": "2020-03-11",
+          "meanQLIKE": 3.7883865819694864
+        },
+        {
+          "date": "2019-07-30",
+          "meanQLIKE": 2.8066453373179603
+        }
+      ],
+      "medianPredictedOverRealized": 1.3161823299650885,
+      "worstForecasts": [
+        {
+          "date": "2020-02-24",
+          "ticker": "XLU",
+          "qlike": 29.763812451311512,
+          "realizedVariance": 0.0014286483726530074,
+          "predictedVariance": 4.165285966970968e-05,
+          "realizedOverPredicted": 34.2989265078463,
+          "predictedOverRealized": 0.029155431432270562
+        },
+        {
+          "date": "2020-02-26",
+          "ticker": "XLU",
+          "qlike": 22.93668748385873,
+          "realizedVariance": 0.0018781528643324978,
+          "predictedVariance": 6.894473299276361e-05,
+          "realizedOverPredicted": 27.241426325193363,
+          "predictedOverRealized": 0.03670879740519247
+        },
+        {
+          "date": "2020-02-21",
+          "ticker": "XLP",
+          "qlike": 21.115921787786437,
+          "realizedVariance": 0.0005163478855652037,
+          "predictedVariance": 2.0369839957121765e-05,
+          "realizedOverPredicted": 25.34864714951659,
+          "predictedOverRealized": 0.03944983707026237
+        },
+        {
+          "date": "2020-02-20",
+          "ticker": "XLP",
+          "qlike": 20.74725932814925,
+          "realizedVariance": 0.0005308487369770293,
+          "predictedVariance": 2.1263954552282184e-05,
+          "realizedOverPredicted": 24.964723079698985,
+          "predictedOverRealized": 0.04005652283053715
+        },
+        {
+          "date": "2020-03-05",
+          "ticker": "XLE",
+          "qlike": 20.266365542111878,
+          "realizedVariance": 0.014795340986676685,
+          "predictedVariance": 0.0006047912553507939,
+          "realizedOverPredicted": 24.463549788091793,
+          "predictedOverRealized": 0.04087714206082935
+        },
+        {
+          "date": "2020-02-24",
+          "ticker": "XLP",
+          "qlike": 18.428517153961618,
+          "realizedVariance": 0.0010449773822550287,
+          "predictedVariance": 4.6352823634823585e-05,
+          "realizedOverPredicted": 22.543985464349714,
+          "predictedOverRealized": 0.0443577290972515
+        },
+        {
+          "date": "2020-02-26",
+          "ticker": "XLP",
+          "qlike": 17.29078785921521,
+          "realizedVariance": 0.001331989105351634,
+          "predictedVariance": 6.238260924489299e-05,
+          "realizedOverPredicted": 21.351929992583287,
+          "predictedOverRealized": 0.0468341737888498
+        },
+        {
+          "date": "2020-02-21",
+          "ticker": "XLU",
+          "qlike": 17.179742494073007,
+          "realizedVariance": 0.0007767741153317254,
+          "predictedVariance": 3.657918622028545e-05,
+          "realizedOverPredicted": 21.235412692176173,
+          "predictedOverRealized": 0.04709114979283793
+        },
+        {
+          "date": "2020-03-02",
+          "ticker": "XLE",
+          "qlike": 16.74646258981489,
+          "realizedVariance": 0.01144311933848373,
+          "predictedVariance": 0.0005506668403419767,
+          "realizedOverPredicted": 20.780476506225238,
+          "predictedOverRealized": 0.048122091892379294
+        },
+        {
+          "date": "2020-03-04",
+          "ticker": "XLE",
+          "qlike": 16.64785951969803,
+          "realizedVariance": 0.01181902369034346,
+          "predictedVariance": 0.0005716058844777506,
+          "realizedOverPredicted": 20.67687546838666,
+          "predictedOverRealized": 0.04836320659419372
+        }
+      ],
+      "source": {
+        "path": "archive/program/program-0.1.0/41759065718-1/market-M-variance.csv.gz",
+        "csvSha256": "3e9e30c71612292c04b5c562873aab5810a3b5597550f87bcd97c2acd9f6bfbf",
+        "rows": 13590,
+        "column": "baseline"
+      }
+    },
+    "market-Q-variance": {
+      "rows": 13590,
+      "dates": 1510,
+      "meanQLIKE": 0.5011165350249759,
+      "medianForecastQLIKE": 0.18351631453786643,
+      "medianDateQLIKE": 0.2857414963902536,
+      "worstDateCount": 16,
+      "worstDateFraction": 0.010596026490066225,
+      "worstDateShare": 0.15871051308305356,
+      "excluding2020MeanQLIKE": 0.33563570549696947,
+      "excluding2020Dates": 1257,
+      "worstDates": [
+        {
+          "date": "2020-02-20",
+          "meanQLIKE": 11.536558508754151
+        },
+        {
+          "date": "2020-02-21",
+          "meanQLIKE": 8.603923402700689
+        },
+        {
+          "date": "2020-02-24",
+          "meanQLIKE": 8.195118391187343
+        },
+        {
+          "date": "2020-04-03",
+          "meanQLIKE": 8.1080711423514
+        },
+        {
+          "date": "2020-04-01",
+          "meanQLIKE": 7.5710850671238905
+        },
+        {
+          "date": "2020-04-02",
+          "meanQLIKE": 7.413825983363539
+        },
+        {
+          "date": "2020-03-27",
+          "meanQLIKE": 7.174249798445227
+        },
+        {
+          "date": "2020-04-07",
+          "meanQLIKE": 7.0262810664139606
+        },
+        {
+          "date": "2020-03-24",
+          "meanQLIKE": 6.983035670145885
+        },
+        {
+          "date": "2020-03-26",
+          "meanQLIKE": 6.98291598067737
+        },
+        {
+          "date": "2020-03-25",
+          "meanQLIKE": 6.878155831150785
+        },
+        {
+          "date": "2020-03-23",
+          "meanQLIKE": 6.810378042134063
+        },
+        {
+          "date": "2020-04-06",
+          "meanQLIKE": 6.75802701973897
+        },
+        {
+          "date": "2020-04-08",
+          "meanQLIKE": 6.742149325970354
+        },
+        {
+          "date": "2020-03-31",
+          "meanQLIKE": 6.733942804875227
+        },
+        {
+          "date": "2020-03-30",
+          "meanQLIKE": 6.576300171173148
+        }
+      ],
+      "medianPredictedOverRealized": 1.430075356103682,
+      "worstForecasts": [
+        {
+          "date": "2020-02-26",
+          "ticker": "XLU",
+          "qlike": 17.681862195875258,
+          "realizedVariance": 0.0018781528643324978,
+          "predictedVariance": 8.630412528068203e-05,
+          "realizedOverPredicted": 21.76202885116195,
+          "predictedOverRealized": 0.04595159793415156
+        },
+        {
+          "date": "2020-02-26",
+          "ticker": "XLP",
+          "qlike": 17.313653207232164,
+          "realizedVariance": 0.001331989105351634,
+          "predictedVariance": 6.231260310488578e-05,
+          "realizedOverPredicted": 21.375918176770824,
+          "predictedOverRealized": 0.04678161619680498
+        },
+        {
+          "date": "2020-02-20",
+          "ticker": "XLY",
+          "qlike": 17.248799294711432,
+          "realizedVariance": 0.0007685465589030079,
+          "predictedVariance": 3.606866101849502e-05,
+          "realizedOverPredicted": 21.307876067506868,
+          "predictedOverRealized": 0.04693100320425344
+        },
+        {
+          "date": "2020-02-24",
+          "ticker": "XLU",
+          "qlike": 17.130178993903993,
+          "realizedVariance": 0.0014286483726530074,
+          "predictedVariance": 6.744189297378745e-05,
+          "realizedOverPredicted": 21.183396693925513,
+          "predictedOverRealized": 0.047206782483885455
+        },
+        {
+          "date": "2020-03-06",
+          "ticker": "XLP",
+          "qlike": 16.122451673796316,
+          "realizedVariance": 0.003977799527268459,
+          "predictedVariance": 0.00019766068618931007,
+          "realizedOverPredicted": 20.124383882077137,
+          "predictedOverRealized": 0.049690962260494555
+        },
+        {
+          "date": "2020-02-24",
+          "ticker": "XLP",
+          "qlike": 16.07225447625307,
+          "realizedVariance": 0.0010449773822550287,
+          "predictedVariance": 5.2062593634768204e-05,
+          "realizedOverPredicted": 20.071558278210265,
+          "predictedOverRealized": 0.04982174209590905
+        },
+        {
+          "date": "2020-02-21",
+          "ticker": "XLP",
+          "qlike": 15.493785490674505,
+          "realizedVariance": 0.0005163478855652037,
+          "predictedVariance": 2.653072203096215e-05,
+          "realizedOverPredicted": 19.46226284239872,
+          "predictedOverRealized": 0.05138148673141392
+        },
+        {
+          "date": "2020-02-20",
+          "ticker": "XLB",
+          "qlike": 14.374659652104864,
+          "realizedVariance": 0.0010152304209545173,
+          "predictedVariance": 5.5536267605604524e-05,
+          "realizedOverPredicted": 18.28049425583047,
+          "predictedOverRealized": 0.05470311611957949
+        },
+        {
+          "date": "2020-02-20",
+          "ticker": "XLP",
+          "qlike": 13.872260625418924,
+          "realizedVariance": 0.0005308487369770293,
+          "predictedVariance": 2.9909388600728332e-05,
+          "realizedOverPredicted": 17.74856531049593,
+          "predictedOverRealized": 0.056342582203454616
+        },
+        {
+          "date": "2020-03-10",
+          "ticker": "XLP",
+          "qlike": 13.212669862495659,
+          "realizedVariance": 0.005706167579593373,
+          "predictedVariance": 0.0003346971910096256,
+          "realizedOverPredicted": 17.04874654723131,
+          "predictedOverRealized": 0.058655338515921474
+        }
+      ],
+      "source": {
+        "path": "archive/program/program-0.1.0/41759065718-1/market-Q-variance.csv.gz",
+        "csvSha256": "a7709cd83edf718da25d10adf9633a7561a03050c01bfa2869f5d63f79f08769",
+        "rows": 13590
+      }
+    },
+    "macro-M-variance": {
+      "rows": 13590,
+      "dates": 1510,
+      "meanQLIKE": 5.187255854753768,
+      "medianForecastQLIKE": 0.22081219648608652,
+      "medianDateQLIKE": 0.32036837970850934,
+      "worstDateCount": 16,
+      "worstDateFraction": 0.010596026490066225,
+      "worstDateShare": 0.7997355462788774,
+      "excluding2020MeanQLIKE": 0.3617421055137822,
+      "excluding2020Dates": 1257,
+      "worstDates": [
+        {
+          "date": "2020-05-11",
+          "meanQLIKE": 1070.4345623522286
+        },
+        {
+          "date": "2020-05-29",
+          "meanQLIKE": 723.744242678004
+        },
+        {
+          "date": "2020-05-14",
+          "meanQLIKE": 718.5744569976462
+        },
+        {
+          "date": "2020-05-12",
+          "meanQLIKE": 640.212854247805
+        },
+        {
+          "date": "2020-05-13",
+          "meanQLIKE": 634.974294595529
+        },
+        {
+          "date": "2020-05-22",
+          "meanQLIKE": 352.82970196237034
+        },
+        {
+          "date": "2020-05-15",
+          "meanQLIKE": 298.9976849107136
+        },
+        {
+          "date": "2020-05-18",
+          "meanQLIKE": 294.43544794987037
+        },
+        {
+          "date": "2020-05-28",
+          "meanQLIKE": 237.94473263652267
+        },
+        {
+          "date": "2020-05-27",
+          "meanQLIKE": 222.95954641110364
+        },
+        {
+          "date": "2020-06-04",
+          "meanQLIKE": 219.72164150755947
+        },
+        {
+          "date": "2020-05-19",
+          "meanQLIKE": 192.96483993325626
+        },
+        {
+          "date": "2020-06-05",
+          "meanQLIKE": 181.5904716701551
+        },
+        {
+          "date": "2020-05-26",
+          "meanQLIKE": 180.4256983262676
+        },
+        {
+          "date": "2020-05-21",
+          "meanQLIKE": 147.2985544364689
+        },
+        {
+          "date": "2020-05-20",
+          "meanQLIKE": 147.02494036611182
+        }
+      ],
+      "medianPredictedOverRealized": 1.5097926751405504,
+      "worstForecasts": [
+        {
+          "date": "2020-05-11",
+          "ticker": "XLK",
+          "qlike": 8161.635868173938,
+          "realizedVariance": 0.00033916010404297256,
+          "predictedVariance": 4.1504511437011574e-08,
+          "realizedOverPredicted": 8171.644293601469,
+          "predictedOverRealized": 0.00012237439174671568
+        },
+        {
+          "date": "2020-05-29",
+          "ticker": "XLK",
+          "qlike": 5753.962841483377,
+          "realizedVariance": 0.0001819683572686499,
+          "predictedVariance": 3.157187479088623e-08,
+          "realizedOverPredicted": 5763.622162887148,
+          "predictedOverRealized": 0.00017350200477039496
+        },
+        {
+          "date": "2020-05-14",
+          "ticker": "XLK",
+          "qlike": 5620.516371248368,
+          "realizedVariance": 0.00034120504908245676,
+          "predictedVariance": 6.06031654461498e-08,
+          "realizedOverPredicted": 5630.152263014076,
+          "predictedOverRealized": 0.00017761508983855695
+        },
+        {
+          "date": "2020-05-13",
+          "ticker": "XLK",
+          "qlike": 4824.1714350409175,
+          "realizedVariance": 0.0002961022453803194,
+          "predictedVariance": 6.125845929205575e-08,
+          "realizedOverPredicted": 4833.654793187382,
+          "predictedOverRealized": 0.0002068827921698946
+        },
+        {
+          "date": "2020-05-12",
+          "ticker": "XLK",
+          "qlike": 4739.447369302955,
+          "realizedVariance": 0.00022118503639193416,
+          "predictedVariance": 4.657592895743775e-08,
+          "realizedOverPredicted": 4748.913040340185,
+          "predictedOverRealized": 0.000210574502313558
+        },
+        {
+          "date": "2020-05-22",
+          "ticker": "XLK",
+          "qlike": 2897.870874413644,
+          "realizedVariance": 0.0001255415329260778,
+          "predictedVariance": 4.318823424386566e-08,
+          "realizedOverPredicted": 2906.845698233411,
+          "predictedOverRealized": 0.0003440155081529556
+        },
+        {
+          "date": "2020-05-15",
+          "ticker": "XLK",
+          "qlike": 2463.284242268455,
+          "realizedVariance": 0.00014313293023703586,
+          "predictedVariance": 5.789939735823748e-08,
+          "realizedOverPredicted": 2472.097064351776,
+          "predictedOverRealized": 0.0004045148608524464
+        },
+        {
+          "date": "2020-05-18",
+          "ticker": "XLK",
+          "qlike": 2358.674062105856,
+          "realizedVariance": 0.00013955693873877786,
+          "predictedVariance": 5.894836822349428e-08,
+          "realizedOverPredicted": 2367.443628119913,
+          "predictedOverRealized": 0.0004223965411983822
+        },
+        {
+          "date": "2020-05-28",
+          "ticker": "XLK",
+          "qlike": 1848.5928088213336,
+          "realizedVariance": 6.139513743513768e-05,
+          "predictedVariance": 3.305933432608478e-08,
+          "realizedOverPredicted": 1857.1195907806023,
+          "predictedOverRealized": 0.0005384682844143981
+        },
+        {
+          "date": "2020-06-04",
+          "ticker": "XLK",
+          "qlike": 1696.268135312786,
+          "realizedVariance": 0.000833299301294036,
+          "predictedVariance": 4.888219408071601e-07,
+          "realizedOverPredicted": 1704.7092851807402,
+          "predictedOverRealized": 0.0005866102852217268
+        }
+      ],
+      "source": {
+        "path": "archive/program/program-0.1.0/41759065718-1/macro-M-variance.csv.gz",
+        "csvSha256": "5f613ff57e504392a00ab67411fe7114531c7092358099212be284364334cf87",
+        "rows": 13590
+      }
+    },
+    "macro-Q-variance": {
+      "rows": 13590,
+      "dates": 1510,
+      "meanQLIKE": 25.12043522718297,
+      "medianForecastQLIKE": 0.23451245352392913,
+      "medianDateQLIKE": 0.325770942880115,
+      "worstDateCount": 16,
+      "worstDateFraction": 0.010596026490066225,
+      "worstDateShare": 0.8091208107692098,
+      "excluding2020MeanQLIKE": 0.366010283160837,
+      "excluding2020Dates": 1257,
+      "worstDates": [
+        {
+          "date": "2020-06-04",
+          "meanQLIKE": 6619.846878786543
+        },
+        {
+          "date": "2020-06-05",
+          "meanQLIKE": 5541.702457788782
+        },
+        {
+          "date": "2020-05-11",
+          "meanQLIKE": 1961.117739565497
+        },
+        {
+          "date": "2020-06-09",
+          "meanQLIKE": 1949.2748401898045
+        },
+        {
+          "date": "2020-06-08",
+          "meanQLIKE": 1888.8801725282715
+        },
+        {
+          "date": "2020-06-03",
+          "meanQLIKE": 1752.4674432840466
+        },
+        {
+          "date": "2020-06-01",
+          "meanQLIKE": 1575.3124141047085
+        },
+        {
+          "date": "2020-06-02",
+          "meanQLIKE": 1441.4282684064497
+        },
+        {
+          "date": "2020-05-29",
+          "meanQLIKE": 1364.0149219084424
+        },
+        {
+          "date": "2020-05-14",
+          "meanQLIKE": 1334.6992540248943
+        },
+        {
+          "date": "2020-05-13",
+          "meanQLIKE": 1174.5859998705544
+        },
+        {
+          "date": "2020-05-12",
+          "meanQLIKE": 1165.095550699128
+        },
+        {
+          "date": "2020-06-10",
+          "meanQLIKE": 1150.3655317845341
+        },
+        {
+          "date": "2020-05-22",
+          "meanQLIKE": 664.1097593123764
+        },
+        {
+          "date": "2020-05-15",
+          "meanQLIKE": 558.3380684171251
+        },
+        {
+          "date": "2020-05-18",
+          "meanQLIKE": 550.2157453483386
+        }
+      ],
+      "medianPredictedOverRealized": 1.5373446248448122,
+      "worstForecasts": [
+        {
+          "date": "2020-06-04",
+          "ticker": "XLK",
+          "qlike": 53457.14152465993,
+          "realizedVariance": 0.000833299301294036,
+          "predictedVariance": 1.558470999945292e-08,
+          "realizedOverPredicted": 53469.028382516444,
+          "predictedOverRealized": 1.8702415776961916e-05
+        },
+        {
+          "date": "2020-06-05",
+          "ticker": "XLK",
+          "qlike": 44785.21600273097,
+          "realizedVariance": 0.0007990133554111701,
+          "predictedVariance": 1.7836343441040664e-08,
+          "realizedOverPredicted": 44796.925897528665,
+          "predictedOverRealized": 2.232296033632896e-05
+        },
+        {
+          "date": "2020-06-09",
+          "ticker": "XLK",
+          "qlike": 15286.87140215613,
+          "realizedVariance": 0.0008555282044728421,
+          "predictedVariance": 5.5925989313996874e-08,
+          "realizedOverPredicted": 15297.506847299075,
+          "predictedOverRealized": 6.537012926237453e-05
+        },
+        {
+          "date": "2020-05-11",
+          "ticker": "XLK",
+          "qlike": 15031.877381517985,
+          "realizedVariance": 0.00033916010404297256,
+          "predictedVariance": 2.254679699970442e-08,
+          "realizedOverPredicted": 15042.496016060233,
+          "predictedOverRealized": 6.647832905738134e-05
+        },
+        {
+          "date": "2020-06-08",
+          "ticker": "XLK",
+          "qlike": 14712.89130855518,
+          "realizedVariance": 0.0008227191614913254,
+          "predictedVariance": 5.5878004798204403e-08,
+          "realizedOverPredicted": 14723.488507910411,
+          "predictedOverRealized": 6.791868648946445e-05
+        },
+        {
+          "date": "2020-06-03",
+          "ticker": "XLK",
+          "qlike": 13263.338071754568,
+          "realizedVariance": 0.00020298969597886944,
+          "predictedVariance": 1.5292471817165924e-08,
+          "realizedOverPredicted": 13273.831621583364,
+          "predictedOverRealized": 7.533619745288854e-05
+        },
+        {
+          "date": "2020-06-01",
+          "ticker": "XLK",
+          "qlike": 11991.737655529425,
+          "realizedVariance": 0.00017633241034087686,
+          "predictedVariance": 1.4691759135144827e-08,
+          "realizedOverPredicted": 12002.130494983685,
+          "predictedOverRealized": 8.331854085555494e-05
+        },
+        {
+          "date": "2020-05-29",
+          "ticker": "XLK",
+          "qlike": 10873.987422377451,
+          "realizedVariance": 0.0001819683572686499,
+          "predictedVariance": 1.6718452255495726e-08,
+          "realizedOverPredicted": 10884.282497432312,
+          "predictedOverRealized": 9.187560137619617e-05
+        },
+        {
+          "date": "2020-06-02",
+          "ticker": "XLK",
+          "qlike": 10693.098827046488,
+          "realizedVariance": 0.0001607918527589568,
+          "predictedVariance": 1.502253453570749e-08,
+          "realizedOverPredicted": 10703.377141637853,
+          "predictedOverRealized": 9.342845596926971e-05
+        },
+        {
+          "date": "2020-05-14",
+          "ticker": "XLK",
+          "qlike": 10470.95149996249,
+          "realizedVariance": 0.00034120504908245676,
+          "predictedVariance": 3.2553978678905425e-08,
+          "realizedOverPredicted": 10481.208839260971,
+          "predictedOverRealized": 9.540884217993597e-05
+        }
+      ],
+      "source": {
+        "path": "archive/program/program-0.1.0/41759065718-1/macro-Q-variance.csv.gz",
+        "csvSha256": "9277d87664e40dbe01c35a078fe199c7b463f5f71238a83e9049cd726276f468",
+        "rows": 13590
+      }
+    },
+    "chronos-variance": {
+      "rows": 648,
+      "dates": 72,
+      "meanQLIKE": 0.39867120755609714,
+      "medianForecastQLIKE": 0.11966310908489108,
+      "medianDateQLIKE": 0.22797249711046969,
+      "worstDateCount": 1,
+      "worstDateFraction": 0.013888888888888888,
+      "worstDateShare": 0.1380432350894379,
+      "excluding2020MeanQLIKE": 0.3276897457202304,
+      "excluding2020Dates": 60,
+      "worstDates": [
+        {
+          "date": "2020-03-02",
+          "meanQLIKE": 3.962438152420061
+        }
+      ],
+      "medianPredictedOverRealized": 1.1570183857852394,
+      "worstForecasts": [
+        {
+          "date": "2020-03-02",
+          "ticker": "XLE",
+          "qlike": 16.16569970788907,
+          "realizedVariance": 0.01144311933848373,
+          "predictedVariance": 0.0005673367071722168,
+          "realizedOverPredicted": 20.169890637818604,
+          "predictedOverRealized": 0.04957885087016769
+        },
+        {
+          "date": "2024-11-01",
+          "ticker": "XLF",
+          "qlike": 8.898032149421317,
+          "realizedVariance": 0.0007931026593676479,
+          "predictedVariance": 6.387177309079562e-05,
+          "realizedOverPredicted": 12.41710729151403,
+          "predictedOverRealized": 0.08053405487471382
+        },
+        {
+          "date": "2020-03-02",
+          "ticker": "XLF",
+          "qlike": 7.379628809033939,
+          "realizedVariance": 0.003759628274752099,
+          "predictedVariance": 0.00034957028728967995,
+          "realizedOverPredicted": 10.75499952785344,
+          "predictedOverRealized": 0.09298001337984133
+        },
+        {
+          "date": "2020-09-01",
+          "ticker": "XLK",
+          "qlike": 7.3510468740693895,
+          "realizedVariance": 0.0013680995936104713,
+          "predictedVariance": 0.00012757978074660057,
+          "realizedOverPredicted": 10.723482871692621,
+          "predictedOverRealized": 0.09325328458720776
+        },
+        {
+          "date": "2021-01-04",
+          "ticker": "XLY",
+          "qlike": 5.275501760459239,
+          "realizedVariance": 0.00028292689792429386,
+          "predictedVariance": 3.366478949828888e-05,
+          "realizedOverPredicted": 8.404237844370734,
+          "predictedOverRealized": 0.11898758918035772
+        },
+        {
+          "date": "2024-11-01",
+          "ticker": "XLI",
+          "qlike": 5.268928696290044,
+          "realizedVariance": 0.0003812552938644008,
+          "predictedVariance": 4.540495865512639e-05,
+          "realizedOverPredicted": 8.396776589099606,
+          "predictedOverRealized": 0.11909331984587564
+        },
+        {
+          "date": "2020-03-02",
+          "ticker": "XLI",
+          "qlike": 4.436611586728102,
+          "realizedVariance": 0.0028683314310897173,
+          "predictedVariance": 0.0003853200647427002,
+          "realizedOverPredicted": 7.444023017605021,
+          "predictedOverRealized": 0.1343359629107826
+        },
+        {
+          "date": "2024-08-01",
+          "ticker": "XLV",
+          "qlike": 4.406738707809696,
+          "realizedVariance": 0.00027000771340387526,
+          "predictedVariance": 3.644073731265962e-05,
+          "realizedOverPredicted": 7.4095019287678845,
+          "predictedOverRealized": 0.1349618381388678
+        },
+        {
+          "date": "2020-09-01",
+          "ticker": "XLV",
+          "qlike": 4.146830314134173,
+          "realizedVariance": 0.0003508719143152901,
+          "predictedVariance": 4.9362545269104885e-05,
+          "realizedOverPredicted": 7.108059610834014,
+          "predictedOverRealized": 0.14068537051600027
+        },
+        {
+          "date": "2019-08-01",
+          "ticker": "XLK",
+          "qlike": 3.5616534624029796,
+          "realizedVariance": 0.0005570028934853505,
+          "predictedVariance": 8.674342570884619e-05,
+          "realizedOverPredicted": 6.4212692654648835,
+          "predictedOverRealized": 0.15573245080660894
+        }
+      ],
+      "source": {
+        "path": "archive/program/program-0.1.0/41759065718-1/chronos-variance.csv.gz",
+        "csvSha256": "d37754d78e87ca2c5d09b0b7567512009c9ccd98faded13c4217811692ed274d",
+        "rows": 648
+      }
+    },
+    "ewma-chronos-matched": {
+      "rows": 648,
+      "dates": 72,
+      "meanQLIKE": 0.41522562326718,
+      "medianForecastQLIKE": 0.13079547398528313,
+      "medianDateQLIKE": 0.20985133442296924,
+      "worstDateCount": 1,
+      "worstDateFraction": 0.013888888888888888,
+      "worstDateShare": 0.15526670458536326,
+      "excluding2020MeanQLIKE": 0.32622117781525733,
+      "excluding2020Dates": 60,
+      "worstDates": [
+        {
+          "date": "2020-03-02",
+          "meanQLIKE": 4.641891421255098
+        }
+      ],
+      "medianPredictedOverRealized": 1.2081469156809452,
+      "worstForecasts": [
+        {
+          "date": "2020-03-02",
+          "ticker": "XLE",
+          "qlike": 16.74646258981489,
+          "realizedVariance": 0.01144311933848373,
+          "predictedVariance": 0.0005506668403419767,
+          "realizedOverPredicted": 20.780476506225238,
+          "predictedOverRealized": 0.048122091892379294
+        },
+        {
+          "date": "2024-11-01",
+          "ticker": "XLF",
+          "qlike": 8.776420269469597,
+          "realizedVariance": 0.0007931026593676479,
+          "predictedVariance": 6.455976934672857e-05,
+          "realizedOverPredicted": 12.284781488424521,
+          "predictedOverRealized": 0.08140152927768896
+        },
+        {
+          "date": "2020-03-02",
+          "ticker": "XLI",
+          "qlike": 6.242732408666597,
+          "realizedVariance": 0.0028683314310897173,
+          "predictedVariance": 0.0003021420493805693,
+          "realizedOverPredicted": 9.49332089647956,
+          "predictedOverRealized": 0.1053372166499537
+        },
+        {
+          "date": "2020-03-02",
+          "ticker": "XLF",
+          "qlike": 5.99356000806777,
+          "realizedVariance": 0.003759628274752099,
+          "predictedVariance": 0.0004080202144349147,
+          "realizedOverPredicted": 9.214318658106132,
+          "predictedOverRealized": 0.10852674376745891
+        },
+        {
+          "date": "2020-09-01",
+          "ticker": "XLK",
+          "qlike": 5.605584831846604,
+          "realizedVariance": 0.0013680995936104713,
+          "predictedVariance": 0.000155858839606858,
+          "realizedOverPredicted": 8.77781200643735,
+          "predictedOverRealized": 0.11392360639150553
+        },
+        {
+          "date": "2024-11-01",
+          "ticker": "XLI",
+          "qlike": 5.334866547261104,
+          "realizedVariance": 0.0003812552938644008,
+          "predictedVariance": 4.500401474390141e-05,
+          "realizedOverPredicted": 8.471584058310388,
+          "predictedOverRealized": 0.11804167828790271
+        },
+        {
+          "date": "2019-08-01",
+          "ticker": "XLK",
+          "qlike": 4.724864087301655,
+          "realizedVariance": 0.0005570028934853505,
+          "predictedVariance": 7.16320226235638e-05,
+          "realizedOverPredicted": 7.7758923046537145,
+          "predictedOverRealized": 0.1286026041540622
+        },
+        {
+          "date": "2020-11-02",
+          "ticker": "XLF",
+          "qlike": 4.36294946345173,
+          "realizedVariance": 0.0014055138611397935,
+          "predictedVariance": 0.00019099630627436785,
+          "realizedOverPredicted": 7.358853626838001,
+          "predictedOverRealized": 0.13589073118032466
+        },
+        {
+          "date": "2020-03-02",
+          "ticker": "XLB",
+          "qlike": 3.8833849890152505,
+          "realizedVariance": 0.002637118929416566,
+          "predictedVariance": 0.0003877910409838366,
+          "realizedOverPredicted": 6.800360634237765,
+          "predictedOverRealized": 0.14705102475967255
+        },
+        {
+          "date": "2020-11-02",
+          "ticker": "XLE",
+          "qlike": 3.7852551617237573,
+          "realizedVariance": 0.0037583127538680676,
+          "predictedVariance": 0.0005621888582481509,
+          "realizedOverPredicted": 6.685142721574791,
+          "predictedOverRealized": 0.1495854376859787
+        }
+      ],
+      "source": {
+        "path": "archive/program/program-0.1.0/41759065718-1/chronos-variance.csv.gz",
+        "csvSha256": "d37754d78e87ca2c5d09b0b7567512009c9ccd98faded13c4217811692ed274d",
+        "rows": 648,
+        "column": "baseline"
+      }
+    }
+  }
+}

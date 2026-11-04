@@ -29,7 +29,9 @@ estimate. Both macro variance procedures lost badly to the endpoint-matched EWMA
 (QLIKE **0.41370**). Their extreme losses remain in the report. The drawdown models' modest
 advantage over unconditional event frequency did not establish an advantage over market-only
 features. No model is promoted and no thresholds, features or hyperparameters were retuned.
-Market-only and frozen Chronos results are unchanged from the earlier report.
+Market-only results are unchanged. Frozen Chronos conclusions remain the same, with small
+numerical inference differences between runs. The additive [variance decomposition](MACRO_VARIANCE_DECOMPOSITION.md)
+diagnoses every variance procedure without changing this registered report.
 
 ## Corrections and coverage
 

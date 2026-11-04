@@ -104,6 +104,22 @@ window to another. Once the contract is published, pin its revision and add a te
 export in UnpricedZ only. Preserve the task, information cutoff, issue time, endpoints,
 units and hashes. The Hub remains responsible for independent receipt and scoring.
 
+Integration update, before this version's first evaluation: contract commit
+`5bdee50d25f57dac6b85630523f9cdfeb0a5352d` is now pinned, with its unmodified schema and
+`hub/core.py` validator vendored under `vendor/unpricedhub/`. Exports are validated with
+`validate()` and mandatory jsonschema support. Daily outputs are
+`site/data/export/latest-risk-v1-variance-5s-open-close.json` and
+`site/data/export/latest-risk-v1-drawdown-gt3pct-5s-open-close.json`, with immutable dated
+copies. Hub's horizon convention counts entry-to-exit session-index intervals: four for
+our five observed sessions. Prices, forecast values, units and actual endpoints do not change.
+The owner authorized new coordination notes in Hub's `notes/to-claude/` only; no other Hub
+files may be modified.
+
+Supplementary diagnostics for every variance benchmark include forecast-level and date-level
+median QLIKE, the share of total date-mean loss from the worst `ceil(.01 * date count)` dates,
+and the mean excluding forecast origins in 2020. Always retain the primary all-date mean.
+These decompositions do not select models or create another untouched holdout.
+
 ## Primary references
 
 - [arch GARCH forecast equations and horizon indexing](https://arch.readthedocs.io/en/latest/univariate/forecasting.html)

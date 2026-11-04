@@ -1,0 +1,9 @@
+{
+  "repository": "PrototypeVersions/UnpricedHub",
+  "commit": "5bdee50d25f57dac6b85630523f9cdfeb0a5352d",
+  "files": {
+    "docs/CONTRACT.md": "99023b626644f45d85f3ab87836a2f6b6f33ae7c",
+    "contract/export-v1.schema.json": "4ff5bbb96961712164dc57cfd11a8896400b15aa",
+    "hub/core.py": "086d85364f4ccf963f6fc64fbb7835e79bfc5632"
+  }
+}
