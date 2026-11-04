@@ -142,16 +142,23 @@ def asof_series(rows, sessions, max_age, changes=()):
         except (TypeError, ValueError):
             value = np.nan
         events.setdefault(index, []).append((vintage, observed, value))
-    state, output = {}, []
+    state, valid_dates, output = {}, set(), []
     for i, date in enumerate(sessions):
         for _, observed, value in sorted(events.get(i, []), key=lambda x: (x[0], x[1])):
             if observed > date:
                 raise ValueError("Observation period is after its alleged availability")
             state[observed] = value
+            if np.isfinite(value):
+                valid_dates.add(observed)
+            else:
+                valid_dates.discard(observed)
         row = {"date": date, "value": np.nan}
         row.update({f"lag{months}": np.nan for months in changes})
-        if state:
-            latest = max(state)
+        if valid_dates:
+            # Bond-market holidays can be NYSE sessions with a new '.' row.
+            # Use the latest valid observation, preserving its actual age.
+            # A withdrawn value remains missing in state; never resurrect it.
+            latest = max(valid_dates)
             if (date - latest).days <= max_age:
                 row["value"] = state[latest]
                 for months in changes:

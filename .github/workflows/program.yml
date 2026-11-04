@@ -31,6 +31,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # A queued code push can predate the prior run's evidence commit.
+          # Begin from its preserved result before updating the mutable pointer.
+          ref: main
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:

@@ -279,3 +279,24 @@ def test_late_vintage_coverage_is_discovered_and_never_backfilled(monkeypatch):
     values = asof_series(result["series"]["TEST"], pd.DatetimeIndex(["2014-01-24", "2014-01-27", "2014-01-28"]), 100)
     assert values.iloc[:2].value.isna().all()
     assert values.iloc[2].value == 1
+
+
+def test_bond_holiday_uses_latest_valid_observation_without_borrowing_future_release():
+    sessions = pd.DatetimeIndex(["2024-10-11", "2024-10-14", "2024-10-15", "2024-10-16", "2024-10-17", "2024-10-28"])
+    rows = [{"date": "2024-10-10", "realtime_start": "2024-10-10", "value": "4"},
+            {"date": "2024-10-11", "realtime_start": "2024-10-14", "value": "4.1"},
+            {"date": "2024-10-14", "realtime_start": "2024-10-15", "value": "."},
+            {"date": "2024-10-15", "realtime_start": "2024-10-16", "value": "4.2"}]
+    values = asof_series(rows, sessions, 10)
+    assert values.loc["2024-10-16", "value"] == 4.1
+    assert values.loc["2024-10-17", "value"] == 4.2
+    assert pd.isna(values.loc["2024-10-28", "value"])  # Age of the actual value, not the holiday.
+
+
+def test_withdrawn_observation_never_restores_its_old_value():
+    rows = [{"date": "2024-10-10", "realtime_start": "2024-10-10", "value": "4"},
+            {"date": "2024-10-11", "realtime_start": "2024-10-11", "value": "4.1"},
+            {"date": "2024-10-11", "realtime_start": "2024-10-14", "value": "."}]
+    values = asof_series(rows, pd.DatetimeIndex(["2024-10-11", "2024-10-14", "2024-10-15"]), 10)
+    assert values.loc["2024-10-14", "value"] == 4.1
+    assert values.loc["2024-10-15", "value"] == 4

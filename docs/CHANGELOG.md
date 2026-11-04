@@ -49,3 +49,18 @@ Subsequent corrections and tested specifications must be appended here.
   ALFRED. The adapter now discovers each first vintage with the vintage-date endpoint,
   starts its bounded requests there, and archives that coverage boundary. A regression
   test verifies that late archival coverage never fills earlier dates.
+
+## 2026-11-04 UTC — Holiday handling and evidence recovery
+
+- Let run 41757845804 finish before making the owner's requested correction. All 12
+  tabular procedures and the frozen Chronos screen completed; FRED was available.
+  Its evidence commit conflicted with the prior run's mutable latest-report pointer.
+  The full artifact was retained and recovered without rewriting the immutable report.
+- Program checkout now starts from current main after acquiring its serialized job slot,
+  retaining the preceding run's evidence before computing the next report.
+- `asof_series` uses the latest non-missing as-of observation. A bond-market holiday's
+  missing row no longer masks a recent valid value. Age limits still use that value's
+  observation date; later releases cannot fill earlier decisions; withdrawn observations
+  do not regain their earlier value. Added regression tests for these cases.
+- This is a data-handling correction to program-0.1.0. Preserve the prior results and
+  report the rerun as a corrected development comparison, not independent confirmation.
