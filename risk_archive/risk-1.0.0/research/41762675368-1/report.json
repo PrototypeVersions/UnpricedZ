@@ -1,0 +1,872 @@
+{
+  "experiment": "risk-1.0.0",
+  "runId": "41762675368-1",
+  "generatedAt": "2026-11-04T02:45:18.899169+00:00",
+  "status": "completed",
+  "evidence": "Registered development benchmark on already observed history; no fresh historical holdout claim",
+  "provenance": {
+    "codeCommit": "3c76f435c1dda2b8f6a80cb7bdc92a11bf1cc59a",
+    "algorithmSha256": "81814c6d500f450d7bdb70247ceccc57b3b31cc5dfbb6c9071cb024e161dda94",
+    "registrySha256": "3e3cd3ae6f0ccdecfa7c6212a6b4980905e2b51f77d25ceb01ebd77837c3d504",
+    "python": "3.11.17",
+    "packages": {
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.6.1",
+      "arch": "8.0.0",
+      "statsmodels": "0.14.5",
+      "joblib": "1.5.2",
+      "yfinance": "0.2.66",
+      "pandas-market-calendars": "5.1.1"
+    }
+  },
+  "errors": [],
+  "input": {
+    "path": "archive/inputs/2026-11-03-research-8c99edf48ff7d750.csv.gz",
+    "csvSha256": "8c99edf48ff7d75087e7a1e3feba91d3d6343925b5a024e885e20ab7b039f148"
+  },
+  "predictions": {
+    "path": "risk_archive/risk-1.0.0/research/41762675368-1/predictions.csv.gz",
+    "csvSha256": "41c62fb48e4f1c6d4593adc8e4abd1863f52164fb016a084882de15d611fdc62",
+    "rows": 15100
+  },
+  "summary": {
+    "forecastDates": 1510,
+    "rows": 15100,
+    "groups": {
+      "SPY": {
+        "models": [
+          {
+            "task": "variance",
+            "model": "ewma",
+            "issuedRows": 1510,
+            "scoredRows": 1510,
+            "dates": 1510,
+            "metric": "QLIKE",
+            "loss": 0.4894005576254537,
+            "decomposition": {
+              "rows": 1510,
+              "dates": 1510,
+              "meanQLIKE": 0.48940055762545365,
+              "medianForecastQLIKE": 0.20391943159643455,
+              "medianDateQLIKE": 0.20391943159643455,
+              "worstDateCount": 16,
+              "worstDateFraction": 0.010596026490066225,
+              "worstDateShare": 0.14738358621443295,
+              "excluding2020MeanQLIKE": 0.4095744976232991,
+              "excluding2020Dates": 1257,
+              "worstDates": [
+                {
+                  "date": "2020-02-20",
+                  "meanQLIKE": 16.206475438066718
+                },
+                {
+                  "date": "2020-02-21",
+                  "meanQLIKE": 10.11839734428184
+                },
+                {
+                  "date": "2020-02-24",
+                  "meanQLIKE": 7.345687066752054
+                },
+                {
+                  "date": "2020-02-19",
+                  "meanQLIKE": 6.7931590679045275
+                },
+                {
+                  "date": "2019-07-30",
+                  "meanQLIKE": 6.719660289121849
+                },
+                {
+                  "date": "2020-03-06",
+                  "meanQLIKE": 6.594720070668748
+                },
+                {
+                  "date": "2020-02-18",
+                  "meanQLIKE": 6.475229317149646
+                },
+                {
+                  "date": "2020-03-05",
+                  "meanQLIKE": 6.404595116368701
+                },
+                {
+                  "date": "2021-11-23",
+                  "meanQLIKE": 5.995190477338193
+                },
+                {
+                  "date": "2020-03-09",
+                  "meanQLIKE": 5.781610519209472
+                },
+                {
+                  "date": "2020-09-01",
+                  "meanQLIKE": 5.310190221228016
+                },
+                {
+                  "date": "2019-08-01",
+                  "meanQLIKE": 5.222231104794132
+                },
+                {
+                  "date": "2020-03-10",
+                  "meanQLIKE": 5.133643939118313
+                },
+                {
+                  "date": "2019-07-29",
+                  "meanQLIKE": 5.043131174693727
+                },
+                {
+                  "date": "2024-12-17",
+                  "meanQLIKE": 4.9085482341331845
+                },
+                {
+                  "date": "2020-08-31",
+                  "meanQLIKE": 4.863240629226624
+                }
+              ]
+            }
+          },
+          {
+            "task": "variance",
+            "model": "har_daily",
+            "issuedRows": 1510,
+            "scoredRows": 1510,
+            "dates": 1510,
+            "metric": "QLIKE",
+            "loss": 0.4820558026885021,
+            "decomposition": {
+              "rows": 1510,
+              "dates": 1510,
+              "meanQLIKE": 0.4820558026885021,
+              "medianForecastQLIKE": 0.20546039753350875,
+              "medianDateQLIKE": 0.20546039753350875,
+              "worstDateCount": 16,
+              "worstDateFraction": 0.010596026490066225,
+              "worstDateShare": 0.1412865523391547,
+              "excluding2020MeanQLIKE": 0.4193949113057671,
+              "excluding2020Dates": 1257,
+              "worstDates": [
+                {
+                  "date": "2020-02-20",
+                  "meanQLIKE": 14.639890733344721
+                },
+                {
+                  "date": "2021-11-23",
+                  "meanQLIKE": 9.462680097821115
+                },
+                {
+                  "date": "2021-11-24",
+                  "meanQLIKE": 6.630710188340133
+                },
+                {
+                  "date": "2021-11-22",
+                  "meanQLIKE": 6.462432047813135
+                },
+                {
+                  "date": "2020-03-09",
+                  "meanQLIKE": 6.429523665404403
+                },
+                {
+                  "date": "2020-03-05",
+                  "meanQLIKE": 6.335305921351029
+                },
+                {
+                  "date": "2020-02-21",
+                  "meanQLIKE": 6.333802119151256
+                },
+                {
+                  "date": "2020-03-06",
+                  "meanQLIKE": 6.218685338621411
+                },
+                {
+                  "date": "2020-02-18",
+                  "meanQLIKE": 6.134303049403437
+                },
+                {
+                  "date": "2019-07-30",
+                  "meanQLIKE": 5.897592681756068
+                },
+                {
+                  "date": "2020-03-10",
+                  "meanQLIKE": 5.778023124764682
+                },
+                {
+                  "date": "2020-02-19",
+                  "meanQLIKE": 5.534040318604885
+                },
+                {
+                  "date": "2024-12-13",
+                  "meanQLIKE": 4.359000571794265
+                },
+                {
+                  "date": "2019-08-01",
+                  "meanQLIKE": 4.27068558968924
+                },
+                {
+                  "date": "2021-11-19",
+                  "meanQLIKE": 4.19197870226681
+                },
+                {
+                  "date": "2020-02-24",
+                  "meanQLIKE": 4.164429469256248
+                }
+              ]
+            }
+          },
+          {
+            "task": "variance",
+            "model": "garch11",
+            "issuedRows": 1510,
+            "scoredRows": 1510,
+            "dates": 1510,
+            "metric": "QLIKE",
+            "loss": 0.43084890893739225,
+            "decomposition": {
+              "rows": 1510,
+              "dates": 1510,
+              "meanQLIKE": 0.43084890893739225,
+              "medianForecastQLIKE": 0.17604928422592503,
+              "medianDateQLIKE": 0.17604928422592503,
+              "worstDateCount": 16,
+              "worstDateFraction": 0.010596026490066225,
+              "worstDateShare": 0.15527020208158962,
+              "excluding2020MeanQLIKE": 0.3768016186481963,
+              "excluding2020Dates": 1257,
+              "worstDates": [
+                {
+                  "date": "2020-02-20",
+                  "meanQLIKE": 19.317701659570695
+                },
+                {
+                  "date": "2020-02-21",
+                  "meanQLIKE": 9.245035332086221
+                },
+                {
+                  "date": "2020-02-19",
+                  "meanQLIKE": 8.341196604242732
+                },
+                {
+                  "date": "2020-02-18",
+                  "meanQLIKE": 8.115021730113382
+                },
+                {
+                  "date": "2020-06-04",
+                  "meanQLIKE": 6.737101312382488
+                },
+                {
+                  "date": "2020-08-31",
+                  "meanQLIKE": 6.703832648709469
+                },
+                {
+                  "date": "2020-09-01",
+                  "meanQLIKE": 5.977127961337914
+                },
+                {
+                  "date": "2021-11-23",
+                  "meanQLIKE": 5.318357124926284
+                },
+                {
+                  "date": "2019-07-30",
+                  "meanQLIKE": 4.863358537590942
+                },
+                {
+                  "date": "2021-02-23",
+                  "meanQLIKE": 4.288020178328612
+                },
+                {
+                  "date": "2020-03-06",
+                  "meanQLIKE": 4.252667770610426
+                },
+                {
+                  "date": "2021-11-22",
+                  "meanQLIKE": 3.888990556085586
+                },
+                {
+                  "date": "2020-06-09",
+                  "meanQLIKE": 3.5436312306352455
+                },
+                {
+                  "date": "2021-02-22",
+                  "meanQLIKE": 3.509258620954327
+                },
+                {
+                  "date": "2021-11-24",
+                  "meanQLIKE": 3.462416386431375
+                },
+                {
+                  "date": "2019-07-29",
+                  "meanQLIKE": 3.4522580535796568
+                }
+              ]
+            }
+          },
+          {
+            "task": "drawdown",
+            "model": "base_rate",
+            "issuedRows": 1510,
+            "scoredRows": 1510,
+            "dates": 1510,
+            "metric": "Brier",
+            "loss": 0.12442662406057162,
+            "logLoss": 0.41830279152484323,
+            "calibration": [
+              {
+                "low": 0.0,
+                "rows": 314,
+                "predicted": 0.08740651402444923,
+                "observed": 0.12420382165605096
+              },
+              {
+                "low": 0.1,
+                "rows": 1196,
+                "predicted": 0.1434234022365694,
+                "observed": 0.1479933110367893
+              }
+            ]
+          },
+          {
+            "task": "drawdown",
+            "model": "volatility_only",
+            "issuedRows": 1510,
+            "scoredRows": 1510,
+            "dates": 1510,
+            "metric": "Brier",
+            "loss": 0.12781642535535356,
+            "logLoss": 0.42982064240199425,
+            "calibration": [
+              {
+                "low": 0.0,
+                "rows": 768,
+                "predicted": 0.05416795948834394,
+                "observed": 0.07942708333333333
+              },
+              {
+                "low": 0.1,
+                "rows": 233,
+                "predicted": 0.14440052906484638,
+                "observed": 0.16738197424892703
+              },
+              {
+                "low": 0.2,
+                "rows": 206,
+                "predicted": 0.250970177798199,
+                "observed": 0.18932038834951456
+              },
+              {
+                "low": 0.30000000000000004,
+                "rows": 177,
+                "predicted": 0.3629375346332729,
+                "observed": 0.2994350282485876
+              },
+              {
+                "low": 0.4,
+                "rows": 88,
+                "predicted": 0.43991438639912506,
+                "observed": 0.17045454545454544
+              },
+              {
+                "low": 0.5,
+                "rows": 16,
+                "predicted": 0.5421379650092497,
+                "observed": 0.0
+              },
+              {
+                "low": 0.6000000000000001,
+                "rows": 1,
+                "predicted": 0.6081909585336072,
+                "observed": 0.0
+              },
+              {
+                "low": 0.7000000000000001,
+                "rows": 11,
+                "predicted": 0.7571880974038695,
+                "observed": 0.5454545454545454
+              },
+              {
+                "low": 0.8,
+                "rows": 10,
+                "predicted": 0.8261710593278018,
+                "observed": 0.3
+              }
+            ]
+          }
+        ],
+        "comparisons": [
+          {
+            "task": "variance",
+            "candidate": "har_daily",
+            "baseline": "ewma",
+            "pairedRows": 1510,
+            "candidateRows": 1510,
+            "baselineRows": 1510,
+            "gain": {
+              "mean": 0.007344754936951531,
+              "dates": 1510,
+              "calendarSessions": 1510,
+              "low": -0.022958163251776083,
+              "high": 0.040253573785057783,
+              "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+            }
+          },
+          {
+            "task": "variance",
+            "candidate": "garch11",
+            "baseline": "ewma",
+            "pairedRows": 1510,
+            "candidateRows": 1510,
+            "baselineRows": 1510,
+            "gain": {
+              "mean": 0.05855164868806143,
+              "dates": 1510,
+              "calendarSessions": 1510,
+              "low": 0.00960966200261657,
+              "high": 0.1126509559177744,
+              "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+            }
+          },
+          {
+            "task": "drawdown",
+            "candidate": "volatility_only",
+            "baseline": "base_rate",
+            "pairedRows": 1510,
+            "candidateRows": 1510,
+            "baselineRows": 1510,
+            "gain": {
+              "mean": -0.0033898012947819437,
+              "dates": 1510,
+              "calendarSessions": 1510,
+              "low": -0.016150409054619105,
+              "high": 0.010484638618198577,
+              "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+            }
+          }
+        ],
+        "expectedRows": 1510
+      },
+      "sectors": {
+        "models": [
+          {
+            "task": "variance",
+            "model": "ewma",
+            "issuedRows": 13590,
+            "scoredRows": 13590,
+            "dates": 1510,
+            "metric": "QLIKE",
+            "loss": 0.41369677927977494,
+            "decomposition": {
+              "rows": 13590,
+              "dates": 1510,
+              "meanQLIKE": 0.41369677927977494,
+              "medianForecastQLIKE": 0.1686584313163062,
+              "medianDateQLIKE": 0.27499326714451394,
+              "worstDateCount": 16,
+              "worstDateFraction": 0.010596026490066225,
+              "worstDateShare": 0.15192944043646203,
+              "excluding2020MeanQLIKE": 0.3350370026553265,
+              "excluding2020Dates": 1257,
+              "worstDates": [
+                {
+                  "date": "2020-02-20",
+                  "meanQLIKE": 11.032353406819254
+                },
+                {
+                  "date": "2020-02-24",
+                  "meanQLIKE": 10.03995525792036
+                },
+                {
+                  "date": "2020-02-21",
+                  "meanQLIKE": 9.518395532869926
+                },
+                {
+                  "date": "2020-03-05",
+                  "meanQLIKE": 7.308195486452811
+                },
+                {
+                  "date": "2020-02-26",
+                  "meanQLIKE": 6.603488759014976
+                },
+                {
+                  "date": "2020-03-10",
+                  "meanQLIKE": 5.920666254807278
+                },
+                {
+                  "date": "2020-03-06",
+                  "meanQLIKE": 5.879318931307143
+                },
+                {
+                  "date": "2020-03-09",
+                  "meanQLIKE": 5.6926256617309035
+                },
+                {
+                  "date": "2020-02-25",
+                  "meanQLIKE": 5.0968172920439025
+                },
+                {
+                  "date": "2020-03-02",
+                  "meanQLIKE": 4.641891421255103
+                },
+                {
+                  "date": "2020-03-03",
+                  "meanQLIKE": 4.357492968632783
+                },
+                {
+                  "date": "2020-02-19",
+                  "meanQLIKE": 4.2241694317893055
+                },
+                {
+                  "date": "2020-03-04",
+                  "meanQLIKE": 4.155291358834827
+                },
+                {
+                  "date": "2020-02-18",
+                  "meanQLIKE": 3.841913798611551
+                },
+                {
+                  "date": "2020-03-11",
+                  "meanQLIKE": 3.788386581969484
+                },
+                {
+                  "date": "2019-07-30",
+                  "meanQLIKE": 2.806645337317942
+                }
+              ]
+            }
+          },
+          {
+            "task": "variance",
+            "model": "har_daily",
+            "issuedRows": 13590,
+            "scoredRows": 13590,
+            "dates": 1510,
+            "metric": "QLIKE",
+            "loss": 0.44699161684211314,
+            "decomposition": {
+              "rows": 13590,
+              "dates": 1510,
+              "meanQLIKE": 0.44699161684211314,
+              "medianForecastQLIKE": 0.18223956600138203,
+              "medianDateQLIKE": 0.292312667921497,
+              "worstDateCount": 16,
+              "worstDateFraction": 0.010596026490066225,
+              "worstDateShare": 0.1778305965734485,
+              "excluding2020MeanQLIKE": 0.34300607678465905,
+              "excluding2020Dates": 1257,
+              "worstDates": [
+                {
+                  "date": "2020-03-10",
+                  "meanQLIKE": 12.1451715935568
+                },
+                {
+                  "date": "2020-03-09",
+                  "meanQLIKE": 11.402216210449199
+                },
+                {
+                  "date": "2020-03-05",
+                  "meanQLIKE": 10.993394776797738
+                },
+                {
+                  "date": "2020-02-20",
+                  "meanQLIKE": 9.740764455419708
+                },
+                {
+                  "date": "2020-03-06",
+                  "meanQLIKE": 9.489810159496743
+                },
+                {
+                  "date": "2020-03-11",
+                  "meanQLIKE": 8.872231728912915
+                },
+                {
+                  "date": "2020-02-24",
+                  "meanQLIKE": 8.028676259467051
+                },
+                {
+                  "date": "2020-02-21",
+                  "meanQLIKE": 7.594413723829259
+                },
+                {
+                  "date": "2020-02-26",
+                  "meanQLIKE": 7.178125676943994
+                },
+                {
+                  "date": "2020-03-03",
+                  "meanQLIKE": 5.776680402008758
+                },
+                {
+                  "date": "2020-03-02",
+                  "meanQLIKE": 5.702360620067102
+                },
+                {
+                  "date": "2020-03-04",
+                  "meanQLIKE": 5.695164297188432
+                },
+                {
+                  "date": "2020-02-25",
+                  "meanQLIKE": 5.450422754627491
+                },
+                {
+                  "date": "2020-03-12",
+                  "meanQLIKE": 4.791240562442261
+                },
+                {
+                  "date": "2020-02-27",
+                  "meanQLIKE": 3.8531960311429194
+                },
+                {
+                  "date": "2020-02-19",
+                  "meanQLIKE": 3.3141974360581816
+                }
+              ]
+            }
+          },
+          {
+            "task": "variance",
+            "model": "garch11",
+            "issuedRows": 13590,
+            "scoredRows": 13590,
+            "dates": 1510,
+            "metric": "QLIKE",
+            "loss": 0.3826774036000024,
+            "decomposition": {
+              "rows": 13590,
+              "dates": 1510,
+              "meanQLIKE": 0.3826774036000024,
+              "medianForecastQLIKE": 0.1579587030962144,
+              "medianDateQLIKE": 0.25927523983865064,
+              "worstDateCount": 16,
+              "worstDateFraction": 0.010596026490066225,
+              "worstDateShare": 0.12792784402127247,
+              "excluding2020MeanQLIKE": 0.3287070625942664,
+              "excluding2020Dates": 1257,
+              "worstDates": [
+                {
+                  "date": "2020-02-20",
+                  "meanQLIKE": 10.039900939252833
+                },
+                {
+                  "date": "2020-02-21",
+                  "meanQLIKE": 7.878486746744806
+                },
+                {
+                  "date": "2020-02-24",
+                  "meanQLIKE": 6.589494488354525
+                },
+                {
+                  "date": "2020-03-05",
+                  "meanQLIKE": 5.494538292257935
+                },
+                {
+                  "date": "2020-02-26",
+                  "meanQLIKE": 4.953084947449167
+                },
+                {
+                  "date": "2020-03-06",
+                  "meanQLIKE": 4.837117142256571
+                },
+                {
+                  "date": "2020-03-10",
+                  "meanQLIKE": 4.3871314833398465
+                },
+                {
+                  "date": "2020-02-19",
+                  "meanQLIKE": 3.9334866260594827
+                },
+                {
+                  "date": "2020-03-09",
+                  "meanQLIKE": 3.624190941695628
+                },
+                {
+                  "date": "2020-02-18",
+                  "meanQLIKE": 3.579917066068728
+                },
+                {
+                  "date": "2020-06-04",
+                  "meanQLIKE": 3.4006315122891997
+                },
+                {
+                  "date": "2020-02-25",
+                  "meanQLIKE": 3.335577257164265
+                },
+                {
+                  "date": "2020-03-04",
+                  "meanQLIKE": 3.0488041464367797
+                },
+                {
+                  "date": "2020-03-03",
+                  "meanQLIKE": 3.0309608596086695
+                },
+                {
+                  "date": "2020-03-02",
+                  "meanQLIKE": 2.95755032200522
+                },
+                {
+                  "date": "2020-03-11",
+                  "meanQLIKE": 2.8313209783083675
+                }
+              ]
+            }
+          },
+          {
+            "task": "drawdown",
+            "model": "base_rate",
+            "issuedRows": 13590,
+            "scoredRows": 13590,
+            "dates": 1510,
+            "metric": "Brier",
+            "loss": 0.15461431827036656,
+            "logLoss": 0.4851627147222265,
+            "calibration": [
+              {
+                "low": 0.0,
+                "rows": 1575,
+                "predicted": 0.08026084879182703,
+                "observed": 0.09015873015873016
+              },
+              {
+                "low": 0.1,
+                "rows": 7529,
+                "predicted": 0.14268997002377234,
+                "observed": 0.17904104130694648
+              },
+              {
+                "low": 0.2,
+                "rows": 3669,
+                "predicted": 0.24643465323387828,
+                "observed": 0.24856909239574815
+              },
+              {
+                "low": 0.30000000000000004,
+                "rows": 817,
+                "predicted": 0.36554825103676564,
+                "observed": 0.32068543451652387
+              }
+            ]
+          },
+          {
+            "task": "drawdown",
+            "model": "volatility_only",
+            "issuedRows": 13590,
+            "scoredRows": 13590,
+            "dates": 1510,
+            "metric": "Brier",
+            "loss": 0.15653741175176575,
+            "logLoss": 0.4991404867183183,
+            "calibration": [
+              {
+                "low": 0.0,
+                "rows": 4004,
+                "predicted": 0.05309312595681023,
+                "observed": 0.13161838161838163
+              },
+              {
+                "low": 0.1,
+                "rows": 4000,
+                "predicted": 0.14918380276641044,
+                "observed": 0.1605
+              },
+              {
+                "low": 0.2,
+                "rows": 2266,
+                "predicted": 0.24510234946946005,
+                "observed": 0.19461606354810237
+              },
+              {
+                "low": 0.30000000000000004,
+                "rows": 1461,
+                "predicted": 0.34643918319066636,
+                "observed": 0.2135523613963039
+              },
+              {
+                "low": 0.4,
+                "rows": 704,
+                "predicted": 0.4441935401969542,
+                "observed": 0.2784090909090909
+              },
+              {
+                "low": 0.5,
+                "rows": 468,
+                "predicted": 0.5495708761591739,
+                "observed": 0.4017094017094017
+              },
+              {
+                "low": 0.6000000000000001,
+                "rows": 500,
+                "predicted": 0.6457872498858793,
+                "observed": 0.518
+              },
+              {
+                "low": 0.7000000000000001,
+                "rows": 63,
+                "predicted": 0.7400664342460269,
+                "observed": 0.5079365079365079
+              },
+              {
+                "low": 0.8,
+                "rows": 88,
+                "predicted": 0.8552348479251841,
+                "observed": 0.5681818181818182
+              },
+              {
+                "low": 0.9,
+                "rows": 36,
+                "predicted": 0.9191178633500814,
+                "observed": 0.4722222222222222
+              }
+            ]
+          }
+        ],
+        "comparisons": [
+          {
+            "task": "variance",
+            "candidate": "har_daily",
+            "baseline": "ewma",
+            "pairedRows": 13590,
+            "candidateRows": 13590,
+            "baselineRows": 13590,
+            "gain": {
+              "mean": -0.03329483756233819,
+              "dates": 1510,
+              "calendarSessions": 1510,
+              "low": -0.08947278714419375,
+              "high": 0.003152561338984699,
+              "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+            }
+          },
+          {
+            "task": "variance",
+            "candidate": "garch11",
+            "baseline": "ewma",
+            "pairedRows": 13590,
+            "candidateRows": 13590,
+            "baselineRows": 13590,
+            "gain": {
+              "mean": 0.03101937567977261,
+              "dates": 1510,
+              "calendarSessions": 1510,
+              "low": 0.000565628016703063,
+              "high": 0.06744483876922314,
+              "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+            }
+          },
+          {
+            "task": "drawdown",
+            "candidate": "volatility_only",
+            "baseline": "base_rate",
+            "pairedRows": 13590,
+            "candidateRows": 13590,
+            "baselineRows": 13590,
+            "gain": {
+              "mean": -0.0019230934813991869,
+              "dates": 1510,
+              "calendarSessions": 1510,
+              "low": -0.011102008328059536,
+              "high": 0.007849712155373894,
+              "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
+            }
+          }
+        ],
+        "expectedRows": 13590
+      }
+    }
+  },
+  "failedFitComponents": 0,
+  "archivePath": "risk_archive/risk-1.0.0/research/41762675368-1/report.json"
+}

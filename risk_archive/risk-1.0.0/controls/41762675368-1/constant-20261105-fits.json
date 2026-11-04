@@ -1,0 +1,496 @@
+[
+  {
+    "ticker": "SPY",
+    "period": "2012-12",
+    "fitAsOf": "2012-12-21",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2012-06-14",
+    "calibrationStart": "2012-06-15",
+    "calibrationLastOutcome": "2012-12-21",
+    "fittingDates": 553,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.03344508793626985,
+        "alpha": 0.017416738427274436,
+        "beta": 0.9337891458947376,
+        "variance": 0.6736346614654514,
+        "lastReturn": 0.1196857609713197,
+        "asof": "2012-12-21T00:00:00",
+        "scale": 100,
+        "returnDates": 749,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.0016841982936930447,
+        "alpha": 5.00072579610662e-16,
+        "beta": 0.9976367620971416,
+        "variance": 0.771129326291457,
+        "lastReturn": 0.43810235382457374,
+        "asof": "2012-12-21T00:00:00",
+        "scale": 100,
+        "returnDates": 748,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-01",
+    "fitAsOf": "2013-01-02",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2012-06-22",
+    "calibrationStart": "2012-06-25",
+    "calibrationLastOutcome": "2013-01-02",
+    "fittingDates": 559,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.03233445305573541,
+        "alpha": 0.016499475860941627,
+        "beta": 0.9363143967538275,
+        "variance": 0.6768807088987356,
+        "lastReturn": -0.6403294432086026,
+        "asof": "2013-01-02T00:00:00",
+        "scale": 100,
+        "returnDates": 755,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.001362158481008169,
+        "alpha": 0.0,
+        "beta": 0.9979850099448165,
+        "variance": 0.7590130964807723,
+        "lastReturn": -0.6962009169562792,
+        "asof": "2013-01-02T00:00:00",
+        "scale": 100,
+        "returnDates": 754,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-02",
+    "fitAsOf": "2013-02-01",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2012-07-24",
+    "calibrationStart": "2012-07-25",
+    "calibrationLastOutcome": "2013-02-01",
+    "fittingDates": 580,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.028456997400577583,
+        "alpha": 0.01523418906257454,
+        "beta": 0.9427952662372711,
+        "variance": 0.6458015619786033,
+        "lastReturn": 0.1599117499850123,
+        "asof": "2013-02-01T00:00:00",
+        "scale": 100,
+        "returnDates": 776,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.0017161248378739112,
+        "alpha": 4.015107992225918e-08,
+        "beta": 0.9975952983206399,
+        "variance": 0.7666199611907726,
+        "lastReturn": 0.11391259440460065,
+        "asof": "2013-02-01T00:00:00",
+        "scale": 100,
+        "returnDates": 775,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-03",
+    "fitAsOf": "2013-03-01",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2012-08-20",
+    "calibrationStart": "2012-08-21",
+    "calibrationLastOutcome": "2013-03-01",
+    "fittingDates": 599,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.034848636491938305,
+        "alpha": 0.016905887446582717,
+        "beta": 0.9325447092796425,
+        "variance": 0.7580190673911467,
+        "lastReturn": -0.4555540256847469,
+        "asof": "2013-03-01T00:00:00",
+        "scale": 100,
+        "returnDates": 795,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.003405944663667278,
+        "alpha": 0.0,
+        "beta": 0.9957790132176778,
+        "variance": 0.8155659903695653,
+        "lastReturn": -0.44868466228619086,
+        "asof": "2013-03-01T00:00:00",
+        "scale": 100,
+        "returnDates": 794,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-04",
+    "fitAsOf": "2013-04-01",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2012-09-18",
+    "calibrationStart": "2012-09-19",
+    "calibrationLastOutcome": "2013-04-01",
+    "fittingDates": 619,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.03174376797116644,
+        "alpha": 0.014894550818846799,
+        "beta": 0.938509348792664,
+        "variance": 0.6567015235814285,
+        "lastReturn": 1.083574683361534,
+        "asof": "2013-04-01T00:00:00",
+        "scale": 100,
+        "returnDates": 815,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.002491561864551234,
+        "alpha": 0.0,
+        "beta": 0.9967651146220593,
+        "variance": 0.7906496956635308,
+        "lastReturn": 0.9327103585955008,
+        "asof": "2013-04-01T00:00:00",
+        "scale": 100,
+        "returnDates": 814,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-05",
+    "fitAsOf": "2013-05-01",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2012-10-18",
+    "calibrationStart": "2012-10-19",
+    "calibrationLastOutcome": "2013-05-01",
+    "fittingDates": 641,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.029961791045469185,
+        "alpha": 0.013717949560552258,
+        "beta": 0.9422021012681916,
+        "variance": 0.6736160994748279,
+        "lastReturn": -1.0451731984142973,
+        "asof": "2013-05-01T00:00:00",
+        "scale": 100,
+        "returnDates": 837,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.002527011176085595,
+        "alpha": 1.856486328517961e-16,
+        "beta": 0.9967258046485411,
+        "variance": 0.7901045807158742,
+        "lastReturn": -1.5491174555664786,
+        "asof": "2013-05-01T00:00:00",
+        "scale": 100,
+        "returnDates": 836,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-06",
+    "fitAsOf": "2013-06-03",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2012-11-21",
+    "calibrationStart": "2012-11-23",
+    "calibrationLastOutcome": "2013-06-03",
+    "fittingDates": 663,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.0015818914907661972,
+        "alpha": 0.0,
+        "beta": 0.9972022146344023,
+        "variance": 0.5938579108151854,
+        "lastReturn": -1.070775142896072,
+        "asof": "2013-06-03T00:00:00",
+        "scale": 100,
+        "returnDates": 859,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.0029175621030625145,
+        "alpha": 0.0,
+        "beta": 0.9963005090581735,
+        "variance": 0.7997494517782193,
+        "lastReturn": -1.1443449169108364,
+        "asof": "2013-06-03T00:00:00",
+        "scale": 100,
+        "returnDates": 858,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-07",
+    "fitAsOf": "2013-07-01",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2012-12-20",
+    "calibrationStart": "2012-12-21",
+    "calibrationLastOutcome": "2013-07-01",
+    "fittingDates": 683,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.02824537882562023,
+        "alpha": 0.012285732656444996,
+        "beta": 0.9463705876846225,
+        "variance": 0.7194398888506388,
+        "lastReturn": 0.6772696587709632,
+        "asof": "2013-07-01T00:00:00",
+        "scale": 100,
+        "returnDates": 879,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.11403196874761455,
+        "alpha": 0.015463239761898796,
+        "beta": 0.8550905519932644,
+        "variance": 0.9227614043230193,
+        "lastReturn": 0.17982014539765773,
+        "asof": "2013-07-01T00:00:00",
+        "scale": 100,
+        "returnDates": 878,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-08",
+    "fitAsOf": "2013-08-01",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2013-01-24",
+    "calibrationStart": "2013-01-25",
+    "calibrationLastOutcome": "2013-08-01",
+    "fittingDates": 705,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.0018366791165902027,
+        "alpha": 0.0,
+        "beta": 0.9968597455740688,
+        "variance": 0.6022967965034532,
+        "lastReturn": 0.9078615404326014,
+        "asof": "2013-08-01T00:00:00",
+        "scale": 100,
+        "returnDates": 901,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.12085708798568681,
+        "alpha": 0.014402898036881346,
+        "beta": 0.8479330804745926,
+        "variance": 0.8746848940430162,
+        "lastReturn": 1.347884411416968,
+        "asof": "2013-08-01T00:00:00",
+        "scale": 100,
+        "returnDates": 900,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-09",
+    "fitAsOf": "2013-09-03",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2013-02-26",
+    "calibrationStart": "2013-02-27",
+    "calibrationLastOutcome": "2013-09-03",
+    "fittingDates": 727,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.0019750232517765395,
+        "alpha": 1.3355316542678532e-09,
+        "beta": 0.9966733039732424,
+        "variance": 0.606956454543444,
+        "lastReturn": -0.047859982721277367,
+        "asof": "2013-09-03T00:00:00",
+        "scale": 100,
+        "returnDates": 923,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.11677076629693112,
+        "alpha": 0.014329359886432134,
+        "beta": 0.8518274135890271,
+        "variance": 0.8721787983004587,
+        "lastReturn": -0.5012489740012847,
+        "asof": "2013-09-03T00:00:00",
+        "scale": 100,
+        "returnDates": 922,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-10",
+    "fitAsOf": "2013-10-01",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2013-03-26",
+    "calibrationStart": "2013-03-27",
+    "calibrationLastOutcome": "2013-10-01",
+    "fittingDates": 747,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.03501790025936325,
+        "alpha": 0.015711552976301467,
+        "beta": 0.9338517335917029,
+        "variance": 0.7468328105846642,
+        "lastReturn": -2.5062733094933547,
+        "asof": "2013-10-01T00:00:00",
+        "scale": 100,
+        "returnDates": 943,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.1290213070546621,
+        "alpha": 0.01574664148064911,
+        "beta": 0.8380836116854581,
+        "variance": 0.8898992754165382,
+        "lastReturn": -3.1896096022373768,
+        "asof": "2013-10-01T00:00:00",
+        "scale": 100,
+        "returnDates": 942,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-11",
+    "fitAsOf": "2013-11-01",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2013-04-29",
+    "calibrationStart": "2013-04-30",
+    "calibrationLastOutcome": "2013-11-01",
+    "fittingDates": 770,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.028322181339372216,
+        "alpha": 0.011177224980898163,
+        "beta": 0.9476874268196366,
+        "variance": 0.7122071363459916,
+        "lastReturn": -0.47462031974924496,
+        "asof": "2013-11-01T00:00:00",
+        "scale": 100,
+        "returnDates": 966,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.11392529094739282,
+        "alpha": 0.010182583437586469,
+        "beta": 0.8600351519201613,
+        "variance": 0.8709997027231308,
+        "lastReturn": -0.5372704414265483,
+        "asof": "2013-11-01T00:00:00",
+        "scale": 100,
+        "returnDates": 965,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  },
+  {
+    "ticker": "SPY",
+    "period": "2013-12",
+    "fitAsOf": "2013-12-02",
+    "fitStart": "2010-03-31",
+    "fitLastOutcome": "2013-05-28",
+    "calibrationStart": "2013-05-29",
+    "calibrationLastOutcome": "2013-12-02",
+    "fittingDates": 790,
+    "calibrationDates": 126,
+    "errors": {},
+    "garch": {
+      "intradayReturn": {
+        "omega": 0.0330193846867851,
+        "alpha": 0.01289962631873097,
+        "beta": 0.9389125772615876,
+        "variance": 0.6590515282744617,
+        "lastReturn": -0.2676289653393269,
+        "asof": "2013-12-02T00:00:00",
+        "scale": 100,
+        "returnDates": 986,
+        "firstReturnDate": "2010-01-04",
+        "convergenceFlag": 0
+      },
+      "closeReturn": {
+        "omega": 0.11617380264826029,
+        "alpha": 0.011872706895263097,
+        "beta": 0.8550364999117924,
+        "variance": 0.8395157711150922,
+        "lastReturn": -0.11670987533888386,
+        "asof": "2013-12-02T00:00:00",
+        "scale": 100,
+        "returnDates": 985,
+        "firstReturnDate": "2010-01-05",
+        "convergenceFlag": 0
+      }
+    }
+  }
+]

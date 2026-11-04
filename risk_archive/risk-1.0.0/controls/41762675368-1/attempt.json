@@ -1,0 +1,120 @@
+{
+  "startedAt": "2026-11-04T02:45:10.802033+00:00",
+  "mode": "controls",
+  "registry": {
+    "experiment": "risk-1.0.0",
+    "mandate": "SPY and sector risk benchmarks; independent of research-2.0.0 direction",
+    "assets": {
+      "SPY": "S&P 500",
+      "XLB": "Materials",
+      "XLE": "Energy",
+      "XLF": "Financials",
+      "XLI": "Industrials",
+      "XLK": "Technology",
+      "XLP": "Consumer staples",
+      "XLU": "Utilities",
+      "XLV": "Health care",
+      "XLY": "Consumer discretionary"
+    },
+    "historyStart": "2010-01-01",
+    "historyInput": "archive/inputs/2026-11-03-research-8c99edf48ff7d750.csv.gz",
+    "historyCsvSha256": "8c99edf48ff7d75087e7a1e3feba91d3d6343925b5a024e885e20ab7b039f148",
+    "outerStart": "2019-01-01",
+    "outerEnd": "2024-12-31",
+    "historicalEvidence": "Registered development benchmark on already observed history; no fresh historical holdout claim",
+    "horizon": 5,
+    "entry": "next NYSE session adjusted open",
+    "exit": "fifth NYSE session adjusted close",
+    "varianceTarget": "mean of squared log first open-to-close leg and four subsequent close-to-close legs",
+    "drawdownTarget": "maximum peak-to-trough decline along entry price and five subsequent daily closes",
+    "drawdownThreshold": 0.03,
+    "varianceFloor": 1e-12,
+    "trainingYears": 5,
+    "minimumFitDates": 504,
+    "calibrationSessions": 126,
+    "refitPolicy": "calendar-month; actual first eligible publication in the launch month",
+    "ewmaAlpha": 0.06,
+    "ewmaMinimumSessions": 60,
+    "harLags": [
+      1,
+      5,
+      22
+    ],
+    "harEstimator": "per-asset OLS log five-session target on log daily squared-return means; separate smearing calibration",
+    "garch": {
+      "package": "arch==8.0.0",
+      "mean": "Zero",
+      "vol": "GARCH",
+      "p": 1,
+      "q": 1,
+      "dist": "normal",
+      "returnScale": 100,
+      "maxIterations": 300,
+      "components": "separate intraday and close-to-close fits; first intraday forecast plus close-to-close horizons 2 through 5"
+    },
+    "drawdownC": 0.1,
+    "calibrationC": 0.2,
+    "drawdownFeatures": [
+      "logEwmaVariance"
+    ],
+    "varianceModels": [
+      "ewma",
+      "har_daily",
+      "garch11"
+    ],
+    "drawdownModels": [
+      "base_rate",
+      "volatility_only"
+    ],
+    "primaryComparisons": [
+      "har_daily versus ewma",
+      "garch11 versus ewma",
+      "volatility_only versus base_rate"
+    ],
+    "scoreGroups": [
+      "SPY",
+      "nine sectors equally weighted within each date"
+    ],
+    "bootstrapBlockSessions": 20,
+    "bootstrapReplications": 1500,
+    "seed": 20261104,
+    "controls": {
+      "seeds": [
+        20261104,
+        20261105,
+        20261106
+      ],
+      "scenarios": [
+        "constant variance",
+        "persistent two-state variance"
+      ],
+      "sessions": 1000,
+      "evaluationSessions": 252,
+      "lowIntradaySigma": 0.005,
+      "highIntradaySigma": 0.025,
+      "constantIntradaySigma": 0.008,
+      "overnightSigmaFraction": 0.5,
+      "switchProbability": 0.02
+    },
+    "macroUse": "Archived dated context only; no macro inputs in these benchmark model forecasts",
+    "missingness": "Keep exchange-session slots; stale or incomplete model inputs abstain. GARCH nonconvergence abstains for that model and month.",
+    "promotion": "No automatic winner, ensemble, trading policy or replacement of research-2.0.0. Future model changes require a new version and independent prospective evidence."
+  },
+  "provenance": {
+    "codeCommit": "3c76f435c1dda2b8f6a80cb7bdc92a11bf1cc59a",
+    "algorithmSha256": "81814c6d500f450d7bdb70247ceccc57b3b31cc5dfbb6c9071cb024e161dda94",
+    "registrySha256": "3e3cd3ae6f0ccdecfa7c6212a6b4980905e2b51f77d25ceb01ebd77837c3d504",
+    "python": "3.11.17",
+    "packages": {
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.6.1",
+      "arch": "8.0.0",
+      "statsmodels": "0.14.5",
+      "joblib": "1.5.2",
+      "yfinance": "0.2.66",
+      "pandas-market-calendars": "5.1.1"
+    }
+  }
+}
