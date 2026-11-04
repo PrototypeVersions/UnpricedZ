@@ -1,0 +1,87 @@
+name: Recover archived program artifact
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Completed registered-program run whose artifact must be recovered'
+        required: true
+        default: '41757845804'
+        type: string
+      attempt:
+        description: 'Run attempt'
+        required: true
+        default: '1'
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: unpricedz-research-program
+  cancel-in-progress: false
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      RECOVER_RUN: ${{ inputs.run_id }}
+      RECOVER_ATTEMPT: ${{ inputs.attempt }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Validate archive identifier
+        run: |
+          python - <<'PY'
+          import os
+          assert os.environ['RECOVER_RUN'].isdigit()
+          assert os.environ['RECOVER_ATTEMPT'].isdigit()
+          PY
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.run_id }}
+          name: program-${{ inputs.run_id }}-${{ inputs.attempt }}
+          path: ${{ runner.temp }}/recovered-program
+      - name: Restore only the immutable attempt and its clean report
+        run: |
+          python - <<'PY'
+          import json, os, shutil
+          from pathlib import Path
+          run = os.environ['RECOVER_RUN'] + '-' + os.environ['RECOVER_ATTEMPT']
+          relative = Path('archive/program/program-0.1.0') / run
+          source = Path(os.environ['RUNNER_TEMP']) / 'recovered-program' / relative
+          report = json.loads((source / 'report.json').read_text())
+          assert report['runId'] == run and report['program'] == 'program-0.1.0'
+          files = sorted(source.rglob('*'))
+          for item in files:
+              if item.is_symlink():
+                  raise ValueError('Symlink in research artifact')
+              if not item.is_file():
+                  continue
+              target = relative / item.relative_to(source)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              if target.exists():
+                  if target.read_bytes() != item.read_bytes():
+                      raise ValueError('Existing immutable artifact differs: ' + str(target))
+              else:
+                  shutil.copyfile(item, target)
+          current = Path('site/data/program.json')
+          old = json.loads(current.read_text()) if current.exists() else {}
+          if report['generatedAt'] >= old.get('generatedAt', ''):
+              shutil.copyfile(source / 'report.json', current)
+          print('Recovered immutable attempt', run, 'with status', report['status'])
+          PY
+      - name: Commit recovered evidence
+        run: |
+          git config user.name "unpricedz-research"
+          git config user.email "actions@users.noreply.github.com"
+          git add "archive/program/program-0.1.0/$RECOVER_RUN-$RECOVER_ATTEMPT" site/data/program.json
+          if ! git diff --cached --quiet; then
+            git commit -m "research: recover immutable program attempt $RECOVER_RUN-$RECOVER_ATTEMPT"
+            git push origin HEAD:main
+          fi
