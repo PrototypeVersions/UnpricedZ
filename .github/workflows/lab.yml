@@ -27,13 +27,16 @@ permissions:
   id-token: write
 
 concurrency:
-  group: unpricedz-data-writer
+  group: unpricedz-publication
   cancel-in-progress: false
 
 jobs:
   laboratory:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
@@ -41,6 +44,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # Retries must include forecasts archived by a previous attempt.
+          ref: main
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
@@ -107,3 +112,4 @@ jobs:
       - name: Deploy public site
         if: always()
         uses: actions/deploy-pages@v4
+        id: deploy

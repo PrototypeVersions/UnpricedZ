@@ -13,3 +13,9 @@
 - Added integrity tests for leakage, session indexing, missingness, publication windows and record immutability.
 
 Subsequent corrections and tested specifications must be appended here.
+
+## 2026-11-04 — Publication setup
+
+- Enabled GitHub Pages with Actions after the initial calculation completed successfully but deployment lacked repository setup.
+- Serialized site and data publication through one concurrency group. Both workflows check out current main so a retry retains records already committed by an earlier attempt.
+- Attached daily deployment to the github-pages environment. Research models, thresholds, first results and live snapshots are unchanged.
