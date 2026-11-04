@@ -36,3 +36,7 @@ Subsequent corrections and tested specifications must be appended here.
 - Retain the HTTP status and provider's JSON error explanation with credentials redacted;
   omit arbitrary response bodies and credential-bearing request URLs. Added a regression test
   for reflected secrets and unexpected HTML errors. No research specification was changed.
+- The provider's HTTP 400 identified the cause: the UTC runner requested November 4 while
+  FRED's server still considered today November 3. The adapter now lets FRED supply its
+  default real-time end on the first request, then pins that returned date across all pages
+  and series. A regression test covers the overnight UTC boundary and pagination.

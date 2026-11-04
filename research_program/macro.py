@@ -28,7 +28,7 @@ def http_failure(exc, key, series):
         pass
     if key:
         detail = re.sub(re.escape(key), "[redacted]", detail, flags=re.IGNORECASE)
-    detail = re.sub(r"(?i)(api_key[= :]+)[^&\s\"'<>]+", r"\1[redacted]", detail)
+    detail = re.sub(r"(?i)(api_key\s*[=:]\s*)[^&\s\"'<>]+", r"\1[redacted]", detail)
     detail = " ".join(detail.split())[:500]
     return f"ALFRED request failed for {series}: HTTP {exc.code}" + (f" — {detail}" if detail else "")
 
@@ -39,13 +39,18 @@ def download_vintages(spec, observation_start="2008-01-01"):
         raise MacroUnavailable("FRED_API_KEY repository secret is absent; macro experiment blocked.")
     retrieved = datetime.now(timezone.utc).isoformat()
     result = {"retrievedAt": retrieved, "provider": spec["provider"], "series": {}}
+    server_end = None
     for series in spec["series"]:
         rows, offset = [], 0
         while True:
             params = {"api_key": key, "file_type": "json", "series_id": series,
-                      "realtime_start": "1776-07-04", "realtime_end": retrieved[:10],
+                      "realtime_start": "1776-07-04",
                       "observation_start": observation_start, "output_type": 1,
                       "limit": 100000, "offset": offset, "sort_order": "asc"}
+            # UTC can already be tomorrow relative to FRED. Let its server choose
+            # today's date once, then freeze that boundary across pages/series.
+            if server_end is not None:
+                params["realtime_end"] = server_end
             try:
                 with urlopen("https://api.stlouisfed.org/fred/series/observations?" + urlencode(params), timeout=90) as response:
                     payload = json.load(response)
@@ -54,6 +59,14 @@ def download_vintages(spec, observation_start="2008-01-01"):
             except (URLError, TimeoutError) as exc:
                 # Never log a request URL containing the API key.
                 raise MacroUnavailable(f"ALFRED request failed for {series}: {type(exc).__name__}") from None
+            reported_end = payload.get("realtime_end")
+            if not isinstance(reported_end, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", reported_end):
+                raise MacroUnavailable(f"ALFRED omitted a valid real-time boundary for {series}")
+            if server_end is None:
+                server_end = reported_end
+                result["realtimeEnd"] = server_end
+            elif reported_end != server_end:
+                raise MacroUnavailable(f"ALFRED changed the requested real-time boundary for {series}")
             batch = payload.get("observations", [])
             if not batch:
                 if not rows:

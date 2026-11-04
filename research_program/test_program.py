@@ -162,3 +162,36 @@ def test_api_rejections_explain_failure_without_exposing_credentials():
     exc = HTTPError(f"https://example.test/?api_key={key}", 403, "Forbidden", {},
                     BytesIO(f"<html>{key}</html>".encode()))
     assert http_failure(exc, key, "DGS10") == "ALFRED request failed for DGS10: HTTP 403"
+
+
+def test_api_date_comes_from_server_and_stays_fixed_across_pages(monkeypatch):
+    from datetime import datetime, timezone
+    from io import BytesIO
+    from urllib.parse import parse_qs, urlparse
+    import research_program.macro as macro_module
+
+    class TomorrowUTC:
+        @classmethod
+        def now(cls, tz):
+            return datetime(2026, 11, 4, 1, 0, tzinfo=timezone.utc)
+
+    calls = []
+
+    def respond(url, timeout):
+        query = parse_qs(urlparse(url).query)
+        if not calls:
+            assert "realtime_end" not in query
+        else:
+            assert query["realtime_end"] == ["2026-11-03"]
+        calls.append(query)
+        return BytesIO(json.dumps({"realtime_end": "2026-11-03", "count": 2,
+            "observations": [{"date": "2026-11-02", "realtime_start": "2026-11-03", "value": "4"}]}).encode())
+
+    monkeypatch.setenv("FRED_API_KEY", "a" * 32)
+    monkeypatch.setattr(macro_module, "datetime", TomorrowUTC)
+    monkeypatch.setattr(macro_module, "urlopen", respond)
+    result = download_vintages({"keyEnvironment": "FRED_API_KEY", "provider": "test",
+                               "series": {"DGS10": 10, "T10Y2Y": 10}})
+    assert len(calls) == 4  # Two pages of each series, same server date throughout.
+    assert result["retrievedAt"].startswith("2026-11-04")
+    assert result["realtimeEnd"] == "2026-11-03"
