@@ -8,6 +8,8 @@ Read the [first evaluation and launch checks](docs/FIRST_REVIEW.md). The initial
 
 The [registered upgrade program](docs/RESEARCH_PROGRAM.md) adds isolated macro-vintage, nested-selection, refit-cadence and frozen pretrained comparisons. It preserves the official live experiment. See the [two-lab strategy](docs/MULTI_LAB_STRATEGY.md) and [read-only cross-review brief](docs/CROSS_REVIEW_BRIEF.md) for the proposed UnpricedHub comparison layer.
 
+The [first upgrade-program results](docs/PROGRAM_REVIEW_2026-11-04.md) are available: 24 tests passed; return-direction improvement is unproven; drawdown merits a stronger-baseline comparison. Macro data awaits credential verification.
+
 This is a new, independent experiment. [The original UNPRICED V1](https://github.com/PrototypeVersions/Unpriced) is unchanged. Its forecasts and returns do not belong to this version.
 
 ## What works
