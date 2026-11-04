@@ -1,10 +1,10 @@
 {
   "program": "program-0.1.0",
-  "runId": "41757845804-1",
-  "generatedAt": "2026-11-04T02:02:24.014846+00:00",
+  "runId": "41759065718-1",
+  "generatedAt": "2026-11-04T02:11:58.372400+00:00",
   "evidence": "Exploratory development. 2025 confirmation and 2026 results have already been inspected; neither is a new untouched test.",
   "registrySha256": "dbf1ee861e0ac27a50a440c6ba67ed86e9e14d186a63b71e7e476854fa0661cf",
-  "codeCommit": "b45e55807488bc79907c2ffc1d328b43c381d053",
+  "codeCommit": "1a832132d1b84170c5ff41b223d7e98ffd9e1f52",
   "input": {
     "path": "archive/inputs/2026-11-03-research-8c99edf48ff7d750.csv.gz",
     "csvSha256": "8c99edf48ff7d75087e7a1e3feba91d3d6343925b5a024e885e20ab7b039f148"
@@ -18,58 +18,58 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "Brier",
-      "modelLoss": 0.2509581047295573,
+      "modelLoss": 0.2509581047295576,
       "baselineLoss": 0.24999104903946534,
       "gain": {
-        "mean": -0.0009670556900919629,
+        "mean": -0.0009670556900922466,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.0026968108111943396,
-        "high": 0.0007348406748169651,
+        "low": -0.002696810811194346,
+        "high": 0.0007348406748170044,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.6951310737479086,
+      "logLoss": 0.6951310737479093,
       "calibration": [
         {
           "low": 0.30000000000000004,
           "rows": 126,
-          "predicted": 0.3792401736806564,
+          "predicted": 0.37924017368064605,
           "observed": 0.5396825396825397
         },
         {
           "low": 0.4,
           "rows": 8437,
-          "predicted": 0.46727325809227604,
+          "predicted": 0.4672732580922733,
           "observed": 0.47350954130615147
         },
         {
           "low": 0.5,
           "rows": 4855,
-          "predicted": 0.5284745353151306,
+          "predicted": 0.5284745353151299,
           "observed": 0.509783728115345
         },
         {
           "low": 0.6000000000000001,
           "rows": 140,
-          "predicted": 0.6334036373071508,
+          "predicted": 0.6334036373071509,
           "observed": 0.5285714285714286
         },
         {
           "low": 0.7000000000000001,
           "rows": 30,
-          "predicted": 0.7419145415204399,
+          "predicted": 0.7419145415204398,
           "observed": 0.6
         },
         {
           "low": 0.8,
           "rows": 2,
-          "predicted": 0.8025941169476063,
+          "predicted": 0.8025941169476059,
           "observed": 1.0
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/market-M-excess.csv.gz",
-        "csvSha256": "92b6266e3f9bdb91e30613a711d930af2b3e45eb8350b4f75d7ea53e9f530270",
+        "path": "archive/program/program-0.1.0/41759065718-1/market-M-excess.csv.gz",
+        "csvSha256": "f8db52efb8902b8690e125e677675fed0f776140fad3d3cd76cca9ddad44e521",
         "rows": 13590
       }
     },
@@ -80,20 +80,20 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "QLIKE",
-      "modelLoss": 0.49280117932053175,
+      "modelLoss": 0.4928011793205318,
       "baselineLoss": 0.4136967792797753,
       "gain": {
-        "mean": -0.07910440004075643,
+        "mean": -0.07910440004075658,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.249549115473869,
-        "high": 0.015432839727774454,
+        "low": -0.24954911547386938,
+        "high": 0.015432839727774398,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "meanQuantileLoss": 0.1653141534620631,
+      "meanQuantileLoss": 0.1653141534620638,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/market-M-variance.csv.gz",
-        "csvSha256": "2631baef8e99a75e0a47adc9735150529f31e5fb6bbe53a171730fe8de563406",
+        "path": "archive/program/program-0.1.0/41759065718-1/market-M-variance.csv.gz",
+        "csvSha256": "3e9e30c71612292c04b5c562873aab5810a3b5597550f87bcd97c2acd9f6bfbf",
         "rows": 13590
       }
     },
@@ -104,70 +104,70 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "Brier",
-      "modelLoss": 0.1439782174215207,
+      "modelLoss": 0.14397821742152087,
       "baselineLoss": 0.16016505444346413,
       "gain": {
-        "mean": 0.016186837021943425,
+        "mean": 0.016186837021943234,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": 0.00475750458819915,
-        "high": 0.030646118529488127,
+        "low": 0.004757504588199447,
+        "high": 0.030646118529487506,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.46304569561107733,
+      "logLoss": 0.4630456956110767,
       "calibration": [
         {
           "low": 0.0,
           "rows": 3653,
-          "predicted": 0.06767927414338301,
+          "predicted": 0.06767927414338329,
           "observed": 0.08540925266903915
         },
         {
           "low": 0.1,
           "rows": 4308,
-          "predicted": 0.14462217619101778,
+          "predicted": 0.1446221761910182,
           "observed": 0.14182915506035282
         },
         {
           "low": 0.2,
           "rows": 2381,
-          "predicted": 0.24428813769430557,
+          "predicted": 0.2442881376943051,
           "observed": 0.22133557328853423
         },
         {
           "low": 0.30000000000000004,
           "rows": 1520,
-          "predicted": 0.347426082562037,
+          "predicted": 0.34742608256203356,
           "observed": 0.2710526315789474
         },
         {
           "low": 0.4,
           "rows": 952,
-          "predicted": 0.4442848268540207,
+          "predicted": 0.4442848268540268,
           "observed": 0.36659663865546216
         },
         {
           "low": 0.5,
           "rows": 389,
-          "predicted": 0.5392572958658184,
+          "predicted": 0.5392572958658317,
           "observed": 0.5038560411311054
         },
         {
           "low": 0.6000000000000001,
           "rows": 107,
-          "predicted": 0.6361485033832025,
+          "predicted": 0.6361485033832063,
           "observed": 0.5794392523364486
         },
         {
           "low": 0.7000000000000001,
           "rows": 59,
-          "predicted": 0.748875425719948,
+          "predicted": 0.7488754257199497,
           "observed": 0.711864406779661
         },
         {
           "low": 0.8,
           "rows": 58,
-          "predicted": 0.8520223849990443,
+          "predicted": 0.8520223849990439,
           "observed": 0.7241379310344828
         },
         {
@@ -178,8 +178,8 @@
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/market-M-drawdown.csv.gz",
-        "csvSha256": "a1ac4c36960d09aecda38f905ec04418b6c68028b97ebcd80f157ab8fd5472a1",
+        "path": "archive/program/program-0.1.0/41759065718-1/market-M-drawdown.csv.gz",
+        "csvSha256": "b422ecc29f3cfa492b65e360d0ca0a47ad1828c287a1f9d2607b5cdf7297e16c",
         "rows": 13590
       }
     },
@@ -193,11 +193,11 @@
       "modelLoss": 0.2506568288417158,
       "baselineLoss": 0.24999782934454523,
       "gain": {
-        "mean": -0.0006589994971705823,
+        "mean": -0.0006589994971705991,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.002543822280532614,
-        "high": 0.0011498464574501777,
+        "low": -0.0025438222805326174,
+        "high": 0.0011498464574501454,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
       "logLoss": 0.6945075951889335,
@@ -205,37 +205,37 @@
         {
           "low": 0.2,
           "rows": 12,
-          "predicted": 0.2814390415510799,
+          "predicted": 0.2814390415510796,
           "observed": 0.25
         },
         {
           "low": 0.30000000000000004,
           "rows": 179,
-          "predicted": 0.3743819637257845,
+          "predicted": 0.3743819637257844,
           "observed": 0.5027932960893855
         },
         {
           "low": 0.4,
           "rows": 8316,
-          "predicted": 0.464800333765082,
+          "predicted": 0.46480033376508195,
           "observed": 0.474025974025974
         },
         {
           "low": 0.5,
           "rows": 5007,
-          "predicted": 0.5302445210464513,
+          "predicted": 0.5302445210464514,
           "observed": 0.5104853205512283
         },
         {
           "low": 0.6000000000000001,
           "rows": 76,
-          "predicted": 0.624544580327991,
+          "predicted": 0.6245445803279916,
           "observed": 0.5394736842105263
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/market-Q-excess.csv.gz",
-        "csvSha256": "90f69229bc811af213212ad72389fd55c30f34785f716268b2921f6b3de7de8d",
+        "path": "archive/program/program-0.1.0/41759065718-1/market-Q-excess.csv.gz",
+        "csvSha256": "461fe669a459f8dc7e38e1bf0c1f57b044202fd7594133498a0f1f83ab504adc",
         "rows": 13590
       }
     },
@@ -249,17 +249,17 @@
       "modelLoss": 0.5011165350249759,
       "baselineLoss": 0.4136967792797753,
       "gain": {
-        "mean": -0.08741975574520057,
+        "mean": -0.08741975574520064,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.252324953543463,
-        "high": 0.0038818896006324157,
+        "low": -0.2523249535434631,
+        "high": 0.0038818896006323814,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "meanQuantileLoss": 0.16542537444393488,
+      "meanQuantileLoss": 0.16542537444393532,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/market-Q-variance.csv.gz",
-        "csvSha256": "26fc5e11c2a99d44d3b132c93b5d73f550a5c4296b5c76fcf7304b221aca5b79",
+        "path": "archive/program/program-0.1.0/41759065718-1/market-Q-variance.csv.gz",
+        "csvSha256": "a7709cd83edf718da25d10adf9633a7561a03050c01bfa2869f5d63f79f08769",
         "rows": 13590
       }
     },
@@ -270,82 +270,82 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "Brier",
-      "modelLoss": 0.14791528160088752,
+      "modelLoss": 0.14791528160088743,
       "baselineLoss": 0.1606099737843182,
       "gain": {
-        "mean": 0.012694692183430719,
+        "mean": 0.012694692183430764,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": 2.253264023792109e-05,
-        "high": 0.02746230840216365,
+        "low": 2.2532640237851068e-05,
+        "high": 0.02746230840216371,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.47209752897676455,
+      "logLoss": 0.4720975289767644,
       "calibration": [
         {
           "low": 0.0,
           "rows": 3614,
-          "predicted": 0.0674681068734217,
+          "predicted": 0.06746810687342189,
           "observed": 0.08328721638074156
         },
         {
           "low": 0.1,
           "rows": 4182,
-          "predicted": 0.14463420536390875,
+          "predicted": 0.1446342053639069,
           "observed": 0.1568627450980392
         },
         {
           "low": 0.2,
           "rows": 2451,
-          "predicted": 0.24601990415745614,
+          "predicted": 0.24601990415745642,
           "observed": 0.20195838433292534
         },
         {
           "low": 0.30000000000000004,
           "rows": 1549,
-          "predicted": 0.345082331860797,
+          "predicted": 0.3450823318607986,
           "observed": 0.24790187217559717
         },
         {
           "low": 0.4,
           "rows": 835,
-          "predicted": 0.44636898465097585,
+          "predicted": 0.44636898465097574,
           "observed": 0.4059880239520958
         },
         {
           "low": 0.5,
           "rows": 367,
-          "predicted": 0.5419055952011114,
+          "predicted": 0.5419055952011133,
           "observed": 0.4713896457765668
         },
         {
           "low": 0.6000000000000001,
           "rows": 169,
-          "predicted": 0.647445995428103,
+          "predicted": 0.6474459954281047,
           "observed": 0.4319526627218935
         },
         {
           "low": 0.7000000000000001,
           "rows": 144,
-          "predicted": 0.7489923317295618,
+          "predicted": 0.7489923317295624,
           "observed": 0.4722222222222222
         },
         {
           "low": 0.8,
           "rows": 130,
-          "predicted": 0.8481803266258124,
+          "predicted": 0.848180326625813,
           "observed": 0.6
         },
         {
           "low": 0.9,
           "rows": 149,
-          "predicted": 0.9628403034321994,
+          "predicted": 0.9628403034321984,
           "observed": 0.6510067114093959
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/market-Q-drawdown.csv.gz",
-        "csvSha256": "c98c0c2cff96b2692bae489c1d488f1a682904d3bc8dd35e4e4b979e21ec88dd",
+        "path": "archive/program/program-0.1.0/41759065718-1/market-Q-drawdown.csv.gz",
+        "csvSha256": "a9f1014a0be164958412aa2d31bfaa7669f01df9c1dd969d455e73282df262cd",
         "rows": 13590
       }
     },
@@ -356,52 +356,52 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "Brier",
-      "modelLoss": 0.25224490901537905,
-      "baselineLoss": 0.2499707685272572,
+      "modelLoss": 0.2522597985042945,
+      "baselineLoss": 0.24997118178019337,
       "gain": {
-        "mean": -0.0022741404881218624,
+        "mean": -0.002288616724101102,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.004254922112455879,
-        "high": -0.0004402597846169343,
+        "low": -0.004276144667519943,
+        "high": -0.0004395250450033244,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.69774024021676,
+      "logLoss": 0.6977722680031319,
       "calibration": [
         {
           "low": 0.30000000000000004,
-          "rows": 231,
-          "predicted": 0.3818663522649468,
-          "observed": 0.47619047619047616
+          "rows": 235,
+          "predicted": 0.3815583823520004,
+          "observed": 0.4808510638297872
         },
         {
           "low": 0.4,
-          "rows": 8199,
-          "predicted": 0.4665795328537083,
-          "observed": 0.48335162824734723
+          "rows": 8206,
+          "predicted": 0.4666388262249988,
+          "observed": 0.4828174506458689
         },
         {
           "low": 0.5,
-          "rows": 4955,
-          "predicted": 0.5286348261523383,
-          "observed": 0.5007063572149344
+          "rows": 4945,
+          "predicted": 0.5287362992747411,
+          "observed": 0.5015166835187057
         },
         {
           "low": 0.6000000000000001,
-          "rows": 188,
-          "predicted": 0.630883673274976,
-          "observed": 0.3617021276595745
+          "rows": 187,
+          "predicted": 0.6316450472639294,
+          "observed": 0.3582887700534759
         },
         {
           "low": 0.7000000000000001,
           "rows": 17,
-          "predicted": 0.7251346274428823,
+          "predicted": 0.7246902953218088,
           "observed": 0.5882352941176471
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/macro-M-excess.csv.gz",
-        "csvSha256": "a234991c9217e3e6688e486b842d6c3a00b57e149a8ad0f557def8d70631ca3b",
+        "path": "archive/program/program-0.1.0/41759065718-1/macro-M-excess.csv.gz",
+        "csvSha256": "2bbf8499bf2d7e3251f4fb3f1a5d230419d4ed344d75df4c09143d2521b6d2d3",
         "rows": 13590
       }
     },
@@ -412,20 +412,20 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "QLIKE",
-      "modelLoss": 4.877602260280566,
+      "modelLoss": 5.187255854753768,
       "baselineLoss": 0.4136967792797753,
       "gain": {
-        "mean": -4.46390548100079,
+        "mean": -4.773559075473992,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -12.490630670752564,
-        "high": -0.27394795018339574,
+        "low": -13.409691513187033,
+        "high": -0.2773889254859759,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "meanQuantileLoss": 0.08309569599629561,
+      "meanQuantileLoss": 0.08302331279930115,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/macro-M-variance.csv.gz",
-        "csvSha256": "be795344171b9f47f21d3d6a1258b45f205e4b9b106e4d1ee4db21c490c6cf2e",
+        "path": "archive/program/program-0.1.0/41759065718-1/macro-M-variance.csv.gz",
+        "csvSha256": "5f613ff57e504392a00ab67411fe7114531c7092358099212be284364334cf87",
         "rows": 13590
       }
     },
@@ -436,82 +436,82 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "Brier",
-      "modelLoss": 0.15380550329503637,
-      "baselineLoss": 0.15978039413485992,
+      "modelLoss": 0.15387924856459134,
+      "baselineLoss": 0.1597777078126784,
       "gain": {
-        "mean": 0.00597489083982353,
+        "mean": 0.0058984592480870275,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.0039005667800485495,
-        "high": 0.01624275737420633,
+        "low": -0.0039681458678693755,
+        "high": 0.016086565536659547,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.4984740269841931,
+      "logLoss": 0.49900361198809795,
       "calibration": [
         {
           "low": 0.0,
-          "rows": 3703,
-          "predicted": 0.06274590151122426,
-          "observed": 0.0955981636510937
+          "rows": 3706,
+          "predicted": 0.06275737502169339,
+          "observed": 0.0963302752293578
         },
         {
           "low": 0.1,
-          "rows": 3944,
-          "predicted": 0.14805985502301106,
-          "observed": 0.15948275862068967
+          "rows": 3936,
+          "predicted": 0.1480306324345108,
+          "observed": 0.15879065040650406
         },
         {
           "low": 0.2,
-          "rows": 2429,
-          "predicted": 0.2462615192232417,
-          "observed": 0.19102511321531496
+          "rows": 2435,
+          "predicted": 0.2461905181687373,
+          "observed": 0.19137577002053388
         },
         {
           "low": 0.30000000000000004,
-          "rows": 1393,
-          "predicted": 0.34860372884758856,
-          "observed": 0.3330940416367552
+          "rows": 1385,
+          "predicted": 0.3484149641975784,
+          "observed": 0.3328519855595668
         },
         {
           "low": 0.4,
-          "rows": 1455,
-          "predicted": 0.44574640866146015,
-          "observed": 0.3230240549828179
+          "rows": 1456,
+          "predicted": 0.4454114527986339,
+          "observed": 0.3241758241758242
         },
         {
           "low": 0.5,
-          "rows": 419,
-          "predicted": 0.537564942588191,
-          "observed": 0.4295942720763723
+          "rows": 428,
+          "predicted": 0.5376939900227078,
+          "observed": 0.42757009345794394
         },
         {
           "low": 0.6000000000000001,
-          "rows": 87,
-          "predicted": 0.6454071422470238,
-          "observed": 0.4367816091954023
+          "rows": 90,
+          "predicted": 0.649740373855205,
+          "observed": 0.4222222222222222
         },
         {
           "low": 0.7000000000000001,
-          "rows": 62,
-          "predicted": 0.7293075811248031,
-          "observed": 0.41935483870967744
+          "rows": 56,
+          "predicted": 0.7258282644703361,
+          "observed": 0.4107142857142857
         },
         {
           "low": 0.8,
-          "rows": 31,
-          "predicted": 0.8643446995397542,
-          "observed": 0.7419354838709677
+          "rows": 30,
+          "predicted": 0.8615217839981634,
+          "observed": 0.7333333333333333
         },
         {
           "low": 0.9,
-          "rows": 67,
-          "predicted": 0.9764682405612413,
-          "observed": 0.23880597014925373
+          "rows": 68,
+          "predicted": 0.9746928345808311,
+          "observed": 0.25
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/macro-M-drawdown.csv.gz",
-        "csvSha256": "ebbcfbb79dcdee6d7d92dbf82d963aec979932fb166898fa6072ac047642019a",
+        "path": "archive/program/program-0.1.0/41759065718-1/macro-M-drawdown.csv.gz",
+        "csvSha256": "856e0bd893a561e99b8b09136a45a3470b6beaa365a7c137c80445f695dbe9b6",
         "rows": 13590
       }
     },
@@ -522,82 +522,82 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "Brier",
-      "modelLoss": 0.25360774426608357,
-      "baselineLoss": 0.24998159101592513,
+      "modelLoss": 0.25363105255050555,
+      "baselineLoss": 0.24998207196974137,
       "gain": {
-        "mean": -0.003626153250158482,
+        "mean": -0.0036489805807641837,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.007940966896206514,
-        "high": -0.0006034149677417392,
+        "low": -0.007996458488461663,
+        "high": -0.0006037525291126608,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.7023624285521242,
+      "logLoss": 0.7024770461313955,
       "calibration": [
         {
           "low": 0.0,
           "rows": 36,
-          "predicted": 0.07431824800127552,
+          "predicted": 0.07282779261762934,
           "observed": 0.3055555555555556
         },
         {
           "low": 0.1,
-          "rows": 2,
-          "predicted": 0.19870956725600647,
+          "rows": 6,
+          "predicted": 0.19620057033255414,
           "observed": 1.0
         },
         {
           "low": 0.2,
-          "rows": 106,
-          "predicted": 0.24669805899842298,
-          "observed": 0.5283018867924528
+          "rows": 102,
+          "predicted": 0.24902524310842453,
+          "observed": 0.5098039215686274
         },
         {
           "low": 0.30000000000000004,
-          "rows": 504,
-          "predicted": 0.3795433208967304,
-          "observed": 0.4623015873015873
+          "rows": 505,
+          "predicted": 0.37900122998156754,
+          "observed": 0.4613861386138614
         },
         {
           "low": 0.4,
-          "rows": 7671,
-          "predicted": 0.46474779241209974,
-          "observed": 0.4865076261243645
+          "rows": 7670,
+          "predicted": 0.46473791340748155,
+          "observed": 0.4864406779661017
         },
         {
           "low": 0.5,
-          "rows": 4896,
-          "predicted": 0.5322779861596542,
-          "observed": 0.49203431372549017
+          "rows": 4897,
+          "predicted": 0.5322882748270434,
+          "observed": 0.4921380437002246
         },
         {
           "low": 0.6000000000000001,
-          "rows": 297,
-          "predicted": 0.6298342613512284,
-          "observed": 0.5353535353535354
+          "rows": 296,
+          "predicted": 0.630821978694992,
+          "observed": 0.5371621621621622
         },
         {
           "low": 0.7000000000000001,
           "rows": 6,
-          "predicted": 0.7076879284794174,
+          "predicted": 0.7074776105107606,
           "observed": 0.6666666666666666
         },
         {
           "low": 0.8,
           "rows": 36,
-          "predicted": 0.8677907395470096,
+          "predicted": 0.8721031370276848,
           "observed": 0.3888888888888889
         },
         {
           "low": 0.9,
           "rows": 36,
-          "predicted": 0.9090461853730429,
+          "predicted": 0.9108625197069462,
           "observed": 0.3333333333333333
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/macro-Q-excess.csv.gz",
-        "csvSha256": "afad6a06cecef0a8c3cbad92625793bce8c6a252e151846f92b8d54338531fe1",
+        "path": "archive/program/program-0.1.0/41759065718-1/macro-Q-excess.csv.gz",
+        "csvSha256": "5760668a42cd726fcaeed903d6f22828e9d4aefe6165ad7f5cb0994bbaf271e8",
         "rows": 13590
       }
     },
@@ -608,20 +608,20 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "QLIKE",
-      "modelLoss": 23.3837283180824,
+      "modelLoss": 25.120435227182966,
       "baselineLoss": 0.4136967792797753,
       "gain": {
-        "mean": -22.970031538802623,
+        "mean": -24.7067384479032,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -62.44834959529552,
-        "high": -0.40406482741685507,
+        "low": -67.29206216458876,
+        "high": -0.40848359695458053,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "meanQuantileLoss": 0.08087790894710825,
+      "meanQuantileLoss": 0.08077910963696006,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/macro-Q-variance.csv.gz",
-        "csvSha256": "1b267fee8535da04c380f3f0f39c28c5c67c9bb6d0564f964ecd939f2269fbe3",
+        "path": "archive/program/program-0.1.0/41759065718-1/macro-Q-variance.csv.gz",
+        "csvSha256": "9277d87664e40dbe01c35a078fe199c7b463f5f71238a83e9049cd726276f468",
         "rows": 13590
       }
     },
@@ -632,82 +632,82 @@
       "scoredRows": 13590,
       "dates": 1510,
       "metric": "Brier",
-      "modelLoss": 0.15473110228290624,
-      "baselineLoss": 0.16018543769360288,
+      "modelLoss": 0.15475810274159732,
+      "baselineLoss": 0.16018279100029698,
       "gain": {
-        "mean": 0.0054543354106966705,
+        "mean": 0.005424688258699667,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.007287974041282948,
-        "high": 0.019564857835287375,
+        "low": -0.007325033581173882,
+        "high": 0.019557773462862953,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.5574589530531215,
+      "logLoss": 0.5587479775473317,
       "calibration": [
         {
           "low": 0.0,
           "rows": 3776,
-          "predicted": 0.06036763476800404,
+          "predicted": 0.0604276066006378,
           "observed": 0.10858050847457627
         },
         {
           "low": 0.1,
-          "rows": 3534,
-          "predicted": 0.14849738888411282,
-          "observed": 0.14459535936615733
+          "rows": 3530,
+          "predicted": 0.14854278869405163,
+          "observed": 0.14390934844192635
         },
         {
           "low": 0.2,
-          "rows": 2264,
-          "predicted": 0.24501648266289744,
-          "observed": 0.1877208480565371
+          "rows": 2266,
+          "predicted": 0.2450488818916152,
+          "observed": 0.1884377758164166
         },
         {
           "low": 0.30000000000000004,
-          "rows": 1643,
-          "predicted": 0.3395741736445909,
-          "observed": 0.26232501521606816
+          "rows": 1640,
+          "predicted": 0.33960279356470285,
+          "observed": 0.26158536585365855
         },
         {
           "low": 0.4,
-          "rows": 1536,
-          "predicted": 0.45112811279485343,
-          "observed": 0.3059895833333333
+          "rows": 1537,
+          "predicted": 0.4509988822897045,
+          "observed": 0.3077423552374756
         },
         {
           "low": 0.5,
           "rows": 482,
-          "predicted": 0.5397950587101255,
-          "observed": 0.4605809128630705
+          "predicted": 0.5396387967327464,
+          "observed": 0.45643153526970953
         },
         {
           "low": 0.6000000000000001,
-          "rows": 77,
-          "predicted": 0.6354175706108945,
-          "observed": 0.45454545454545453
+          "rows": 78,
+          "predicted": 0.6346919482320805,
+          "observed": 0.47435897435897434
         },
         {
           "low": 0.7000000000000001,
-          "rows": 37,
-          "predicted": 0.7466107212479284,
-          "observed": 0.5945945945945946
+          "rows": 38,
+          "predicted": 0.7453011812457506,
+          "observed": 0.5526315789473685
         },
         {
           "low": 0.8,
-          "rows": 45,
-          "predicted": 0.8642129786376548,
-          "observed": 0.7333333333333333
+          "rows": 46,
+          "predicted": 0.8581635958758532,
+          "observed": 0.717391304347826
         },
         {
           "low": 0.9,
-          "rows": 196,
-          "predicted": 0.9788837788917835,
-          "observed": 0.5357142857142857
+          "rows": 197,
+          "predicted": 0.9773694650987128,
+          "observed": 0.5380710659898477
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/macro-Q-drawdown.csv.gz",
-        "csvSha256": "09b5d87842fe44b2896c28bac397fab4b1b7276e9325657c082a5249fce3ea70",
+        "path": "archive/program/program-0.1.0/41759065718-1/macro-Q-drawdown.csv.gz",
+        "csvSha256": "095409c2c181cba5d8528b3e325a7a3b086c1b567fcb2dbacd0b55500ee69dab",
         "rows": 13590
       }
     },
@@ -717,58 +717,58 @@
       "scoredRows": 648,
       "dates": 72,
       "metric": "Brier",
-      "modelLoss": 0.2529373531234338,
+      "modelLoss": 0.2529373540292989,
       "baselineLoss": 0.24956205087554753,
       "gain": {
-        "mean": -0.0033753022478862573,
+        "mean": -0.003375303153751384,
         "dates": 72,
         "calendarSessions": 1510,
-        "low": -0.01118363387182534,
-        "high": 0.004478506434358621,
+        "low": -0.011183634040967927,
+        "high": 0.004478506233974813,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.699317160128478,
+      "logLoss": 0.69931716194678,
       "calibration": [
         {
           "low": 0.2,
           "rows": 7,
-          "predicted": 0.2541195145252721,
+          "predicted": 0.25411951517249187,
           "observed": 0.5714285714285714
         },
         {
           "low": 0.30000000000000004,
           "rows": 66,
-          "predicted": 0.37172504131082723,
+          "predicted": 0.37172504165390535,
           "observed": 0.4696969696969697
         },
         {
           "low": 0.4,
           "rows": 270,
-          "predicted": 0.45842825787164365,
+          "predicted": 0.4584282588509499,
           "observed": 0.44814814814814813
         },
         {
           "low": 0.5,
           "rows": 244,
-          "predicted": 0.5420974501646784,
+          "predicted": 0.5420974491767683,
           "observed": 0.47540983606557374
         },
         {
           "low": 0.6000000000000001,
           "rows": 53,
-          "predicted": 0.6343224372782688,
+          "predicted": 0.6343224423675977,
           "observed": 0.5660377358490566
         },
         {
           "low": 0.7000000000000001,
           "rows": 8,
-          "predicted": 0.7226275797665646,
+          "predicted": 0.7226275921235304,
           "observed": 0.75
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/chronos-excess.csv.gz",
-        "csvSha256": "33bd15a263ce648e099efb11c74a2c821d79b2bf84e071bc79852bfde4493993",
+        "path": "archive/program/program-0.1.0/41759065718-1/chronos-excess.csv.gz",
+        "csvSha256": "56f0358cb07e924dc07083069ed6f885c2adb1b44ac8e590e8b3246eb621040e",
         "rows": 648
       }
     },
@@ -778,20 +778,20 @@
       "scoredRows": 648,
       "dates": 72,
       "metric": "QLIKE",
-      "modelLoss": 0.3986712294743591,
+      "modelLoss": 0.39867120755609714,
       "baselineLoss": 0.41522562326718,
       "gain": {
-        "mean": 0.016554393792820834,
+        "mean": 0.016554415711082848,
         "dates": 72,
         "calendarSessions": 1510,
-        "low": -0.027199164965743334,
-        "high": 0.0596618375539232,
+        "low": -0.027199160965171488,
+        "high": 0.05966187255994457,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "meanQuantileLoss": 5.4907317802017613e-05,
+      "meanQuantileLoss": 5.49073170476415e-05,
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/chronos-variance.csv.gz",
-        "csvSha256": "778024d6d64194df6c78979c58c46f630b9f828c68fa8c16acc9a66569e3bc87",
+        "path": "archive/program/program-0.1.0/41759065718-1/chronos-variance.csv.gz",
+        "csvSha256": "d37754d78e87ca2c5d09b0b7567512009c9ccd98faded13c4217811692ed274d",
         "rows": 648
       }
     },
@@ -801,17 +801,17 @@
       "scoredRows": 648,
       "dates": 72,
       "metric": "Brier",
-      "modelLoss": 0.1359079669176052,
+      "modelLoss": 0.13590796402295535,
       "baselineLoss": 0.1379569750101752,
       "gain": {
-        "mean": 0.002049008092569989,
+        "mean": 0.002049010987219879,
         "dates": 72,
         "calendarSessions": 1510,
-        "low": -0.021552176300994656,
-        "high": 0.026305119871301165,
+        "low": -0.02155217355410512,
+        "high": 0.02630512263970692,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       },
-      "logLoss": 0.4349867407211273,
+      "logLoss": 0.43498673347795536,
       "calibration": [
         {
           "low": 0.0,
@@ -822,55 +822,55 @@
         {
           "low": 0.1,
           "rows": 167,
-          "predicted": 0.15658369091555177,
+          "predicted": 0.15658369081868648,
           "observed": 0.08383233532934131
         },
         {
           "low": 0.2,
           "rows": 111,
-          "predicted": 0.25026060864808947,
+          "predicted": 0.2502606097823235,
           "observed": 0.17117117117117117
         },
         {
           "low": 0.30000000000000004,
           "rows": 50,
-          "predicted": 0.3571072326293166,
+          "predicted": 0.357107230540317,
           "observed": 0.34
         },
         {
           "low": 0.4,
           "rows": 32,
-          "predicted": 0.4543606785087395,
+          "predicted": 0.4543606757720122,
           "observed": 0.40625
         },
         {
           "low": 0.5,
           "rows": 23,
-          "predicted": 0.5461728113112789,
+          "predicted": 0.5461728038538817,
           "observed": 0.4782608695652174
         },
         {
           "low": 0.6000000000000001,
           "rows": 14,
-          "predicted": 0.6487460146236533,
+          "predicted": 0.6487460086263787,
           "observed": 0.35714285714285715
         },
         {
           "low": 0.7000000000000001,
           "rows": 10,
-          "predicted": 0.7506916939008113,
+          "predicted": 0.7506916905720273,
           "observed": 0.1
         },
         {
           "low": 0.8,
           "rows": 2,
-          "predicted": 0.8276309008566193,
+          "predicted": 0.827630875751778,
           "observed": 0.5
         }
       ],
       "archive": {
-        "path": "archive/program/program-0.1.0/41757845804-1/chronos-drawdown.csv.gz",
-        "csvSha256": "364088333dd0eb796ce07f068abb9f3f5be470a3632c4ccf7c00999fc505cb5f",
+        "path": "archive/program/program-0.1.0/41759065718-1/chronos-drawdown.csv.gz",
+        "csvSha256": "b67386dc7846925cc0f2a5aa0a423e3be851bf409b3de25d794375695af52f9c",
         "rows": 648
       }
     }
@@ -882,11 +882,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": -0.000301275887841533,
+        "mean": -0.00030127588784179964,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.0012634466668277372,
-        "high": 0.0007355183339626969,
+        "low": -0.001263446666828383,
+        "high": 0.000735518333962419,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -896,11 +896,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": -0.0012868042858217548,
+        "mean": -0.0013016937747368583,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.0027077346409056418,
-        "high": 8.848181426011529e-05,
+        "low": -0.002734357693621668,
+        "high": 8.820339937281876e-05,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -910,11 +910,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": -0.002950915424367814,
+        "mean": -0.0029742237087897506,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.007149805727227244,
-        "high": -0.00012778821631692787,
+        "low": -0.0072050135042098715,
+        "high": -0.00013105412862149407,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -924,11 +924,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": 0.00831535570444413,
+        "mean": 0.008315355704444057,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.004923001054462312,
-        "high": 0.027825896877574387,
+        "low": -0.004923001054462389,
+        "high": 0.027825896877574273,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -938,11 +938,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": -4.384801080960034,
+        "mean": -4.694454675433236,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -12.383113740091419,
-        "high": -0.20764079125792856,
+        "low": -13.278617131778967,
+        "high": -0.21025415641064463,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -952,11 +952,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": -22.88261178305742,
+        "mean": -24.61931869215799,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -62.31262529701353,
-        "high": -0.31956051904725813,
+        "low": -67.15671413978207,
+        "high": -0.32393646903672035,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -966,11 +966,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": 0.003937064179366804,
+        "mean": 0.003937064179366569,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": 0.0007053940294747457,
-        "high": 0.008681354186914009,
+        "low": 0.0007053940294746911,
+        "high": 0.008681354186914183,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -980,11 +980,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": -0.009827285873515687,
+        "mean": -0.009901031143070489,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.019903492397008678,
-        "high": -0.0024722359911877297,
+        "low": -0.02008197017962896,
+        "high": -0.002492701718899758,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -994,11 +994,11 @@
       "secondRows": 13590,
       "pairedRows": 13590,
       "gain": {
-        "mean": -0.006815820682018716,
+        "mean": -0.006842821140709842,
         "dates": 1510,
         "calendarSessions": 1510,
-        "low": -0.013995604062695503,
-        "high": -0.0009603756733433832,
+        "low": -0.014073765429137729,
+        "high": -0.0009974145497965744,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -1008,11 +1008,11 @@
       "secondRows": 13590,
       "pairedRows": 648,
       "gain": {
-        "mean": -0.0027177183828061354,
+        "mean": -0.002717719288669727,
         "dates": 72,
         "calendarSessions": 1510,
-        "low": -0.009486308032865445,
-        "high": 0.004205464839316211,
+        "low": -0.009486309025457731,
+        "high": 0.004205464900265778,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -1022,11 +1022,11 @@
       "secondRows": 13590,
       "pairedRows": 648,
       "gain": {
-        "mean": 0.10392724944570081,
+        "mean": 0.10392727136396285,
         "dates": 72,
         "calendarSessions": 1510,
-        "low": -0.04061291644973309,
-        "high": 0.3550946722547269,
+        "low": -0.04061287563517839,
+        "high": 0.35509469575373237,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     },
@@ -1036,11 +1036,11 @@
       "secondRows": 13590,
       "pairedRows": 648,
       "gain": {
-        "mean": 0.007330261879084219,
+        "mean": 0.007330264773735555,
         "dates": 72,
         "calendarSessions": 1510,
-        "low": -0.012441698852917961,
-        "high": 0.029041566417040626,
+        "low": -0.012441695489035629,
+        "high": 0.02904156846748828,
         "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
       }
     }
@@ -1073,12 +1073,12 @@
   },
   "macro": {
     "status": "available",
-    "jsonSha256": "36101787353b6d26b371b084393b0482fa66cd03bb2e5e658a09dc1ba7cede81",
-    "inputPath": "archive/program/program-0.1.0/41757845804-1/macro-vintages.json.gz",
+    "jsonSha256": "275c4836611f6fcaeafae74c4900ff2a4a981dd7a3ffaceb329f7e1aad7fbe32",
+    "inputPath": "archive/program/program-0.1.0/41759065718-1/macro-vintages.json.gz",
     "availabilityRule": "Use from the close of the first NYSE session strictly after the vintage date; date-only vintages are not exact release timestamps.",
-    "completeDates": 3072
+    "completeDates": 3073
   },
   "interpretation": "Exploratory only; all attempts retained. No live forecasts or automatic selection/promotion.",
-  "auditPath": "archive/program/program-0.1.0/41757845804-1/selection-audit.json",
-  "archivePath": "archive/program/program-0.1.0/41757845804-1/report.json"
+  "auditPath": "archive/program/program-0.1.0/41759065718-1/selection-audit.json",
+  "archivePath": "archive/program/program-0.1.0/41759065718-1/report.json"
 }
