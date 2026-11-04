@@ -1,0 +1,3268 @@
+{
+  "status": "completed-diagnostic",
+  "generatedAt": "2026-11-04T00:27:15.293733+00:00",
+  "provenance": {
+    "codeCommit": "489d76d1b27fee65c08c3441180e71ee386b7fe2",
+    "configSha256": "d72a8cbb98bb072dd4eb8a070957bbabb44646a0b3dbd4fa59dac3d54971e598",
+    "algorithmSha256": "15e0549b70629e45c79ee2049a76a46b7b0f9aecf47eacecc279a43677a72f29",
+    "python": "3.11.17",
+    "packages": {
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.6.1",
+      "yfinance": "0.2.66",
+      "pandas-market-calendars": "5.1.1",
+      "joblib": "1.5.2"
+    }
+  },
+  "primaryModel": "logistic",
+  "comparison": "Known constant-50% directional-null oracle",
+  "sessionsPerRun": 1800,
+  "evaluationSessions": 252,
+  "groups": [
+    {
+      "strength": 0.0,
+      "name": "No directional signal",
+      "runs": 12,
+      "detections": 0,
+      "detectionRate": 0.0,
+      "rateInterval95": [
+        0.0,
+        0.2425007574992425
+      ],
+      "meanImprovement": -0.0016326021539192369
+    },
+    {
+      "strength": 0.08,
+      "name": "Weak planted signal",
+      "runs": 12,
+      "detections": 1,
+      "detectionRate": 0.08333333333333333,
+      "rateInterval95": [
+        0.014864709450773478,
+        0.35388592179859524
+      ],
+      "meanImprovement": -0.00043596068032656087
+    },
+    {
+      "strength": 0.25,
+      "name": "Moderate planted signal",
+      "runs": 12,
+      "detections": 11,
+      "detectionRate": 0.9166666666666666,
+      "rateInterval95": [
+        0.6461140782014047,
+        0.9851352905492264
+      ],
+      "meanImprovement": 0.027361398901483733
+    }
+  ],
+  "runs": [
+    {
+      "seed": 20261104,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.25195705605548036,
+      "improvement": {
+        "mean": -0.0019570560554803837,
+        "low": -0.005710556214211507,
+        "high": 0.002109542368265051,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2507283208420412,
+          "improvement": {
+            "mean": -0.0007283208420412296,
+            "low": -0.0017511078554500658,
+            "high": 0.00025947096828811276,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2496292925305928,
+          "improvement": {
+            "mean": 0.0003707074694072404,
+            "low": -0.0024284171352105537,
+            "high": 0.003074801905512955,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2532940315637357,
+          "improvement": {
+            "mean": -0.003294031563735704,
+            "low": -0.007782309718073294,
+            "high": 0.0009561563242901554,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25195705605548036,
+          "improvement": {
+            "mean": -0.0019570560554803837,
+            "low": -0.005710556214211507,
+            "high": 0.002109542368265051,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.251011418087692,
+          "improvement": {
+            "mean": -0.0010114180876920102,
+            "low": -0.006470941291332047,
+            "high": 0.003701125554050519,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261105,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.2550744147208724,
+      "improvement": {
+        "mean": -0.005074414720872411,
+        "low": -0.00966503961211292,
+        "high": -0.001635353002879481,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25054839633670445,
+          "improvement": {
+            "mean": -0.0005483963367044496,
+            "low": -0.0015873658904073443,
+            "high": 0.0005054828414214664,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2548488070529705,
+          "improvement": {
+            "mean": -0.004848807052970509,
+            "low": -0.009378794013493258,
+            "high": -0.0014454628794432949,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2507507964215276,
+          "improvement": {
+            "mean": -0.0007507964215275936,
+            "low": -0.0025795722269966064,
+            "high": 0.0012200010504357327,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2550744147208724,
+          "improvement": {
+            "mean": -0.005074414720872411,
+            "low": -0.00966503961211292,
+            "high": -0.001635353002879481,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2540487705508751,
+          "improvement": {
+            "mean": -0.004048770550875118,
+            "low": -0.00863009859104626,
+            "high": -0.0005943767753741037,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261106,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.2477639850276642,
+      "improvement": {
+        "mean": 0.0022360149723357823,
+        "low": -0.003040511750862004,
+        "high": 0.007917579224122347,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.24999599254130714,
+          "improvement": {
+            "mean": 4.0074586928634584e-06,
+            "low": -0.00034345187856678046,
+            "high": 0.00044605883786056304,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2474219094502839,
+          "improvement": {
+            "mean": 0.002578090549716128,
+            "low": -0.0017472124254740162,
+            "high": 0.0077770731707643955,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.24785285579022803,
+          "improvement": {
+            "mean": 0.002147144209771965,
+            "low": -0.002374631621457287,
+            "high": 0.007282667888357439,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2477639850276642,
+          "improvement": {
+            "mean": 0.0022360149723357823,
+            "low": -0.003040511750862004,
+            "high": 0.007917579224122347,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.24699502020929956,
+          "improvement": {
+            "mean": 0.003004979790700465,
+            "low": -0.0012219120267664492,
+            "high": 0.008813575278878386,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261107,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.25052998241671437,
+      "improvement": {
+        "mean": -0.0005299824167143497,
+        "low": -0.002688767918055089,
+        "high": 0.001635800964806206,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2503732922232623,
+          "improvement": {
+            "mean": -0.0003732922232623786,
+            "low": -0.0009062564727859069,
+            "high": 0.00017526520259764523,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.24987225575440036,
+          "improvement": {
+            "mean": 0.00012774424559957575,
+            "low": -0.0020087329572827705,
+            "high": 0.0022998275637077137,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.25330554753886736,
+          "improvement": {
+            "mean": -0.0033055475388673464,
+            "low": -0.005560717043299769,
+            "high": -0.0008205490544553821,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25052998241671437,
+          "improvement": {
+            "mean": -0.0005299824167143497,
+            "low": -0.002688767918055089,
+            "high": 0.001635800964806206,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25100117743101963,
+          "improvement": {
+            "mean": -0.0010011774310196538,
+            "low": -0.004130940822538615,
+            "high": 0.0014865636864518728,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261108,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.2536170868743665,
+      "improvement": {
+        "mean": -0.0036170868743665083,
+        "low": -0.009868456558041952,
+        "high": 0.0011408281359940886,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2502995385358971,
+          "improvement": {
+            "mean": -0.0002995385358971005,
+            "low": -0.0005702615068224518,
+            "high": -3.895871368474074e-05,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.25296427327307863,
+          "improvement": {
+            "mean": -0.002964273273078626,
+            "low": -0.006120000514489314,
+            "high": -0.00024119000795736276,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.24933283256213043,
+          "improvement": {
+            "mean": 0.0006671674378695481,
+            "low": -0.004512110580086332,
+            "high": 0.006415642831196168,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2536170868743665,
+          "improvement": {
+            "mean": -0.0036170868743665083,
+            "low": -0.009868456558041952,
+            "high": 0.0011408281359940886,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25101162365041163,
+          "improvement": {
+            "mean": -0.0010116236504116457,
+            "low": -0.006275740125599501,
+            "high": 0.0035767581575255475,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261109,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.25090897974818344,
+      "improvement": {
+        "mean": -0.000908979748183501,
+        "low": -0.003215857251536447,
+        "high": 0.0018586803210490289,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25035818463896836,
+          "improvement": {
+            "mean": -0.0003581846389683752,
+            "low": -0.000715477696963228,
+            "high": -3.690703321042873e-05,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.25071640726043537,
+          "improvement": {
+            "mean": -0.0007164072604353601,
+            "low": -0.003530185023504716,
+            "high": 0.0025497293370507997,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.251263344242521,
+          "improvement": {
+            "mean": -0.001263344242520949,
+            "low": -0.0039553987192343775,
+            "high": 0.0011498779834336144,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25090897974818344,
+          "improvement": {
+            "mean": -0.000908979748183501,
+            "low": -0.003215857251536447,
+            "high": 0.0018586803210490289,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2505230721076915,
+          "improvement": {
+            "mean": -0.0005230721076914451,
+            "low": -0.003222140574624057,
+            "high": 0.002376178605384084,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261110,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.2504572795288078,
+      "improvement": {
+        "mean": -0.00045727952880780646,
+        "low": -0.0021854840105389457,
+        "high": 0.001568840528524483,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.24999502757248718,
+          "improvement": {
+            "mean": 4.972427512859785e-06,
+            "low": -0.0004961483165998266,
+            "high": 0.0005824197838386573,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.25095934196375475,
+          "improvement": {
+            "mean": -0.0009593419637547709,
+            "low": -0.0038521447765900688,
+            "high": 0.0026374715323059456,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.25287219725890486,
+          "improvement": {
+            "mean": -0.002872197258904865,
+            "low": -0.007337704503256255,
+            "high": 0.000950834747854073,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2504572795288078,
+          "improvement": {
+            "mean": -0.00045727952880780646,
+            "low": -0.0021854840105389457,
+            "high": 0.001568840528524483,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25081375850031973,
+          "improvement": {
+            "mean": -0.000813758500319691,
+            "low": -0.0031266639228154734,
+            "high": 0.0013144604646100606,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261111,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.25430747946350263,
+      "improvement": {
+        "mean": -0.0043074794635026056,
+        "low": -0.011064164929061197,
+        "high": 0.0012354961884958274,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25063631185205093,
+          "improvement": {
+            "mean": -0.0006363118520509377,
+            "low": -0.002149035770123067,
+            "high": 0.0007040280026965487,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2515773048686731,
+          "improvement": {
+            "mean": -0.0015773048686730294,
+            "low": -0.005376302523713026,
+            "high": 0.0017742571317243632,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.25236721200380247,
+          "improvement": {
+            "mean": -0.0023672120038024692,
+            "low": -0.00631275883844043,
+            "high": 0.0021479787830724875,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25430747946350263,
+          "improvement": {
+            "mean": -0.0043074794635026056,
+            "low": -0.011064164929061197,
+            "high": 0.0012354961884958274,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25372453261992006,
+          "improvement": {
+            "mean": -0.0037245326199200927,
+            "low": -0.009044608840707805,
+            "high": 0.0007046293963939387,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261112,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.25344951381293146,
+      "improvement": {
+        "mean": -0.003449513812931496,
+        "low": -0.009272952434371977,
+        "high": 0.0017744109941095047,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25017835308280995,
+          "improvement": {
+            "mean": -0.00017835308280993666,
+            "low": -0.002017738162396649,
+            "high": 0.0013828721045372173,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2531732360224372,
+          "improvement": {
+            "mean": -0.0031732360224371553,
+            "low": -0.008213227645399656,
+            "high": 0.001525118557810956,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.253699724453841,
+          "improvement": {
+            "mean": -0.0036997244538409324,
+            "low": -0.009795472759373772,
+            "high": 0.0005539111019493394,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25344951381293146,
+          "improvement": {
+            "mean": -0.003449513812931496,
+            "low": -0.009272952434371977,
+            "high": 0.0017744109941095047,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25421496564637797,
+          "improvement": {
+            "mean": -0.00421496564637801,
+            "low": -0.009229894179000367,
+            "high": 0.0006716947134442774,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261113,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.2508651646832995,
+      "improvement": {
+        "mean": -0.0008651646832994846,
+        "low": -0.00618674151477583,
+        "high": 0.003999947858806119,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25004283501582186,
+          "improvement": {
+            "mean": -4.283501582187233e-05,
+            "low": -0.0007892828223409169,
+            "high": 0.0007056792112243557,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2506928687303742,
+          "improvement": {
+            "mean": -0.0006928687303742266,
+            "low": -0.005583727481841423,
+            "high": 0.0040084560015498346,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.25371333312746225,
+          "improvement": {
+            "mean": -0.003713333127462236,
+            "low": -0.007093675378922368,
+            "high": -0.0006395466428690005,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2508651646832995,
+          "improvement": {
+            "mean": -0.0008651646832994846,
+            "low": -0.00618674151477583,
+            "high": 0.003999947858806119,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25009452139224814,
+          "improvement": {
+            "mean": -9.45213922481311e-05,
+            "low": -0.005034130813075249,
+            "high": 0.005150513167887518,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261114,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.2504227097321817,
+      "improvement": {
+        "mean": -0.00042270973218174254,
+        "low": -0.003531170486871985,
+        "high": 0.0021929748685191037,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2500103427980228,
+          "improvement": {
+            "mean": -1.0342798022833828e-05,
+            "low": -0.0008569388574170279,
+            "high": 0.0007892522716889896,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.25046770607348945,
+          "improvement": {
+            "mean": -0.0004677060734894387,
+            "low": -0.0038178017416274366,
+            "high": 0.0018027625294585446,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2511397830784712,
+          "improvement": {
+            "mean": -0.0011397830784711485,
+            "low": -0.0031386940767779187,
+            "high": 0.0011934785686562093,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2504227097321817,
+          "improvement": {
+            "mean": -0.00042270973218174254,
+            "low": -0.003531170486871985,
+            "high": 0.0021929748685191037,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25009239686755325,
+          "improvement": {
+            "mean": -9.23968675532261e-05,
+            "low": -0.0034283567841490083,
+            "high": 0.0023871744870182813,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261115,
+      "strength": 0.0,
+      "dates": 247,
+      "brier": 0.2502375737830263,
+      "improvement": {
+        "mean": -0.00023757378302633353,
+        "low": -0.00409465807471038,
+        "high": 0.0044466067221370035,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.24969968884533555,
+          "improvement": {
+            "mean": 0.00030031115466443837,
+            "low": -0.00027542134847905283,
+            "high": 0.0008790414882355882,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.25053144648353964,
+          "improvement": {
+            "mean": -0.0005314464835396202,
+            "low": -0.0037901324319299075,
+            "high": 0.003413546583385823,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.25648883558185814,
+          "improvement": {
+            "mean": -0.006488835581858193,
+            "low": -0.013798633601614329,
+            "high": -0.0002617155805005321,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2502375737830263,
+          "improvement": {
+            "mean": -0.00023757378302633353,
+            "low": -0.00409465807471038,
+            "high": 0.0044466067221370035,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2512298487814274,
+          "improvement": {
+            "mean": -0.0012298487814274349,
+            "low": -0.004788424447069404,
+            "high": 0.0027195174594602514,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261104,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.25434922240177654,
+      "improvement": {
+        "mean": -0.004349222401776577,
+        "low": -0.012631082082829743,
+        "high": 0.00329044668004379,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2508715295449011,
+          "improvement": {
+            "mean": -0.0008715295449011136,
+            "low": -0.0018499577095190272,
+            "high": 7.34496306362218e-05,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2516610773651033,
+          "improvement": {
+            "mean": -0.0016610773651032896,
+            "low": -0.006802177312216477,
+            "high": 0.002862680507565675,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.25231151578741745,
+          "improvement": {
+            "mean": -0.002311515787417475,
+            "low": -0.00996132522492004,
+            "high": 0.005923929319390659,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25434922240177654,
+          "improvement": {
+            "mean": -0.004349222401776577,
+            "low": -0.012631082082829743,
+            "high": 0.00329044668004379,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2529175733998258,
+          "improvement": {
+            "mean": -0.0029175733998258384,
+            "low": -0.010381275351975746,
+            "high": 0.0034138116505204657,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261105,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.2550434585215049,
+      "improvement": {
+        "mean": -0.005043458521504909,
+        "low": -0.011654107412778204,
+        "high": 0.0003762854326075641,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2506707429225568,
+          "improvement": {
+            "mean": -0.0006707429225568571,
+            "low": -0.0017125131361358814,
+            "high": 0.0003727129163253157,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2538771993616474,
+          "improvement": {
+            "mean": -0.0038771993616473883,
+            "low": -0.011803886795241783,
+            "high": 0.003235201431250273,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.25012701396801734,
+          "improvement": {
+            "mean": -0.0001270139680173162,
+            "low": -0.0025714339756775723,
+            "high": 0.0022154681574731365,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2550434585215049,
+          "improvement": {
+            "mean": -0.005043458521504909,
+            "low": -0.011654107412778204,
+            "high": 0.0003762854326075641,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25649805977468254,
+          "improvement": {
+            "mean": -0.006498059774682543,
+            "low": -0.013671945417084377,
+            "high": -0.0003808878099873897,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261106,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.2411497360805555,
+      "improvement": {
+        "mean": 0.008850263919444509,
+        "low": 0.000877057562779371,
+        "high": 0.01644855424295997,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25029695940503593,
+          "improvement": {
+            "mean": -0.00029695940503590636,
+            "low": -0.0007067037040458879,
+            "high": 0.00015733291997070746,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.24247113018036753,
+          "improvement": {
+            "mean": 0.007528869819632459,
+            "low": 0.001479027042556322,
+            "high": 0.014155753311991792,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.24277422956061154,
+          "improvement": {
+            "mean": 0.007225770439388476,
+            "low": 0.0015893365681902394,
+            "high": 0.012999507295589489,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2411497360805555,
+          "improvement": {
+            "mean": 0.008850263919444509,
+            "low": 0.000877057562779371,
+            "high": 0.01644855424295997,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.24729397174413006,
+          "improvement": {
+            "mean": 0.0027060282558699178,
+            "low": -0.00226960007099122,
+            "high": 0.007732444208258168,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261107,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.2491832280743156,
+      "improvement": {
+        "mean": 0.0008167719256844182,
+        "low": -0.0018741356409653286,
+        "high": 0.003657365216501794,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25088130614917986,
+          "improvement": {
+            "mean": -0.0008813061491798379,
+            "low": -0.001709565637397144,
+            "high": -3.157327986059449e-05,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.24925384320216792,
+          "improvement": {
+            "mean": 0.0007461567978321111,
+            "low": -0.0023053815476874505,
+            "high": 0.003687299665848133,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2522136212934872,
+          "improvement": {
+            "mean": -0.0022136212934871728,
+            "low": -0.005158434415672385,
+            "high": 0.0005709213206606917,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2491832280743156,
+          "improvement": {
+            "mean": 0.0008167719256844182,
+            "low": -0.0018741356409653286,
+            "high": 0.003657365216501794,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.24826168163307447,
+          "improvement": {
+            "mean": 0.0017383183669255331,
+            "low": -0.0017136834259922637,
+            "high": 0.005159721883845068,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261108,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.24811135627194617,
+      "improvement": {
+        "mean": 0.0018886437280538006,
+        "low": -0.0036328611378350353,
+        "high": 0.006839751695573465,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2502801044108248,
+          "improvement": {
+            "mean": -0.000280104410824808,
+            "low": -0.0006525617583496543,
+            "high": 7.952622713721199e-06,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.24842674915197419,
+          "improvement": {
+            "mean": 0.0015732508480257971,
+            "low": -0.0021590743668167376,
+            "high": 0.005919899070608987,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.24407098924061155,
+          "improvement": {
+            "mean": 0.005929010759388452,
+            "low": 0.00022806267730767074,
+            "high": 0.011536519784052833,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.24811135627194617,
+          "improvement": {
+            "mean": 0.0018886437280538006,
+            "low": -0.0036328611378350353,
+            "high": 0.006839751695573465,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.244459386385553,
+          "improvement": {
+            "mean": 0.005540613614446977,
+            "low": -0.0016082431031903316,
+            "high": 0.01223566416751792,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261109,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.25144402960358475,
+      "improvement": {
+        "mean": -0.0014440296035847654,
+        "low": -0.006230119106947564,
+        "high": 0.0030049598801222006,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25047034420880554,
+          "improvement": {
+            "mean": -0.00047034420880555453,
+            "low": -0.0008946963249292059,
+            "high": -0.00011407457174059232,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.25139167196659723,
+          "improvement": {
+            "mean": -0.0013916719665972208,
+            "low": -0.0055297382904854085,
+            "high": 0.002856222191985627,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.24901850914927529,
+          "improvement": {
+            "mean": 0.000981490850724714,
+            "low": -0.0030063669281965677,
+            "high": 0.005193337035789325,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25144402960358475,
+          "improvement": {
+            "mean": -0.0014440296035847654,
+            "low": -0.006230119106947564,
+            "high": 0.0030049598801222006,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2517054153970944,
+          "improvement": {
+            "mean": -0.0017054153970944197,
+            "low": -0.005767593885501844,
+            "high": 0.0026611233381072202,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261110,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.2534328396897163,
+      "improvement": {
+        "mean": -0.00343283968971632,
+        "low": -0.00936368893160952,
+        "high": 0.0032023375677199413,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2500322793440553,
+          "improvement": {
+            "mean": -3.227934405533174e-05,
+            "low": -0.0004521100816035088,
+            "high": 0.0004684603102269229,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.24793202232405415,
+          "improvement": {
+            "mean": 0.002067977675945815,
+            "low": -0.0020587332200294084,
+            "high": 0.007556005475572426,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2500828488281311,
+          "improvement": {
+            "mean": -8.284882813108673e-05,
+            "low": -0.0043120677767930415,
+            "high": 0.0039463802967121524,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2534328396897163,
+          "improvement": {
+            "mean": -0.00343283968971632,
+            "low": -0.00936368893160952,
+            "high": 0.0032023375677199413,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.25176486872613285,
+          "improvement": {
+            "mean": -0.0017648687261328688,
+            "low": -0.006412034731766339,
+            "high": 0.0035734498064146137,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261111,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.24986706120373295,
+      "improvement": {
+        "mean": 0.0001329387962670731,
+        "low": -0.006091816726463586,
+        "high": 0.005705017678080193,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.250883386921842,
+          "improvement": {
+            "mean": -0.0008833869218419866,
+            "low": -0.0026344312424147177,
+            "high": 0.0007059217424490949,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.24892175327479238,
+          "improvement": {
+            "mean": 0.0010782467252076198,
+            "low": -0.0062444043316785105,
+            "high": 0.00798028858171633,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2490899500789718,
+          "improvement": {
+            "mean": 0.0009100499210282065,
+            "low": -0.004705044026731128,
+            "high": 0.006630881030717125,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.24986706120373295,
+          "improvement": {
+            "mean": 0.0001329387962670731,
+            "low": -0.006091816726463586,
+            "high": 0.005705017678080193,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2503209214498921,
+          "improvement": {
+            "mean": -0.00032092144989204544,
+            "low": -0.005031782981942097,
+            "high": 0.004337102038843564,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261112,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.25238437551245535,
+      "improvement": {
+        "mean": -0.0023843755124553327,
+        "low": -0.006588293225389661,
+        "high": 0.0018581439489205392,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2502156083749706,
+          "improvement": {
+            "mean": -0.00021560837497056198,
+            "low": -0.0021089987837785854,
+            "high": 0.0014215130913916173,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.25051333850261936,
+          "improvement": {
+            "mean": -0.000513338502619372,
+            "low": -0.00480294254989809,
+            "high": 0.004772552266155314,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2497802935470815,
+          "improvement": {
+            "mean": 0.00021970645291848984,
+            "low": -0.004765305095421592,
+            "high": 0.005287173982099459,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25238437551245535,
+          "improvement": {
+            "mean": -0.0023843755124553327,
+            "low": -0.006588293225389661,
+            "high": 0.0018581439489205392,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2518254824179441,
+          "improvement": {
+            "mean": -0.001825482417944119,
+            "low": -0.005281176825424121,
+            "high": 0.0022223941140818984,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261113,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.25221878442362594,
+      "improvement": {
+        "mean": -0.002218784423625932,
+        "low": -0.007912157361026503,
+        "high": 0.0030463964846253046,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.24992952923320813,
+          "improvement": {
+            "mean": 7.047076679188758e-05,
+            "low": -0.0008669364725324653,
+            "high": 0.0009813208096526667,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.250995578864978,
+          "improvement": {
+            "mean": -0.0009955788649780044,
+            "low": -0.006824094948872823,
+            "high": 0.003975385432806394,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.25337612396131654,
+          "improvement": {
+            "mean": -0.0033761239613165355,
+            "low": -0.007371094255182262,
+            "high": 0.0009441643803917096,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.25221878442362594,
+          "improvement": {
+            "mean": -0.002218784423625932,
+            "low": -0.007912157361026503,
+            "high": 0.0030463964846253046,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2495405661027265,
+          "improvement": {
+            "mean": 0.0004594338972735065,
+            "low": -0.005343542901591971,
+            "high": 0.0058059374096156345,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261114,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.249430797541851,
+      "improvement": {
+        "mean": 0.000569202458149013,
+        "low": -0.0041240501398248286,
+        "high": 0.005359393255234482,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.249818836252778,
+          "improvement": {
+            "mean": 0.00018116374722199682,
+            "low": -0.0005166169203104562,
+            "high": 0.0008699941935484312,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.24793347303723637,
+          "improvement": {
+            "mean": 0.0020665269627636006,
+            "low": -0.003534699953036686,
+            "high": 0.007450576714061016,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2477786191106899,
+          "improvement": {
+            "mean": 0.002221380889310116,
+            "low": -0.003865100674610272,
+            "high": 0.00880336481972775,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.249430797541851,
+          "improvement": {
+            "mean": 0.000569202458149013,
+            "low": -0.0041240501398248286,
+            "high": 0.005359393255234482,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2517513242156866,
+          "improvement": {
+            "mean": -0.001751324215686559,
+            "low": -0.005825029649134131,
+            "high": 0.001831003534856038,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261115,
+      "strength": 0.08,
+      "dates": 247,
+      "brier": 0.2486166388388537,
+      "improvement": {
+        "mean": 0.0013833611611462923,
+        "low": -0.0027212498919221297,
+        "high": 0.006310532065844815,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.24944578764441308,
+          "improvement": {
+            "mean": 0.0005542123555869042,
+            "low": -0.0002250404098442388,
+            "high": 0.00147570930663662,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2454133007890795,
+          "improvement": {
+            "mean": 0.004586699210920494,
+            "low": 0.0001458837939215242,
+            "high": 0.009990963085614054,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2501149120373493,
+          "improvement": {
+            "mean": -0.00011491203734931591,
+            "low": -0.009384649502331362,
+            "high": 0.0066988496954130785,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2486166388388537,
+          "improvement": {
+            "mean": 0.0013833611611462923,
+            "low": -0.0027212498919221297,
+            "high": 0.006310532065844815,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.24870466735178187,
+          "improvement": {
+            "mean": 0.0012953326482181265,
+            "low": -0.0027642514242273183,
+            "high": 0.006434545686581181,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261104,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.23209533268243268,
+      "improvement": {
+        "mean": 0.0179046673175673,
+        "low": -0.001876348527694417,
+        "high": 0.040484613892560306,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": false,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25237580233231904,
+          "improvement": {
+            "mean": -0.0023758023323190596,
+            "low": -0.004156592537454776,
+            "high": -0.0009086650545785433,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.22804585044759573,
+          "improvement": {
+            "mean": 0.021954149552404302,
+            "low": 0.005477619177185784,
+            "high": 0.04177566578335904,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2309862331221801,
+          "improvement": {
+            "mean": 0.019013766877819888,
+            "low": 0.00046622016066087256,
+            "high": 0.04105440731369265,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.23209533268243268,
+          "improvement": {
+            "mean": 0.0179046673175673,
+            "low": -0.001876348527694417,
+            "high": 0.040484613892560306,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.23180290331239894,
+          "improvement": {
+            "mean": 0.018197096687601073,
+            "low": 0.00013522248441214142,
+            "high": 0.03741859004937505,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261105,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.23589221454471862,
+      "improvement": {
+        "mean": 0.014107785455281371,
+        "low": 0.0003652651105554305,
+        "high": 0.02791291447090819,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25275745698804186,
+          "improvement": {
+            "mean": -0.0027574569880418733,
+            "low": -0.00572536668891041,
+            "high": 0.00019443930944658468,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.23588182998609172,
+          "improvement": {
+            "mean": 0.014118170013908258,
+            "low": -0.0023180168009123477,
+            "high": 0.028746205094715493,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.23137394383830445,
+          "improvement": {
+            "mean": 0.018626056161695534,
+            "low": 0.008945968862384529,
+            "high": 0.028383299068896344,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.23589221454471862,
+          "improvement": {
+            "mean": 0.014107785455281371,
+            "low": 0.0003652651105554305,
+            "high": 0.02791291447090819,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2344665915909844,
+          "improvement": {
+            "mean": 0.015533408409015632,
+            "low": 0.0003341009483075011,
+            "high": 0.030504886264826808,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261106,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.2042161679569583,
+      "improvement": {
+        "mean": 0.0457838320430417,
+        "low": 0.031053312010715782,
+        "high": 0.059260085502260404,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2523948410123225,
+          "improvement": {
+            "mean": -0.002394841012322499,
+            "low": -0.004285829797122929,
+            "high": -0.0003831718108558019,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2032524099222741,
+          "improvement": {
+            "mean": 0.04674759007772594,
+            "low": 0.03236438432117268,
+            "high": 0.06107889299214375,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.20609991679156175,
+          "improvement": {
+            "mean": 0.04390008320843823,
+            "low": 0.03280625951519343,
+            "high": 0.05414403606169413,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2042161679569583,
+          "improvement": {
+            "mean": 0.0457838320430417,
+            "low": 0.031053312010715782,
+            "high": 0.059260085502260404,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.20434855877484773,
+          "improvement": {
+            "mean": 0.045651441225152266,
+            "low": 0.0318831278707912,
+            "high": 0.059288623812121605,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261107,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.23347557409304398,
+      "improvement": {
+        "mean": 0.01652442590695607,
+        "low": 0.009062958237476867,
+        "high": 0.02385339655352696,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2536960945085051,
+          "improvement": {
+            "mean": -0.003696094508505072,
+            "low": -0.00650629719509676,
+            "high": -0.0008720078872138485,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2319758124342583,
+          "improvement": {
+            "mean": 0.018024187565741683,
+            "low": 0.010528391341003076,
+            "high": 0.02513133287554701,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.23359571427675763,
+          "improvement": {
+            "mean": 0.016404285723242394,
+            "low": 0.008827315959172364,
+            "high": 0.02399432794188588,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.23347557409304398,
+          "improvement": {
+            "mean": 0.01652442590695607,
+            "low": 0.009062958237476867,
+            "high": 0.02385339655352696,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.23018047477028938,
+          "improvement": {
+            "mean": 0.019819525229710602,
+            "low": 0.012266319412642985,
+            "high": 0.026551544094380413,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261108,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.20856121695604266,
+      "improvement": {
+        "mean": 0.04143878304395738,
+        "low": 0.028680523099185284,
+        "high": 0.05495392532910037,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25062200442521765,
+          "improvement": {
+            "mean": -0.0006220044252176306,
+            "low": -0.0009409526016958723,
+            "high": -0.00032181470834743113,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.20807050743047123,
+          "improvement": {
+            "mean": 0.04192949256952878,
+            "low": 0.02847797020908369,
+            "high": 0.05577766213335749,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.20568145667174623,
+          "improvement": {
+            "mean": 0.044318543328253794,
+            "low": 0.02958246603383971,
+            "high": 0.0594762980701307,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.20856121695604266,
+          "improvement": {
+            "mean": 0.04143878304395738,
+            "low": 0.028680523099185284,
+            "high": 0.05495392532910037,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.20715486936258673,
+          "improvement": {
+            "mean": 0.04284513063741327,
+            "low": 0.028833158039546686,
+            "high": 0.0582406058160833,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261109,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.22228008024308846,
+      "improvement": {
+        "mean": 0.027719919756911512,
+        "low": 0.012103004549462422,
+        "high": 0.04194193716067299,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25102846915667165,
+          "improvement": {
+            "mean": -0.0010284691566716556,
+            "low": -0.0021424217043925706,
+            "high": -3.542905978387288e-05,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.22188048167655944,
+          "improvement": {
+            "mean": 0.02811951832344052,
+            "low": 0.012384797360198891,
+            "high": 0.042234753034174975,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.22209974222601378,
+          "improvement": {
+            "mean": 0.027900257773986244,
+            "low": 0.010799099637587737,
+            "high": 0.042333410119271546,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.22228008024308846,
+          "improvement": {
+            "mean": 0.027719919756911512,
+            "low": 0.012103004549462422,
+            "high": 0.04194193716067299,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.22231219911496242,
+          "improvement": {
+            "mean": 0.027687800885037576,
+            "low": 0.011511644346433408,
+            "high": 0.04366798229783856,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261110,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.23383322117886157,
+      "improvement": {
+        "mean": 0.01616677882113846,
+        "low": 0.0012758515923510724,
+        "high": 0.030369074807972306,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.24981525167700855,
+          "improvement": {
+            "mean": 0.00018474832299141867,
+            "low": -0.0015510238806581353,
+            "high": 0.0018782915325893793,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.22275829973408628,
+          "improvement": {
+            "mean": 0.02724170026591374,
+            "low": 0.014608691483306308,
+            "high": 0.04080524672325748,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.22588385028708596,
+          "improvement": {
+            "mean": 0.024116149712914033,
+            "low": 0.010639965857878056,
+            "high": 0.03630270368217698,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.23383322117886157,
+          "improvement": {
+            "mean": 0.01616677882113846,
+            "low": 0.0012758515923510724,
+            "high": 0.030369074807972306,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.23013479360852687,
+          "improvement": {
+            "mean": 0.01986520639147317,
+            "low": 0.004302384103583315,
+            "high": 0.035985360337401115,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261111,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.21633831357776548,
+      "improvement": {
+        "mean": 0.03366168642223454,
+        "low": 0.020706000059750807,
+        "high": 0.04607352512668594,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2504392617061708,
+          "improvement": {
+            "mean": -0.0004392617061708281,
+            "low": -0.0011314483427271279,
+            "high": 0.00013065614117885993,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.21485859101975152,
+          "improvement": {
+            "mean": 0.035141408980248486,
+            "low": 0.020693796750722755,
+            "high": 0.04826473977163642,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.21629196146719443,
+          "improvement": {
+            "mean": 0.03370803853280555,
+            "low": 0.0193249811542746,
+            "high": 0.0468330043131914,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.21633831357776548,
+          "improvement": {
+            "mean": 0.03366168642223454,
+            "low": 0.020706000059750807,
+            "high": 0.04607352512668594,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.20717955860162426,
+          "improvement": {
+            "mean": 0.04282044139837574,
+            "low": 0.02853539436127713,
+            "high": 0.05655050335342519,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261112,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.2280011524636871,
+      "improvement": {
+        "mean": 0.021998847536312885,
+        "low": 0.012031120464495339,
+        "high": 0.03213532715147936,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.25117469259684216,
+          "improvement": {
+            "mean": -0.0011746925968421573,
+            "low": -0.005102030359775764,
+            "high": 0.002146580686264155,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.22691580772043948,
+          "improvement": {
+            "mean": 0.023084192279560524,
+            "low": 0.01224509162175191,
+            "high": 0.03472410287404127,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2247957711825186,
+          "improvement": {
+            "mean": 0.025204228817481397,
+            "low": 0.013217542740991831,
+            "high": 0.038538193945639114,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2280011524636871,
+          "improvement": {
+            "mean": 0.021998847536312885,
+            "low": 0.012031120464495339,
+            "high": 0.03213532715147936,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.2277061173886272,
+          "improvement": {
+            "mean": 0.022293882611372808,
+            "low": 0.011227493444371045,
+            "high": 0.03411732506203543,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261113,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.22631405292581777,
+      "improvement": {
+        "mean": 0.023685947074182215,
+        "low": 0.009532768187802023,
+        "high": 0.03874772598126235,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.2520799000266501,
+          "improvement": {
+            "mean": -0.0020799000266501074,
+            "low": -0.005881636131890952,
+            "high": 0.0011909723812588088,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.22577371896347062,
+          "improvement": {
+            "mean": 0.024226281036529383,
+            "low": 0.009981021315714683,
+            "high": 0.038856466969586195,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.2264844884047582,
+          "improvement": {
+            "mean": 0.023515511595241755,
+            "low": 0.011880814273445976,
+            "high": 0.03545842510748534,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.22631405292581777,
+          "improvement": {
+            "mean": 0.023685947074182215,
+            "low": 0.009532768187802023,
+            "high": 0.03874772598126235,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.22045991694651587,
+          "improvement": {
+            "mean": 0.0295400830534841,
+            "low": 0.013356542099993733,
+            "high": 0.046805759155118976,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261114,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.21851525590894597,
+      "improvement": {
+        "mean": 0.031484744091053986,
+        "low": 0.017238625747231055,
+        "high": 0.04677266762487778,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.24935654804647459,
+          "improvement": {
+            "mean": 0.0006434519535254245,
+            "low": -0.0007161369917373062,
+            "high": 0.0019375360929253765,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2152417439808494,
+          "improvement": {
+            "mean": 0.03475825601915064,
+            "low": 0.01976164694035172,
+            "high": 0.05040267190105264,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.21709748551023336,
+          "improvement": {
+            "mean": 0.03290251448976665,
+            "low": 0.018890417148200903,
+            "high": 0.04929543655782999,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.21851525590894597,
+          "improvement": {
+            "mean": 0.031484744091053986,
+            "low": 0.017238625747231055,
+            "high": 0.04677266762487778,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.21336514339003607,
+          "improvement": {
+            "mean": 0.03663485660996394,
+            "low": 0.020100032222006715,
+            "high": 0.0544757968434057,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    },
+    {
+      "seed": 20261115,
+      "strength": 0.25,
+      "dates": 247,
+      "brier": 0.2121406306508326,
+      "improvement": {
+        "mean": 0.0378593693491674,
+        "low": 0.022003249726295648,
+        "high": 0.05285344918498346,
+        "dates": 247,
+        "blockSessions": 20,
+        "status": "descriptive-95-percent-interval"
+      },
+      "positiveDetection": true,
+      "models": [
+        {
+          "id": "coin_flip",
+          "brier": 0.25,
+          "improvement": {
+            "mean": 0.0,
+            "low": 0.0,
+            "high": 0.0,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "base_rate",
+          "brier": 0.24731732396617273,
+          "improvement": {
+            "mean": 0.002682676033827278,
+            "low": 0.0007116054677468466,
+            "high": 0.005176925673177784,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "momentum",
+          "brier": 0.2071263916141128,
+          "improvement": {
+            "mean": 0.04287360838588724,
+            "low": 0.028712275123717313,
+            "high": 0.05829719718042513,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "raw_logistic",
+          "brier": 0.20915819999903063,
+          "improvement": {
+            "mean": 0.04084180000096936,
+            "low": 0.023202929524854497,
+            "high": 0.055012618227534886,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "logistic",
+          "brier": 0.2121406306508326,
+          "improvement": {
+            "mean": 0.0378593693491674,
+            "low": 0.022003249726295648,
+            "high": 0.05285344918498346,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        },
+        {
+          "id": "boosted",
+          "brier": 0.20636075255997618,
+          "improvement": {
+            "mean": 0.043639247440023815,
+            "low": 0.02671056883070609,
+            "high": 0.061750461575906745,
+            "dates": 247,
+            "blockSessions": 20,
+            "status": "descriptive-95-percent-interval"
+          }
+        }
+      ]
+    }
+  ],
+  "note": "Independent synthetic seeds; each run exercises production features, purged quarterly fitting, calibration and date-block evaluation. Twelve seeds provide a diagnostic, not a precise false-positive guarantee. Failed or weak detection remains visible. No model is promoted by this report."
+}

@@ -1,0 +1,40 @@
+{
+  "codeCommit": "489d76d1b27fee65c08c3441180e71ee386b7fe2",
+  "configSha256": "d72a8cbb98bb072dd4eb8a070957bbabb44646a0b3dbd4fa59dac3d54971e598",
+  "algorithmSha256": "15e0549b70629e45c79ee2049a76a46b7b0f9aecf47eacecc279a43677a72f29",
+  "python": "3.11.17",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.2.3",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1",
+    "yfinance": "0.2.66",
+    "pandas-market-calendars": "5.1.1",
+    "joblib": "1.5.2"
+  },
+  "training": {
+    "asOf": "2026-11-03",
+    "fitStart": "2021-11-03",
+    "fitEnd": "2026-04-21",
+    "fitLabelEnd": "2026-04-28",
+    "calibrationStart": "2026-04-29",
+    "calibrationEnd": "2026-10-27",
+    "lastKnownOutcome": "2026-11-03",
+    "fitDates": 1119,
+    "calibrationDates": 126,
+    "fitRows": 10071,
+    "refitPolicy": "calendar-quarter",
+    "weighting": "Separate models; no adaptive ensemble or automatic promotion"
+  },
+  "inputVintage": {
+    "path": "archive/inputs/2026-11-03-training-8c99edf48ff7d750.csv.gz",
+    "csvSha256": "8c99edf48ff7d75087e7a1e3feba91d3d6343925b5a024e885e20ab7b039f148",
+    "rows": 67760,
+    "retrievedAt": "2026-11-04T00:27:38.215674+00:00",
+    "start": "2010-01-04",
+    "end": "2026-11-03",
+    "adjustment": "Provider-adjusted OHLC; both return endpoints use this same vintage"
+  },
+  "path": "archive/models/2026Q4.joblib",
+  "modelSha256": "83898d7c231f4abe2179f041f2c37445fb49fcd2f30c774ec43c6dbda2da5cea"
+}

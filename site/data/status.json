@@ -1,0 +1,11 @@
+{
+  "status": "healthy",
+  "mode": "bootstrap",
+  "attemptedAt": "2026-11-04T00:26:07.399461+00:00",
+  "experiment": "research-2.0.0",
+  "latestSession": "2026-11-03",
+  "liveForecastDates": 1,
+  "completedAt": "2026-11-04T00:27:38.290059+00:00",
+  "lastSuccessfulAt": "2026-11-04T00:27:38.290066+00:00",
+  "error": null
+}
