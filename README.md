@@ -6,6 +6,8 @@ A market research laboratory built to distinguish forecasting evidence from nois
 
 Read the [first evaluation and launch checks](docs/FIRST_REVIEW.md). The initial models have not demonstrated a forecasting edge over the simple baseline.
 
+The [registered upgrade program](docs/RESEARCH_PROGRAM.md) adds isolated macro-vintage, nested-selection, refit-cadence and frozen pretrained comparisons. It preserves the official live experiment. See the [two-lab strategy](docs/MULTI_LAB_STRATEGY.md) and [read-only cross-review brief](docs/CROSS_REVIEW_BRIEF.md) for the proposed UnpricedHub comparison layer.
+
 This is a new, independent experiment. [The original UNPRICED V1](https://github.com/PrototypeVersions/Unpriced) is unchanged. Its forecasts and returns do not belong to this version.
 
 ## What works
@@ -55,6 +57,7 @@ A separate ChatGPT research review is scheduled for Sunday mornings, around 08:0
 | Path | Role |
 | --- | --- |
 | `unpriced/` | Data, features, models, controls, evaluation, live publication |
+| `research_program/` | Registered development experiments, independent of the official live engine |
 | `tests/` | Scientific and operational integrity checks |
 | `config.json` | Frozen experiment specification |
 | `records/forecasts/` | Append-only live snapshots |
@@ -62,6 +65,7 @@ A separate ChatGPT research review is scheduled for Sunday mornings, around 08:0
 | `archive/inputs/` | Content-addressed compressed data vintages |
 | `archive/models/` | Frozen quarterly live models and provenance |
 | `archive/research/` | Historical predictions and reports |
+| `archive/program/` | All upgrade-program attempts, selection audits, environments and predictions |
 | `site/data/` | Current public presentation of actual results |
 | `docs/` | Methodology, protocol, operating rules and change log |
 

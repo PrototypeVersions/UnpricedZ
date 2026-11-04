@@ -19,3 +19,13 @@ Subsequent corrections and tested specifications must be appended here.
 - Enabled GitHub Pages with Actions after the initial calculation completed successfully but deployment lacked repository setup.
 - Serialized site and data publication through one concurrency group. Both workflows check out current main so a retry retains records already committed by an earlier attempt.
 - Attached daily deployment to the github-pages environment. Research models, thresholds, first results and live snapshots are unchanged.
+
+## 2026-11-04 — Isolated upgrade program and cross-lab plan
+
+- Registered program-0.1.0 before its first computation: six macro inputs from ALFRED vintages, bounded inner chronological selection, paired monthly/quarterly refits, and a frozen pinned Chronos-2 comparison.
+- Kept return, variance and drawdown tasks separate. Historical pretrained results explicitly carry an unresolved pretraining-overlap limitation.
+- Added nine regression tests for temporal separation, future-label mutation, macro revisions/availability, missing inputs, drawdown paths, pretrained target alignment, and exact outcome pairing.
+- Added a CPU-bounded Actions workflow that preserves all attempted reports, predictions, selection audits and dependency versions. Missing FRED credentials explicitly block macro comparisons.
+- Added the two-lab strategy, a read-only Claude review brief, and links in the repository and public lab notes. UnpricedX was inspected read-only; original Unpriced was not modified.
+- Updated the existing weekly research-review task to prioritize the approved four-part program and reviewed shadow-launch preparation, without automatic promotion.
+- Confirmed the official algorithm SHA-256 remains `15e0549b70629e45c79ee2049a76a46b7b0f9aecf47eacecc279a43677a72f29`. No official model policy or frozen record was rewritten.

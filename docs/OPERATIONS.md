@@ -27,6 +27,21 @@ The user authorized scheduled work to improve this lab. The ChatGPT task **UNPRI
 
 Never modify PrototypeVersions/Unpriced, its automations, or its historical records. Do not silently promote a model, change live trading rules, execute real trades, erase results, purchase data, or send messages to other people.
 
+## Registered upgrade program
+
+The separate `Registered research program` workflow executes the bounded comparisons in
+`research_program/registry.json`, preserving every attempt under `archive/program/` and a
+current presentation at `site/data/program.json`. It runs on program-code changes or manual
+dispatch, not as an unbounded recurring search. Its CPU job has a 50-minute limit. Its inputs
+use the pinned price archive; optional ALFRED retrieval needs the repository secret
+`FRED_API_KEY`. Missing credentials are a blocked experiment, not a successful macro test.
+
+The Sunday review now prioritizes this four-part program, unresolved defects, and a carefully
+specified prospective shadow launch. It may inspect UnpricedX read-only for compatibility.
+It cannot change X, run its holdout, contact another agent, create UnpricedHub, automatically
+fine-tune/promote models or change the official research-2.0.0 policy. See
+[the program](RESEARCH_PROGRAM.md) and [cross-lab strategy](MULTI_LAB_STRATEGY.md).
+
 ## Failure behavior
 
 The last successful records remain available. The public status file reports a cycle error if the engine fails; GitHub Actions contains installation/test/deployment failures too. Never infer successful timely publication from a green workflow alone. Inspect record timestamps and target entry deadlines.
