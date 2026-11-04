@@ -40,3 +40,8 @@ Subsequent corrections and tested specifications must be appended here.
   FRED's server still considered today November 3. The adapter now lets FRED supply its
   default real-time end on the first request, then pins that returned date across all pages
   and series. A regression test covers the overnight UTC boundary and pagination.
+- The next request exposed FRED's 2,000-vintage limit for JSON. Downloads now use
+  contiguous windows of at most 1,000 calendar dates and paginate within each window.
+  A one-row current-date probe supplies only the server boundary; its revised value
+  is discarded. Tests cover complete window coverage, pagination, absent early coverage,
+  and rejection of prematurely empty pages. Earlier blocked attempts remain archived.

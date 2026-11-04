@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 import os
 import re
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
@@ -33,51 +33,70 @@ def http_failure(exc, key, series):
     return f"ALFRED request failed for {series}: HTTP {exc.code}" + (f" — {detail}" if detail else "")
 
 
+def observations_request(key, series, params):
+    query = {"api_key": key, "file_type": "json", "series_id": series, **params}
+    try:
+        with urlopen("https://api.stlouisfed.org/fred/series/observations?" + urlencode(query), timeout=90) as response:
+            return json.load(response)
+    except HTTPError as exc:
+        raise MacroUnavailable(http_failure(exc, key, series)) from None
+    except (URLError, TimeoutError) as exc:
+        raise MacroUnavailable(f"ALFRED request failed for {series}: {type(exc).__name__}") from None
+
+
+def realtime_windows(start, end):
+    """At most 1,000 calendar dates, below FRED's 2,000 JSON-vintage limit."""
+    cursor, final = date.fromisoformat(start), date.fromisoformat(end)
+    while cursor <= final:
+        stop = min(cursor + timedelta(days=999), final)
+        yield cursor.isoformat(), stop.isoformat()
+        cursor = stop + timedelta(days=1)
+
+
 def download_vintages(spec, observation_start="2008-01-01"):
     key = os.environ.get(spec["keyEnvironment"])
     if not key:
         raise MacroUnavailable("FRED_API_KEY repository secret is absent; macro experiment blocked.")
     retrieved = datetime.now(timezone.utc).isoformat()
-    result = {"retrievedAt": retrieved, "provider": spec["provider"], "series": {}}
-    server_end = None
+    # A one-row current-date probe reads only the server's date. Its revised
+    # observation is deliberately discarded, never used as a historical input.
+    probe = observations_request(key, next(iter(spec["series"])),
+                                 {"observation_start": observation_start, "limit": 1})
+    server_end = probe.get("realtime_end")
+    try:
+        valid_end = isinstance(server_end, str) and observation_start <= server_end <= retrieved[:10]
+        valid_end = valid_end and date.fromisoformat(server_end).isoformat() == server_end
+    except ValueError:
+        valid_end = False
+    if not valid_end:
+        raise MacroUnavailable("FRED omitted a valid current-date boundary")
+    windows = list(realtime_windows(observation_start, server_end))
+    result = {"retrievedAt": retrieved, "provider": spec["provider"], "series": {},
+              "realtimeEnd": server_end, "realtimeWindows": windows}
     for series in spec["series"]:
-        rows, offset = [], 0
-        while True:
-            params = {"api_key": key, "file_type": "json", "series_id": series,
-                      "realtime_start": "1776-07-04",
-                      "observation_start": observation_start, "output_type": 1,
-                      "limit": 100000, "offset": offset, "sort_order": "asc"}
-            # UTC can already be tomorrow relative to FRED. Let its server choose
-            # today's date once, then freeze that boundary across pages/series.
-            if server_end is not None:
-                params["realtime_end"] = server_end
-            try:
-                with urlopen("https://api.stlouisfed.org/fred/series/observations?" + urlencode(params), timeout=90) as response:
-                    payload = json.load(response)
-            except HTTPError as exc:
-                raise MacroUnavailable(http_failure(exc, key, series)) from None
-            except (URLError, TimeoutError) as exc:
-                # Never log a request URL containing the API key.
-                raise MacroUnavailable(f"ALFRED request failed for {series}: {type(exc).__name__}") from None
-            reported_end = payload.get("realtime_end")
-            if not isinstance(reported_end, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", reported_end):
-                raise MacroUnavailable(f"ALFRED omitted a valid real-time boundary for {series}")
-            if server_end is None:
-                server_end = reported_end
-                result["realtimeEnd"] = server_end
-            elif reported_end != server_end:
-                raise MacroUnavailable(f"ALFRED changed the requested real-time boundary for {series}")
-            batch = payload.get("observations", [])
-            if not batch:
-                if not rows:
-                    raise MacroUnavailable(f"ALFRED returned no vintage observations for {series}")
-                break
-            rows.extend(batch)
-            offset += len(batch)
-            if offset >= int(payload["count"]):
-                break
+        rows = []
+        for start, end in windows:
+            offset = 0
+            while True:
+                payload = observations_request(key, series, {
+                    "realtime_start": start, "realtime_end": end,
+                    "observation_start": observation_start, "output_type": 1,
+                    "limit": 100000, "offset": offset, "sort_order": "asc"})
+                if payload.get("realtime_start") != start or payload.get("realtime_end") != end:
+                    raise MacroUnavailable(f"ALFRED changed the requested real-time boundary for {series}")
+                batch = payload.get("observations", [])
+                count = int(payload["count"])
+                if not batch and offset < count:
+                    raise MacroUnavailable(f"ALFRED returned an incomplete page for {series}")
+                rows.extend(batch)
+                offset += len(batch)
+                if offset >= count:
+                    break
+        if not rows:
+            raise MacroUnavailable(f"ALFRED returned no vintage observations for {series}")
         # Only data and non-secret provenance enter the archive.
         result["series"][series] = rows
+        print(f"Archived {series}: {len(rows)} vintage observations", flush=True)
     return result
 
 

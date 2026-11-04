@@ -10,7 +10,7 @@ import pytest
 from unpriced.controls import synthetic_market
 from unpriced.io import config
 
-from research_program.macro import MacroUnavailable, asof_series, download_vintages, http_failure
+from research_program.macro import MacroUnavailable, asof_series, download_vintages, http_failure, realtime_windows
 from research_program.panel import columns, make_panel, resolved_history
 from research_program.pretrained import probability_above
 from research_program.reporting import paired
@@ -181,17 +181,66 @@ def test_api_date_comes_from_server_and_stays_fixed_across_pages(monkeypatch):
         query = parse_qs(urlparse(url).query)
         if not calls:
             assert "realtime_end" not in query
+            assert "realtime_start" not in query
+            calls.append(query)
+            return BytesIO(json.dumps({"realtime_end": "2026-11-03", "count": 1,
+                "observations": [{"date": "2026-11-02", "realtime_start": "2026-11-03", "value": "999"}]}).encode())
         else:
             assert query["realtime_end"] == ["2026-11-03"]
         calls.append(query)
-        return BytesIO(json.dumps({"realtime_end": "2026-11-03", "count": 2,
+        return BytesIO(json.dumps({"realtime_start": query["realtime_start"][0], "realtime_end": "2026-11-03", "count": 2,
             "observations": [{"date": "2026-11-02", "realtime_start": "2026-11-03", "value": "4"}]}).encode())
 
     monkeypatch.setenv("FRED_API_KEY", "a" * 32)
     monkeypatch.setattr(macro_module, "datetime", TomorrowUTC)
     monkeypatch.setattr(macro_module, "urlopen", respond)
     result = download_vintages({"keyEnvironment": "FRED_API_KEY", "provider": "test",
-                               "series": {"DGS10": 10, "T10Y2Y": 10}})
-    assert len(calls) == 4  # Two pages of each series, same server date throughout.
+                               "series": {"DGS10": 10, "T10Y2Y": 10}}, "2026-11-01")
+    assert len(calls) == 5  # Date probe, then two pages of each historical series.
+    assert all(row["value"] == "4" for rows in result["series"].values() for row in rows)
+    assert [q["offset"][0] for q in calls[1:]] == ["0", "1", "0", "1"]
     assert result["retrievedAt"].startswith("2026-11-04")
     assert result["realtimeEnd"] == "2026-11-03"
+
+
+def test_vintage_windows_are_bounded_contiguous_and_do_not_use_probe_data(monkeypatch):
+    from datetime import date, timedelta
+    import research_program.macro as macro_module
+    windows = list(realtime_windows("2008-01-01", "2026-11-03"))
+    assert windows[0][0] == "2008-01-01" and windows[-1][1] == "2026-11-03"
+    for i, (start, end) in enumerate(windows):
+        assert (date.fromisoformat(end) - date.fromisoformat(start)).days < 1000
+        if i:
+            assert date.fromisoformat(start) == date.fromisoformat(windows[i-1][1]) + timedelta(days=1)
+    calls = []
+
+    def respond(key, series, params):
+        calls.append(params)
+        if "realtime_start" not in params:
+            return {"realtime_end": "2012-01-01", "observations": [{"value": "999"}]}
+        # Empty windows before archival coverage are allowed; later coverage stays usable.
+        rows = [] if params["realtime_start"] == "2008-01-01" else [
+            {"date": "2011-12-01", "realtime_start": "2011-12-15", "value": "1"}]
+        return {"realtime_start": params["realtime_start"], "realtime_end": params["realtime_end"],
+                "count": len(rows), "observations": rows}
+
+    monkeypatch.setenv("FRED_API_KEY", "a" * 32)
+    monkeypatch.setattr(macro_module, "observations_request", respond)
+    result = download_vintages({"keyEnvironment": "FRED_API_KEY", "provider": "test", "series": {"TEST": 10}})
+    assert len(calls) == 3
+    assert result["series"]["TEST"] == [{"date": "2011-12-01", "realtime_start": "2011-12-15", "value": "1"}]
+
+
+def test_incomplete_vintage_page_blocks_instead_of_silently_truncating(monkeypatch):
+    import research_program.macro as macro_module
+
+    def respond(key, series, params):
+        if "realtime_start" not in params:
+            return {"realtime_end": "2008-01-02"}
+        return {"realtime_start": params["realtime_start"], "realtime_end": params["realtime_end"],
+                "count": 1, "observations": []}
+
+    monkeypatch.setenv("FRED_API_KEY", "a" * 32)
+    monkeypatch.setattr(macro_module, "observations_request", respond)
+    with pytest.raises(MacroUnavailable, match="incomplete page"):
+        download_vintages({"keyEnvironment": "FRED_API_KEY", "provider": "test", "series": {"TEST": 10}})
