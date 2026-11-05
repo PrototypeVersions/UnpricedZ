@@ -2,7 +2,11 @@ name: Publish UNPRICED site
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'docs/**', '.github/workflows/site.yml']
+    paths: ['site/**', 'site_tools/**', 'docs/**', '.github/workflows/site.yml']
+  workflow_run:
+    workflows: ['Risk Lab benchmarks and daily record', 'Research and daily publication']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
@@ -21,7 +25,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - run: node --check site/app.js
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prepare display history and exchange calendar
+        run: |
+          pip install pandas==2.2.3 pandas-market-calendars==5.1.1
+          python site_tools/build_context.py
+          node --check site/app.js
+          node --check site/risk.js
       - uses: actions/configure-pages@v5
         with:
           enablement: true
@@ -30,3 +42,6 @@ jobs:
           path: site
       - uses: actions/deploy-pages@v4
         id: deploy
+      - name: Verify the public site matches this deployment
+        run: python site_tools/verify_publication.py "${{ steps.deploy.outputs.page_url }}"
+
