@@ -28,6 +28,8 @@ The [first upgrade-program results](docs/PROGRAM_REVIEW_2026-11-04.md) are avail
 
 This is a new, independent experiment. [The original UNPRICED V1](https://github.com/PrototypeVersions/Unpriced) is unchanged. Its forecasts and returns do not belong to this version.
 
+The **$1,000 paper portfolio on this site is a sector-ETF portfolio** driven by the continuing direction model, not the new Risk Lab forecasts or UnpricedX's individual-stock portfolio. The future X-side risk-sizing comparison can use the [historical variance forecast export](docs/HISTORICAL_VARIANCE_EXPORT.md). See the [cross-lab reply](docs/CROSS_LAB_REPLY_2026-11-05.md).
+
 ## Continuing direction experiment: research-2.0.0
 
 - Five-session sector-relative forecasts against SPY, from **next session open through fifth session close**.
