@@ -110,7 +110,7 @@ function controls(){
   return body;
 }
 function portfolio(){
-  let body=header('PAPER PORTFOLIO / PREDECLARED POLICY','$1,000 trading experiment.','The continuing sector-direction strategy. Five-session holds, modeled costs, and cash when no entries qualify.');
+  let body=header('PAPER PORTFOLIO / PREDECLARED POLICY','$1,000 sector-ETF paper portfolio.','The continuing sector-direction strategy. Five-session holds, modeled costs, and cash when no entries qualify.');
   body+=GuideUI.portfolioIntro();
   body+=`<div class="toolbar"><div class="tabs"><button data-portfolio="live" class="${S.portfolio==='live'?'selected':''}">Prospective plans</button><button data-portfolio="historical" class="${S.portfolio==='historical'?'selected':''}">Historical simulation</button></div>${badge('PAPER · NO BROKER FILLS','gold')}</div>`;
   const live=S.portfolio==='live',p=live?S.live?.portfolio:S.research?.portfolio;
