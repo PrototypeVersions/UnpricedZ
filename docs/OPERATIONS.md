@@ -87,6 +87,8 @@ GitHub Pages serves `site/` through Actions. The **Publish UNPRICED site** workf
 
 The research schedules, model operations and record commits remain the same. Workflow-only publication edits do not trigger research reruns; changes to research code retain the existing triggers. A failed research job can still be followed by site publication so the error status remains visible.
 
+Each website artifact is named with its workflow run ID and attempt number. Deployment selects that exact name. This prevents a retry from finding multiple artifacts named `github-pages` in the same workflow run; old artifacts can remain available without confusing the publisher.
+
 The document reader copies original source bytes, reports their SHA-256 fingerprints and creates readable HTML. The build does not fit models, recompute scores or rewrite source records. Hub receipt context is a dated, optional read-only copy; a failed Hub fetch is shown as unavailable and does not block publication. The build installs its Markdown dependency separately from the frozen research environments.
 
 No server, account registration or installation is required for visitors. The browser loads static JSON and refreshes while visible. Read methods, reports and frozen records in the on-site reference pages, with original-file downloads and optional GitHub provenance links. The publisher checks live file hashes against its artifact, including the new reference pages. Exact market-execution timing is not claimed by this static site.

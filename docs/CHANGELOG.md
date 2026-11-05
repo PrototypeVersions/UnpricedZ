@@ -64,3 +64,10 @@ Subsequent corrections and tested specifications must be appended here.
   do not regain their earlier value. Added regression tests for these cases.
 - This is a data-handling correction to program-0.1.0. Preserve the prior results and
   report the rerun as a corrected development comparison, not independent confirmation.
+
+## 2026-11-05 — Website review and publication recovery
+
+- Reviewed all 12 application routes, 54 published HTML pages, 112 internal resources and all 51 exact-byte source downloads. Main text colors pass 4.5:1 contrast on the paper background. Browser visual inspection was unavailable; verification used public HTTP responses, DOM behavior and the existing 62 automated checks.
+- Refined long buttons for narrow screens, made inline links clearer, removed unnecessary missing-date badges on explanatory pages and corrected refresh-error wording to point to the on-site records.
+- A Pages activation timed out after a successful build and upload. Retrying exposed duplicate `github-pages` artifacts in the same workflow run. Give each uploaded artifact a run-and-attempt-specific name and select that exact name during deployment, preserving older artifacts without ambiguity.
+- These changes affect presentation and publication only. Model specifications, trading rules, schedules, original registered results and frozen forecast/outcome records are unchanged. Earlier deployment failures remain in Actions history.
