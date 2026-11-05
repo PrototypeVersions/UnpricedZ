@@ -98,6 +98,7 @@ class DocumentHTML(HTMLParser):
 
 def shell(title, body, depth=0, source=None, sha=None):
     prefix = '../' * (depth + 1)
+    canonical = 'https://prototypeversions.github.io/UnpricedZ/reference/' + (page_path(source) if source else 'records.html' if title == 'Frozen forecast ledger' else 'index.html')
     provenance = ''
     if source:
         raw = posixpath.relpath('raw/'+source, posixpath.dirname(page_path(source)) or '.')
@@ -106,7 +107,15 @@ def shell(title, body, depth=0, source=None, sha=None):
             + '<a download href="'+html.escape(raw)+'">Download the original file</a> · ' \
             + '<a href="'+REPO+'/blob/main/'+html.escape(source)+'">Optional: view source on GitHub ↗</a></div>'
     return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' \
-        + '<title>'+html.escape(title)+' · UNPRICED</title><link rel="stylesheet" href="'+prefix+'styles.css"><link rel="icon" href="'+prefix+'favicon.svg"></head><body>' \
+        + '<title>'+html.escape(title)+' · UNPRICED</title><link rel="stylesheet" href="'+prefix+'styles.css">' \
+        + '<link rel="canonical" href="'+html.escape(canonical,quote=True)+'"><meta property="og:url" content="'+html.escape(canonical,quote=True)+'">' \
+        + '<meta name="theme-color" content="#F5F2EA"><meta property="og:type" content="article"><meta property="og:site_name" content="UNPRICED">' \
+        + '<meta property="og:title" content="'+html.escape(title,quote=True)+' · UNPRICED"><meta property="og:description" content="Read the Market &amp; Sector Risk Lab’s methods, original research and public records.">' \
+        + '<meta property="og:image" content="https://prototypeversions.github.io/UnpricedZ/assets/unpriced-paper-ink-social-v1.png"><meta property="og:image:width" content="1734"><meta property="og:image:height" content="907">' \
+        + '<meta property="og:image:alt" content="Unpriced. Forecasts, put to the test. Ink lettering and teal market paths on warm paper."><meta name="twitter:card" content="summary_large_image">' \
+        + '<meta name="twitter:image" content="https://prototypeversions.github.io/UnpricedZ/assets/unpriced-paper-ink-social-v1.png">' \
+        + '<link rel="icon" href="'+prefix+'assets/unpriced-paper-ink-icon-v1.png" type="image/png" sizes="1254x1254"><link rel="icon" href="'+prefix+'assets/favicon-paper-ink-v2.svg" type="image/svg+xml" sizes="any">' \
+        + '<link rel="apple-touch-icon" href="'+prefix+'assets/unpriced-paper-ink-icon-v1.png"></head><body>' \
         + '<a class="skip" href="#content">Skip to document</a><header class="masthead"><div class="masthead-top"><a class="wordmark" href="'+prefix+'#risk">Unpriced<span class="wordmark-dot">.</span></a><p>Market &amp; Sector Risk Lab · UnpricedZ</p></div>' \
         + '<nav class="primary-nav" aria-label="Main navigation">' \
         + ''.join('<a href="'+prefix+'#'+route+'">'+label+'</a>' for route,label in [('risk','Overview'),('outlook','Forecasts'),('portfolio','$1,000 experiment'),('record','Results'),('experiments','Research'),('methods','Methods'),('about','About')]) \

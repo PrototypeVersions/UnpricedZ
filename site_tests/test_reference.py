@@ -94,7 +94,8 @@ def test_generated_reference_navigation_and_download_links_resolve(tmp_path):
     fixture(tmp_path)
     put(tmp_path, 'docs/PROTOCOL.md', '# Protocol\n\n[Settings](../config.json)\n')
     put(tmp_path, 'site/styles.css', '')
-    put(tmp_path, 'site/favicon.svg', '')
+    put(tmp_path, 'site/assets/favicon-paper-ink-v2.svg', '')
+    put(tmp_path, 'site/assets/unpriced-paper-ink-icon-v1.png', '')
     build(tmp_path)
     for page in (tmp_path / 'site/reference').rglob('*.html'):
         parser = Links()
