@@ -1,10 +1,10 @@
 name: Site presentation checks
 on:
   pull_request:
-    paths: ['site/**', 'site_tools/**', 'site_tests/**', '.github/workflows/site.yml', '.github/workflows/frontend.yml']
+    paths: ['site/**', 'site_tools/**', 'site_tests/**', 'docs/**', '.github/workflows/site.yml', '.github/workflows/frontend.yml', '.github/workflows/lab.yml', '.github/workflows/risk.yml']
   push:
     branches: [main]
-    paths: ['site/**', 'site_tools/**', 'site_tests/**', '.github/workflows/site.yml', '.github/workflows/frontend.yml']
+    paths: ['site/**', 'site_tools/**', 'site_tests/**', 'docs/**', '.github/workflows/site.yml', '.github/workflows/frontend.yml', '.github/workflows/lab.yml', '.github/workflows/risk.yml']
 permissions:
   contents: read
 jobs:
@@ -27,18 +27,22 @@ jobs:
             requirements.txt
             risk_lab/requirements.txt
             hub_export/requirements.txt
+            site_tools/requirements.txt
       - name: Install pinned test dependencies
         run: |
-          pip install -r risk_lab/requirements.txt -r hub_export/requirements.txt
+          pip install -r risk_lab/requirements.txt -r hub_export/requirements.txt -r site_tools/requirements.txt
           npm install --prefix site_tests --no-save --ignore-scripts linkedom@0.18.12
       - name: Research integrity and display-context tests
         run: python -m pytest -q
-      - name: Build disposable display context
-        run: python site_tools/build_context.py
+      - name: Build disposable display context and on-site references
+        run: |
+          python site_tools/build_context.py
+          python site_tools/build_reference.py
       - name: JavaScript syntax and DOM behavior
         run: |
           node --check site/app.js
           node --check site/risk.js
+          node --check site/guide.js
           node --test site_tests/*.test.mjs
       - name: Preserve the reviewed preview
         uses: actions/upload-artifact@v4

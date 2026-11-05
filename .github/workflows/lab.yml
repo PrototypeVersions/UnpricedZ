@@ -8,7 +8,6 @@ on:
       - 'config.json'
       - 'requirements.txt'
       - 'tests/**'
-      - '.github/workflows/lab.yml'
   schedule:
     # Both DST offsets; the exchange calendar and entry-open deadline govern publication.
     - cron: '17 21,22 * * 1-5'
@@ -23,8 +22,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: unpricedz-publication
@@ -34,9 +31,6 @@ jobs:
   laboratory:
     runs-on: ubuntu-latest
     timeout-minutes: 90
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     env:
       OPENBLAS_NUM_THREADS: '1'
       OMP_NUM_THREADS: '1'
@@ -99,17 +93,4 @@ jobs:
             site/data
             records
           retention-days: 90
-      - name: Configure GitHub Pages
-        if: always()
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - name: Package public site
-        if: always()
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-      - name: Deploy public site
-        if: always()
-        uses: actions/deploy-pages@v4
-        id: deploy
+      # The site workflow publishes one complete bundle after this job finishes.

@@ -4,7 +4,7 @@
 
 GitHub Actions, not the user's local machine, runs the data pipeline. Scheduled UTC attempts are 21:17, 22:17 and 23:47 on weekdays. NYSE trading sessions, actual times and current data control eligibility. This accommodates US daylight saving changes and provider delays. Early-close publication happens later that same evening; no perfect 13:45 timing is claimed.
 
-Each run tests integrity, downloads/validates required data, resolves mature forecasts, publishes a new forecast only within its valid window, saves input vintages and exact features, and deploys the public site. Repeated runs preserve the first same-session snapshot. No missing session is backfilled as live. New entries after the next opening are prohibited by publication checks.
+Each run tests integrity, downloads/validates required data, resolves mature forecasts, publishes a new forecast only within its valid window, saves input vintages and exact features, and saves its public data. A following website job publishes the complete site. Repeated runs preserve the first same-session snapshot. No missing session is backfilled as live. New entries after the next opening are prohibited by publication checks.
 
 A bootstrap computes all controls and historical research before attempting a prospective snapshot. If that computation crosses the target entry opening, the snapshot is missed. Do not relax the boundary to make launch look complete.
 
@@ -83,8 +83,15 @@ The provider can revise prices, throttle requests, or return incomplete data. Pr
 
 ## Deployment
 
-GitHub Pages serves site/ through Actions. No server, account registration or installation is required for visitors. The browser loads static JSON and refreshes while visible. Use the raw archives and Git history for independent inspection. Exact market-execution timing is not claimed by this static site.
+GitHub Pages serves `site/` through Actions. The **Publish UNPRICED site** workflow is the single publisher. After a direction, risk, registered-program or archive-recovery job completes, it checks out current main, builds the display history, exchange calendar and on-site document readers, then publishes one complete bundle. It also runs for website/document changes and can be dispatched manually. Research jobs preserve their evidence and status but do not independently deploy a partial website.
+
+The research schedules, model operations and record commits remain the same. Workflow-only publication edits do not trigger research reruns; changes to research code retain the existing triggers. A failed research job can still be followed by site publication so the error status remains visible.
+
+The document reader copies original source bytes, reports their SHA-256 fingerprints and creates readable HTML. The build does not fit models, recompute scores or rewrite source records. Hub receipt context is a dated, optional read-only copy; a failed Hub fetch is shown as unavailable and does not block publication. The build installs its Markdown dependency separately from the frozen research environments.
+
+No server, account registration or installation is required for visitors. The browser loads static JSON and refreshes while visible. Read methods, reports and frozen records in the on-site reference pages, with original-file downloads and optional GitHub provenance links. The publisher checks live file hashes against its artifact, including the new reference pages. Exact market-execution timing is not claimed by this static site.
 
 ## Storage
 
 Full historical inputs are archived for research and quarterly model fits. Daily smaller windows preserve feature and resolution data. Track repository growth. If archives eventually move to durable object storage, retain content hashes, immutable references and a migration manifest; do not silently remove the evidence.
+

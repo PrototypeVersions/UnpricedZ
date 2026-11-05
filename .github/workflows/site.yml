@@ -2,9 +2,9 @@ name: Publish UNPRICED site
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'site_tools/**', 'docs/**', '.github/workflows/site.yml']
+    paths: ['site/**', 'site_tools/**', 'docs/**', '.github/workflows/site.yml', '.github/workflows/lab.yml', '.github/workflows/risk.yml']
   workflow_run:
-    workflows: ['Risk Lab benchmarks and daily record', 'Research and daily publication']
+    workflows: ['Risk Lab benchmarks and daily record', 'Research and daily publication', 'Registered research program', 'Recover archived program artifact']
     types: [completed]
     branches: [main]
   workflow_dispatch:
@@ -28,12 +28,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Prepare display history and exchange calendar
+      - name: Build complete site from published records
         run: |
-          pip install pandas==2.2.3 pandas-market-calendars==5.1.1
+          pip install pandas==2.2.3 pandas-market-calendars==5.1.1 -r site_tools/requirements.txt
           python site_tools/build_context.py
+          python site_tools/build_reference.py
           node --check site/app.js
           node --check site/risk.js
+          node --check site/guide.js
       - uses: actions/configure-pages@v5
         with:
           enablement: true
