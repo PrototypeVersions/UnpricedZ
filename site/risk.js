@@ -13,7 +13,7 @@ const RiskUI = (() => {
   const title = (eyebrow, heading, copy) => `<div class="intro"><span class="eyebrow">${eyebrow}</span><h1>${heading}</h1><p>${copy}</p></div>`;
   const section = (heading, copy, content, link='') => `<section class="section"><div class="section-heading"><div><h2>${heading}</h2>${copy?`<p>${copy}</p>`:''}</div>${link}</div>${content}</section>`;
   const table = (head, rows, label) => `<div class="table-scroll" role="region" tabindex="0" aria-label="${esc(label)}"><table class="data-table"><thead><tr>${head.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
-  const missing = key => S.resources?.[key]?.error ? empty('This record could not be loaded','Use Refresh to try again. Saved records remain available from the repository.',links([['Public data',`${REPO}/tree/main/site/data`]])) : empty('Loading this record','The page will update when the published data arrives.');
+  const missing = key => S.resources?.[key]?.error ? empty('This record could not be loaded','Use Refresh to try again. Read the last published records on this site.',links([['Public data',`${REPO}/tree/main/site/data`]])) : empty('Loading this record','The page will update when the published data arrives.');
   const snapshot = () => S.risk?.latest;
   function presentation() {
     const p=S.presentation;

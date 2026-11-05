@@ -17,7 +17,10 @@ const badge=(text,type='')=>`<span class="badge ${type}">${esc(text)}</span>`;
 const empty=(title,description,link='')=>`<div class="empty"><span class="empty-icon">○</span><h3>${esc(title)}</h3><p>${esc(description)}</p>${link}</div>`;
 const panel=(title,subtitle,body,foot='',right='')=>`<section class="panel"><div class="panel-head"><div><h2>${title}</h2>${subtitle?`<p>${subtitle}</p>`:''}</div>${right}</div>${body}${foot?`<div class="panel-foot">${foot}</div>`:''}</section>`;
 const stat=(label,value,note='',color='')=>`<article class="stat"><div class="label">${label}</div><strong class="${color}">${value}</strong><small>${note}</small></article>`;
-const header=(eyebrow,title,description)=>`<div class="page-header"><div><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div><div class="date-badge">LATEST MARKET SESSION<strong>${date(RiskUI.isRisk(S.route)?S.risk?.latest?.sessionDate:S.live?.latest?.sessionDate||S.market?.asOf)}</strong></div></div>`;
+const header=(eyebrow,title,description)=>{
+  const session=RiskUI.isRisk(S.route)?S.risk?.latest?.sessionDate:S.live?.latest?.sessionDate||S.market?.asOf;
+  return `<div class="page-header"><div><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div>${session?`<div class="date-badge">LATEST MARKET SESSION<strong>${date(session)}</strong></div>`:''}</div>`;
+};
 const links=(items)=>`<div class="link-list">${items.map(([text,url])=>`<a href="${esc(url)}" target="_blank" rel="noopener">${text} ↗</a>`).join('')}</div>`;
 function openDetail(html){$('#detail-content').innerHTML=html;GuideUI.localize($('#detail-content'));$('#detail').showModal();}
 function metric(id,summary){return summary?.models?.find(m=>m.id===id);}
