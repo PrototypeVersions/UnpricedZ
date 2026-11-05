@@ -3,10 +3,12 @@ name: Risk Lab benchmarks and daily record
 on:
   push:
     branches: [main]
-    paths: ['risk_lab/**', 'hub_export/**', 'vendor/unpricedhub/**', 'analysis/variance_decomposition.py']
+    paths: ['risk_lab/**', 'hub_export/**', 'vendor/unpricedhub/**', 'analysis/variance_decomposition.py', 'site_tools/export_risk_history.py', '.github/workflows/risk.yml']
   schedule:
     - cron: '29 21,22 * * 1-5'
     - cron: '59 23 * * 1-5'
+    # Overnight retry slots for the previous US session; immutable issue and entry-open checks apply.
+    - cron: '19 1,4 * * 2-6'
   workflow_dispatch:
     inputs:
       mode:
@@ -48,6 +50,8 @@ jobs:
         run: pip install -r risk_lab/requirements.txt -r hub_export/requirements.txt
       - name: Integrity, timing, model and contract tests
         run: python -m pytest -q
+      - name: Export archived 2019–2024 variance forecasts without model refitting
+        run: python -m site_tools.export_risk_history
       - name: Select operation
         id: operation
         env:
