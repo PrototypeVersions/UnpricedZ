@@ -3,7 +3,7 @@ const REPO='https://github.com/PrototypeVersions/UnpricedZ';
 const S={research:null,controls:null,live:null,market:null,status:null,risk:null,risk_research:null,risk_controls:null,risk_status:null,route:'risk',riskEvidence:'live',presentation:null,resources:{},riskTask:'variance',riskSort:'ewma',riskSearch:'',period:'confirmation',portfolio:'live',forecastModel:'logistic',search:'',control:'0'};
 const COLORS={logistic:'#116D68',raw_logistic:'#587A65',boosted:'#365F99',momentum:'#A34D38',base_rate:'#5F6B74',coin_flip:'#886318'};
 const NAMES={logistic:'Regularized logistic',raw_logistic:'Before calibration',boosted:'Boosted challenger',momentum:'Momentum baseline',base_rate:'Historical base rate',coin_flip:'Constant 50%'};
-const ROUTES={risk:'Overview',outlook:'Forecasts',record:'Results',experiments:'Research',about:'About',overview:'Direction overview',forecasts:'Direction forecasts',research:'Direction research',controls:'Direction controls',portfolio:'Paper portfolio',method:'Direction methods'};
+const ROUTES={risk:'Overview',outlook:'Forecasts',record:'Results',experiments:'Research',about:'About',overview:'Direction overview',forecasts:'Direction forecasts',research:'Direction research',controls:'Direction controls',portfolio:'$1,000 experiment',method:'Direction methods'};
 const $=s=>document.querySelector(s);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,n=2)=>v==null||!Number.isFinite(Number(v))?'—':Number(v).toLocaleString('en-US',{minimumFractionDigits:n,maximumFractionDigits:n});
@@ -107,7 +107,7 @@ function controls(){
   return body;
 }
 function portfolio(){
-  let body=header('PREDECLARED POLICY / REFERENCE RETURNS','A separate economic experiment.','Three positions at most. Five-session holds. Costs included. Cash is a valid outcome.');
+  let body=header('PAPER PORTFOLIO / PREDECLARED POLICY','$1,000 trading experiment.','The continuing sector-direction strategy. Five-session holds, modeled costs, and cash when no entries qualify.');
   body+=`<div class="toolbar"><div class="tabs"><button data-portfolio="live" class="${S.portfolio==='live'?'selected':''}">Prospective plans</button><button data-portfolio="historical" class="${S.portfolio==='historical'?'selected':''}">Historical simulation</button></div>${badge('PAPER · NO BROKER FILLS','gold')}</div>`;
   const live=S.portfolio==='live',p=live?S.live?.portfolio:S.research?.portfolio;
   if(!p)return body+panel('Paper record','No invented activity',empty('No paper record yet','The first completed pipeline creates the reference-return experiment. It remains distinct from actual execution.'));

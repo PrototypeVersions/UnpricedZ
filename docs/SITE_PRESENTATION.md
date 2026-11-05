@@ -1,8 +1,9 @@
 # Paper & Ink site presentation
 
 The site presents the existing risk-1.0.0 experiment through Overview, Forecasts,
-Results, Research, and About. The research-2.0.0 direction study continues under
-its original specification and retains its original fragment URLs.
+Results, Research, and About. A prominent $1,000 experiment tab and homepage
+link expose the continuing paper portfolio. The research-2.0.0 direction study
+continues under its original specification and retains its original fragment URLs.
 
 No model, target, scoring rule, archived result, or frozen record is changed by
 this presentation layer. Annualized volatility is a display conversion of
