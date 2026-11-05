@@ -41,10 +41,10 @@ def build_export(root: Path = ROOT, report_path: Path = REPORT) -> bytes:
     covered = defaultdict(set)
     values = []
     for row in rows:
-        origin = date.fromisoformat(row["date"])
-        fitted = date.fromisoformat(row["fitAsOf"])
-        entry = date.fromisoformat(row["entryDate"])
-        exit_date = date.fromisoformat(row["labelEnd"])
+        origin = date.fromisoformat(row["date"][:10])
+        fitted = date.fromisoformat(row["fitAsOf"][:10])
+        entry = date.fromisoformat(row["entryDate"][:10])
+        exit_date = date.fromisoformat(row["labelEnd"][:10])
         if not date(2019, 1, 1) <= origin <= date(2024, 12, 31):
             raise ValueError("Forecast origin outside registered research years")
         if fitted > origin or not (origin < entry <= exit_date):
