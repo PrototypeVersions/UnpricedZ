@@ -1,9 +1,9 @@
 'use strict';
 const REPO='https://github.com/PrototypeVersions/UnpricedZ';
-const S={research:null,controls:null,live:null,market:null,status:null,risk:null,risk_research:null,risk_controls:null,risk_status:null,route:'risk',riskEvidence:'live',presentation:null,resources:{},riskTask:'variance',riskSort:'ewma',riskSearch:'',period:'confirmation',portfolio:'live',forecastModel:'logistic',search:'',control:'0'};
+const S={research:null,controls:null,live:null,market:null,status:null,risk:null,risk_research:null,risk_controls:null,risk_status:null,route:'risk',riskEvidence:'live',presentation:null,reader:null,resources:{},riskTask:'variance',riskSort:'ewma',riskSearch:'',period:'confirmation',portfolio:'live',forecastModel:'logistic',search:'',control:'0'};
 const COLORS={logistic:'#116D68',raw_logistic:'#587A65',boosted:'#365F99',momentum:'#A34D38',base_rate:'#5F6B74',coin_flip:'#886318'};
 const NAMES={logistic:'Regularized logistic',raw_logistic:'Before calibration',boosted:'Boosted challenger',momentum:'Momentum baseline',base_rate:'Historical base rate',coin_flip:'Constant 50%'};
-const ROUTES={risk:'Overview',outlook:'Forecasts',record:'Results',experiments:'Research',about:'About',overview:'Direction overview',forecasts:'Direction forecasts',research:'Direction research',controls:'Direction controls',portfolio:'$1,000 experiment',method:'Direction methods'};
+const ROUTES={risk:'Overview',outlook:'Forecasts',record:'Results',experiments:'Research',methods:'Methods',about:'About',overview:'Direction overview',forecasts:'Direction forecasts',research:'Direction research',controls:'Direction controls',portfolio:'$1,000 experiment',method:'Direction methods'};
 const $=s=>document.querySelector(s);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,n=2)=>v==null||!Number.isFinite(Number(v))?'—':Number(v).toLocaleString('en-US',{minimumFractionDigits:n,maximumFractionDigits:n});
@@ -17,9 +17,9 @@ const badge=(text,type='')=>`<span class="badge ${type}">${esc(text)}</span>`;
 const empty=(title,description,link='')=>`<div class="empty"><span class="empty-icon">○</span><h3>${esc(title)}</h3><p>${esc(description)}</p>${link}</div>`;
 const panel=(title,subtitle,body,foot='',right='')=>`<section class="panel"><div class="panel-head"><div><h2>${title}</h2>${subtitle?`<p>${subtitle}</p>`:''}</div>${right}</div>${body}${foot?`<div class="panel-foot">${foot}</div>`:''}</section>`;
 const stat=(label,value,note='',color='')=>`<article class="stat"><div class="label">${label}</div><strong class="${color}">${value}</strong><small>${note}</small></article>`;
-const header=(eyebrow,title,description)=>`<div class="page-header"><div><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div><div class="date-badge">LATEST MARKET SESSION<strong>${date(S.route==='risk'?S.risk?.latest?.sessionDate:S.market?.asOf)}</strong></div></div>`;
+const header=(eyebrow,title,description)=>`<div class="page-header"><div><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${description}</p></div><div class="date-badge">LATEST MARKET SESSION<strong>${date(RiskUI.isRisk(S.route)?S.risk?.latest?.sessionDate:S.live?.latest?.sessionDate||S.market?.asOf)}</strong></div></div>`;
 const links=(items)=>`<div class="link-list">${items.map(([text,url])=>`<a href="${esc(url)}" target="_blank" rel="noopener">${text} ↗</a>`).join('')}</div>`;
-function openDetail(html){$('#detail-content').innerHTML=html;$('#detail').showModal();}
+function openDetail(html){$('#detail-content').innerHTML=html;GuideUI.localize($('#detail-content'));$('#detail').showModal();}
 function metric(id,summary){return summary?.models?.find(m=>m.id===id);}
 function intervalText(v,n=4){return v?.low==null?'More forecast dates needed':`${signed(v.low,n)} to ${signed(v.high,n)}`;}
 function verdict(v){if(!v||v.low==null)return 'Insufficient evidence';return v.low>0?'Positive estimate · confirmation required':v.high<0?'Baseline currently stronger':'No clear improvement';}
@@ -108,6 +108,7 @@ function controls(){
 }
 function portfolio(){
   let body=header('PAPER PORTFOLIO / PREDECLARED POLICY','$1,000 trading experiment.','The continuing sector-direction strategy. Five-session holds, modeled costs, and cash when no entries qualify.');
+  body+=GuideUI.portfolioIntro();
   body+=`<div class="toolbar"><div class="tabs"><button data-portfolio="live" class="${S.portfolio==='live'?'selected':''}">Prospective plans</button><button data-portfolio="historical" class="${S.portfolio==='historical'?'selected':''}">Historical simulation</button></div>${badge('PAPER · NO BROKER FILLS','gold')}</div>`;
   const live=S.portfolio==='live',p=live?S.live?.portfolio:S.research?.portfolio;
   if(!p)return body+panel('Paper record','No invented activity',empty('No paper record yet','The first completed pipeline creates the reference-return experiment. It remains distinct from actual execution.'));
@@ -116,7 +117,7 @@ function portfolio(){
   ${panel('Capital through the experiment',live?'Only settled cohorts change this chart':'Historical, non-overlapping five-session cohorts',`<div class="panel-body">${legend([{label:'Paper policy',color:COLORS.logistic},{label:'SPY · matched windows',color:COLORS.base_rate}])}${lineChart(p.curve,[{key:'equity',label:'Policy',color:COLORS.logistic},{key:'benchmark',label:'SPY',color:COLORS.base_rate}],{format:v=>`$${num(v,0)}`,label:'Reference portfolio and SPY equity across identical holding windows'})}</div>`,'The comparator is not continuous buy-and-hold SPY. Both exclude overnight exposure between cohorts; cash earns zero.')}`;
   if(live){body+=`<div style="margin-top:22px">${panel('Frozen prospective plans','Allocations are recorded before the intended entry open',p.plans?.length?`<div class="table-scroll"><table class="data-table"><thead><tr><th>Signal</th><th>Entry → exit</th><th>Allocations</th><th>Cash</th><th>Status</th></tr></thead><tbody>${[...p.plans].reverse().map(x=>`<tr><td class="num">${x.signalDate}</td><td class="num">${x.entryDate} → ${x.exitDate}</td><td>${x.allocations.length?x.allocations.map(a=>`${a.ticker} ${pct(a.weight,0)}`).join(' · '):'No qualifying entries'}</td><td class="num">${pct(x.cashWeight,0)}</td><td>${badge(x.status,x.status==='resolved'?'lime':'gold')}</td></tr>`).join('')}</tbody></table></div>`:empty('No allocation plan yet','A plan is created with an eligible live forecast. It can hold entirely cash.'),'Unresolved plans are not represented as zero-return trades.')}</div>`;}
   else body+=`<div class="split-title"><h2>Historical positions</h2><span class="eyebrow">${p.positionCount} TOTAL</span></div>${panel('Most recent positions','Fixed exits; thresholds were not optimized',p.trades?.length?`<div class="table-scroll"><table class="data-table"><thead><tr><th>ETF</th><th>Signal date</th><th>Entry</th><th>Exit</th><th>Weight</th><th>Reference return</th></tr></thead><tbody>${p.trades.slice(-30).reverse().map(t=>`<tr><td class="ticker">${t.ticker}</td><td class="num">${t.signalDate}</td><td class="num">${t.entryDate}</td><td class="num">${t.exitDate}</td><td class="num">${pct(t.weight,0)}</td><td class="num">${spct(t.return,2)}</td></tr>`).join('')}</tbody></table></div>`:empty('The policy remained in cash','No historical candidates met the predeclared rules.'),'Opening prices are adjusted research references, not verified executable fills.')}`;
-  return body+`<div class="evidence-note"><strong>Forecast quality and portfolio return answer different questions.</strong> The policy requires p(outperform) ≥55% and expected excess return greater than 0.20%. It uses up to three 30% allocations, fixed exits, and no leverage. These are experimental rules, not optimized recommendations.</div>`;
+  return body+GuideUI.portfolioDetails({showDecision:live});
 }
 function method(){return `${header('OPEN METHODS / KNOWN LIMITS','The lab notebook.','Enough detail to understand the experiment—and reproduce its results.')}
   <div class="method-grid">
@@ -132,7 +133,7 @@ function showAudit(){const r=S.research,s=S.live?.latest;openDetail(`<span class
 function bind(){
   document.querySelectorAll('[data-risk-evidence]').forEach(b=>b.addEventListener('click',()=>{S.riskEvidence=b.dataset.riskEvidence;load();}));
   document.querySelectorAll('[data-period]').forEach(b=>b.addEventListener('click',()=>{S.period=b.dataset.period;render();}));
-  document.querySelectorAll('[data-portfolio]').forEach(b=>b.addEventListener('click',()=>{S.portfolio=b.dataset.portfolio;render();}));
+  document.querySelectorAll('[data-portfolio]').forEach(b=>b.addEventListener('click',()=>{S.portfolio=b.dataset.portfolio;load();}));
   $('#model-select')?.addEventListener('change',e=>{S.forecastModel=e.target.value;render();});
   $('#control-select')?.addEventListener('change',e=>{S.control=e.target.value;render();});
   $('#search')?.addEventListener('input',e=>{const pos=e.target.selectionStart;S.search=e.target.value;render();$('#search').focus();try{$('#search').setSelectionRange(pos,pos);}catch{}});
@@ -148,15 +149,17 @@ function dependencies(route=S.route) {
   if(RiskUI.isRisk(route)) {
     const keys=['risk','risk_status','presentation'];
     if(route==='experiments')keys.push('risk_research','risk_controls');
+    if(['about','methods'].includes(route))keys.push('reader');
     if(route==='record'&&S.riskEvidence==='historical')keys.push('risk_research');
     return keys;
   }
-  const views={overview:['research','controls','live','market'],forecasts:['live'],research:['research','live'],controls:['controls'],portfolio:['research','live'],method:[]};
+  const views={overview:['research','controls','live','market'],forecasts:['live'],research:['research','live'],controls:['controls'],portfolio:['live','reader',...(S.portfolio==='historical'?['research']:[])],method:[]};
   return ['status',...(views[route]||[])];
 }
 function validateResource(key,value) {
   if(!value||typeof value!=='object'||Array.isArray(value))throw Error('Invalid JSON record');
   if(key==='risk'&&(!Array.isArray(value.history)||!Number.isFinite(value.forecastDates)||(value.latest&&!Array.isArray(value.latest.forecasts))))throw Error('Invalid forecast record');
+  if(key==='reader'&&(!value.builtAt||!value.hub))throw Error('Invalid reader context');
   if(key==='presentation'&&(!Array.isArray(value.history)||!Array.isArray(value.calendar?.sessions)))throw Error('Invalid presentation record');
   if((key==='risk_status'||key==='status')&&typeof value.status!=='string')throw Error('Invalid operational status');
   return value;
@@ -186,7 +189,7 @@ function render(){
   $('#crumb').textContent=ROUTES[S.route];
   const riskRoute=RiskUI.isRisk(S.route);
   const currentStatus=riskRoute?S.risk_status:S.status;
-  const views={risk:RiskUI.home,outlook:RiskUI.forecasts,record:RiskUI.results,experiments:RiskUI.experiments,about:RiskUI.about,overview,forecasts,research,controls,portfolio,method};
+  const views={risk:RiskUI.home,outlook:RiskUI.forecasts,record:RiskUI.results,experiments:RiskUI.experiments,about:GuideUI.about,methods:GuideUI.methods,overview,forecasts,research,controls,portfolio,method};
   const failures=dependencies().filter(k=>S.resources[k]?.error);
   const f=riskRoute?RiskUI.freshness(S.risk?.latest,RiskUI.presentation()):null;
   let warning='';
@@ -195,14 +198,14 @@ function render(){
   if(riskRoute&&f.kind==='warn'&&S.risk?.latest)warning+=`<div class="evidence-note"><strong>${esc(f.label)}.</strong> Displaying the issue from ${timestamp(S.risk.latest.issuedAt)}. Check Data & status for details.</div>`;
   const legacy=riskRoute?'':`<div class="study-banner"><strong>Continuing direction study · research-2.0.0</strong><a href="#risk">Back to Risk Lab →</a>${RiskUI.directionLinks()}</div>`;
   let body,viewError=false;
-  try {body=views[S.route]();} catch(error) {viewError=true;body=empty('This view could not be displayed','The public data is still available from the repository. Try Refresh.',links([['Public records',`${REPO}/tree/main/site/data`]]));warning+=`<p class="evidence-note error">View error: ${esc(error.message)}</p>`;}
+  try {body=views[S.route]();} catch(error) {viewError=true;body=empty('This view could not be displayed','The public data remains available in the on-site documents and records. Try Refresh.',links([['Public records',`${REPO}/tree/main/site/data`]]));warning+=`<p class="evidence-note error">View error: ${esc(error.message)}</p>`;}
   $('#main').innerHTML=`<div class="fade-in">${warning}${legacy}${body}</div>`;
   const unhealthy=viewError||failures.length||currentStatus?.status==='error';
   $('#health').className=`health ${unhealthy?'bad':currentStatus?.status!=='healthy'?'':riskRoute&&f.kind!=='good'?'warn':'good'}`;
   $('#health').textContent=viewError?'View needs attention':failures.length?'Refresh needs attention':currentStatus?.status==='error'?'Pipeline needs attention':!currentStatus?'Status unavailable':riskRoute?f.label:`Direction pipeline: ${currentStatus.status}`;
   $('#updated').textContent=currentStatus?.lastSuccessfulAt?`Last successful cycle ${timestamp(currentStatus.lastSuccessfulAt)}`:'No successful cycle loaded';
   document.title=`${ROUTES[S.route]} · UNPRICED`;
-  bind();RiskUI.bind();
+  GuideUI.localize();bind();RiskUI.bind();
 }
 async function load({force=false}={}){
   S.route=routeFromHash();render();
@@ -210,6 +213,7 @@ async function load({force=false}={}){
   render();
 }
 $('#close-dialog').addEventListener('click',()=>$('#detail').close());
+$('#detail-content').addEventListener('click',e=>{if(e.target.closest('a[href^="#"]'))$('#detail').close();});
 $('#detail').addEventListener('click',e=>{if(e.target===$('#detail')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
 $('#audit').addEventListener('click',()=>RiskUI.isRisk(S.route)?RiskUI.audit():showAudit());
 $('#refresh').addEventListener('click',()=>load({force:true}));

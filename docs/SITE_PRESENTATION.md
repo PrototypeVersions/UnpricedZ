@@ -1,8 +1,8 @@
 # Paper & Ink site presentation
 
 The site presents the existing risk-1.0.0 experiment through Overview, Forecasts,
-Results, Research, and About. A prominent $1,000 experiment tab and homepage
-link expose the continuing paper portfolio. The research-2.0.0 direction study
+a prominent $1,000 Experiment, Results, Research, Methods, and About. The
+homepage also links directly to the continuing paper portfolio. The research-2.0.0 direction study
 continues under its original specification and retains its original fragment URLs.
 
 No model, target, scoring rule, archived result, or frozen record is changed by
@@ -14,8 +14,9 @@ The home page fetches only risk.json, risk_status.json, and presentation.json.
 Historical and synthetic reports load when their views need them. A failed
 request retains available data with a visible warning; it never silently
 reports a successful refresh. Data & status separates pipeline success, browser
-retrieval, forecast freshness, and the link to Hub's independent record. It
-does not claim to have verified a Hub receipt.
+retrieval and forecast freshness. About shows a dated copy of Hub receipts,
+compares their file hashes with current exports, and retains late/missing states.
+A receipt is evidence of arrival, not proof of exact forecast creation time.
 
 `site_tools/build_context.py` creates disposable presentation.json inside the
 Pages artifact, reading up to 60 frozen issues and their recorded resolutions.
@@ -27,9 +28,10 @@ not healthy. Unexpected exchange closures still require a calendar update.
 
 The site publisher runs after the existing daily workflows complete, including
 failed runs, and rebuilds from current main under the existing publication
-concurrency group. The research workflows themselves are unchanged. During
-their preceding deployment, expanded history can be temporarily unavailable;
-the page explicitly reports that state and continues to show frozen forecasts.
+concurrency group. Research jobs retain their schedules, computations and record
+commits; only the site publisher deploys Pages so generated documents and context
+are always included. Registered-program and recovery completions also rebuild
+the website. Website-only workflow changes do not rerun research.
 The presentation bundle must match both the latest forecast ID and risk report
 timestamp before the page uses its history or freshness information.
 
@@ -44,3 +46,24 @@ forecast JSON and display context against the artifact's exact file hashes.
 The registered macro attempt remains linked unmodified, with the all-model
 decomposition linked beside it. Synthetic results show each fitted learner,
 the EWMA baseline, and the generating-process oracle separately.
+
+
+`site_tools/build_reference.py` creates readable copies of all research documents,
+exact settings, published reports, and frozen forecast/resolution files under
+`site/reference/`. The source files are not altered; exact-byte downloads and a
+hash manifest accompany the HTML. Markdown links point to on-site readers where
+available. Original source code and large input archives retain optional GitHub
+links. The generated pages can be read without JavaScript.
+
+`reader.json` carries the public settings, a dated Hub receipt summary, and the
+specific frozen direction forecasts that produced the latest portfolio plan.
+The plan is joined by its actual signal date, rather than using a newer daily
+forecast. Its explanation is hidden if the live-report timestamp does not match.
+The portfolio page states the fixed thresholds, cash behavior, simulated costs,
+settled-only accounting and unequal strategy/SPY cost treatment. The future
+risk-aware stock portfolio is labeled proposed, with no fabricated results.
+
+The reader guide defines the project names, models, timing, training and scoring
+terms with worked examples. The trading-research proposal records the discussed
+sequence without registering or starting a new experiment. All original direction
+routes remain available. No other repository is modified.
