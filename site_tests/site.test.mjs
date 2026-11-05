@@ -94,13 +94,15 @@ test('freshness follows exchange sessions, next-open deadline, and calendar expi
   l.context.fixture={calendar:{validFrom:'2026-11-23T00:00:00Z',validUntil:'2026-12-02T00:00:00Z',sessions:[
     {date:'2026-11-25',open:'2026-11-25T14:30:00Z',close:'2026-11-25T21:00:00Z'},
     {date:'2026-11-27',open:'2026-11-27T14:30:00Z',close:'2026-11-27T18:00:00Z'},
-    {date:'2026-11-30',open:'2026-11-30T14:30:00Z',close:'2026-11-30T21:00:00Z'}]}};
+    {date:'2026-11-30',open:'2026-11-30T14:30:00Z',close:'2026-11-30T21:00:00Z'},
+    {date:'2026-12-01',open:'2026-12-01T14:30:00Z',close:'2026-12-01T21:00:00Z'}]}};
   l.context.snap={sessionDate:'2026-11-25',issuedAt:'2026-11-25T23:00:00Z',informationCutoff:'2026-11-25T21:00:00Z'};
   const at=date=>l.run(`RiskUI.freshness(snap,fixture,Date.parse('${date}'))`);
   assert.equal(at('2026-11-26T18:00:00Z').kind,'good');
   assert.equal(at('2026-11-27T18:01:00Z').kind,'pending');
   assert.equal(at('2026-11-29T18:00:00Z').kind,'pending');
   assert.equal(at('2026-11-30T14:30:00Z').label,'Newer forecast overdue');
+  assert.equal(at('2026-11-30T22:00:00Z').label,'Newer forecast overdue');
   assert.equal(at('2026-12-03T14:30:00Z').label,'Freshness not verified');
 });
 

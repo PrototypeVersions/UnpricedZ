@@ -37,6 +37,8 @@ and recovery states, filtering, target switching, asset details, evidence
 separation, preserved routes, and session-aware freshness. Python tests check
 read-only context generation, file hashes, resolution references, and exchange
 holidays. These tests are not browser visual or screen-reader certification.
+After deployment, the publisher checks the live HTML, JavaScript, stylesheet,
+forecast JSON and display context against the artifact's exact file hashes.
 
 The registered macro attempt remains linked unmodified, with the all-model
 decomposition linked beside it. Synthetic results show each fitted learner,

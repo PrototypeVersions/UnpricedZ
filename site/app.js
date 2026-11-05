@@ -194,12 +194,12 @@ function render(){
   if(currentStatus?.status==='error')warning+=`<div class="evidence-note error"><strong>The last pipeline run needs attention.</strong> ${esc(currentStatus.error)} <a href="${REPO}/actions">Inspect runs ↗</a></div>`;
   if(riskRoute&&f.kind==='warn'&&S.risk?.latest)warning+=`<div class="evidence-note"><strong>${esc(f.label)}.</strong> Displaying the issue from ${timestamp(S.risk.latest.issuedAt)}. Check Data & status for details.</div>`;
   const legacy=riskRoute?'':`<div class="study-banner"><strong>Continuing direction study · research-2.0.0</strong><a href="#risk">Back to Risk Lab →</a>${RiskUI.directionLinks()}</div>`;
-  let body;
-  try {body=views[S.route]();} catch(error) {body=empty('This view could not be displayed','The public data is still available from the repository. Try Refresh.',links([['Public records',`${REPO}/tree/main/site/data`]]));warning+=`<p class="evidence-note error">View error: ${esc(error.message)}</p>`;}
+  let body,viewError=false;
+  try {body=views[S.route]();} catch(error) {viewError=true;body=empty('This view could not be displayed','The public data is still available from the repository. Try Refresh.',links([['Public records',`${REPO}/tree/main/site/data`]]));warning+=`<p class="evidence-note error">View error: ${esc(error.message)}</p>`;}
   $('#main').innerHTML=`<div class="fade-in">${warning}${legacy}${body}</div>`;
-  const unhealthy=failures.length||currentStatus?.status==='error';
-  $('#health').className=`health ${unhealthy?'bad':riskRoute&&f.kind==='warn'?'warn':'good'}`;
-  $('#health').textContent=failures.length?'Refresh needs attention':currentStatus?.status==='error'?'Pipeline needs attention':!currentStatus?'Status unavailable':riskRoute?f.label:`Direction pipeline: ${currentStatus.status}`;
+  const unhealthy=viewError||failures.length||currentStatus?.status==='error';
+  $('#health').className=`health ${unhealthy?'bad':currentStatus?.status!=='healthy'?'':riskRoute&&f.kind!=='good'?'warn':'good'}`;
+  $('#health').textContent=viewError?'View needs attention':failures.length?'Refresh needs attention':currentStatus?.status==='error'?'Pipeline needs attention':!currentStatus?'Status unavailable':riskRoute?f.label:`Direction pipeline: ${currentStatus.status}`;
   $('#updated').textContent=currentStatus?.lastSuccessfulAt?`Last successful cycle ${timestamp(currentStatus.lastSuccessfulAt)}`:'No successful cycle loaded';
   document.title=`${ROUTES[S.route]} · UNPRICED`;
   bind();RiskUI.bind();

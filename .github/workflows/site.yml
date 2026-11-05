@@ -42,4 +42,6 @@ jobs:
           path: site
       - uses: actions/deploy-pages@v4
         id: deploy
+      - name: Verify the public site matches this deployment
+        run: python site_tools/verify_publication.py "${{ steps.deploy.outputs.page_url }}"
 
