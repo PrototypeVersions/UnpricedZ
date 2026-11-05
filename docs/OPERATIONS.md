@@ -42,6 +42,12 @@ It cannot change X, run its holdout, contact another agent, create UnpricedHub, 
 fine-tune/promote models or change the official research-2.0.0 policy. See
 [the program](RESEARCH_PROGRAM.md) and [cross-lab strategy](MULTI_LAB_STRATEGY.md).
 
+## Independent historical export and timely Hub delivery
+
+The risk workflow also publishes the derived file at site/data/export/risk-v1-variance-oos-2019-2024.csv from the **original immutable** risk research predictions archive, without refitting models. See [historical variance export](HISTORICAL_VARIANCE_EXPORT.md). It is retrospective walk-forward evidence, not forecasts issued live in 2019–2024. The exporter checks original source hashes and refuses to overwrite changed output bytes.
+
+Two additional overnight scheduled retries supplement the original daily risk workflow. All must respect the existing next-open deadline, and a successful risk forecast is not necessarily an on-time Hub receipt. Check both saved issue timestamps and Hub receipt timestamps. Earlier late receipts are preserved.
+
 ## Risk Lab mandate
 
 The owner assigned overall project leadership to Claude and made UnpricedZ the Risk Lab.
