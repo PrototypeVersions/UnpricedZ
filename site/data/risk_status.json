@@ -1,10 +1,8 @@
 {
   "experiment": "risk-1.0.0",
   "mode": "daily",
-  "status": "healthy",
-  "attemptedAt": "2026-11-06T07:58:12.493732+00:00",
-  "forecastDates": 3,
-  "completedAt": "2026-11-06T07:58:17.998705+00:00",
-  "lastSuccessfulAt": "2026-11-06T07:58:17.998714+00:00",
-  "error": null
+  "status": "error",
+  "attemptedAt": "2026-11-07T01:00:41.576247+00:00",
+  "error": "ValueError: Invalid OHLC values: SPY",
+  "lastSuccessfulAt": "2026-11-06T07:58:17.998714+00:00"
 }
