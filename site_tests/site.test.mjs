@@ -169,3 +169,26 @@ test('primary document links stay on site, including forecast detail records',as
   assert.equal(l.document.querySelectorAll('#detail-content a[href*="/blob/main/risk_records/"]').length,0);
   for(const a of l.document.querySelectorAll('#detail-content a[href^="reference/"]'))assert.ok(fs.existsSync('site/'+a.getAttribute('href')),a.getAttribute('href'));
 });
+
+test('public sections and dialogs never link to GitHub repositories',async()=>{
+  const l=await lab();
+  const noRepoLinks=(label)=>{
+    const urls=[...l.document.querySelectorAll('a[href]')].map(a=>a.getAttribute('href')||'');
+    assert.ok(urls.every(u=>!/^https?:\\/\\/(?:www\\.)?github\\.com\\//i.test(u) && !/^https?:\\/\\/raw\\.githubusercontent\\.com\\//i.test(u)),
+      label+': unexpected repository link '+urls.filter(u=>/github\\.com|raw\\.githubusercontent/i.test(u)).join(', '));
+  };
+  for(const route of ['risk','outlook','record','experiments','methods','about','overview','forecasts','research','controls','portfolio','method']){
+    await l.route('#'+route);
+    noRepoLinks(route);
+  }
+  await l.route('#outlook');
+  l.document.querySelector('[data-risk-ticker]').click();
+  noRepoLinks('risk detail dialog');
+  const record=l.document.querySelector('#detail-content a[href*="/risk_records/"]');
+  assert.ok(record);
+  assert.ok(record.getAttribute('href').startsWith('reference/'));
+  await l.route('#overview');
+  l.run('showAudit()');
+  noRepoLinks('status detail dialog');
+  assert.ok(l.document.querySelector('#detail-content a[href="reference/index.html"]'));
+});
