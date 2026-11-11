@@ -81,6 +81,32 @@ def test_document_markup_is_inert_and_export_links_use_correct_depth():
     assert parser.link('../config.json') == '../config.html'
 
 
+def test_repository_links_are_local_and_source_archives_have_readers(tmp_path):
+    fixture(tmp_path)
+    put(tmp_path, 'unpriced/controls.py', 'print("<test>")\\n')
+    input_file = tmp_path / 'archive/inputs/sample.csv.gz'
+    input_file.parent.mkdir(parents=True, exist_ok=True)
+    input_file.write_bytes(b'\\x1f\\x8b\\x08sample')
+    put(tmp_path, 'docs/SOURCES.md', (
+        '# Local research readers\\n'
+        '[Controls](../unpriced/controls.py)\\n'
+        '[Input](https://github.com/PrototypeVersions/UnpricedZ/blob/main/archive/inputs/sample.csv.gz)\\n'
+        '[Workflow](https://github.com/PrototypeVersions/UnpricedZ/actions)\\n'
+    ))
+    build(tmp_path)
+    reader = (tmp_path / 'site/reference/docs/SOURCES.html').read_text()
+    assert 'href="../unpriced/controls.html"' in reader
+    assert 'href="../archive/inputs/sample.csv.html"' in reader
+    assert 'github.com/' not in reader
+    source = (tmp_path / 'site/reference/unpriced/controls.html').read_text()
+    assert '&lt;test&gt;' in source
+    binary = (tmp_path / 'site/reference/archive/inputs/sample.csv.html').read_text()
+    assert 'SHA-256' in binary and 'Download the original file' in binary
+    assert (tmp_path / 'site/reference/raw/archive/inputs/sample.csv.gz').read_bytes() == input_file.read_bytes()
+    assert 'github.com/' not in binary
+
+
+
 class Links(HTMLParser):
     def __init__(self):
         super().__init__()
