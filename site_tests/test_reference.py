@@ -83,15 +83,15 @@ def test_document_markup_is_inert_and_export_links_use_correct_depth():
 
 def test_repository_links_are_local_and_source_archives_have_readers(tmp_path):
     fixture(tmp_path)
-    put(tmp_path, 'unpriced/controls.py', 'print("<test>")\\n')
+    put(tmp_path, 'unpriced/controls.py', 'print("<test>")\n')
     input_file = tmp_path / 'archive/inputs/sample.csv.gz'
     input_file.parent.mkdir(parents=True, exist_ok=True)
-    input_file.write_bytes(b'\\x1f\\x8b\\x08sample')
+    input_file.write_bytes(b'\x1f\x8b\x08sample')
     put(tmp_path, 'docs/SOURCES.md', (
-        '# Local research readers\\n'
-        '[Controls](../unpriced/controls.py)\\n'
-        '[Input](https://github.com/PrototypeVersions/UnpricedZ/blob/main/archive/inputs/sample.csv.gz)\\n'
-        '[Workflow](https://github.com/PrototypeVersions/UnpricedZ/actions)\\n'
+        '# Local research readers\n'
+        '[Controls](../unpriced/controls.py)\n'
+        '[Input](https://github.com/PrototypeVersions/UnpricedZ/blob/main/archive/inputs/sample.csv.gz)\n'
+        '[Workflow](https://github.com/PrototypeVersions/UnpricedZ/actions)\n'
     ))
     build(tmp_path)
     reader = (tmp_path / 'site/reference/docs/SOURCES.html').read_text()
