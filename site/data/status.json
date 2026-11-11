@@ -1,8 +1,11 @@
 {
-  "status": "error",
+  "status": "healthy",
   "mode": "daily",
-  "attemptedAt": "2026-11-11T01:17:46.396654+00:00",
+  "attemptedAt": "2026-11-11T03:04:34.349180+00:00",
   "experiment": "research-2.0.0",
-  "error": "ValueError: Invalid OHLC values: EEM",
-  "lastSuccessfulAt": "2026-11-10T04:48:54.181744+00:00"
+  "latestSession": "2026-11-10",
+  "liveForecastDates": 6,
+  "completedAt": "2026-11-11T03:04:40.262754+00:00",
+  "lastSuccessfulAt": "2026-11-11T03:04:40.262760+00:00",
+  "error": null
 }
