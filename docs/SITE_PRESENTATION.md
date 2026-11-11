@@ -67,3 +67,21 @@ The reader guide defines the project names, models, timing, training and scoring
 terms with worked examples. The trading-research proposal records the discussed
 sequence without registering or starting a new experiment. All original direction
 routes remain available. No other repository is modified.
+
+## 2026-11-11 — Site-only research navigation
+
+The public UnpricedZ page must not send readers to GitHub repository pages,
+source blobs, folders, or Actions. Main navigation and dialogs now link to
+on-site methodology, status, forecast, source-code, and archived-input reader
+pages. Every generated document includes a local original-file download and
+SHA-256 fingerprint; the GitHub source hyperlink was removed. Python listings
+are rendered as escaped source text, and compressed/binary inputs receive
+readable provenance pages with local downloads. The site publisher generates
+these readers without altering the underlying research files.
+
+Operations links open the published operations guide instead of GitHub Actions.
+The page retains error and freshness messaging; the guide is documentation,
+not a claim that a pipeline succeeded. Published cross-lab *sites* may still
+be linked as ordinary external websites, but not their GitHub repositories.
+The frontend and reader tests reject repository navigation in all public routes.
+The recording, models, timelines and forecasts are unchanged.
