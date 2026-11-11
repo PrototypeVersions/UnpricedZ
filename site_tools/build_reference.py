@@ -149,7 +149,7 @@ def collect_sources(root):
     paths += list(root.glob('unpriced/*.py')) + list(root.glob('tests/*.py'))
     paths += list(root.glob('risk_lab/*.py')) + list(root.glob('research_program/*.py'))
     paths += list(root.glob('archive/inputs/*.gz')) + list(root.glob('risk_archive/inputs/*.gz'))
-    paths += list(root.glob('archive/models/*.joblib')) + list(root.glob('archive/research/*.json'))
+    paths += list(root.glob('archive/models/*.joblib')) + list(root.glob('archive/research/*.json')) + list(root.glob('archive/research/*.gz'))
     return sorted(set(paths))
 
 
