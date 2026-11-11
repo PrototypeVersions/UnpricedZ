@@ -1,7 +1,9 @@
 'use strict';
 // Explanations and reader tools only; no forecast or portfolio policy is changed here.
 const GuideUI = (() => {
-  const documentLink = path => 'reference/' + path.replace(/\.(md|json)$/, '.html');
+  // Every published source file has a local reader page, including Python and
+  // compressed archives (.csv.gz -> .csv.html), generated at deployment time.
+  const documentLink = path => 'reference/' + String(path).replace(/\.[^/.]+$/, '.html');
   const docs = [
     ['How risk forecasts are tested','The complete risk-1.0.0 research plan.','docs/RISK_PROTOCOL.md'],
     ['Exact risk-model settings','Every declared parameter and target, with the original JSON available.','risk_lab/registry.json'],
@@ -93,16 +95,33 @@ const GuideUI = (() => {
     return `<section class="section"><h2>The rules this portfolio follows</h2>${rules}<p><a href="reference/config.html">Read the exact configuration and download the original JSON →</a></p></section>${showDecision?`<section class="section"><h2>Why the latest plan chose these allocations</h2>${decision}</section>`:''}<section class="section prose"><h2>How to interpret the balance and comparison</h2><p><strong>Settled equity</strong> updates only when an entire holding window is resolved. It is not a daily estimate of the current value of open positions. An unchanged balance while a window is open should not be read as a zero-return trade.</p><p>The SPY reference invests over the same opening-to-closing windows as the portfolio and excludes the overnight gaps between cohorts. It is not continuous buy-and-hold SPY. The strategy includes modeled trading costs; the current SPY reference is shown before trading costs. Cash earns zero in this simulation.</p><p>The strategy can hold substantial cash, while the reference holds SPY during each window. Differences therefore reflect exposure as well as selection and costs. The settled-value chart does not measure the portfolio’s daily path or its intraperiod drawdown.</p><p>These results are reference-price simulations using provider-adjusted prices. They do not establish achievable fills, profitability, or forecasting skill. The separate <a href="#overview">sector forecasting record</a> evaluates prediction quality.</p></section>${future()}`;
   }
   function localize(root=document){
+    // Defense in depth: no navigation from the public dashboard into GitHub.
+    // All Z source documents and records have on-site readers; raw archives
+    // also get provenance pages with an on-site original-file download.
     root.querySelectorAll('a[href]').forEach(a=>{
-      const href=a.getAttribute('href');
-      if(href?.startsWith(REPO+'/blob/main/')){
-        const path=href.slice((REPO+'/blob/main/').length);
-        if(path.startsWith('docs/')&&path.endsWith('.md')||['config.json','risk_lab/registry.json','research_program/registry.json'].includes(path)||/^(risk_records|records)\/.+\.json$/.test(path)||/^(archive|risk_archive)\/.+\/(report|selection-audit)\.json$/.test(path))a.setAttribute('href',documentLink(path));
-      } else if(href?.startsWith(REPO+'/tree/main/records')||href?.startsWith(REPO+'/tree/main/risk_records'))a.setAttribute('href','reference/records.html');
-      else if(href===REPO+'/tree/main/site/data')a.setAttribute('href','reference/index.html');
-      else if(/^data\/[a-z_]+\.json$/.test(href||''))a.setAttribute('href',documentLink('site/'+href));
-      if(a.getAttribute('href')?.startsWith('reference/')){a.removeAttribute('target');a.removeAttribute('rel');for(const node of a.childNodes){if(node.nodeType===3)node.textContent=node.textContent.replace(/↗/g,'→');}}
+      const href=a.getAttribute('href')||'';
+      let target=null;
+      if(href.startsWith(REPO+'/blob/main/')){
+        target=documentLink(href.slice((REPO+'/blob/main/').length).split('#')[0]);
+      } else if(href.startsWith(REPO+'/tree/main/records')||href.startsWith(REPO+'/tree/main/risk_records')){
+        target='reference/records.html';
+      } else if(href===REPO+'/tree/main/site/data'||href===REPO){
+        target='reference/index.html';
+      } else if(href.startsWith(REPO+'/actions')){
+        target='reference/docs/OPERATIONS.html';
+      } else if(/^data\/[a-z_]+\.json$/.test(href)){
+        target=documentLink('site/'+href);
+      } else if(/^https?:\/\/(?:www\.)?github\.com\//i.test(href)||/^https?:\/\/raw\.githubusercontent\.com\//i.test(href)){
+        target='reference/index.html';
+      }
+      if(target)a.setAttribute('href',target);
+      if(a.getAttribute('href')?.startsWith('reference/')){
+        a.removeAttribute('target');a.removeAttribute('rel');
+        for(const node of a.childNodes){
+          if(node.nodeType===3)node.textContent=node.textContent.replace(/↗/g,'→');
+        }
+      }
     });
   }
-  return {methods,about,network,future,hubReceipt,portfolioIntro,portfolioDetails,localize,documentCards};
+  return {methods,about,network,future,hubReceipt,portfolioIntro,portfolioDetails,localize,documentCards,documentLink};
 })();
