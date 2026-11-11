@@ -23,4 +23,5 @@ Read docs/METHODOLOGY.md, docs/PROTOCOL.md, docs/OPERATIONS.md and config.json b
 - No automatic promotion, real-money orders, brokerage integration, or messages to others.
 - Run relevant integrity tests and the affected pipeline. Synthetic results are diagnostics, not proof of market skill.
 - Keep public pages readable. Put detailed implementation provenance in lab notes and inspectable records.
+- Never link from the public UnpricedZ website to GitHub repository pages, source blobs, folders, raw-file URLs, or Actions. Show linked source, methods, evidence, status and archives in on-site reader pages or dialogs. The site may link to other labs' published *sites*, never to their repositories. Preserve local hashes and downloads, generated on-site references, and regression checks.
 - Weekly reviews may prepare tested fixes or challenger branches/PRs. Preserve the running official specification unless the user authorizes a version transition.
