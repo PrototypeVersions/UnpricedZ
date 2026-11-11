@@ -56,8 +56,20 @@ class DocumentHTML(HTMLParser):
 
     def link(self, href):
         parsed = urlsplit(href)
-        if href.startswith(REPO + '/blob/main/'):
+        github_host = parsed.netloc.lower() in ('github.com', 'www.github.com', 'raw.githubusercontent.com')
+        own_repo = (
+            parsed.path.startswith('/PrototypeVersions/UnpricedZ/')
+            if parsed.netloc.lower() != 'raw.githubusercontent.com'
+            else parsed.path.startswith('/PrototypeVersions/UnpricedZ/main/')
+        )
+        if github_host and own_repo and '/blob/main/' in parsed.path:
             target = parsed.path.split('/blob/main/', 1)[1]
+        elif github_host and own_repo and parsed.netloc.lower() == 'raw.githubusercontent.com':
+            target = parsed.path.split('/PrototypeVersions/UnpricedZ/main/', 1)[1]
+        elif github_host:
+            # Never take a public reader into a GitHub repository or its Actions.
+            # Other labs' published sites are available from the site navigation.
+            return posixpath.relpath('index.html', posixpath.dirname(page_path(self.source)) or '.')
         elif parsed.scheme:
             return href if parsed.scheme in ('https', 'http') else '#'
         elif not parsed.path:
@@ -69,7 +81,8 @@ class DocumentHTML(HTMLParser):
             return posixpath.relpath(page_path(target), posixpath.dirname(page_path(self.source)) or '.') + suffix
         if target.startswith('site/data/'):
             return posixpath.relpath('../' + target[5:], posixpath.dirname(page_path(self.source)) or '.') + suffix
-        return REPO + '/blob/main/' + target + suffix
+        # If the source is not mirrored, use the on-site index; never GitHub.
+        return posixpath.relpath('index.html', posixpath.dirname(page_path(self.source)) or '.')
 
     def handle_starttag(self, tag, attrs):
         if tag not in self.tags:
@@ -104,8 +117,7 @@ def shell(title, body, depth=0, source=None, sha=None):
         raw = posixpath.relpath('raw/'+source, posixpath.dirname(page_path(source)) or '.')
         provenance = '<div class="reference-provenance"><p>Source: <code>'+html.escape(source)+'</code></p>' \
             + '<p>Exact source-file SHA-256: <code>'+sha+'</code></p>' \
-            + '<a download href="'+html.escape(raw)+'">Download the original file</a> · ' \
-            + '<a href="'+REPO+'/blob/main/'+html.escape(source)+'">Optional: view source on GitHub ↗</a></div>'
+            + '<a download href="'+html.escape(raw)+'">Download the original file (from this site)</a></div>'
     return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">' \
         + '<title>'+html.escape(title)+' · UNPRICED</title><link rel="stylesheet" href="'+prefix+'styles.css">' \
         + '<link rel="canonical" href="'+html.escape(canonical,quote=True)+'"><meta property="og:url" content="'+html.escape(canonical,quote=True)+'">' \
@@ -132,6 +144,12 @@ def collect_sources(root):
     paths += list(root.glob('risk_records/*/forecasts/*.json')) + list(root.glob('risk_records/*/resolutions/*.json'))
     paths += list(root.glob('archive/program/*/*/report.json')) + list(root.glob('archive/program/*/*/selection-audit.json'))
     paths += list(root.glob('risk_archive/*/*/*/report.json'))
+    # Make every file directly linked from research/status views available as
+    # an on-site page, including implementation source and frozen input vintages.
+    paths += list(root.glob('unpriced/*.py')) + list(root.glob('tests/*.py'))
+    paths += list(root.glob('risk_lab/*.py')) + list(root.glob('research_program/*.py'))
+    paths += list(root.glob('archive/inputs/*.gz')) + list(root.glob('risk_archive/inputs/*.gz'))
+    paths += list(root.glob('archive/models/*.joblib')) + list(root.glob('archive/research/*.json'))
     return sorted(set(paths))
 
 
@@ -184,10 +202,16 @@ def build(root, hub=None):
             parser=DocumentHTML(source,available)
             parser.feed(markdown.markdown(text,extensions=['tables','fenced_code','toc']))
             body='<article class="document-content">'+''.join(parser.output)+'</article>'
-        else:
+        elif path.suffix=='.py':
+            title='Source documentation / '+source
+            body='<h1>'+html.escape(title)+'</h1><p class="muted">An exact, read-only source listing for inspection. Download the original from this site below.</p><pre class="reference-source"><code>'+html.escape(raw.decode('utf-8'))+'</code></pre>'
+        elif path.suffix=='.json':
             value=json.loads(raw)
             title=source.replace('site/data/','Published report / ')
             body='<h1>'+html.escape(title)+'</h1><p class="muted">Exact recorded values. Nested entries expand below; the original JSON is available at the bottom.</p>'+json_view(value)
+        else:
+            title='Archived input / '+source
+            body='<h1>'+html.escape(title)+'</h1><p>This is a preserved binary or compressed research artifact, not an interactive report. Its exact file is available for download below, alongside its fingerprint.</p><dl class="reference-values"><div><dt>Archive path</dt><dd><code>'+html.escape(source)+'</code></dd></div><div><dt>File size</dt><dd>'+format(len(raw),',')+' bytes</dd></div><div><dt>SHA-256</dt><dd><code>'+digest(raw)+'</code></dd></div></dl>'
         target=output/page_path(source)
         target.parent.mkdir(parents=True,exist_ok=True)
         target.write_text(shell(title,body,len(Path(source).parts)-1,source,digest(raw)))
@@ -197,8 +221,10 @@ def build(root, hub=None):
         manifest.append({'source':source,'title':title,'page':page_path(source),'sha256':digest(raw)})
     groups=[('Research documents',lambda p:p.startswith('docs/')),
             ('Exact settings',lambda p:p in ['config.json','risk_lab/registry.json','research_program/registry.json']),
-            ('Published reports',lambda p:p.startswith(('site/data/','analysis/','archive/','risk_archive/'))),
-            ('Frozen forecasts and outcomes',lambda p:p.startswith(('records/','risk_records/')))]
+            ('Published reports',lambda p:p.startswith(('site/data/','analysis/')) or p.endswith('/report.json')),
+            ('Frozen forecasts and outcomes',lambda p:p.startswith(('records/','risk_records/'))),
+            ('Source listings',lambda p:p.endswith('.py')),
+            ('Archived inputs and model artifacts',lambda p:p.startswith(('archive/inputs/','archive/models/','archive/research/','risk_archive/inputs/')))]
     sections=''
     for heading,match in groups:
         entries=[m for m in manifest if match(m['source'])]
