@@ -176,6 +176,9 @@ test('public sections and dialogs never link to GitHub repositories',async()=>{
     const urls=[...l.document.querySelectorAll('a[href]')].map(a=>a.getAttribute('href')||'');
     assert.ok(urls.every(u=>!/^https?:\/\/(?:www\.)?github\.com\//i.test(u) && !/^https?:\/\/raw\.githubusercontent\.com\//i.test(u)),
       label+': unexpected repository link '+urls.filter(u=>/github\.com|raw\.githubusercontent/i.test(u)).join(', '));
+    for(const u of urls.filter(href=>href.startsWith('reference/'))){
+      assert.ok(fs.existsSync('site/'+u.split('#')[0]),label+': missing on-site reader '+u);
+    }
   };
   for(const route of ['risk','outlook','record','experiments','methods','about','overview','forecasts','research','controls','portfolio','method']){
     await l.route('#'+route);
