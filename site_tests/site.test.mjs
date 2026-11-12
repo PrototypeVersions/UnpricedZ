@@ -150,6 +150,25 @@ test('portfolio explains the actual frozen decision, costs and proposed work wit
   assert.match(l.document.querySelector('main').textContent,/Historical positions/);
 });
 
+test('portfolio chart shows a single dated settlement as points and separates subsequent dates',async()=>{
+  const l=await lab('#portfolio');
+  l.context.curve=[{date:'2026-11-10',equity:1000,benchmark:982.87}];
+  const chart=()=>{
+    l.run('S.live.portfolio.curve=curve;render()');
+    return l.document.querySelector('svg[aria-label^="Reference portfolio and SPY equity"]');
+  };
+  const axisDates=svg=>[...svg.querySelectorAll('text')].map(node=>node.textContent)
+    .filter(value=>/^\d{4}-\d{2}-\d{2}$/.test(value));
+  const first=chart();
+  assert.deepEqual(axisDates(first),['2026-11-10']);
+  assert.equal(first.querySelectorAll('circle').length,2);
+  l.context.curve.push({date:'2026-11-17',equity:1002,benchmark:986});
+  l.window.innerWidth=390;
+  const second=chart();
+  assert.deepEqual(axisDates(second),['2026-11-10','2026-11-17']);
+  assert.equal(second.querySelectorAll('path[d*="L"]').length,2);
+});
+
 test('project guide spells out the labs and keeps receipt timing separate from model skill',async()=>{
   const l=await lab('#about');
   const text=l.document.querySelector('main').textContent;

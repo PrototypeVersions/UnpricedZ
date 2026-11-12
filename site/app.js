@@ -38,8 +38,30 @@ function lineChart(rows,series,{height=228,zero=false,format=v=>num(v,3),label='
   let content='';
   for(let i=0;i<4;i++){const v=min+(max-min)*i/3,yy=y(v);content+=`<line class="gridline" x1="${p.l}" y1="${yy}" x2="${W-p.r}" y2="${yy}"/><text x="${p.l-9}" y="${yy+3}" text-anchor="end">${esc(format(v))}</text>`;}
   if(zero&&min<0&&max>0)content+=`<line class="zero" x1="${p.l}" y1="${y(0)}" x2="${W-p.r}" y2="${y(0)}"/>`;
-  series.forEach(s=>{let path='',started=false;const step=Math.max(1,Math.floor(rows.length/700));rows.forEach((r,i)=>{if(i%step&&i!==rows.length-1)return;const v=r[s.key];if(v==null||!Number.isFinite(v)){started=false;return;}path+=`${started?'L':'M'}${x(i).toFixed(2)},${y(v).toFixed(2)} `;started=true;});content+=`<path d="${path}" fill="none" stroke="${s.color}" stroke-width="1.8" vector-effect="non-scaling-stroke"/>`;});
-  for(const [i,anchor] of [[0,'start'],[Math.floor((rows.length-1)/2),'middle'],[rows.length-1,'end']])content+=`<text x="${x(i)}" y="${H-5}" text-anchor="${anchor}">${esc(String(rows[i].date).slice(0,7))}</text>`;
+  const last=rows.length-1;
+  const step=Math.max(1,Math.floor(rows.length/700));
+  for(const s of series){
+    if(last===0){
+      const value=rows[0][s.key];
+      if(Number.isFinite(value))content+=`<circle cx="${x(0)}" cy="${y(value)}" r="4" fill="${s.color}"/>`;
+      continue;
+    }
+    let path='',started=false;
+    rows.forEach((row,i)=>{
+      if(i%step&&i!==last)return;
+      const value=row[s.key];
+      if(!Number.isFinite(value)){started=false;return;}
+      path+=`${started?'L':'M'}${x(i).toFixed(2)},${y(value).toFixed(2)} `;
+      started=true;
+    });
+    content+=`<path d="${path}" fill="none" stroke="${s.color}" stroke-width="1.8" vector-effect="non-scaling-stroke"/>`;
+  }
+  const ticks=last===0?[[0,'middle']]:[[0,'start'],[last,'end']];
+  // On short series a midpoint label can crowd the endpoint labels on narrow screens.
+  if(last>=4)ticks.splice(1,0,[Math.floor(last/2),'middle']);
+  for(const [i,anchor] of ticks){
+    content+=`<text x="${x(i)}" y="${H-5}" text-anchor="${anchor}">${esc(String(rows[i].date).slice(0,10))}</text>`;
+  }
   return `<svg class="chart" role="img" aria-label="${esc(label)}" viewBox="0 0 ${W} ${H}"><title>${esc(label)}</title>${content}</svg>`;
 }
 function advantageChart(summary){
