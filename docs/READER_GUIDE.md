@@ -10,7 +10,7 @@ This is **UnpricedZ, the Market & Sector Risk Lab**. UNPRICED studies market for
 | Market & Sector Risk Lab — UnpricedZ | Forecasts five-session variance and drawdown for SPY and nine sector ETFs. Its earlier sector-direction study and sector-ETF paper portfolio continue separately. | The new risk forecasts do not currently control that portfolio. |
 | Independent Results Hub — UnpricedHub | Stores its own copies of exported forecasts, records receipt times and scores outcomes using its own price download. | It does not trade, combine forecasts, promote models, or audit portfolio profit. |
 
-X and Z are repository identifiers, not financial concepts. The [Stock Forecasting Lab](https://prototypeversions.github.io/UnpricedX/) and [Independent Results Hub](https://prototypeversions.github.io/UnpricedHub/) have separate websites. This site explains its own methods and records in full.
+X and Z distinguish the two forecasting labs. The [Stock Forecasting Lab](https://prototypeversions.github.io/UnpricedX/) and [Independent Results Hub](https://prototypeversions.github.io/UnpricedHub/) have separate websites. This site explains its own methods and records in full.
 
 ## What is running?
 
@@ -88,4 +88,4 @@ These are simulations using adjusted reference prices, with no verified broker f
 
 The registered macro outcome remains in its [original review](PROGRAM_MACRO_REVIEW_2026-11-04.md) and [original report](../archive/program/program-0.1.0/41759065718-1/report.json). The [variance decomposition](MACRO_VARIANCE_DECOMPOSITION.md) reports median QLIKE, the share of loss from the worst 1% of dates, and results excluding 2020 for every variance model. Excluding 2020 diagnoses sensitivity; it does not replace the registered result.
 
-Read the [direction methodology](METHODOLOGY.md), [risk protocol](RISK_PROTOCOL.md), [research program](RESEARCH_PROGRAM.md), and [operations guide](OPERATIONS.md) for the full specifications and limits.
+Read the [direction methodology](METHODOLOGY.md), [risk protocol](RISK_PROTOCOL.md), and [research program](RESEARCH_PROGRAM.md) for the full specifications and limits.

@@ -129,7 +129,7 @@ test('all seven main sections and complete on-site methods remain discoverable',
   assert.equal(l.document.querySelectorAll('.primary-nav [data-route]').length,7);
   const text=l.document.querySelector('main').textContent;
   for(const phrase of ['QLIKE','Brier','rank correlation','calibration','Registered','504','126'])assert.ok(text.toLowerCase().includes(phrase.toLowerCase()),phrase);
-  assert.equal(l.document.querySelectorAll('.document-grid a').length,12);
+  assert.equal(l.document.querySelectorAll('.document-grid a').length,11);
   for(const a of l.document.querySelectorAll('a[href^="reference/"]'))assert.ok(fs.existsSync('site/'+a.getAttribute('href')),a.getAttribute('href'));
   assert.doesNotMatch(text,/View error:/);
 });
@@ -183,6 +183,8 @@ test('public sections and dialogs never link to GitHub repositories',async()=>{
   for(const route of ['risk','outlook','record','experiments','methods','about','overview','forecasts','research','controls','portfolio','method']){
     await l.route('#'+route);
     noRepoLinks(route);
+    assert.doesNotMatch(l.document.querySelector('main').textContent,/\brepositor(?:y|ies)\b/i,route);
+    assert.equal(l.document.querySelector('main a[href*="/OPERATIONS.html"]'),null,route);
   }
   await l.route('#outlook');
   l.document.querySelector('[data-risk-ticker]').click();
@@ -190,8 +192,14 @@ test('public sections and dialogs never link to GitHub repositories',async()=>{
   const record=l.document.querySelector('#detail-content a[href*="/risk_records/"]');
   assert.ok(record);
   assert.ok(record.getAttribute('href').startsWith('reference/'));
+  l.document.querySelector('#audit').click();
+  noRepoLinks('risk status detail dialog');
+  const status=l.document.querySelector('#detail-content');
+  assert.doesNotMatch(status.textContent,/workflow history/i);
+  assert.ok(status.querySelector('a[href="reference/site/data/risk_status.html"]'));
+  assert.ok(status.querySelector('a[href="reference/docs/RISK_PROTOCOL.html"]'));
   await l.route('#overview');
   l.run('showAudit()');
-  noRepoLinks('status detail dialog');
+  noRepoLinks('direction status detail dialog');
   assert.ok(l.document.querySelector('#detail-content a[href="reference/index.html"]'));
 });

@@ -98,6 +98,7 @@ def test_repository_links_are_local_and_source_archives_have_readers(tmp_path):
     assert 'href="../unpriced/controls.html"' in reader
     assert 'href="../archive/inputs/sample.csv.html"' in reader
     assert 'github.com/' not in reader
+    assert '<a>Workflow</a>' in reader
     source = (tmp_path / 'site/reference/unpriced/controls.html').read_text()
     assert '&lt;test&gt;' in source
     binary = (tmp_path / 'site/reference/archive/inputs/sample.csv.html').read_text()
@@ -105,6 +106,32 @@ def test_repository_links_are_local_and_source_archives_have_readers(tmp_path):
     assert (tmp_path / 'site/reference/raw/archive/inputs/sample.csv.gz').read_bytes() == input_file.read_bytes()
     assert 'github.com/' not in binary
 
+
+
+def test_internal_docs_and_github_help_are_omitted_from_public_navigation(tmp_path):
+    setup = put(tmp_path, 'docs/FRED_SETUP.md', '# FRED setup\n')
+    put(tmp_path, 'docs/OPERATIONS.md', '# Operations\n')
+    put(tmp_path, 'docs/CROSS_LAB_REPLY_2026-11-05.md', '# Cross-lab reply\n')
+    public = put(tmp_path, 'docs/PUBLIC.md', (
+        '# Research\n\n[Setup](FRED_SETUP.md)\n\n'
+        '[Secrets help](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)\n\n'
+        '[Another lab](https://prototypeversions.github.io/UnpricedX/)\n\n'
+        'The tests passed in GitHub Actions.\n'
+    ))
+    # Simulate a rebuild in a directory that still has copies from an earlier build.
+    stale_page = put(tmp_path, 'site/reference/docs/FRED_SETUP.html', '<h1>FRED setup</h1>')
+    stale_download = put(tmp_path, 'site/reference/raw/docs/FRED_SETUP.md', setup.read_text())
+    (tmp_path / 'site/data').mkdir()
+    output = tmp_path / 'site/reference'
+    assert [entry['source'] for entry in build(tmp_path)] == ['docs/PUBLIC.md']
+    assert not stale_page.exists() and not stale_download.exists()
+    assert setup.is_file()
+    assert 'FRED_SETUP' not in (output / 'index.html').read_text()
+    reader = (output / 'docs/PUBLIC.html').read_text()
+    assert '<a>Setup</a>' in reader and '<a>Secrets help</a>' in reader
+    assert 'href="https://prototypeversions.github.io/UnpricedX/"' in reader
+    assert 'passed in the automated test pipeline' in reader
+    assert (output / 'raw/docs/PUBLIC.md').read_bytes() == public.read_bytes()
 
 
 class Links(HTMLParser):

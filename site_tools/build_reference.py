@@ -11,9 +11,18 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from urllib.request import urlopen
 
-REPO = 'https://github.com/PrototypeVersions/UnpricedZ'
+REPO_PATH = '/PrototypeVersions/UnpricedZ'
 HUB = 'https://raw.githubusercontent.com/PrototypeVersions/UnpricedHub/main/site/data/hub.json'
 ROOT = Path(__file__).resolve().parents[1]
+INTERNAL_DOCS = {
+    'docs/CHANGELOG.md',
+    'docs/CROSS_LAB_REPLY.md',
+    'docs/CROSS_LAB_REPLY_2026-11-05.md',
+    'docs/CROSS_REVIEW_BRIEF.md',
+    'docs/FRED_SETUP.md',
+    'docs/OPERATIONS.md',
+    'docs/SITE_PRESENTATION.md',
+}
 JSON_FILES = ['config.json', 'risk_lab/registry.json', 'research_program/registry.json',
               'analysis/program-0.1.0/41759065718-1/variance-decomposition.json',
               'archive/program/program-0.1.0/41759065718-1/report.json',
@@ -56,33 +65,28 @@ class DocumentHTML(HTMLParser):
 
     def link(self, href):
         parsed = urlsplit(href)
-        github_host = parsed.netloc.lower() in ('github.com', 'www.github.com', 'raw.githubusercontent.com')
-        own_repo = (
-            parsed.path.startswith('/PrototypeVersions/UnpricedZ/')
-            if parsed.netloc.lower() != 'raw.githubusercontent.com'
-            else parsed.path.startswith('/PrototypeVersions/UnpricedZ/main/')
-        )
-        if github_host and own_repo and '/blob/main/' in parsed.path:
-            target = parsed.path.split('/blob/main/', 1)[1]
-        elif github_host and own_repo and parsed.netloc.lower() == 'raw.githubusercontent.com':
-            target = parsed.path.split('/PrototypeVersions/UnpricedZ/main/', 1)[1]
-        elif github_host:
-            # Never take a public reader into a GitHub repository or its Actions.
-            # Other labs' published sites are available from the site navigation.
-            return posixpath.relpath('index.html', posixpath.dirname(page_path(self.source)) or '.')
-        elif parsed.scheme:
-            return href if parsed.scheme in ('https', 'http') else '#'
+        host = parsed.hostname or ''
+        blob_prefix = REPO_PATH + '/blob/main/'
+        raw_prefix = REPO_PATH + '/main/'
+        if host in ('github.com', 'www.github.com') and parsed.path.startswith(blob_prefix):
+            target = parsed.path[len(blob_prefix):]
+        elif host == 'raw.githubusercontent.com' and parsed.path.startswith(raw_prefix):
+            target = parsed.path[len(raw_prefix):]
+        elif any(host == domain or host.endswith('.' + domain) for domain in ('github.com', 'githubusercontent.com')):
+            return None
+        elif parsed.scheme or parsed.netloc:
+            return href if parsed.scheme in ('https', 'http', '') else None
         elif not parsed.path:
             return href
         else:
             target = posixpath.normpath(posixpath.join(posixpath.dirname(self.source), parsed.path))
         suffix = '#' + parsed.fragment if parsed.fragment else ''
+        parent = posixpath.dirname(page_path(self.source)) or '.'
         if target in self.available:
-            return posixpath.relpath(page_path(target), posixpath.dirname(page_path(self.source)) or '.') + suffix
+            return posixpath.relpath(page_path(target), parent) + suffix
         if target.startswith('site/data/'):
-            return posixpath.relpath('../' + target[5:], posixpath.dirname(page_path(self.source)) or '.') + suffix
-        # If the source is not mirrored, use the on-site index; never GitHub.
-        return posixpath.relpath('index.html', posixpath.dirname(page_path(self.source)) or '.')
+            return posixpath.relpath('../' + target[5:], parent) + suffix
+        return None
 
     def handle_starttag(self, tag, attrs):
         if tag not in self.tags:
@@ -92,7 +96,9 @@ class DocumentHTML(HTMLParser):
             if key in ('id', 'class', 'title', 'colspan', 'rowspan'):
                 safe.append((key, value or ''))
             elif key == 'href' and tag == 'a':
-                safe.append((key, self.link(value or '')))
+                href = self.link(value or '')
+                if href is not None:
+                    safe.append((key, href))
         self.output.append('<' + tag + ''.join(' '+k+'="'+html.escape(v, quote=True)+'"' for k,v in safe) + '>')
 
     def handle_endtag(self, tag):
@@ -100,7 +106,8 @@ class DocumentHTML(HTMLParser):
             self.output.append('</'+tag+'>')
 
     def handle_data(self, data):
-        self.output.append(html.escape(data))
+        # Use publication-neutral wording in the reader while preserving the original download.
+        self.output.append(html.escape(data.replace('in GitHub Actions', 'in the automated test pipeline')))
 
     def handle_entityref(self, name):
         self.output.append('&'+name+';')
@@ -150,7 +157,7 @@ def collect_sources(root):
     paths += list(root.glob('risk_lab/*.py')) + list(root.glob('research_program/*.py'))
     paths += list(root.glob('archive/inputs/*.gz')) + list(root.glob('risk_archive/inputs/*.gz'))
     paths += list(root.glob('archive/models/*.joblib')) + list(root.glob('archive/research/*.json')) + list(root.glob('archive/research/*.gz'))
-    return sorted(set(paths))
+    return sorted({p for p in paths if p.relative_to(root).as_posix() not in INTERNAL_DOCS})
 
 
 def reader_context(root, hub=None):
@@ -189,6 +196,10 @@ def build(root, hub=None):
     import markdown
     output=root/'site/reference'
     output.mkdir(parents=True,exist_ok=True)
+    # A repeated build must also remove copies published by an earlier build.
+    for source in INTERNAL_DOCS:
+        (output / page_path(source)).unlink(missing_ok=True)
+        (output / 'raw' / source).unlink(missing_ok=True)
     paths=collect_sources(root)
     available={p.relative_to(root).as_posix() for p in paths}
     manifest=[]

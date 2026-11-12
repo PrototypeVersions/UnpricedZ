@@ -14,14 +14,13 @@ const GuideUI = (() => {
     ['Registered macro findings','The original negative macro results and their interpretation.','docs/PROGRAM_MACRO_REVIEW_2026-11-04.md'],
     ['Every variance model: loss decomposition','Medians, the worst 1% of dates, and the diagnostic excluding 2020.','docs/MACRO_VARIANCE_DECOMPOSITION.md'],
     ['First risk research review','What the historical and synthetic results did and did not establish.','docs/RISK_FIRST_REVIEW_2026-11-04.md'],
-    ['Daily operation and failure handling','Schedules, data checks, publication deadlines, and recovery.','docs/OPERATIONS.md'],
     ['Proposed trading research','How a future risk-aware stock portfolio could be tested. This is not running.','docs/TRADING_RESEARCH_PLAN.md'],
     ['Glossary and worked examples','Definitions of forecast, model, score, trading and timing terms.','docs/READER_GUIDE.md']
   ];
   const intro=(eyebrow,title,copy)=>`<div class="intro"><span class="eyebrow">${eyebrow}</span><h1>${title}</h1><p>${copy}</p></div>`;
   const table=(heads,rows,label)=>`<div class="table-scroll" tabindex="0" role="region" aria-label="${esc(label)}"><table class="data-table"><thead><tr>${heads.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((v,i)=>i?`<td>${v}</td>`:`<th scope="row">${v}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   function documentCards(){return `<div class="document-grid">${docs.map(([name,copy,path])=>`<a class="research-card" href="${documentLink(path)}"><h3>${name}</h3><p>${copy}</p><span class="text-link">Read on this site →</span></a>`).join('')}</div>`;}
-  function network(){return `<section class="lab-network"><h2>How the UNPRICED project fits together</h2><p>You are in the <strong>Market &amp; Sector Risk Lab (UnpricedZ)</strong>. The letters in the repository names are project identifiers, not financial terms.</p>${table(['Component','Question and role','Where to explore'],[
+  function network(){return `<section class="lab-network"><h2>How the UNPRICED project fits together</h2><p>You are in the <strong>Market &amp; Sector Risk Lab (UnpricedZ)</strong>. X and Z distinguish the two forecasting labs.</p>${table(['Component','Question and role','Where to explore'],[
     ['Stock Forecasting Lab <small>UnpricedX</small>','Which individual stocks may outperform the others? It also runs an individual-stock paper portfolio.','<a href="https://prototypeversions.github.io/UnpricedX/">Visit Stock Forecasting Lab ↗</a>'],
     ['Market &amp; Sector Risk Lab <small>UnpricedZ · this site</small>','How much might the market and sectors move, and how likely is a substantial drawdown? Its earlier sector-direction study and sector-ETF paper portfolio also continue.','<a href="#outlook">Risk forecasts</a> · <a href="#portfolio">Sector-ETF portfolio</a>'],
     ['Independent Results Hub <small>UnpricedHub</small>','Keeps its own forecast receipts and calculates forecasting scores. It does not select trades or combine models.','<a href="#about">How the Hub works</a> · <a href="https://prototypeversions.github.io/UnpricedHub/">Open the Hub ↗</a>']
@@ -45,7 +44,7 @@ const GuideUI = (() => {
       ],'Learning and update schedules')}<p class="small-note">Updating with new data does not guarantee improvement. No model is automatically promoted because its recent score looks best.</p></section>
       <section class="section"><h2>How the scores are calculated</h2><div class="method-grid"><article class="method-card"><h3>Variance error: QLIKE</h3><p>Let <code>r = realized variance / forecast variance</code>. The loss is <code>r − ln(r) − 1</code>. Zero means the forecast equals the observed variance; lower average loss is better.</p><p>For example, realized variance twice the forecast gives a loss of about 0.307. Realized variance half the forecast gives about 0.193. Severe underprediction is especially costly under this rule. The registered variance floor is retained in the calculation.</p></article><article class="method-card"><h3>Probability error: Brier score</h3><p>For probability <code>p</code> and outcome <code>y</code> (1 if the event happened, otherwise 0), loss is <code>(p − y)²</code>. Predicting 20% gives loss 0.04 if no event occurs, and 0.64 if it does.</p><p>Always predicting 50% gives 0.25, but that is not necessarily a sensible baseline for a rare event. This lab compares drawdown probabilities with the historical event-frequency model.</p></article><article class="method-card"><h3>Ranking quality: rank correlation</h3><p>Spearman correlation compares the forecast ordering with the ordering of actual returns. A value of +1 means identical order, −1 the reverse, and 0 no measured rank association in that sample.</p><p>This is central to the Stock Forecasting Lab and a secondary diagnostic for the sector-direction study. It does not measure trading profit.</p></article><article class="method-card"><h3>Calibration and uncertainty</h3><p>If forecasts repeatedly say 20%, the event should occur about 20% of the time in a well-calibrated group. Tables show predicted probabilities, observed frequencies, and counts.</p><p>Correlated assets and overlapping five-session windows are not independent trials. Risk comparisons use blocks of dates to describe uncertainty. The displayed intervals do not account for every model search or prove a trading advantage.</p></article></div></section>
       <section class="section prose"><h2>How historical training is separated from testing</h2><p>Risk-model fits use a trailing five-year window. Supervised fits require at least 504 fitting dates and use a separate final 126-date calibration segment. Training outcomes must finish before calibration begins; calibration outcomes must finish by the fitting cutoff. Models are then evaluated on later dates.</p><p>The risk benchmark covers 2019–2024. Those results have already been inspected. The direction study’s 2025 confirmation results have also been inspected, so neither those results nor inspected 2026 history can be described as a fresh holdout for redesigned models.</p><p><strong>Registered</strong> means that a version’s questions and rules were recorded before its evaluation. It does not mean regulator approval or certified forecasting skill. Failed ideas and later diagnostic analyses remain visible.</p></section>
-      <section class="section"><h2>Full documents, exact settings, and records</h2><p>These pages are generated from the repository’s documents and recorded files. Downloads retain the original bytes and include their file fingerprints. Historical reviews keep their original conclusions and dates.</p>${documentCards()}<p><a class="button" href="reference/index.html">Browse every document and published report →</a> <a class="button" href="reference/records.html">Inspect frozen forecasts and outcomes →</a></p></section>`;
+      <section class="section"><h2>Full documents, exact settings, and records</h2><p>Read the lab’s research plans and recorded results. Each reader page provides the original file and its SHA-256 fingerprint.</p>${documentCards()}<p><a class="button" href="reference/index.html">Browse research documents and reports →</a> <a class="button" href="reference/records.html">Inspect frozen forecasts and outcomes →</a></p></section>`;
   }
   function hubReceipt(){
     const reader=S.reader,hub=reader?.hub;
@@ -55,7 +54,7 @@ const GuideUI = (() => {
   }
   function about(){
     return `${intro('ABOUT / PROJECT GUIDE','One project, several distinct questions.','UNPRICED develops market forecasts, tests their accuracy, and studies whether they can support useful trading decisions. Each experiment keeps its own evidence.')}${network()}
-      <section class="section prose"><h2>Why have a separate Risk Lab?</h2><p>Predicting relative winners and predicting risk are different tasks. Markets can be volatile while a ranking is correct, and a sector can outperform the market while losing money. Risk forecasts estimate the size and downside of movements; they are one part of a possible investment strategy.</p><p>Volatility often persists, which motivates risk forecasting. It does not guarantee that a more complicated model will beat a simple moving-average baseline. Separate model implementations and cross-review can help find mistakes; agreement between reviewers is not evidence of forecasting skill.</p><p>The letters “X” and “Z” distinguish project repositories. This website is <strong>UnpricedZ, the Market &amp; Sector Risk Lab</strong>. The <strong>Stock Forecasting Lab is UnpricedX</strong>.</p></section>
+      <section class="section prose"><h2>Why have a separate Risk Lab?</h2><p>Predicting relative winners and predicting risk are different tasks. Markets can be volatile while a ranking is correct, and a sector can outperform the market while losing money. Risk forecasts estimate the size and downside of movements; they are one part of a possible investment strategy.</p><p>Volatility often persists, which motivates risk forecasting. It does not guarantee that a more complicated model will beat a simple moving-average baseline. Separate model implementations and cross-review can help find mistakes; agreement between reviewers is not evidence of forecasting skill.</p></section>
       <section class="section"><h2>Two existing $1,000 experiments</h2>${table(['Experiment','What it follows','Where it lives'],[
         ['Sector-ETF paper portfolio','The continuing research-2.0.0 model predicting which of nine sectors will outperform SPY. Its trading rules are fixed.','<a href="#portfolio">This site’s $1,000 experiment →</a>'],
         ['Individual-stock paper portfolio','The Stock Forecasting Lab’s rankings and its own trading rules. Its results belong to a different experiment.','<a href="https://prototypeversions.github.io/UnpricedX/">Stock Forecasting Lab ↗</a>']
@@ -94,34 +93,5 @@ const GuideUI = (() => {
     }
     return `<section class="section"><h2>The rules this portfolio follows</h2>${rules}<p><a href="reference/config.html">Read the exact configuration and download the original JSON →</a></p></section>${showDecision?`<section class="section"><h2>Why the latest plan chose these allocations</h2>${decision}</section>`:''}<section class="section prose"><h2>How to interpret the balance and comparison</h2><p><strong>Settled equity</strong> updates only when an entire holding window is resolved. It is not a daily estimate of the current value of open positions. An unchanged balance while a window is open should not be read as a zero-return trade.</p><p>The SPY reference invests over the same opening-to-closing windows as the portfolio and excludes the overnight gaps between cohorts. It is not continuous buy-and-hold SPY. The strategy includes modeled trading costs; the current SPY reference is shown before trading costs. Cash earns zero in this simulation.</p><p>The strategy can hold substantial cash, while the reference holds SPY during each window. Differences therefore reflect exposure as well as selection and costs. The settled-value chart does not measure the portfolio’s daily path or its intraperiod drawdown.</p><p>These results are reference-price simulations using provider-adjusted prices. They do not establish achievable fills, profitability, or forecasting skill. The separate <a href="#overview">sector forecasting record</a> evaluates prediction quality.</p></section>${future()}`;
   }
-  function localize(root=document){
-    // Defense in depth: no navigation from the public dashboard into GitHub.
-    // All Z source documents and records have on-site readers; raw archives
-    // also get provenance pages with an on-site original-file download.
-    root.querySelectorAll('a[href]').forEach(a=>{
-      const href=a.getAttribute('href')||'';
-      let target=null;
-      if(href.startsWith(REPO+'/blob/main/')){
-        target=documentLink(href.slice((REPO+'/blob/main/').length).split('#')[0]);
-      } else if(href.startsWith(REPO+'/tree/main/records')||href.startsWith(REPO+'/tree/main/risk_records')){
-        target='reference/records.html';
-      } else if(href===REPO+'/tree/main/site/data'||href===REPO){
-        target='reference/index.html';
-      } else if(href.startsWith(REPO+'/actions')){
-        target='reference/docs/OPERATIONS.html';
-      } else if(/^data\/[a-z_]+\.json$/.test(href)){
-        target=documentLink('site/'+href);
-      } else if(/^https?:\/\/(?:www\.)?github\.com\//i.test(href)||/^https?:\/\/raw\.githubusercontent\.com\//i.test(href)){
-        target='reference/index.html';
-      }
-      if(target)a.setAttribute('href',target);
-      if(a.getAttribute('href')?.startsWith('reference/')){
-        a.removeAttribute('target');a.removeAttribute('rel');
-        for(const node of a.childNodes){
-          if(node.nodeType===3)node.textContent=node.textContent.replace(/↗/g,'→');
-        }
-      }
-    });
-  }
-  return {methods,about,network,future,hubReceipt,portfolioIntro,portfolioDetails,localize,documentCards,documentLink};
+  return {methods,about,network,future,hubReceipt,portfolioIntro,portfolioDetails,documentCards,documentLink};
 })();
