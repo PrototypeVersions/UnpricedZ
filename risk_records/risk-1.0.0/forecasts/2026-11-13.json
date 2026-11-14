@@ -1,0 +1,660 @@
+{
+  "schemaVersion": 1,
+  "experiment": "risk-1.0.0",
+  "forecastId": "risk-1.0.0:2026-11-13",
+  "sessionDate": "2026-11-13",
+  "issuedAt": "2026-11-14T05:12:37.348279+00:00",
+  "informationCutoff": "2026-11-13T21:00:00+00:00",
+  "entryDate": "2026-11-16",
+  "exitDate": "2026-11-20",
+  "entryOpen": "2026-11-16T14:30:00+00:00",
+  "exitClose": "2026-11-20T21:00:00+00:00",
+  "horizonSessions": 5,
+  "targets": {
+    "variance": "mean of squared log first open-to-close leg and four subsequent close-to-close legs",
+    "drawdown": "maximum peak-to-trough decline along entry price and five subsequent daily closes",
+    "drawdownThreshold": 0.03,
+    "varianceUnits": "squared fractional log return per session"
+  },
+  "inputVintage": {
+    "path": "risk_archive/inputs/daily-7541df41e3fd0e45.csv.gz",
+    "csvSha256": "7541df41e3fd0e4572997381f89d44e110371fd90a8bb0e7617d8eb9745798aa",
+    "retrievedAt": "2026-11-14T05:12:33.825636+00:00",
+    "start": "2025-08-20",
+    "end": "2026-11-13",
+    "rows": 3120,
+    "adjustment": "Provider-adjusted OHLC; outcomes use a single vintage"
+  },
+  "models": {
+    "experiment": "risk-1.0.0",
+    "fitAsOf": "2026-11-03",
+    "path": "risk_archive/risk-1.0.0/models/2026-11.joblib",
+    "modelSha256": "7ec13b0d57a892e60a122b13cc8505ce30e4287a50c4929deece6b3b8d1bb3b1",
+    "provenance": {
+      "codeCommit": "3c76f435c1dda2b8f6a80cb7bdc92a11bf1cc59a",
+      "algorithmSha256": "81814c6d500f450d7bdb70247ceccc57b3b31cc5dfbb6c9071cb024e161dda94",
+      "registrySha256": "3e3cd3ae6f0ccdecfa7c6212a6b4980905e2b51f77d25ceb01ebd77837c3d504",
+      "python": "3.11.17",
+      "packages": {
+        "numpy": "2.2.6",
+        "pandas": "2.2.3",
+        "scipy": "1.15.3",
+        "scikit-learn": "1.6.1",
+        "arch": "8.0.0",
+        "statsmodels": "0.14.5",
+        "joblib": "1.5.2",
+        "yfinance": "0.2.66",
+        "pandas-market-calendars": "5.1.1"
+      }
+    },
+    "inputVintage": {
+      "path": "risk_archive/inputs/training-b1219ac92d5a6462.csv.gz",
+      "csvSha256": "b1219ac92d5a6462c4938bab461d616658f749381ad146ccf005603dac64f9e8",
+      "retrievedAt": "2026-11-04T02:46:02.481619+00:00",
+      "start": "2021-09-24",
+      "end": "2026-11-03",
+      "rows": 12830,
+      "adjustment": "Provider-adjusted OHLC; outcomes use a single vintage"
+    },
+    "assets": {
+      "SPY": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.04414344704435663,
+            "alpha": 0.15410789582284018,
+            "beta": 0.7882414999397079,
+            "variance": 0.4728332788824042,
+            "lastReturn": 0.21498471061552493,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.03518327874542815,
+            "alpha": 0.0983298829361341,
+            "beta": 0.8695561807478013,
+            "variance": 0.7780101652375883,
+            "lastReturn": 0.29871575505480824,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLB": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.06479286290760446,
+            "alpha": 0.11260937404029535,
+            "beta": 0.8204602544825104,
+            "variance": 0.8443499959178409,
+            "lastReturn": -1.7155663399245953,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.07667336360656168,
+            "alpha": 0.10192038503329277,
+            "beta": 0.844550436428411,
+            "variance": 1.1012868759891195,
+            "lastReturn": -2.03281615691096,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLE": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.13868053181982773,
+            "alpha": 0.10248192028656926,
+            "beta": 0.8159357861542396,
+            "variance": 1.8467418893635676,
+            "lastReturn": 0.07501771062719421,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.03446559585019087,
+            "alpha": 0.047342944415954324,
+            "beta": 0.9393612284477255,
+            "variance": 2.722522441339289,
+            "lastReturn": -0.8511956022633863,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLF": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.06844702039837194,
+            "alpha": 0.12899667845618643,
+            "beta": 0.793458894186154,
+            "variance": 0.7780902652938445,
+            "lastReturn": -0.2968173017640185,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.10498975712038758,
+            "alpha": 0.13881822810817368,
+            "beta": 0.7832044348730922,
+            "variance": 1.359963158146466,
+            "lastReturn": -0.6448871963150792,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLI": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.09188215995567958,
+            "alpha": 0.145865855870924,
+            "beta": 0.7460148271807947,
+            "variance": 0.7174174266237259,
+            "lastReturn": 0.3566945777114409,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.051336765336523406,
+            "alpha": 0.08353370577464173,
+            "beta": 0.8749608345916553,
+            "variance": 1.1413290326030012,
+            "lastReturn": 0.9442057914859016,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLK": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.09947960603314912,
+            "alpha": 0.13328682985816837,
+            "beta": 0.8145631989880946,
+            "variance": 2.792272142396676,
+            "lastReturn": 0.744933978762594,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.06506212035976933,
+            "alpha": 0.08203263797525254,
+            "beta": 0.8963618970179252,
+            "variance": 4.80710868302522,
+            "lastReturn": 1.3058625473785708,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLP": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.01727774412551099,
+            "alpha": 0.059605404857271,
+            "beta": 0.9121416060109641,
+            "variance": 0.7521111201590385,
+            "lastReturn": -1.0623578647488034,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.01072232449571309,
+            "alpha": 0.04742641721998545,
+            "beta": 0.9404315689457189,
+            "variance": 1.405305455089581,
+            "lastReturn": -2.0915267870106558,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLU": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.17606079519672885,
+            "alpha": 0.06948992195619262,
+            "beta": 0.7511401089387982,
+            "variance": 0.8500655648607951,
+            "lastReturn": -0.23004907867756416,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.037150749936744075,
+            "alpha": 0.02882314624593105,
+            "beta": 0.9403828838991429,
+            "variance": 1.1422339922090126,
+            "lastReturn": -0.5741203288741019,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLV": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.028603271972062458,
+            "alpha": 0.0733198652650837,
+            "beta": 0.8846290971661269,
+            "variance": 0.6637051862571868,
+            "lastReturn": 0.18493973152712292,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.013284157545694108,
+            "alpha": 0.0470970227276161,
+            "beta": 0.9396728835235477,
+            "variance": 1.2293896764950982,
+            "lastReturn": -0.31468845606285006,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      },
+      "XLY": {
+        "fitAsOf": "2026-11-03",
+        "fitStart": "2021-11-03",
+        "fitLastOutcome": "2026-04-28",
+        "calibrationStart": "2026-04-29",
+        "calibrationLastOutcome": "2026-11-03",
+        "fittingDates": 1119,
+        "calibrationDates": 126,
+        "errors": {},
+        "garch": {
+          "intradayReturn": {
+            "omega": 0.03132043904061814,
+            "alpha": 0.08973912035129357,
+            "beta": 0.8890698128260615,
+            "variance": 0.6882605685536364,
+            "lastReturn": -0.8402322781748098,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          },
+          "closeReturn": {
+            "omega": 0.03869576181183428,
+            "alpha": 0.06658431410677987,
+            "beta": 0.9163346732399074,
+            "variance": 1.4792891696580603,
+            "lastReturn": -0.7049176174369504,
+            "asof": "2026-11-03T00:00:00",
+            "scale": 100,
+            "returnDates": 1255,
+            "firstReturnDate": "2021-11-03",
+            "convergenceFlag": 0
+          }
+        }
+      }
+    }
+  },
+  "provenance": {
+    "codeCommit": "d5bbe67e6d60368d61bc09c4c2dc142b4f97a9de",
+    "algorithmSha256": "81814c6d500f450d7bdb70247ceccc57b3b31cc5dfbb6c9071cb024e161dda94",
+    "registrySha256": "3e3cd3ae6f0ccdecfa7c6212a6b4980905e2b51f77d25ceb01ebd77837c3d504",
+    "python": "3.11.18",
+    "packages": {
+      "numpy": "2.2.6",
+      "pandas": "2.2.3",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.6.1",
+      "arch": "8.0.0",
+      "statsmodels": "0.14.5",
+      "joblib": "1.5.2",
+      "yfinance": "0.2.66",
+      "pandas-market-calendars": "5.1.1"
+    }
+  },
+  "macroContext": {
+    "status": "incomplete",
+    "inputVintage": {
+      "path": "risk_archive/inputs/macro-ee6cf58188d67565.json.gz",
+      "jsonSha256": "ee6cf58188d67565dcec8dd169f0718ffd82437802c5e5401e1b45a43cbca15c",
+      "retrievedAt": "2026-11-14T05:12:33.931959+00:00"
+    },
+    "features": {
+      "rate10": 4.98,
+      "slope": 0.24,
+      "credit": 1.51,
+      "inflation12": null,
+      "unemployment": 4.1,
+      "unemployment3": 0.0
+    },
+    "use": "Dated context only; not a model input in risk-1.0.0",
+    "availabilityRule": "Use from the close of the first NYSE session strictly after the vintage date; date-only vintages are not exact release timestamps."
+  },
+  "forecasts": [
+    {
+      "ticker": "SPY",
+      "name": "S&P 500",
+      "variance": {
+        "ewma": 0.000152243166509996,
+        "har_daily": 0.00012600077460699804,
+        "garch11": 0.00016741747883897232
+      },
+      "drawdown": {
+        "base_rate": 0.13523274478330657,
+        "volatility_only": 0.014570162214317834
+      },
+      "features": {
+        "logVar1": -11.232203992301477,
+        "logVar5": -8.794139777073505,
+        "logVar22": -8.641326847030262,
+        "logEwmaVariance": -8.790031535731336
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLB",
+      "name": "Materials",
+      "variance": {
+        "ewma": 0.00014518093094083613,
+        "har_daily": 0.00013155494220076482,
+        "garch11": 0.0001538927505329498
+      },
+      "drawdown": {
+        "base_rate": 0.19221508828250403,
+        "volatility_only": 0.17659964845607085
+      },
+      "features": {
+        "logVar1": -12.327957031664681,
+        "logVar5": -9.13223673343318,
+        "logVar22": -8.734086781032595,
+        "logEwmaVariance": -8.837529793806633
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLE",
+      "name": "Energy",
+      "variance": {
+        "ewma": 0.0003106854743132557,
+        "har_daily": 0.0002771334168168297,
+        "garch11": 0.00029226275865296884
+      },
+      "drawdown": {
+        "base_rate": 0.28852327447833065,
+        "volatility_only": 0.23224280952933413
+      },
+      "features": {
+        "logVar1": -9.261885348834394,
+        "logVar5": -8.862348020554785,
+        "logVar22": -7.8969204289756965,
+        "logEwmaVariance": -8.076729494144299
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLF",
+      "name": "Financials",
+      "variance": {
+        "ewma": 0.00014891441802055523,
+        "har_daily": 0.00010321138043874328,
+        "garch11": 0.00014087886421128618
+      },
+      "drawdown": {
+        "base_rate": 0.16332263242375603,
+        "volatility_only": 0.015477816072917793
+      },
+      "features": {
+        "logVar1": -9.646201467339209,
+        "logVar5": -9.472648125755581,
+        "logVar22": -8.642483590803085,
+        "logEwmaVariance": -8.8121387927367
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLI",
+      "name": "Industrials",
+      "variance": {
+        "ewma": 0.00019354122545318784,
+        "har_daily": 0.00017399797438545083,
+        "garch11": 0.00019321907986521945
+      },
+      "drawdown": {
+        "base_rate": 0.15208667736757625,
+        "volatility_only": 0.13948319151576558
+      },
+      "features": {
+        "logVar1": -11.092116040740196,
+        "logVar5": -7.999042460991047,
+        "logVar22": -8.419605161432623,
+        "logEwmaVariance": -8.55002001674901
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLK",
+      "name": "Technology",
+      "variance": {
+        "ewma": 0.0006174623267456502,
+        "har_daily": 0.0005802031002987032,
+        "garch11": 0.0006313852608260441
+      },
+      "drawdown": {
+        "base_rate": 0.3109951845906902,
+        "volatility_only": 0.4415488776511748
+      },
+      "features": {
+        "logVar1": -7.795404425479965,
+        "logVar5": -7.450735874975848,
+        "logVar22": -7.165270350121193,
+        "logEwmaVariance": -7.3898925006420715
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLP",
+      "name": "Consumer staples",
+      "variance": {
+        "ewma": 0.0001590378225946865,
+        "har_daily": 0.00013504825803730444,
+        "garch11": 0.00014161699697827593
+      },
+      "drawdown": {
+        "base_rate": 0.06942215088282504,
+        "volatility_only": 0.07122625111385157
+      },
+      "features": {
+        "logVar1": -8.527834927266836,
+        "logVar5": -9.657124335260008,
+        "logVar22": -8.47837554506457,
+        "logEwmaVariance": -8.746368506078515
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLU",
+      "name": "Utilities",
+      "variance": {
+        "ewma": 7.60920763040209e-05,
+        "har_daily": 9.348102958695303e-05,
+        "garch11": 9.75566929853441e-05
+      },
+      "drawdown": {
+        "base_rate": 0.17134831460674158,
+        "volatility_only": 0.22438244800333204
+      },
+      "features": {
+        "logVar1": -10.504318671305775,
+        "logVar5": -9.848197583025495,
+        "logVar22": -9.285213585852755,
+        "logEwmaVariance": -9.483566420672506
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLV",
+      "name": "Health care",
+      "variance": {
+        "ewma": 0.00015155334156671224,
+        "har_daily": 0.00013607179669623617,
+        "garch11": 0.00013875863415382315
+      },
+      "drawdown": {
+        "base_rate": 0.10473515248796147,
+        "volatility_only": 0.06807155950022335
+      },
+      "features": {
+        "logVar1": -10.43687920191859,
+        "logVar5": -9.358046606062945,
+        "logVar22": -8.651755040289263,
+        "logEwmaVariance": -8.794572905434574
+      },
+      "abstentions": {}
+    },
+    {
+      "ticker": "XLY",
+      "name": "Consumer discretionary",
+      "variance": {
+        "ewma": 0.00022069751877356838,
+        "har_daily": 0.0002085155612240419,
+        "garch11": 0.00023729996174079896
+      },
+      "drawdown": {
+        "base_rate": 0.27648475120385235,
+        "volatility_only": 0.15589259421224352
+      },
+      "features": {
+        "logVar1": -11.046600310817123,
+        "logVar5": -8.665257398064238,
+        "logVar22": -8.187093667847519,
+        "logEwmaVariance": -8.418717487295055
+      },
+      "abstentions": {}
+    }
+  ],
+  "payloadSha256": "5af82da8f6088edccb40e6128bf3f3bf54b7c2d5c1c77315e5f0c332172656f2"
+}
