@@ -44,13 +44,28 @@ def test_hub_receipt_preserves_lateness_and_checks_exact_export_bytes(tmp_path):
     fixture(tmp_path)
     path = put(tmp_path, 'site/data/export/latest-variance.json', {'forecastId': 'export:variance', 'task': {'description': 'Variance'}})
     receipt = {'forecastId': 'export:variance', 'status': 'late', 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
-    hub = {'updatedAt': '2026-11-05', 'labs': [{'id': 'risk-lab', 'recent': [receipt]}]}
+    hub = {'updatedAt': '2026-11-05', 'labs': [{'id': 'risk-lab', 'receipts': {'live': 0, 'late': 1}}],
+           'forecasts': [{**receipt, 'lab': 'risk-lab', 'receivedAt': '2026-11-05T10:41:00-05:00'}]}
     row = reader_context(tmp_path, hub)['hub']['exports'][0]
     assert row['receipt']['status'] == 'late'
+    assert row['receipt']['receivedAt'] == '2026-11-05T10:41:00-05:00'
     assert row['matches'] is True
     path.write_text(path.read_text() + '\n')
     assert reader_context(tmp_path, hub)['hub']['exports'][0]['matches'] is False
     assert reader_context(tmp_path)['hub']['status'] == 'unavailable'
+
+
+def test_hub_receipt_ignores_another_labs_matching_identifier(tmp_path):
+    fixture(tmp_path)
+    path = put(tmp_path, 'site/data/export/latest-variance.json', {'forecastId': 'shared-id', 'task': {'description': 'Variance'}})
+    digest_value = hashlib.sha256(path.read_bytes()).hexdigest()
+    hub = {'updatedAt': '2026-11-05', 'labs': [{'id': 'risk-lab'}], 'forecasts': [
+        {'forecastId': 'shared-id', 'lab': 'stock-lab', 'status': 'live', 'sha256': digest_value},
+        {'forecastId': 'shared-id', 'lab': 'risk-lab', 'status': 'live', 'sha256': digest_value},
+    ]}
+    row = reader_context(tmp_path, hub)['hub']['exports'][0]
+    assert row['receipt']['status'] == 'live'
+    assert row['matches'] is True
 
 
 def test_full_reader_preserves_original_reports_and_hashes(tmp_path):
