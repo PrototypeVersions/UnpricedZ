@@ -1,7 +1,7 @@
 {
   "experiment": "risk-1.0.0",
   "status": "live-shadow",
-  "updatedAt": "2026-11-17T06:51:41.908070+00:00",
+  "updatedAt": "2026-11-17T09:15:33.256115+00:00",
   "forecastDates": 10,
   "resolvedDates": 5,
   "latest": {
