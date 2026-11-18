@@ -5,18 +5,18 @@
     "name": "UNPRICED Risk Lab",
     "repo": "PrototypeVersions/UnpricedZ",
     "experiment": "risk-1.0.0",
-    "codeCommit": "2cdbd0fa7e021f6dbd14502617ca633af5c16265"
+    "codeCommit": "8e93d65769218d030866db5138fa680bcc42b013"
   },
-  "forecastId": "unpricedz/2026-11-16/risk-v1-drawdown-gt3pct-5s-open-close",
-  "decisionSession": "2026-11-16",
-  "informationCutoff": "2026-11-16T21:00:00+00:00",
-  "issuedAt": "2026-11-17T04:03:00.830875+00:00",
+  "forecastId": "unpricedz/2026-11-17/risk-v1-drawdown-gt3pct-5s-open-close",
+  "decisionSession": "2026-11-17",
+  "informationCutoff": "2026-11-17T21:00:00+00:00",
+  "issuedAt": "2026-11-18T02:59:47.064908+00:00",
   "entry": {
-    "session": "2026-11-17",
+    "session": "2026-11-18",
     "price": "open"
   },
   "exit": {
-    "session": "2026-11-23",
+    "session": "2026-11-24",
     "price": "close"
   },
   "task": {
@@ -82,26 +82,26 @@
         0.27648475120385235
       ],
       "volatility_only": [
-        0.014490131417390955,
-        0.1768355745586675,
-        0.23227184936776957,
-        0.015491488262782835,
-        0.1392772781567104,
-        0.44314217067857575,
-        0.07124493409155144,
-        0.22484936782824858,
-        0.06754670308085617,
-        0.15589419642966298
+        0.01451913589136436,
+        0.17680055768863068,
+        0.23204517442076145,
+        0.015457989135209278,
+        0.13958778262510152,
+        0.4400594169019781,
+        0.07124807656060715,
+        0.22395442150831477,
+        0.06763648960442808,
+        0.15611595526031677
       ]
     }
   },
   "abstained": [],
   "modelAbstentions": [],
   "provenance": {
-    "snapshotPath": "risk_records/risk-1.0.0/forecasts/2026-11-16.json",
-    "snapshotSha256": "76404db4a03f9cfb866df8a933d03580f09f5a9bc4096cae38401b4a812e5a29",
+    "snapshotPath": "risk_records/risk-1.0.0/forecasts/2026-11-17.json",
+    "snapshotSha256": "04a5ca2bee55e6e250949af5128bf3bab5ae5494f91615a5a556e1834a0e1b55",
     "inputFingerprint": {
-      "prices": "3ee4c1e7c25be2a9c865c072420619b4694ee64de329fab8c131bec1f4c74d14",
+      "prices": "6b54ec19a04c00cbe9516f449bd56e6ac71a695c82f770a124dc5100671252e4",
       "algorithm": "81814c6d500f450d7bdb70247ceccc57b3b31cc5dfbb6c9071cb024e161dda94"
     }
   },
@@ -112,8 +112,8 @@
     "The five-observation holding window has four NYSE session-index intervals under this contract.",
     "Issue time is when the lab froze the forecast. Hub independently determines whether receipt was timely."
   ],
-  "entryOpen": "2026-11-17T14:30:00+00:00",
-  "exitClose": "2026-11-23T21:00:00+00:00",
+  "entryOpen": "2026-11-18T14:30:00+00:00",
+  "exitClose": "2026-11-24T21:00:00+00:00",
   "holdingWindowObservations": 5,
   "contractRevision": "5bdee50d25f57dac6b85630523f9cdfeb0a5352d"
 }
