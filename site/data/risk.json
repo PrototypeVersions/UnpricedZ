@@ -1,20 +1,20 @@
 {
   "experiment": "risk-1.0.0",
   "status": "live-shadow",
-  "updatedAt": "2026-11-18T08:35:08.993874+00:00",
-  "forecastDates": 11,
-  "resolvedDates": 6,
+  "updatedAt": "2026-11-19T02:42:48.934861+00:00",
+  "forecastDates": 12,
+  "resolvedDates": 7,
   "latest": {
     "schemaVersion": 1,
     "experiment": "risk-1.0.0",
-    "forecastId": "risk-1.0.0:2026-11-17",
-    "sessionDate": "2026-11-17",
-    "issuedAt": "2026-11-18T02:59:47.064908+00:00",
-    "informationCutoff": "2026-11-17T21:00:00+00:00",
-    "entryDate": "2026-11-18",
-    "exitDate": "2026-11-24",
-    "entryOpen": "2026-11-18T14:30:00+00:00",
-    "exitClose": "2026-11-24T21:00:00+00:00",
+    "forecastId": "risk-1.0.0:2026-11-18",
+    "sessionDate": "2026-11-18",
+    "issuedAt": "2026-11-19T02:42:48.730849+00:00",
+    "informationCutoff": "2026-11-18T21:00:00+00:00",
+    "entryDate": "2026-11-19",
+    "exitDate": "2026-11-25",
+    "entryOpen": "2026-11-19T14:30:00+00:00",
+    "exitClose": "2026-11-25T21:00:00+00:00",
     "horizonSessions": 5,
     "targets": {
       "variance": "mean of squared log first open-to-close leg and four subsequent close-to-close legs",
@@ -23,12 +23,12 @@
       "varianceUnits": "squared fractional log return per session"
     },
     "inputVintage": {
-      "path": "risk_archive/inputs/daily-6b54ec19a04c00cb.csv.gz",
-      "csvSha256": "6b54ec19a04c00cbe9516f449bd56e6ac71a695c82f770a124dc5100671252e4",
-      "retrievedAt": "2026-11-18T02:59:42.749466+00:00",
+      "path": "risk_archive/inputs/daily-575a2bd7d8633400.csv.gz",
+      "csvSha256": "575a2bd7d86334005cdfb393729d9be24e2594f254cf191a8e3a2a8f9f193c78",
+      "retrievedAt": "2026-11-19T02:42:42.540294+00:00",
       "start": "2025-08-25",
-      "end": "2026-11-17",
-      "rows": 3110,
+      "end": "2026-11-18",
+      "rows": 3120,
       "adjustment": "Provider-adjusted OHLC; outcomes use a single vintage"
     },
     "models": {
@@ -426,7 +426,7 @@
       }
     },
     "provenance": {
-      "codeCommit": "8e93d65769218d030866db5138fa680bcc42b013",
+      "codeCommit": "00fea35291145477ec084f9df7ab727b2fbad62b",
       "algorithmSha256": "81814c6d500f450d7bdb70247ceccc57b3b31cc5dfbb6c9071cb024e161dda94",
       "registrySha256": "3e3cd3ae6f0ccdecfa7c6212a6b4980905e2b51f77d25ceb01ebd77837c3d504",
       "python": "3.11.18",
@@ -445,14 +445,14 @@
     "macroContext": {
       "status": "incomplete",
       "inputVintage": {
-        "path": "risk_archive/inputs/macro-b8a623ddcb58a4ca.json.gz",
-        "jsonSha256": "b8a623ddcb58a4ca2a653d61bfeb8df8324e28ed033b79d494ec04722b5016e8",
-        "retrievedAt": "2026-11-18T02:59:42.887073+00:00"
+        "path": "risk_archive/inputs/macro-dc932547c637bc80.json.gz",
+        "jsonSha256": "dc932547c637bc800fb47c3d5d72e02de6b67b8a8015e4cc13c86afb5481e29f",
+        "retrievedAt": "2026-11-19T02:42:42.655343+00:00"
       },
       "features": {
-        "rate10": 5.15,
-        "slope": 0.29,
-        "credit": 1.47,
+        "rate10": 5.12,
+        "slope": 0.3,
+        "credit": 1.5,
         "inflation12": null,
         "unemployment": 4.1,
         "unemployment3": 0.0
@@ -465,19 +465,19 @@
         "ticker": "SPY",
         "name": "S&P 500",
         "variance": {
-          "ewma": 0.00015902720976289817,
-          "har_daily": 0.0001268530307363117,
-          "garch11": 0.0001686591718881548
+          "ewma": 0.000150161074928212,
+          "har_daily": 0.00011736908394051535,
+          "garch11": 0.00015045045621288946
         },
         "drawdown": {
           "base_rate": 0.13523274478330657,
-          "volatility_only": 0.01451913589136436
+          "volatility_only": 0.01458631624515835
         },
         "features": {
-          "logVar1": -9.170499202240359,
-          "logVar5": -8.911650025899556,
-          "logVar22": -8.556350416633771,
-          "logEwmaVariance": -8.746435239800945
+          "logVar1": -11.576757684940743,
+          "logVar5": -9.187076627170986,
+          "logVar22": -8.55834995453011,
+          "logEwmaVariance": -8.803802007159351
         },
         "abstentions": {}
       },
@@ -485,19 +485,19 @@
         "ticker": "XLB",
         "name": "Materials",
         "variance": {
-          "ewma": 0.0001486768558431012,
-          "har_daily": 0.00013899350758527775,
-          "garch11": 0.00015467370588361033
+          "ewma": 0.00014257909546725557,
+          "har_daily": 0.0001387423711732626,
+          "garch11": 0.00014314441653932527
         },
         "drawdown": {
           "base_rate": 0.19221508828250403,
-          "volatility_only": 0.17680055768863068
+          "volatility_only": 0.17644707663103443
         },
         "features": {
-          "logVar1": -8.793762754723081,
-          "logVar5": -9.118865349616657,
-          "logVar22": -8.733865119795633,
-          "logEwmaVariance": -8.813735359899658
+          "logVar1": -9.785031495917712,
+          "logVar5": -9.038290263597071,
+          "logVar22": -8.718198695743737,
+          "logEwmaVariance": -8.855613656331558
         },
         "abstentions": {}
       },
@@ -505,19 +505,19 @@
         "ticker": "XLE",
         "name": "Energy",
         "variance": {
-          "ewma": 0.00029687192962496363,
-          "har_daily": 0.0002707309694699261,
-          "garch11": 0.00027956245065778503
+          "ewma": 0.000341105177019229,
+          "har_daily": 0.0003224007991824246,
+          "garch11": 0.00031959780088537866
         },
         "drawdown": {
           "base_rate": 0.28852327447833065,
-          "volatility_only": 0.23204517442076145
+          "volatility_only": 0.23264909148761234
         },
         "features": {
-          "logVar1": -10.520199819931992,
-          "logVar5": -8.440992128990164,
-          "logVar22": -7.9546419756090225,
-          "logEwmaVariance": -8.122209725544762
+          "logVar1": -6.80944449116597,
+          "logVar5": -7.906793675736006,
+          "logVar22": -7.825854642219654,
+          "logEwmaVariance": -7.983319691231135
         },
         "abstentions": {}
       },
@@ -525,19 +525,19 @@
         "ticker": "XLF",
         "name": "Financials",
         "variance": {
-          "ewma": 0.000155414646732928,
-          "har_daily": 0.00011656659929043539,
-          "garch11": 0.0001535518096817986
+          "ewma": 0.00015287354645777057,
+          "har_daily": 0.0001194231098363025,
+          "garch11": 0.00014595555555283854
         },
         "drawdown": {
           "base_rate": 0.16332263242375603,
-          "volatility_only": 0.015457989135209278
+          "volatility_only": 0.015465636483033576
         },
         "features": {
-          "logVar1": -7.899130029222044,
-          "logVar5": -9.03726643892004,
-          "logVar22": -8.583158997380552,
-          "logEwmaVariance": -8.769413872651507
+          "logVar1": -8.938674324060292,
+          "logVar5": -8.885555498147724,
+          "logVar22": -8.568220383765297,
+          "logEwmaVariance": -8.78589947204616
         },
         "abstentions": {}
       },
@@ -545,19 +545,19 @@
         "ticker": "XLI",
         "name": "Industrials",
         "variance": {
-          "ewma": 0.00019011612224242654,
-          "har_daily": 0.00015547760695327275,
-          "garch11": 0.00017967617601732187
+          "ewma": 0.0001787256560234506,
+          "har_daily": 0.00014200539622923958,
+          "garch11": 0.00016147674039873952
         },
         "drawdown": {
           "base_rate": 0.15208667736757625,
-          "volatility_only": 0.13958778262510152
+          "volatility_only": 0.13995019305185255
         },
         "features": {
-          "logVar1": -10.402982529512615,
-          "logVar5": -8.950357481222884,
-          "logVar22": -8.34953194815517,
-          "logEwmaVariance": -8.567875502794944
+          "logVar1": -15.024284561541327,
+          "logVar5": -9.262011751765208,
+          "logVar22": -8.357523352214903,
+          "logEwmaVariance": -8.629658575743466
         },
         "abstentions": {}
       },
@@ -565,19 +565,19 @@
         "ticker": "XLK",
         "name": "Technology",
         "variance": {
-          "ewma": 0.0006021558603751697,
-          "har_daily": 0.0005710670025059184,
-          "garch11": 0.0005846229201488445
+          "ewma": 0.0005668908850581716,
+          "har_daily": 0.0005213936203746752,
+          "garch11": 0.0005284247841955707
         },
         "drawdown": {
           "base_rate": 0.3109951845906902,
-          "volatility_only": 0.4400594169019781
+          "volatility_only": 0.43648292660530386
         },
         "features": {
-          "logVar1": -9.388910578927177,
-          "logVar5": -7.56122337497206,
-          "logVar22": -7.154483604202432,
-          "logEwmaVariance": -7.414994241887691
+          "logVar1": -11.389715039931945,
+          "logVar5": -8.04465863366582,
+          "logVar22": -7.164446619647509,
+          "logEwmaVariance": -7.4753437153341515
         },
         "abstentions": {}
       },
@@ -585,19 +585,19 @@
         "ticker": "XLP",
         "name": "Consumer staples",
         "variance": {
-          "ewma": 0.0001488057760670477,
-          "har_daily": 0.00013729642793880708,
-          "garch11": 0.00013330210227163655
+          "ewma": 0.00014051648879096718,
+          "har_daily": 0.00013652943501544726,
+          "garch11": 0.00012674262496058372
         },
         "drawdown": {
           "base_rate": 0.06942215088282504,
-          "volatility_only": 0.07124807656060715
+          "volatility_only": 0.0712668930817763
         },
         "features": {
-          "logVar1": -8.782148166698645,
-          "logVar5": -9.438259847125611,
-          "logVar22": -8.47993214859225,
-          "logEwmaVariance": -8.812868618663778
+          "logVar1": -11.574678140734267,
+          "logVar5": -9.468319728487208,
+          "logVar22": -8.48269441059468,
+          "logEwmaVariance": -8.870185718133552
         },
         "abstentions": {}
       },
@@ -605,19 +605,19 @@
         "ticker": "XLU",
         "name": "Utilities",
         "variance": {
-          "ewma": 8.029976689166942e-05,
-          "har_daily": 9.652363841718603e-05,
-          "garch11": 9.976944364658549e-05
+          "ewma": 7.669211900253214e-05,
+          "har_daily": 9.086510600557304e-05,
+          "garch11": 9.861800698571898e-05
         },
         "drawdown": {
           "base_rate": 0.17134831460674158,
-          "volatility_only": 0.22395442150831477
+          "volatility_only": 0.22431994601925292
         },
         "features": {
-          "logVar1": -8.271202315259995,
-          "logVar5": -9.752422443331792,
-          "logVar22": -9.247773143384496,
-          "logEwmaVariance": -9.429743839983773
+          "logVar1": -11.62525577742854,
+          "logVar5": -9.736352178891835,
+          "logVar22": -9.45980784834685,
+          "logEwmaVariance": -9.475711605815127
         },
         "abstentions": {}
       },
@@ -625,19 +625,19 @@
         "ticker": "XLV",
         "name": "Health care",
         "variance": {
-          "ewma": 0.00014698145671407977,
-          "har_daily": 0.0001320627321029791,
-          "garch11": 0.00013431186250740195
+          "ewma": 0.00016414391652283783,
+          "har_daily": 0.00017291271613782162,
+          "garch11": 0.00014752262468197144
         },
         "drawdown": {
           "base_rate": 0.10473515248796147,
-          "volatility_only": 0.06763648960442808
+          "volatility_only": 0.06921729183914473
         },
         "features": {
-          "logVar1": -8.515915114439524,
-          "logVar5": -9.749612636428083,
-          "logVar22": -8.683195715926546,
-          "logEwmaVariance": -8.82520412394464
+          "logVar1": -7.613839651037238,
+          "logVar5": -8.75923666735788,
+          "logVar22": -8.567442334279475,
+          "logEwmaVariance": -8.714766975179591
         },
         "abstentions": {}
       },
@@ -645,50 +645,50 @@
         "ticker": "XLY",
         "name": "Consumer discretionary",
         "variance": {
-          "ewma": 0.00021147108166687172,
-          "har_daily": 0.0001773775404220744,
-          "garch11": 0.00022371657069825335
+          "ewma": 0.00021728016489456795,
+          "har_daily": 0.00019346639614177723,
+          "garch11": 0.0002295441633119775
         },
         "drawdown": {
           "base_rate": 0.27648475120385235,
-          "volatility_only": 0.15611595526031677
+          "volatility_only": 0.15597418602142563
         },
         "features": {
-          "logVar1": -9.437403773499426,
-          "logVar5": -9.56306138077977,
-          "logVar22": -8.194197300573263,
-          "logEwmaVariance": -8.461422298533762
+          "logVar1": -8.059984077945778,
+          "logVar5": -8.922049575481788,
+          "logVar22": -8.193343372616578,
+          "logEwmaVariance": -8.434322954690659
         },
         "abstentions": {}
       }
     ],
-    "payloadSha256": "8db430c161af6a711ed204c736f6e040f62319035f0d7d858f9615cec59cfeb8"
+    "payloadSha256": "c3b3449a5c5dab2c103a2bc6b3186721b6f664def8c29412c4686ca3491cb192"
   },
   "summary": {
-    "forecastDates": 6,
-    "rows": 60,
+    "forecastDates": 7,
+    "rows": 70,
     "groups": {
       "SPY": {
         "models": [
           {
             "task": "variance",
             "model": "ewma",
-            "issuedRows": 6,
-            "scoredRows": 6,
-            "dates": 6,
+            "issuedRows": 7,
+            "scoredRows": 7,
+            "dates": 7,
             "metric": "QLIKE",
-            "loss": 2.4224593925626707,
+            "loss": 2.0914959602405836,
             "decomposition": {
-              "rows": 6,
-              "dates": 6,
-              "meanQLIKE": 2.422459392562671,
-              "medianForecastQLIKE": 0.14499794841032032,
-              "medianDateQLIKE": 0.14499794841032032,
+              "rows": 7,
+              "dates": 7,
+              "meanQLIKE": 2.0914959602405836,
+              "medianForecastQLIKE": 0.10877591613799065,
+              "medianDateQLIKE": 0.10877591613799065,
               "worstDateCount": 1,
-              "worstDateFraction": 0.16666666666666666,
-              "worstDateShare": 0.553800665686539,
-              "excluding2020MeanQLIKE": 2.422459392562671,
-              "excluding2020Dates": 6,
+              "worstDateFraction": 0.14285714285714285,
+              "worstDateShare": 0.5498018027162982,
+              "excluding2020MeanQLIKE": 2.0914959602405836,
+              "excluding2020Dates": 7,
               "worstDates": [
                 {
                   "date": "2026-11-03",
@@ -700,22 +700,22 @@
           {
             "task": "variance",
             "model": "har_daily",
-            "issuedRows": 6,
-            "scoredRows": 6,
-            "dates": 6,
+            "issuedRows": 7,
+            "scoredRows": 7,
+            "dates": 7,
             "metric": "QLIKE",
-            "loss": 1.6786042506145697,
+            "loss": 1.4577327440717298,
             "decomposition": {
-              "rows": 6,
-              "dates": 6,
-              "meanQLIKE": 1.6786042506145697,
-              "medianForecastQLIKE": 0.14811630556632416,
-              "medianDateQLIKE": 0.14811630556632416,
+              "rows": 7,
+              "dates": 7,
+              "meanQLIKE": 1.45773274407173,
+              "medianForecastQLIKE": 0.1325037048146902,
+              "medianDateQLIKE": 0.1325037048146902,
               "worstDateCount": 1,
-              "worstDateFraction": 0.16666666666666666,
-              "worstDateShare": 0.558623051760659,
-              "excluding2020MeanQLIKE": 1.6786042506145697,
-              "excluding2020Dates": 6,
+              "worstDateFraction": 0.14285714285714285,
+              "worstDateShare": 0.5513691624340221,
+              "excluding2020MeanQLIKE": 1.45773274407173,
+              "excluding2020Dates": 7,
               "worstDates": [
                 {
                   "date": "2026-11-03",
@@ -727,22 +727,22 @@
           {
             "task": "variance",
             "model": "garch11",
-            "issuedRows": 6,
-            "scoredRows": 6,
-            "dates": 6,
+            "issuedRows": 7,
+            "scoredRows": 7,
+            "dates": 7,
             "metric": "QLIKE",
-            "loss": 1.5269614128118196,
+            "loss": 1.338047791663909,
             "decomposition": {
-              "rows": 6,
-              "dates": 6,
-              "meanQLIKE": 1.5269614128118196,
-              "medianForecastQLIKE": 0.33505775373763313,
-              "medianDateQLIKE": 0.33505775373763313,
+              "rows": 7,
+              "dates": 7,
+              "meanQLIKE": 1.338047791663909,
+              "medianForecastQLIKE": 0.25387699359070304,
+              "medianDateQLIKE": 0.25387699359070304,
               "worstDateCount": 1,
-              "worstDateFraction": 0.16666666666666666,
-              "worstDateShare": 0.5066531324035835,
-              "excluding2020MeanQLIKE": 1.5269614128118196,
-              "excluding2020Dates": 6,
+              "worstDateFraction": 0.14285714285714285,
+              "worstDateShare": 0.49558754030438956,
+              "excluding2020MeanQLIKE": 1.338047791663909,
+              "excluding2020Dates": 7,
               "worstDates": [
                 {
                   "date": "2026-11-03",
@@ -754,36 +754,36 @@
           {
             "task": "drawdown",
             "model": "base_rate",
-            "issuedRows": 6,
-            "scoredRows": 6,
-            "dates": 6,
+            "issuedRows": 7,
+            "scoredRows": 7,
+            "dates": 7,
             "metric": "Brier",
-            "loss": 0.38305515047832034,
-            "logLoss": 1.073026413462239,
+            "loss": 0.4351647583664194,
+            "logLoss": 1.2055594900469164,
             "calibration": [
               {
                 "low": 0.1,
-                "rows": 6,
+                "rows": 7,
                 "predicted": 0.13523274478330657,
-                "observed": 0.5
+                "observed": 0.5714285714285714
               }
             ]
           },
           {
             "task": "drawdown",
             "model": "volatility_only",
-            "issuedRows": 6,
-            "scoredRows": 6,
-            "dates": 6,
+            "issuedRows": 7,
+            "scoredRows": 7,
+            "dates": 7,
             "metric": "Brier",
-            "loss": 0.48480181535596395,
-            "logLoss": 2.0938059459257268,
+            "loss": 0.55430513836044,
+            "logLoss": 2.400066866772714,
             "calibration": [
               {
                 "low": 0.0,
-                "rows": 6,
-                "predicted": 0.014922929009462153,
-                "observed": 0.5
+                "rows": 7,
+                "predicted": 0.014854188263563762,
+                "observed": 0.5714285714285714
               }
             ]
           }
@@ -793,13 +793,13 @@
             "task": "variance",
             "candidate": "har_daily",
             "baseline": "ewma",
-            "pairedRows": 6,
-            "candidateRows": 6,
-            "baselineRows": 6,
+            "pairedRows": 7,
+            "candidateRows": 7,
+            "baselineRows": 7,
             "gain": {
-              "mean": 0.7438551419481015,
-              "dates": 6,
-              "calendarSessions": 6,
+              "mean": 0.6337632161688541,
+              "dates": 7,
+              "calendarSessions": 7,
               "low": null,
               "high": null,
               "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
@@ -809,13 +809,13 @@
             "task": "variance",
             "candidate": "garch11",
             "baseline": "ewma",
-            "pairedRows": 6,
-            "candidateRows": 6,
-            "baselineRows": 6,
+            "pairedRows": 7,
+            "candidateRows": 7,
+            "baselineRows": 7,
             "gain": {
-              "mean": 0.8954979797508514,
-              "dates": 6,
-              "calendarSessions": 6,
+              "mean": 0.7534481685766747,
+              "dates": 7,
+              "calendarSessions": 7,
               "low": null,
               "high": null,
               "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
@@ -825,42 +825,42 @@
             "task": "drawdown",
             "candidate": "volatility_only",
             "baseline": "base_rate",
-            "pairedRows": 6,
-            "candidateRows": 6,
-            "baselineRows": 6,
+            "pairedRows": 7,
+            "candidateRows": 7,
+            "baselineRows": 7,
             "gain": {
-              "mean": -0.10174666487764372,
-              "dates": 6,
-              "calendarSessions": 6,
+              "mean": -0.11914037999402072,
+              "dates": 7,
+              "calendarSessions": 7,
               "low": null,
               "high": null,
               "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
             }
           }
         ],
-        "expectedRows": 6
+        "expectedRows": 7
       },
       "sectors": {
         "models": [
           {
             "task": "variance",
             "model": "ewma",
-            "issuedRows": 54,
-            "scoredRows": 54,
-            "dates": 6,
+            "issuedRows": 63,
+            "scoredRows": 63,
+            "dates": 7,
             "metric": "QLIKE",
-            "loss": 0.6414014946760825,
+            "loss": 0.5616176435228384,
             "decomposition": {
-              "rows": 54,
-              "dates": 6,
-              "meanQLIKE": 0.6414014946760825,
-              "medianForecastQLIKE": 0.3063672211405326,
-              "medianDateQLIKE": 0.5662370651213188,
+              "rows": 63,
+              "dates": 7,
+              "meanQLIKE": 0.5616176435228384,
+              "medianForecastQLIKE": 0.24289948852171728,
+              "medianDateQLIKE": 0.5038830134327464,
               "worstDateCount": 1,
-              "worstDateFraction": 0.16666666666666666,
-              "worstDateShare": 0.36375797157068024,
-              "excluding2020MeanQLIKE": 0.6414014946760825,
-              "excluding2020Dates": 6,
+              "worstDateFraction": 0.14285714285714285,
+              "worstDateShare": 0.3560860454082019,
+              "excluding2020MeanQLIKE": 0.5616176435228384,
+              "excluding2020Dates": 7,
               "worstDates": [
                 {
                   "date": "2026-11-03",
@@ -872,22 +872,22 @@
           {
             "task": "variance",
             "model": "har_daily",
-            "issuedRows": 54,
-            "scoredRows": 54,
-            "dates": 6,
+            "issuedRows": 63,
+            "scoredRows": 63,
+            "dates": 7,
             "metric": "QLIKE",
-            "loss": 0.5147393873256084,
+            "loss": 0.4532943046143649,
             "decomposition": {
-              "rows": 54,
-              "dates": 6,
-              "meanQLIKE": 0.5147393873256084,
-              "medianForecastQLIKE": 0.22377109124677208,
-              "medianDateQLIKE": 0.5217258645005292,
+              "rows": 63,
+              "dates": 7,
+              "meanQLIKE": 0.4532943046143648,
+              "medianForecastQLIKE": 0.16650753097437376,
+              "medianDateQLIKE": 0.4792937745426781,
               "worstDateCount": 1,
-              "worstDateFraction": 0.16666666666666666,
-              "worstDateShare": 0.33268333889958956,
-              "excluding2020MeanQLIKE": 0.5147393873256084,
-              "excluding2020Dates": 6,
+              "worstDateFraction": 0.14285714285714285,
+              "worstDateShare": 0.32381085305393525,
+              "excluding2020MeanQLIKE": 0.4532943046143648,
+              "excluding2020Dates": 7,
               "worstDates": [
                 {
                   "date": "2026-11-03",
@@ -899,22 +899,22 @@
           {
             "task": "variance",
             "model": "garch11",
-            "issuedRows": 54,
-            "scoredRows": 54,
-            "dates": 6,
+            "issuedRows": 63,
+            "scoredRows": 63,
+            "dates": 7,
             "metric": "QLIKE",
-            "loss": 0.5500538431784445,
+            "loss": 0.4864575769512056,
             "decomposition": {
-              "rows": 54,
-              "dates": 6,
-              "meanQLIKE": 0.5500538431784446,
-              "medianForecastQLIKE": 0.31496310125700144,
-              "medianDateQLIKE": 0.5774167250020449,
+              "rows": 63,
+              "dates": 7,
+              "meanQLIKE": 0.4864575769512057,
+              "medianForecastQLIKE": 0.24960880634528282,
+              "medianDateQLIKE": 0.5594647299526488,
               "worstDateCount": 1,
-              "worstDateFraction": 0.16666666666666666,
-              "worstDateShare": 0.2883742845653153,
-              "excluding2020MeanQLIKE": 0.5500538431784446,
-              "excluding2020Dates": 6,
+              "worstDateFraction": 0.14285714285714285,
+              "worstDateShare": 0.27949237980501523,
+              "excluding2020MeanQLIKE": 0.4864575769512057,
+              "excluding2020Dates": 7,
               "worstDates": [
                 {
                   "date": "2026-11-03",
@@ -926,72 +926,72 @@
           {
             "task": "drawdown",
             "model": "base_rate",
-            "issuedRows": 54,
-            "scoredRows": 54,
-            "dates": 6,
+            "issuedRows": 63,
+            "scoredRows": 63,
+            "dates": 7,
             "metric": "Brier",
-            "loss": 0.2529128762840686,
-            "logLoss": 0.7193529023747415,
+            "loss": 0.2868075827309419,
+            "logLoss": 0.8000366944667426,
             "calibration": [
               {
                 "low": 0.0,
-                "rows": 6,
+                "rows": 7,
                 "predicted": 0.06942215088282504,
-                "observed": 0.16666666666666666
+                "observed": 0.14285714285714285
               },
               {
                 "low": 0.1,
-                "rows": 30,
+                "rows": 35,
                 "predicted": 0.15674157303370786,
-                "observed": 0.3333333333333333
+                "observed": 0.4
               },
               {
                 "low": 0.2,
-                "rows": 12,
+                "rows": 14,
                 "predicted": 0.28250401284109156,
-                "observed": 0.4166666666666667
+                "observed": 0.5
               },
               {
                 "low": 0.30000000000000004,
-                "rows": 6,
-                "predicted": 0.3109951845906902,
-                "observed": 0.6666666666666666
+                "rows": 7,
+                "predicted": 0.31099518459069014,
+                "observed": 0.7142857142857143
               }
             ]
           },
           {
             "task": "drawdown",
             "model": "volatility_only",
-            "issuedRows": 54,
-            "scoredRows": 54,
-            "dates": 6,
+            "issuedRows": 63,
+            "scoredRows": 63,
+            "dates": 7,
             "metric": "Brier",
-            "loss": 0.2677311317113323,
-            "logLoss": 0.82452806171729,
+            "loss": 0.3075586758146266,
+            "logLoss": 0.9448265889503321,
             "calibration": [
               {
                 "low": 0.0,
-                "rows": 18,
-                "predicted": 0.051898698438800996,
-                "observed": 0.2222222222222222
+                "rows": 21,
+                "predicted": 0.051915260435825686,
+                "observed": 0.2857142857142857
               },
               {
                 "low": 0.1,
-                "rows": 18,
-                "predicted": 0.15789120295266068,
-                "observed": 0.5555555555555556
+                "rows": 21,
+                "predicted": 0.15777526621408594,
+                "observed": 0.6190476190476191
               },
               {
                 "low": 0.2,
-                "rows": 12,
-                "predicted": 0.2277200349124997,
-                "observed": 0.16666666666666666
+                "rows": 14,
+                "predicted": 0.22776811684693898,
+                "observed": 0.21428571428571427
               },
               {
                 "low": 0.4,
-                "rows": 6,
-                "predicted": 0.43279814213410717,
-                "observed": 0.6666666666666666
+                "rows": 7,
+                "predicted": 0.43466766997632755,
+                "observed": 0.7142857142857143
               }
             ]
           }
@@ -1001,13 +1001,13 @@
             "task": "variance",
             "candidate": "har_daily",
             "baseline": "ewma",
-            "pairedRows": 54,
-            "candidateRows": 54,
-            "baselineRows": 54,
+            "pairedRows": 63,
+            "candidateRows": 63,
+            "baselineRows": 63,
             "gain": {
-              "mean": 0.1266621073504741,
-              "dates": 6,
-              "calendarSessions": 6,
+              "mean": 0.10832333890847357,
+              "dates": 7,
+              "calendarSessions": 7,
               "low": null,
               "high": null,
               "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
@@ -1017,13 +1017,13 @@
             "task": "variance",
             "candidate": "garch11",
             "baseline": "ewma",
-            "pairedRows": 54,
-            "candidateRows": 54,
-            "baselineRows": 54,
+            "pairedRows": 63,
+            "candidateRows": 63,
+            "baselineRows": 63,
             "gain": {
-              "mean": 0.09134765149763789,
-              "dates": 6,
-              "calendarSessions": 6,
+              "mean": 0.07516006657163272,
+              "dates": 7,
+              "calendarSessions": 7,
               "low": null,
               "high": null,
               "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
@@ -1033,20 +1033,20 @@
             "task": "drawdown",
             "candidate": "volatility_only",
             "baseline": "base_rate",
-            "pairedRows": 54,
-            "candidateRows": 54,
-            "baselineRows": 54,
+            "pairedRows": 63,
+            "candidateRows": 63,
+            "baselineRows": 63,
             "gain": {
-              "mean": -0.014818255427263704,
-              "dates": 6,
-              "calendarSessions": 6,
+              "mean": -0.020751093083684568,
+              "dates": 7,
+              "calendarSessions": 7,
               "low": null,
               "high": null,
               "interpretation": "descriptive interval, no selection-adjusted significance or promotion"
             }
           }
         ],
-        "expectedRows": 54
+        "expectedRows": 63
       }
     }
   },
@@ -1112,7 +1112,7 @@
       "exitClose": "2026-11-18T21:00:00+00:00",
       "path": "risk_records/risk-1.0.0/forecasts/2026-11-11.json",
       "fileSha256": "2d579465c4d686f1bed0c7995692a04a0bf1b60f09da495b64d5d55e0fe0d7a1",
-      "resolved": false
+      "resolved": true
     },
     {
       "sessionDate": "2026-11-12",
@@ -1148,6 +1148,15 @@
       "exitClose": "2026-11-24T21:00:00+00:00",
       "path": "risk_records/risk-1.0.0/forecasts/2026-11-17.json",
       "fileSha256": "04a5ca2bee55e6e250949af5128bf3bab5ae5494f91615a5a556e1834a0e1b55",
+      "resolved": false
+    },
+    {
+      "sessionDate": "2026-11-18",
+      "issuedAt": "2026-11-19T02:42:48.730849+00:00",
+      "entryOpen": "2026-11-19T14:30:00+00:00",
+      "exitClose": "2026-11-25T21:00:00+00:00",
+      "path": "risk_records/risk-1.0.0/forecasts/2026-11-18.json",
+      "fileSha256": "bde3f7e0bac516c989dd086398838a9c5c09341bda6791d3048b22a67af83054",
       "resolved": false
     }
   ]
