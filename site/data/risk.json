@@ -1,7 +1,7 @@
 {
   "experiment": "risk-1.0.0",
   "status": "live-shadow",
-  "updatedAt": "2026-11-21T02:37:43.556420+00:00",
+  "updatedAt": "2026-11-21T05:51:43.821167+00:00",
   "forecastDates": 14,
   "resolvedDates": 9,
   "latest": {
@@ -978,7 +978,7 @@
               {
                 "low": 0.1,
                 "rows": 27,
-                "predicted": 0.15767039073117056,
+                "predicted": 0.15767039073117053,
                 "observed": 0.7037037037037037
               },
               {
