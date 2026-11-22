@@ -1,11 +1,11 @@
 {
   "status": "healthy",
   "mode": "daily",
-  "attemptedAt": "2026-11-14T03:36:30.454409+00:00",
+  "attemptedAt": "2026-11-21T04:18:20.113604+00:00",
   "experiment": "research-2.0.0",
-  "latestSession": "2026-11-13",
-  "liveForecastDates": 9,
-  "completedAt": "2026-11-14T03:36:38.241156+00:00",
-  "lastSuccessfulAt": "2026-11-14T03:36:38.241162+00:00",
+  "latestSession": "2026-11-20",
+  "liveForecastDates": 14,
+  "completedAt": "2026-11-21T04:18:26.571803+00:00",
+  "lastSuccessfulAt": "2026-11-21T04:18:26.571810+00:00",
   "error": null
 }
