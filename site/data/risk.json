@@ -1,7 +1,7 @@
 {
   "experiment": "risk-1.0.0",
   "status": "live-shadow",
-  "updatedAt": "2026-11-25T07:16:33.352499+00:00",
+  "updatedAt": "2026-11-25T09:54:00.697400+00:00",
   "forecastDates": 16,
   "resolvedDates": 11,
   "latest": {
@@ -972,19 +972,19 @@
               {
                 "low": 0.0,
                 "rows": 33,
-                "predicted": 0.051791737983618705,
+                "predicted": 0.0517917379836187,
                 "observed": 0.45454545454545453
               },
               {
                 "low": 0.1,
                 "rows": 33,
-                "predicted": 0.1576246028624453,
+                "predicted": 0.15762460286244528,
                 "observed": 0.7575757575757576
               },
               {
                 "low": 0.2,
                 "rows": 22,
-                "predicted": 0.22795370950648408,
+                "predicted": 0.22795370950648405,
                 "observed": 0.36363636363636365
               },
               {
