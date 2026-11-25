@@ -71,3 +71,9 @@ Subsequent corrections and tested specifications must be appended here.
 - Refined long buttons for narrow screens, made inline links clearer, removed unnecessary missing-date badges on explanatory pages and corrected refresh-error wording to point to the on-site records.
 - A Pages activation timed out after a successful build and upload. Retrying exposed duplicate `github-pages` artifacts in the same workflow run. Give each uploaded artifact a run-and-attempt-specific name and select that exact name during deployment, preserving older artifacts without ambiguity.
 - These changes affect presentation and publication only. Model specifications, trading rules, schedules, original registered results and frozen forecast/outcome records are unchanged. Earlier deployment failures remain in Actions history.
+
+## 2026-11-15 — Hub receipt display compatibility
+
+- Corrected the on-site project guide to read the Hub's current top-level `forecasts` receipt list, while retaining compatibility with older per-lab snapshots. The previous reader could say that a current receipt was not found even when the Hub had received it.
+- Limited the copied receipt fields to timing, status, integrity and problem information, filtered them to the Risk Lab, and added regression coverage for current, legacy and cross-lab receipt shapes.
+- This is a presentation-only correction. It does not change either lab's immutable forecast bytes, Hub receipt times or scores, risk models, targets, ledgers, schedules, exports, direction study or sector-ETF trading rules.

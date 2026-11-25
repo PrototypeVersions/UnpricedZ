@@ -181,9 +181,15 @@ def reader_context(root, hub=None):
         lab=next((l for l in hub.get('labs',[]) if l.get('id')=='risk-lab'),None)
         if lab:
             receipt.update(status='available',sourceUpdatedAt=hub.get('updatedAt'),counts=lab.get('receipts',{}))
+            # Hub receipts are published in the top-level forecasts collection. Keep
+            # the older per-lab shape as a fallback for dated Hub snapshots.
+            receipts=hub.get('forecasts',lab.get('recent',[]))
             for path in sorted((root/'site/data/export').glob('latest-*.json')):
                 doc=json.loads(path.read_text())
-                r=next((r for r in lab.get('recent',[]) if r.get('forecastId')==doc.get('forecastId')),None)
+                r=next((r for r in receipts if r.get('lab') in (None,'risk-lab')
+                        and r.get('forecastId')==doc.get('forecastId')),None)
+                if r:
+                    r={key:r.get(key) for key in ('forecastId','status','problems','requestedAt','receivedAt','entryOpen','sha256')}
                 receipt['exports'].append({'forecastId':doc.get('forecastId'),'task':doc.get('task',{}).get('description'),
                                           'receipt':r,'matches':bool(r and r.get('sha256')==digest(path.read_bytes()))})
     return {'builtAt':datetime.now(timezone.utc).isoformat(),'riskForecastId':risk.get('latest',{}).get('forecastId'),
