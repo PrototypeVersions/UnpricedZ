@@ -2,9 +2,9 @@
   "experiment": "risk-1.0.0",
   "mode": "daily",
   "status": "healthy",
-  "attemptedAt": "2026-11-27T09:43:09.322698+00:00",
-  "forecastDates": 17,
-  "completedAt": "2026-11-27T09:43:13.789494+00:00",
-  "lastSuccessfulAt": "2026-11-27T09:43:13.789505+00:00",
+  "attemptedAt": "2026-11-28T03:23:54.721039+00:00",
+  "forecastDates": 18,
+  "completedAt": "2026-11-28T03:24:04.517794+00:00",
+  "lastSuccessfulAt": "2026-11-28T03:24:04.517805+00:00",
   "error": null
 }
